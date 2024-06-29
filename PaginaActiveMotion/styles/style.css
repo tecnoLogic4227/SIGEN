@@ -969,6 +969,67 @@ button {
 }
 
 #calendar-table td.busy {
-  background-color: red;
+  background-color: rgb(255, 0, 0);
+  background-color: rgb(9, 255, 0);
   color: white;
 }
+
+/*......................................................Evolucion Usuarios...............................................*/
+.evolucionUsuario{
+  text-align: center;
+  height: 300vh;
+ }
+
+ .tituloEvolucionUsuario{
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+ }
+
+ .grafica{  
+  margin-top: 10vh;
+  margin-left: 30vw;
+  width: 60%;
+ }
+
+ .containerEvolucion {
+  padding: 20px;
+  border-radius: 8px;
+  margin-left: 5vw;
+  margin-top: -40vh;
+  width: 20%;
+  background-color: rgba(205, 236, 255, 0.938);
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+.accordionEvolucion {
+  width: 100%;
+}
+
+.accordion-itemEvolucion {
+  border-bottom: 1px solid #ccc;
+}
+
+.accordion-headerEvolucion {
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: #e0e0e0;
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+/*.............................................RUTINA USUARIO.............................................................*/

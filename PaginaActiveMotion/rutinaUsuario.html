@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../PaginaActiveMotion/img/logoPagina.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActiveMotion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/media_style.css">
+</head>
+  <body>
+    <div id="wrapper">
+    <nav>
+
+        <div class="clase1">
+          <img src="../PaginaActiveMotion/img/logoPagina.png"
+          width="300"
+          height="60"
+          alt="imagen del logo AI"
+          title="logo AI">
+        </div>
+  
+        <ul>
+            <li id="inicio" class="op-menu"><a href="indexUsuario.html">Inicio</a></li>
+            <li id="nosotros"class="op-menu"><a href="planUsuario.Html">Mi Plan</a></li> 
+            <li id="servicios"class="op-menu"><a href="agendaUsuario.html">Mi Agenda</a>
+            <li id="locales"class="op-menu"><a href="evolucionUsuario.html">Mi Evolucion</a></li>
+            <li id="planes"class="op-menu"><a href="rutinaUsuario.html">Mi Rutina</a></li>
+            <li id="login"class="op-menu"><a href="perfilUsuario.html">Perfil</a></li>
+            <li><a class="menu-barras" href="#barras">☰</a></li>
+        </ul>
+  
+        <div class="menu-adaptable">
+          <ul class="menu-oculto">
+              <li><a class="op-menu-oculto" href="indexUsuario.html">Inicio</a></li>
+              <li><a class="op-menu-oculto" href="planUsuario.Html">Mi Plan</a></li>
+              <li><a class="op-menu-oculto" href="agendaUsuario.html">Mi Agenda</a></li>
+              <li><a class="op-menu-oculto" href="evolucionUsuario.html">Mi Evolucion</a></li>
+              <li><a class="op-menu-oculto" href="rutinaUsuario.html">Mi Rutina</a></li>
+              <li><a class="op-menu-oculto" href="perfilUsuario.html">Perfil</a></li>
+          </ul>
+      </div>
+  
+    </nav>
+    
+    <main class="evolucionUsuario">
+        <header> 
+            <h1 class="tituloEvolucionUsuario">Tu Rutina</h1>
+        </header>
+
+        <table class="table table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>Día</th>
+              <th>Ejercicio</th>
+              <th>Músculo</th>
+              <th>Descripción</th>
+              <th>Series</th>
+              <th>Repeticiones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td rowspan="3" class="table-info">Lunes</td>
+              <td> Sentadillas (Squats)</td>
+              <td>Cuádriceps y glúteos</td>
+              <td>Ponte de pie con los pies al ancho de los hombros, baja las caderas hacia atrás y hacia abajo como si fueras a sentarte en una silla. Mantén el pecho levantado y asegúrate de que las rodillas no sobrepasen los dedos de los pies. Regresa a la posición inicial empujando a través de los talones.</td>
+              <td>3</td>
+              <td>12-15</td>
+            </tr>
+            <tr>
+              <td>Press de banca (Bench Press)</td>
+              <td> Pectorales, deltoides y tríceps</td>
+              <td>Acuéstate en un banco plano con una barra en las manos, las manos un poco más anchas que los hombros. Baja la barra lentamente hacia el pecho y luego empújala hacia arriba hasta que los brazos estén completamente extendidos.</td>
+              <td>3</td>
+              <td>8-12</td>
+            </tr>
+            <tr>
+              <td>Remo con mancuernas (Dumbbell Rows)</td>
+              <td>Dorsales y bíceps</td>
+              <td>Apoya una rodilla y una mano en un banco plano, manteniendo la espalda recta. Con la otra mano, levanta una mancuerna hacia el lado del torso, apretando los músculos de la espalda. Baja la mancuerna de nuevo a la posición inicial.</td>
+              <td>3</td>
+              <td>10-12 (por lado)</td>
+            </tr> 
+
+            <tr>
+              <td rowspan="3" class="table-info">Miercoles</td>
+               <td>Elevaciones laterales (Lateral Raises)</td>
+               <td>Deltoides laterales</td>
+               <td>De pie, con una mancuerna en cada mano y los brazos a los lados. Levanta las mancuernas hacia los lados hasta que los brazos estén paralelos al suelo. Mantén una ligera flexión en los codos durante todo el movimiento.</td>
+               <td>3</td>
+               <td>12-15</td>
+             </tr>
+             <tr>
+               <td>Curl de bíceps con barra (Barbell Bicep Curls)</td>
+               <td>Bíceps</td>
+               <td>De pie, con los pies al ancho de los hombros, sostén una barra con las manos a la altura de los hombros y las palmas hacia arriba. Flexiona los codos para levantar la barra hacia los hombros, apretando los bíceps, y baja la barra de nuevo a la posición inicial.</td>
+               <td>3</td>
+               <td>10-15</td>
+             </tr>
+             <tr>
+               <td>Planchas (Planks)</td>
+               <td> Core (abdominales y espalda baja)</td>
+               <td>Colócate en una posición de push-up pero con los antebrazos en el suelo, manteniendo el cuerpo en una línea recta desde la cabeza hasta los talones. Mantén esta posición contrayendo los músculos del core.</td>
+               <td>3</td>
+               <td>30-60 (segundos)</td>
+             </tr> 
+           
+             <tr>
+              <td rowspan="3" class="table-info">Viernes</td>
+               <td>Peso muerto (Deadlift)</td>
+               <td>Glúteos, isquiotibiales y espalda baja</td>
+               <td>Ponte de pie con los pies al ancho de los hombros, una barra en el suelo frente a ti. Flexiona las caderas y las rodillas para agarrar la barra con las manos justo fuera de las rodillas. Mantén la espalda recta y levanta la barra empujando a través de los talones hasta que estés de pie. Baja la barra de manera controlada de nuevo al suelo.</td>
+               <td>3</td>
+               <td>8-10</td>
+             </tr>
+             <tr>
+               <td>Fondos en paralelas (Dips)</td>
+               <td>Tríceps, pectorales y deltoides</td>
+               <td>Usa unas barras paralelas, apoyando las manos en ellas y levantando el cuerpo. Baja lentamente el cuerpo flexionando los codos hasta que los brazos formen un ángulo de 90 grados, luego empuja hacia arriba para regresar a la posición inicial.</td>
+               <td>3</td>
+               <td>10-12</td>
+             </tr>
+             <tr>
+               <td>Prensa de piernas (Leg Press)</td>
+               <td>Cuádriceps, glúteos y pantorrillas</td>
+               <td>Siéntate en la máquina de prensa de piernas y coloca los pies en la plataforma a la anchura de los hombros. Empuja la plataforma hacia arriba hasta que las piernas estén casi extendidas (no bloquees las rodillas). Baja la plataforma de manera controlada hasta que las rodillas formen un ángulo de 90 grados.</td>
+               <td>3</td>
+               <td>12-15</td>
+             </tr> 
+        </table>
+    </main>
+
+
+
+    <footer class="social-footer">
+      <div class="footer-content">
+        <ul class="footer-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="locales.html">Locales</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="copyright-bar">
+        © 2024 ActiveMotion. Todos los derechos reservados.
+      </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script/jquery-3.7.1.min.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/evolucion.js"></script>
+    </div>
+  </body>
+</html>
+
+
