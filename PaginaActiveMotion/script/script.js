@@ -97,3 +97,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+/*...............................................Boton Perfil.........................................................*/
+const btnModificar = document.getElementById('btnModificar');
+btnModificar.addEventListener('click', function() { 
+      window.location.href = 'modificarPerfilUsuario.html';
+  });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnGuardar = document.getElementById('btnGuardar');
+  if (btnGuardar) {
+      btnGuardar.addEventListener('click', function() {
+          window.location.href = 'perfilUsuario.html';
+      });
+  }
+});

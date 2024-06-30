@@ -282,7 +282,7 @@ ul #servis, #fisio,#dep,#pila{
 
 
 .comb2{
-  margin-top: -75vh;
+  margin-top: -90vh;
   margin-left: 55vw;
   position: absolute;
 }
@@ -1033,3 +1033,27 @@ button {
 }
 
 /*.............................................RUTINA USUARIO.............................................................*/
+.rutinaUsuario{
+  text-align: center;
+  height: 300vh;
+ }
+
+ .tituloRutinaUsuario{
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+ }
+
+ /*.................................................Perfil Usuarios.....................................................*/
+ .perfilUsuario{
+  text-align: center;
+  height: 300vh;
+ }
+
+ .tituloPerfilUsuario{
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+ }
