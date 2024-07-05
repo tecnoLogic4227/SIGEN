@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(function() {
     const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     let currentYear = 2024;
     let currentMonth = 5; // Junio (0-indexed)
 
-    const yearDisplay = document.getElementById('year-display');
-    const monthDisplay = document.getElementById('month-display');
-    const calendarBody = document.getElementById('calendar-body');
+    const $yearDisplay = $('#year-display');
+    const $monthDisplay = $('#month-display');
+    const $calendarBody = $('#calendar-body');
 
     const busyDays = {
         2024: {
@@ -15,35 +15,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function renderCalendar() {
-        yearDisplay.textContent = currentYear;
-        monthDisplay.textContent = monthNames[currentMonth];
+        $yearDisplay.text(currentYear);
+        $monthDisplay.text(monthNames[currentMonth]);
 
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-        calendarBody.innerHTML = '';
+        $calendarBody.empty();
         let date = 1;
 
         for (let i = 0; i < 6; i++) {
-            const row = document.createElement('tr');
+            const $row = $('<tr>');
             
             for (let j = 0; j < 7; j++) {
-                const cell = document.createElement('td');
+                const $cell = $('<td>');
 
                 if (i === 0 && j < firstDay) {
-                    cell.textContent = '';
+                    $cell.text('');
                 } else if (date > daysInMonth) {
                     break;
                 } else {
-                    cell.textContent = date;
+                    $cell.text(date);
                     if (busyDays[currentYear] && busyDays[currentYear][currentMonth] && busyDays[currentYear][currentMonth].includes(date)) {
-                        cell.classList.add('busy');
+                        $cell.addClass('busy');
                     }
                     date++;
                 }
-                row.appendChild(cell);
+                $row.append($cell);
             }
-            calendarBody.appendChild(row);
+            $calendarBody.append($row);
             if (date > daysInMonth) break;
         }
     }
@@ -65,22 +65,21 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCalendar();
     }
 
-    document.getElementById('prev-year').addEventListener('click', function() {
+    $('#prev-year').on('click', function() {
         changeYear(-1);
     });
 
-    document.getElementById('next-year').addEventListener('click', function() {
+    $('#next-year').on('click', function() {
         changeYear(1);
     });
 
-    document.getElementById('prev-month').addEventListener('click', function() {
+    $('#prev-month').on('click', function() {
         changeMonth(-1);
     });
 
-    document.getElementById('next-month').addEventListener('click', function() {
+    $('#next-month').on('click', function() {
         changeMonth(1);
     });
 
     renderCalendar();
 });
-
