@@ -1057,3 +1057,33 @@ button {
   border-radius: 15px; 
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
  }
+
+
+
+ /* botones */
+
+ button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  background-color: #0056b3;
+  border-radius: 5px;
+  color: white;
+  padding: 1vh;
+}
+
+button:hover {
+  background-color: #1DA1F2;
+  transition: all .3s ease;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+}
