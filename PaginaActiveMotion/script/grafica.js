@@ -48,11 +48,11 @@ const resiliencia = {
     tension: 0.1
 };
 
-const graph = document.querySelector("#grafica");
+const $graph = $("#graficaSeleccionador, #grafica");
 
 const data = {
     labels: labels,
-    datasets: [cumplimientoAgenda,resistenciaAnaeróbica,fuerzaMuscular,flexibilidad,resistenciaMonotonía,resiliencia  ]
+    datasets: [cumplimientoAgenda, resistenciaAnaeróbica, fuerzaMuscular, flexibilidad, resistenciaMonotonía, resiliencia]
 };
 
 const config = {
@@ -60,4 +60,8 @@ const config = {
     data: data,
 };
 
-new Chart(graph, config);
+if ($graph.length) {
+    new Chart($graph[0], config);
+} else {
+    console.error('Elemento del gráfico no encontrado');
+}
