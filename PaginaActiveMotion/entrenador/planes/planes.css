@@ -5,6 +5,11 @@
 
 body {
     overflow-x: hidden;
+    width: 100vw;
+}
+
+.body1 {
+    height: 110vh;
 }
 
 h1, h3 {
@@ -14,7 +19,119 @@ h1, h3 {
 
 .tit1 {
     margin-top: 20vh;
+    margin-bottom: 15vh;
 }
+
+.main1 {
+    width: 100vw;
+    justify-content: center;
+}
+
+.centrar1 {
+    display: flex;
+    flex-direction: row;
+}
+
+#art1 {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    align-items: center;
+}
+
+#boton1 {
+    margin-bottom: 5vh;
+}
+
+/* ingresar fisioterapia */
+
+.tit-fisio {
+    margin-top: 15vh;
+}
+
+.subtit-fisio {
+    width: 100vw;
+    margin-top: 5vh;
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.form-fisio {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#label-input-fisio {
+    width: 15vw;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.ingresar-fisio {
+    margin-top: 10vh;
+}
+
+/* Modificar plan */
+
+.tit-modificar-plan {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.buscar-modificar-plan {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#label-input-mod-plan {
+    width: 20vw;
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.boton-buscar-mod-plan {
+   margin-top: 5vh;
+   margin-bottom: 15vh; 
+}
+
+.tabla-modificar-plan {
+    width: 70vw;
+}
+
+td, tr {
+    height: 5vh;
+    border: 1px solid black;
+}
+
+.input-mod-plan {
+    height: 100%;
+}
+
+/* Asegúrate de que la tabla no se desborde */
+.tabla-modificar-plan {
+    max-width: 100%;
+    table-layout: fixed; /* Esto ayudará a que las celdas se ajusten */
+}
+
+.tabla-modificar-plan td, 
+.tabla-modificar-plan th {
+    word-wrap: break-word; /* Permite el ajuste de texto en las celdas */
+    overflow: hidden; /* Oculta el contenido que se desborde */
+}
+
+.input-mod-plan {
+    width: 100%; /* Asegúrate de que los inputs se ajusten a la celda */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del elemento */
+}
+
+
+/* otra parte */
 
 .subtit1 {
     margin-bottom: 15vh;
@@ -31,10 +148,6 @@ div {
     width: 100vw;
     margin-bottom: 3vh;
     justify-content: center;
-}
-
-label {
-    margin-right: 5vw;
 }
 
 .boton1 {

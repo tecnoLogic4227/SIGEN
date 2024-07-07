@@ -4,6 +4,7 @@
 }
 
 body {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -79,7 +80,7 @@ tr:hover {
 /* detalles cliente */
 
 .body2 {
-    height: 250vh;
+    height: 300vh;
 }
 
 .tit2 {
@@ -119,4 +120,37 @@ tr:hover {
     margin-top: 50vh;
 }
 
+/* asignar rutina */
 
+.tit3 {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.form3-buscar {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buscar3 {
+    width: 10vw;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+.cliente3 {
+    width: 100vw;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 20vh;
+}
+
+.guardar3-entrenamiento {
+    margin-top: 5vh;
+    width: 15vw;
+}
