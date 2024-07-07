@@ -12,10 +12,13 @@ body {
     height: 110vh;
 }
 
-h1, h3 {
+h1, h2, h3 {
     width: 100vw;
     text-align: center;
-}
+    background-color: rgb(209, 240, 255);
+    border-radius: 10px;
+    padding: 1vh;
+    box-shadow: 0 10px 5px 5px rgba(0,0,0,0.3);}
 
 .tit1 {
     margin-top: 20vh;
@@ -76,6 +79,14 @@ h1, h3 {
 
 /* Modificar plan */
 
+.body-mod-plan {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .tit-modificar-plan {
     margin-top: 15vh;
     margin-bottom: 15vh;
@@ -102,34 +113,83 @@ h1, h3 {
 
 .tabla-modificar-plan {
     width: 70vw;
+    max-width: 100%;
+    table-layout: fixed;
 }
 
 td, tr {
     height: 5vh;
     border: 1px solid black;
-}
+    text-align: center;
+}   
 
 .input-mod-plan {
     height: 100%;
+    width: 100%; 
+    box-sizing: border-box;
 }
 
-/* Asegúrate de que la tabla no se desborde */
-.tabla-modificar-plan {
-    max-width: 100%;
-    table-layout: fixed; /* Esto ayudará a que las celdas se ajusten */
+/* Crear combo */
+
+.main-crear-combo {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
 }
 
-.tabla-modificar-plan td, 
-.tabla-modificar-plan th {
-    word-wrap: break-word; /* Permite el ajuste de texto en las celdas */
-    overflow: hidden; /* Oculta el contenido que se desborde */
+.tit-crear-combo {
+    margin-top: 15vh;
+    margin-bottom: 25vh;
 }
 
-.input-mod-plan {
-    width: 100%; /* Asegúrate de que los inputs se ajusten a la celda */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del elemento */
+.tabla-crear-combo {
+    width: 80vw;
+    margin-bottom: 15vh;
 }
 
+.input-crear-combo {
+    width: 100%;
+}
+
+/* Modificar combo */
+
+.main-mod-combo {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.tit-modificar-combo {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.buscar-combo {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-input-mod-combo {
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.buscar-mod-combo {
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+
+.tabla-mod-combo {
+    width: 80vw;
+    margin-bottom: 10vh;
+}
 
 /* otra parte */
 
