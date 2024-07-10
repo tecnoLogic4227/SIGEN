@@ -10,6 +10,7 @@
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr80OCtuJbAQuRnBffBuRs1mzbCWOsN9I&callback=console.debug&libraries=maps,marker&v=beta"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/media_style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <div id="wrapper">
@@ -47,13 +48,7 @@
 
         <main class="locales">
             <h1 class="tituloLocales">Nuestras Surcursales</h1>
-            <gmp-map center="-34.83287731421614, -56.20371039208432" zoom="4" map-id="DEMO_MAP_ID">
-                <gmp-advanced-marker position="-34.90882298550401, -56.18751526259649" title="My location"></gmp-advanced-marker>
-                <gmp-advanced-marker position="-34.91014272434721, -56.17865283968416" title="My location"></gmp-advanced-marker>
-                <gmp-advanced-marker position="-34.86911508720197, -56.201142594645425" title="My location"></gmp-advanced-marker>
-                <gmp-advanced-marker position="-34.872088042992935, -56.1395643384135" title="My location"></gmp-advanced-marker>
-
-            </gmp-map>
+            <div id="map"></div>
 
             <div class="container">
                 <div class="accordion">
@@ -69,7 +64,7 @@
                     </div>
                     <div class="accordion-item">
                       <div class="accordion-header" onclick="toggleAccordion(this)">
-                          <span>Palermo</span>
+                          <span>Pocitos</span>
                           <i class="fas fa-chevron-down arrow"></i>
                       </div>
                       <div class="accordion-content">
@@ -89,7 +84,7 @@
                 </div>
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
-                      <span>Union</span>
+                      <span>La comercial</span>
                       <i class="fas fa-chevron-down arrow"></i>
                   </div>
                   <div class="accordion-content">
@@ -97,6 +92,16 @@
                       <p>Horario: 8:00 a 18:00</p>
                   </div>
               </div>
+              <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>Union</span>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <p>Telefono: 094198192</p>
+                    <p>Horario: 8:00 a 18:00</p>
+                </div>
+            </div>
             </div>
         </main>
 
@@ -133,6 +138,7 @@
         
         <script src="script/jquery-3.7.1.min.js"></script>
         <script src="script/script.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     </div>
 </body>
 </html>

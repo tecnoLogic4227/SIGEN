@@ -553,11 +553,16 @@ ul #servis, #fisio,#dep,#pila{
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-gmp-map {
+#map {
   margin-left: 2vw;
   margin-top: 20vh;
   height: 300px; 
   width: 40%;  
+}
+
+.leaflet-control-attribution {
+  bottom: -96px; 
+  left: 38px;
 }
 
 .container {

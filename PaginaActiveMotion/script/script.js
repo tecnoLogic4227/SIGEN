@@ -47,6 +47,35 @@ if ($content.is(':visible')) {
 }
 }
 
+/*.................................................Mapa Locales........................................................*/
+
+$(document).ready(function() {
+  var map = L.map('map').setView([-34.9011, -56.1645], 13); // Coordenadas de Montevideo
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Función para agregar otros lugares
+  function addMarker(lat, lng, popupText) {
+      L.marker([lat, lng]).addTo(map)
+          .bindPopup(popupText)
+          .openPopup();
+  }
+
+  //forma mas facil de agregar lugares
+  var locations = [
+      {lat: -34.9105184406866, lng: -56.18697987161537, text: 'Club 1'},
+      {lat: -34.90710200898609, lng: -56.16164583231151, text: 'Club 2'},
+      {lat: -34.86651941554912, lng: -56.209965197566575, text: 'Club 3'},
+      {lat: -34.88797976628276, lng: -56.17303452468337, text: 'Club 4'},
+      {lat: -34.88105601213915, lng: -56.13900864656061, text: 'Club 5'}
+    ];
+// agrega las pasadas locaciones a la funcion que nos da leafet
+  $.each(locations, function(index, location) {
+      addMarker(location.lat, location.lng, location.text);
+  });
+});
 /*..........................................BOTON Registro-Login.....................................................*/
 $(function() {
 console.log('JavaScript cargado correctamente');
