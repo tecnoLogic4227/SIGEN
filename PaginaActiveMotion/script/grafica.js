@@ -48,7 +48,8 @@ const resiliencia = {
     tension: 0.1
 };
 
-const $graph = $("#graficaSeleccionador, #grafica");
+const $graphEvolucion = $("#graficaEvolucion");
+const $graphSeleccionador = $("#graficaSeleccionador");
 
 const data = {
     labels: labels,
@@ -60,8 +61,14 @@ const config = {
     data: data,
 };
 
-if ($graph.length) {
-    new Chart($graph[0], config);
-} else {
+if ($graphEvolucion.length) {
+    new Chart($graphEvolucion[0], config);
+}
+
+if ($graphSeleccionador.length) {
+    new Chart($graphSeleccionador[0], config);
+}
+
+if (!$graphEvolucion.length && !$graphSeleccionador.length) {
     console.error('Elemento del gráfico no encontrado');
 }

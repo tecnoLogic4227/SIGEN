@@ -795,7 +795,9 @@ input::placeholder{
   font-size: 14px;
   font-weight: bold;
   margin: 10px 0;
+  margin-left: 46vw;
 }
+
 /*.................................................INDEX USUARIO.........................................................*/
 
 
@@ -1081,7 +1083,7 @@ button {
  .ingresar{
   position: relative;
     top: -40vh;
-    margin-left: 60vw;
+    margin-left: 75vw;
     background-color: #409dc4;
     color: white;
     border: none;
@@ -1096,7 +1098,7 @@ button {
  .ingresar2{
   position: relative;
   top: -20vh;
-  margin-left: 60vw;
+  margin-left: 77vw;
   background-color: #409dc4;
   color: white;
   border: none;
@@ -1156,6 +1158,9 @@ button {
   z-index: 0;
 }
 
+.buscarDeportista{
+margin-left: 1vw !important;
+}
 
 /*.................................................Equipos Seleccionador.....................................................*/
 
@@ -1196,6 +1201,13 @@ button {
   margin-left: 10vw;
 }
 
+.buscarEquipo{
+  margin-left: 1vw !important;
+}
+
+.armarEquipo{
+  margin-left: 1vw !important;
+}
 
 /*......................................................Armar equipos Seleccionador....................................*/
 .tablaArmarEquipoSeleccionador {
@@ -1232,4 +1244,302 @@ a {
   height: 100%;
   text-decoration: none;
   color: white;
+}
+
+.ingresarDeportista{
+  margin-left: 0vw !important;
+}
+
+/*..................................................Agenda Administrativo..............................................*/
+.agendaAdministrativo{
+  text-align: center;
+  height: 300vh;
+ }
+
+ .tituloAgendaAdministrativo{
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+ }
+
+
+.left-side {
+  position: absolute;
+  left: 30px;
+  top: 30vh;
+  text-align: left;
+}
+
+.left-side .form-group {
+  margin-bottom: 20px;
+}
+
+.left-side label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.left-side input {
+  width: 150px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.left-side button {
+  padding: 5px 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.left-side button:hover {
+  background-color: #1DA1F2;
+}
+
+#eliminar{
+  margin-top: 2vh;
+}
+
+.calendar-container-administrativo {
+  margin-left: 25vw;
+  margin-top: 8vh;
+  width: 60%;
+}
+
+#calendar-table-administrativo {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#calendar-table-administrativo th, #calendar-table-administrativo td {
+  width: 14.28%;
+  height: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#calendar-table-administrativo td.busy {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
+
+#calendar-table-administrativo td.free {
+  background-color: rgb(0, 255, 0);
+  color: white;
+}
+
+/*................................................. Conulta Administrativo.............................................*/
+
+.consultarPDAdministrativo {
+  text-align: center;
+  height: 300vh;
+}
+
+.tituloConsultaAdministrativo {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+.formDPAdminisrador {
+  width: 20vw;
+  height: 70vh;
+  margin-top: 10vh;
+  margin-left: 0vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#ciPD {
+  background: rgba(121, 121, 121, 0.6);
+  width: 20vh;
+  height: 30px;
+  outline: none;
+  border: 1px dashed #222;
+  color: rgb(0, 0, 0);
+}
+
+.tablaPDAdministrador {
+  margin-top: -70vh;
+  margin-left: 0vw;
+}
+
+.buscarPD{
+  margin-left: 0vw !important;
+}
+
+.eliminarPD{
+  margin-left: 0vw !important;
+}
+
+/*................................................Index Avanzado.........................................................*/
+
+.indexAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.tituloIndexAvanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.titulo_1_IndexAvanzado{
+margin-left: -70vw !important;
+}
+
+.tablaUsuariosIndexAvanzado {
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 2vw;
+}
+
+.tablaUsuariosIndexAvanzado, th, td {
+  border: 1px solid black;
+}
+
+.btn_AgregarUsuario{
+  margin-left: 10vw;
+}
+
+.titulo_2_IndexAvanzado{
+  margin-top: -59vh ;
+  margin-left: 0vw !important;
+}
+
+.tablaEjerciciosIndexAvanzado {
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 35vw;
+}
+
+.tablaEjerciciosIndexAvanzado, th, td {
+  border: 1px solid black;
+}
+
+.btn_AgregarEjercicio{
+  margin-left: 43vw;
+}
+
+.titulo_3_IndexAvanzado{
+  margin-top: -73vh;
+  margin-left: 70vw !important;
+}
+
+.tablaDeportesIndexAvanzado {
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 68vw;
+}
+
+.tablaDeportessIndexAvanzado, th, td {
+  border: 1px solid black;
+}
+
+.btn_AgregarDeporte{
+  margin-left: 77vw;
+}
+
+/*...................................................Usuarios Avanzado.................................................*/
+
+.usuariosAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.tituloUsuariosAvanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+.tablaUsuarioAvanzado{
+margin-left: -30vw;
+}
+
+.buscar3 {
+  position: absolute;
+  margin-top: -50vh;
+  margin-left: 70vw;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/*...................................................Ejercicios Avanzado.................................................*/
+
+.ejerciciosAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.tituloEjerciciosAvanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+.tablaEjerciciosAvanzado{
+margin-left: -30vw;
+}
+
+.buscar3 {
+  position: absolute;
+  margin-top: -50vh;
+  margin-left: 70vw;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/*...................................................Deportes Avanzado.................................................*/
+
+.deportesAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.tituloDeportesAvanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+.tablaDeportesAvanzado{
+margin-left: -30vw;
+}
+
+.buscar3 {
+  position: absolute;
+  margin-top: -50vh;
+  margin-left: 70vw;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
 }
