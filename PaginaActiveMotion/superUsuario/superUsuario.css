@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.cuerpo-inicio {
+    display: flex;
+    align-items: center;
+}
+
+.boton-inicio {
+    height: 10vh;
+    width: 10vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+}
+
+.section-botones-inicio {
+    display: flex;
+    justify-content: center;
+}
+
+.tit-entrenadores {
+    text-align: center;
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+    background-color: #e4f4fd;
+    border-radius: 15px; 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+.form-entrenadores {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: auto;
+    width: 50%;
+    border: 1px solid #000;
+}
+
+.formentrenadores .table-entrenadores th,
+.formentrenadores .table-entrenadores td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: left;
+}
+
+.form-entrenadores .button-entrenadores {
+    margin: 1vh auto;
+}
