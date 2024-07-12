@@ -24,7 +24,7 @@ body {
     justify-content: center;
 }
 
-.tit-entrenadores {
+.tit-entrenadores, .tit-clubes {
     text-align: center;
     margin-top: 15vh;
     margin-bottom: 5vh;
@@ -33,7 +33,7 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-.form-entrenadores {
+.form-entrenadores, .form-clubes {
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.8);
@@ -43,13 +43,11 @@ body {
     border: 1px solid #000;
 }
 
-.formentrenadores .table-entrenadores th,
-.formentrenadores .table-entrenadores td {
-    border: 1px solid #000;
-    padding: 10px;
-    text-align: left;
+.form-entrenadores .button-entrenadores, .form-clubes .button-clubes{
+    margin: 1vh auto;
 }
 
-.form-entrenadores .button-entrenadores {
-    margin: 1vh auto;
+.main-clubes, .form-clubes {
+    display: flex;
+    flex-direction: column;
 }
