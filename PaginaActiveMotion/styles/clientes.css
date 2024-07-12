@@ -122,14 +122,14 @@ tr:hover {
 
 /* asignar rutina */
 
-.tit3 {
+.tit-asignar-entrenamiento {
     margin-top: 15vh;
     margin-bottom: 10vh;
     width: 100vw;
     text-align: center;
 }
 
-.form3-buscar {
+.form-asignar-entrenamiento-buscar {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -137,20 +137,20 @@ tr:hover {
     justify-content: center;
 }
 
-.buscar3 {
+.buscar-asignar-entrenamiento {
     width: 10vw;
     margin-top: 5vh;
     margin-bottom: 10vh;
 }
 
-.cliente3 {
+.cliente-asignar-entrenamiento {
     width: 100vw;
     text-align: center;
     margin-top: 5vh;
     margin-bottom: 20vh;
 }
 
-.guardar3-entrenamiento {
+.guardar-asignar-entrenamiento {
     margin-top: 5vh;
     width: 15vw;
 }

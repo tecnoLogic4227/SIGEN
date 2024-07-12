@@ -532,3 +532,37 @@ $(document).ready(function() {
       console.log('Lista de deporte:', listaDeporte);
   }
 });
+
+
+
+//funcion para desplegar botones - seccion planes de entrenador
+
+
+$(".ingresar-plan-entrenador").click(ingresoDatosPlanesEntrenador);
+$(".gestionar-combos").click(ingresoDatosCombosEntrenador);
+
+function ingresoDatosPlanesEntrenador () {
+  let botonDesplegable = $(".boton-fisioterapia-deportista-entrenador");
+  desplegarBotonesPlanesEntrenador(botonDesplegable);
+}
+
+function desplegarBotonesPlanesEntrenador (botonDesplegable) {
+    if (botonDesplegable.css("visibility") === "hidden") {
+      botonDesplegable.css("visibility", "visible");
+    } else {
+      botonDesplegable.css("visibility", "hidden");
+    }
+}
+
+function ingresoDatosCombosEntrenador () {
+  let botonDesplegable = $(".gestionar-combos-boton");
+  desplegarBotonesCombosEntrenador(botonDesplegable);
+}
+
+function desplegarBotonesCombosEntrenador (botonDesplegable) {
+  if (botonDesplegable.css("visibility") === "hidden") {
+    botonDesplegable.css("visibility", "visible");
+  } else {
+    botonDesplegable.css("visibility", "hidden");
+  }
+}
