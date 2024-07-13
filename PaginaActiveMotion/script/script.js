@@ -533,10 +533,7 @@ $(document).ready(function() {
   }
 });
 
-
-
 //funcion para desplegar botones - seccion planes de entrenador
-
 
 $(".ingresar-plan-entrenador").click(ingresoDatosPlanesEntrenador);
 $(".gestionar-combos").click(ingresoDatosCombosEntrenador);
