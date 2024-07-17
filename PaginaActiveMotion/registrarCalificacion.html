@@ -41,10 +41,10 @@
         <h3 class="tit-registrar-calificacion">Cliente</h3>
         <form class="form-buscar-registrar-calificacion">
           <label>CI</label>
-          <input>
+          <input id="ci-cliente" name="ci-cliente">
           <label>Actividad</label>
-          <input>
-          <button>Buscar</button>
+          <input id="actividad-clinete" name="actividad-clinete">
+          <button id="buscar_cliente">Buscar</button>
         </form>
       </article>
       <form class="form-registrar-calificacion">
@@ -58,38 +58,38 @@
           </tr>
           <tr>
             <th>Cumplimiento con la agenda</th>
-            <td><input type="number" name="cumplimientoAgenda"></td>
+            <td><input type="number" id="cumplimientoAgenda" name="cumplimientoAgenda"></td>
           </tr>
           <tr>
             <th>Resistencia anaeróbica</th>
-            <td><input type="number" name="resistenciaAnaerobica"></td>
+            <td><input type="number" id="resistenciaAnaerobica" name="resistenciaAnaerobica"></td>
           </tr>
           <tr>
             <th>Fuerza muscular</th>
-            <td><input type="number" name="fuerzaMuscular"></td>
+            <td><input type="number" id="fuerzaMuscular" name="fuerzaMuscular"></td>
           </tr>
           <tr>
             <th>Resistencia muscular</th>
-            <td><input type="number" name="resistenciaMuscular"></td>
+            <td><input type="number" id="resistenciaMuscular" name="resistenciaMuscular"></td>
           </tr>
           <tr>
             <th>Flexibilidad</th>
-            <td><input type="number" name="flexibilidad"></td>
+            <td><input type="number" id="flexibilidad" name="flexibilidad"></td>
           </tr>
           <tr>
             <th>Resistencia a la monotonía</th>
-            <td><input type="number" name="resistenciaMonotonia"></td>
+            <td><input type="number" id="resistenciaMonotonia" name="resistenciaMonotonia"></td>
           </tr>
           <tr>
             <th>Resiliencia</th>
-            <td><input type="number" name="resiliencia"></td>
+            <td><input type="number" id="resiliencia" name="resiliencia"></td>
           </tr>
           <tr>
             <th>Total</th>
             <td><input type="number" name="total"></td>
           </tr>
         </table>
-        <button class="button-registrar-calificacion">Registrar Calificación</button>
+        <button id="registrar_calificacion" class="button-registrar-calificacion">Registrar Calificación</button>
       </form>
     </main>
     <footer class="social-footer">
@@ -122,6 +122,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script/jquery-3.7.1.min.js"></script>
+    <script src="script/validacion_datos.js"></script>
     <script src="script/script.js"></script>
     <script src="script/calendar.js"></script>
   </div>

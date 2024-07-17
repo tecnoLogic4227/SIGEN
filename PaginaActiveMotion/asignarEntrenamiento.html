@@ -42,27 +42,27 @@
       <h3 class="tit-asignar-entrenamiento">Cliente</h3>
       <form class="form-asignar-entrenamiento-buscar">
         <label>CI</label>
-        <input>
+        <input type="text" id="ci-cliente" name="ci-cliente" minlength="8" maxlength="8" required>
         <label>Actividad</label>
-        <input>
+        <input type="text" id="actividad" name="actividad">
         <label>ID Rutina</label>
-        <input>
-        <button class="buscar-asignar-entrenamiento">Buscar</button>
+        <input type="number" id="id-rutina" name="id-rutina">
+        <button id="boton_buscar" class="buscar-asignar-entrenamiento">Buscar</button>
       </form>
       <label class="cliente-asignar-entrenamiento">Faustino Ramos</label>
     </article>
     <form class="form-asignar-entrenamiento-buscar">
       <label>Día</label>
-      <input type="text">
+      <input type="text" id="dia-entrenamiento" name="dia-entrenamiento">
       <label>Musculo</label>
-      <input type="text">
+      <input type="text" id="musculo" name="musculo">
       <label>Descripción</label>
-      <input type="text">
+      <input type="text" id="descripcion" name="descripcion">
       <label>Series</label>
-      <input type="text">
+      <input type="text" id="series" name="series">
       <label>Repeticiones</label>
-      <input type="text">
-      <button class="guardar-asignar-entrenamiento"><a href="detallesClienteEntrenador.html">Guardar Entrenamiento</a></button>
+      <input type="text" id="repeticiones" name="repeticiones">
+      <button id="boton-asignar-entrenamiento" class="guardar-asignar-entrenamiento"><a href="detallesClienteEntrenador.html">Guardar Entrenamiento</a></button>
     </form>
   </main>
   <footer class="social-footer">
@@ -95,6 +95,7 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script/jquery-3.7.1.min.js"></script>
+  <script src="script/validacion_datos.js"></script>
   <script src="script/script.js"></script>
   <script src="script/calendar.js"></script>
   </div>

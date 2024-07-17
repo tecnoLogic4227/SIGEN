@@ -49,7 +49,7 @@
               <h5>Deportista</h5>
               <br>
               <label for="ciPD">Cedula:</label>
-              <input type="number" name="ciPD" id="ciPD" placeholder="12345678">
+              <input type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8" placeholder="12345678">
               <br>
               <button class="estado buscarPD" id="btnBuscarPD" type="button">Buscar</button>
               <button class="estado eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
@@ -154,6 +154,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script/jquery-3.7.1.min.js"></script>
+    <script src="script/validacion_datos.js"></script>
     <script src="script/script.js"></script>
     </div>
   </body>

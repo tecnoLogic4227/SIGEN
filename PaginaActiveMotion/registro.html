@@ -66,13 +66,13 @@
           <label>Contraseña:</label>
           <br>
           <input type="password" id="clave1" name="clave"
-          required minlength="6" oninput="verificarClaves()"
+          required minlength="6"
           placeholder="Password">
           <br><br>
           <label>Verificar contraseña:</label>
           <br>
           <input type="password" id="clave2" name="clave"
-          required minlength="6" oninput="verificarClaves()"
+          required minlength="6" 
           placeholder="Password">
       
           <label id="mensaje" style="color:#550303;"></label>
@@ -119,7 +119,7 @@
           <input type="checkbox" name="terminos">
           <label>Aceptar Terminos y Condiciones</label>
           <br>
-        <button class="estado" id="btnRegistrarse" type="button">Registrarse</button>
+        <button class="estado" id="btnRegistrarse" type="button" onclick="tomar_claves()">Registrarse</button>
       </form>
   </article>
   </main>
@@ -155,6 +155,7 @@
   </footer>
 
   <script src="script/jquery-3.7.1.min.js"></script>
+  <script src="script/validacion_datos.js"></script>
   <script src="script/script.js"></script>
 </div>
   </body>
