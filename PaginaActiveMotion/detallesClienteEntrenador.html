@@ -42,7 +42,7 @@
         <section>
           <label class="subtit2">Cédula</label>
           <input id="buscar-cliente-ci" class="buscar-cliente" placeholder="12345678" maxlength="8" minlength="8"
-            required>
+          pattern="\d*" onclick="eliminar_letras('buscar-cliente-ci')" inputmode="numeric" required>
           <label class="cedula-tit-entrenador">Deporte</label>
           <input id="buscar-cliente-deporte" class="buscar-cliente-deporte" placeholder="futbol" required>
           <button id="buscar-cliente-deportista" class="buscar2">Buscar</button>
