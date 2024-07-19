@@ -1548,3 +1548,18 @@ margin-left: -30vw;
   padding: 10px 20px;
   cursor: pointer;
 }
+
+/*...................................................Quitar incrementador de inputs numericos de formularios.................................................*/
+
+
+.eliminar_botones_number{
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}

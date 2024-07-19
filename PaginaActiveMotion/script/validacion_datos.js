@@ -27,14 +27,53 @@ $("#ingresar").click(tomar_datos_formulario_agendaAdministrativo);
 $("#eliminar").click(tomar_datos_formulario_agendaAdministrativo);
 
 function tomar_datos_formulario_agendaAdministrativo(){
-    let fecha=$("#fecha-agenda").val();
+    let fecha_agenda=$("#fecha-agenda").val();
     let hora=$("#hora").val();
-    verificar_formulario_agendaAdministrativo(fecha, hora);
+    verificar_formulario_agendaAdministrativo(fecha_agenda, hora);
+    controlar_fecha_input(fecha_agenda);
 }
 
 function verificar_formulario_agendaAdministrativo(fecha, hora){
     if (fecha == "" || hora==""){
         alert("Ninguno de los campos de fecha y hora pueden quedar vacios");
+    }
+}
+
+function controlar_fecha_input(fecha){
+    if(!fecha.includes("/")){
+        alert("Formato de fecha invalido!");
+    }else{
+        let fecha_particionada=fecha.split("/");
+        if (fecha_particionada.length==2){
+            alert("Fecha incompleta");
+        }
+
+        let verificacion_largo=true;
+        for(let i=0; i<fecha_particionada.length; i++){
+            if(fecha_particionada[0].length < 2){
+                verificacion_largo=false;
+            }
+        }
+        if (!verificacion_largo){
+            alert("El dia esta incompleto, coloque dos numeros");
+        }
+
+        if(Number(fecha_particionada[0]) > 31){
+            alert("No existen dias mayores a 31");
+        }
+
+        if(Number(fecha_particionada[1]) > 12){
+            alert("No existen mas de 12 meses al año")
+        }
+
+        if(fecha_particionada[2].length < 4){
+            alert("El año debe de colocarse con los 4 digitos");
+        }
+
+        if(fecha_particionada[1].length < 2){
+            alert("El mes debe de tener dos digitos");
+        }
+
     }
 }
 
@@ -207,7 +246,7 @@ function tomar_datos_deporteAvanzado(){
         tipo: $("#tipo-deporte").val(),
         duracion: $("#duracion-deporte").val(),
         categoria: $("#categoria-deporte").val(),
-        cantidad: $("#cantidad-deporte").val()
+        cantidad: Number($("#cantidad-deporte").val())
     }
     verificar_formulario_deporteAvanzado(datos_deporte);
 
@@ -491,6 +530,7 @@ function tomar_datos_registro(){
         foto_perfil: $("#archivo").val()
     }
     verificar_formulario_registro(datos_registro);
+    controlar_fecha_input(datos_registro["fecha_nac"]);
 }
 
 function verificar_formulario_registro(datos){
@@ -582,5 +622,36 @@ function verificar_formulario_calificacion(datos){
 
     if(!verificacion){
         alert("Ninguno de los campos de la tabla de notas puede quedar vacio");
+    }
+}
+
+/*------------------------------Funciones para usuariosAvanzado-------------------------------*/
+
+function tomar_datos_usuariosAvanzados(){
+    datos_usu_avanzado={
+        nombre: $("#nombre-cliente").val(),
+        apellido: $("#apellido-cliente").val(),
+        email: $("#email-cliente").val(),
+        ci: Number($("#ci-cliente").val()),
+        matricula: $("#matricula-clinete").val(),
+        celular: Number($("#celular-cliente").val()),
+        actividad: $("#actividad-cliente").val(),
+        club: $("#club-cliente").val(),
+        plan: $("#plan-cliente").val()
+    };
+    verificar_formulario_usuariosAvanzados(datos_usu_avanzado);
+}
+
+function verificar_formulario_usuariosAvanzados(datos){
+    let verificacion=true;
+
+    for(atributo in datos){
+        if(datos[atributo] == "" || datos[atributo]==null){
+            verificacion=false;
+        }
+    }
+
+    if(!verificacion){
+        alert("Ninguno de los campos puede quedar vacio");
     }
 }

@@ -563,3 +563,41 @@ function desplegarBotonesCombosEntrenador (botonDesplegable) {
     botonDesplegable.css("visibility", "hidden");
   }
 }
+
+/*.................................................Elimina numeros en campos numericos....................................................*/
+/*Problemillas: En el html le puse onclick al llamar a esta funcion ya que si lo cambio a
+  oninput el usuario puede colocar una letra en la cedula.
+
+  Otro problema a resolver es que cuando no le das click a la caja del input y escribis algo 
+  se va a mostrar en la caja de la cedula.
+*/
+
+function eliminar_letras(id_componente) {
+  $("#" + id_componente).on('input', function (e) {
+      let value = this.value.replace(/[^0-9]/g, '');
+      let maxLength = $(this).attr('maxlength');
+      if (maxLength && value.length > maxLength) {
+          value = value.substring(0, maxLength);
+      }
+      this.value = value;
+  });
+
+  $("#" + id_componente).on('blur', function () {
+      let minLength = $(this).attr('minlength');
+      if (minLength && this.value.length < minLength) {
+          alert('El número debe tener al menos ' + minLength + ' dígitos.');
+      }
+  });
+  
+}
+
+/*function controlar_fecha_input(id_componente){
+  $("#"+ id_componente).on('input', function (e){
+      let value = this.value;
+
+      if ("/" in value){
+        alert("Formato de fecha valido!");
+      }
+  });
+}
+*/

@@ -41,7 +41,7 @@
         <h3 class="tit-registrar-calificacion">Cliente</h3>
         <form class="form-buscar-registrar-calificacion">
           <label>CI</label>
-          <input id="ci-cliente" name="ci-cliente">
+          <input id="ci-cliente" name="ci-cliente" pattern="\d*" onclick="eliminar_letras('ci')" maxlength="8" minlength="8" inputmode="numeric">
           <label>Actividad</label>
           <input id="actividad-clinete" name="actividad-clinete">
           <button id="buscar_cliente">Buscar</button>
@@ -58,35 +58,35 @@
           </tr>
           <tr>
             <th>Cumplimiento con la agenda</th>
-            <td><input type="number" id="cumplimientoAgenda" name="cumplimientoAgenda"></td>
+            <td><input type="number" id="cumplimientoAgenda" name="cumplimientoAgenda" pattern="\d*" onclick="eliminar_letras('cumplimientoAgenda')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Resistencia anaeróbica</th>
-            <td><input type="number" id="resistenciaAnaerobica" name="resistenciaAnaerobica"></td>
+            <td><input type="number" id="resistenciaAnaerobica" name="resistenciaAnaerobica" pattern="\d*" onclick="eliminar_letras('resistenciaAnaerobica')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Fuerza muscular</th>
-            <td><input type="number" id="fuerzaMuscular" name="fuerzaMuscular"></td>
+            <td><input type="number" id="fuerzaMuscular" name="fuerzaMuscular" pattern="\d*" onclick="eliminar_letras('fuerzaMuscular')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Resistencia muscular</th>
-            <td><input type="number" id="resistenciaMuscular" name="resistenciaMuscular"></td>
+            <td><input type="number" id="resistenciaMuscular" name="resistenciaMuscular" pattern="\d*" onclick="eliminar_letras('resistenciaMuscular')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Flexibilidad</th>
-            <td><input type="number" id="flexibilidad" name="flexibilidad"></td>
+            <td><input type="number" id="flexibilidad" name="flexibilidad" pattern="\d*" onclick="eliminar_letras('flexibilidad')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Resistencia a la monotonía</th>
-            <td><input type="number" id="resistenciaMonotonia" name="resistenciaMonotonia"></td>
+            <td><input type="number" id="resistenciaMonotonia" name="resistenciaMonotonia" pattern="\d*" onclick="eliminar_letras('resistenciaMonotonia')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Resiliencia</th>
-            <td><input type="number" id="resiliencia" name="resiliencia"></td>
+            <td><input type="number" id="resiliencia" name="resiliencia" pattern="\d*" onclick="eliminar_letras('resiliencia')" minlength="1" inputmode="numeric"></td>
           </tr>
           <tr>
             <th>Total</th>
-            <td><input type="number" name="total"></td>
+            <td><input type="number" name="total" pattern="\d*" onclick="eliminar_letras('total')" minlength="1" inputmode="numeric"></td>
           </tr>
         </table>
         <button id="registrar_calificacion" class="button-registrar-calificacion">Registrar Calificación</button>
