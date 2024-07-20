@@ -40,7 +40,7 @@
                 <h1 class="tituloDeportistasSeleccionador">Deportistas</h1>
             </header>
 
-            <form method="post" class="formDeportistasSeleccionador">
+            <form method="post" class="formDeportistasSeleccionador" action="Verificacion de Datos PHP/formulario_deportista_seleccionador.php">
                 <h5>Deportista</h5>
                 <br>
                 <label for="nombreDeportista">Nombre de usuario:</label>
@@ -53,6 +53,8 @@
                 <input type="text" id="clubDeportista" name="clubDeportista" placeholder="Nacional" required>
                 <br>
                 <button class="estado buscarDeportista" id="btnBuscarDeportista" type="button">Buscar</button>
+                <br>
+                <span class="mensaje_error" id="mensaje_error_deportistasSeleccionador" hidden></span>
             </form>
 
             <div class="graficaSeleccionador">

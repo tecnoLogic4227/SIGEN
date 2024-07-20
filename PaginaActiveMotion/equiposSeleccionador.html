@@ -47,7 +47,7 @@
               <h1 class="tituloEquiposSeleccionador">Equipos</h1>
           </header>
              
-          <form method="post" class="formEquiposSeleccionador">
+          <form action="Verificacion de Datos PHP/formulario_equipo_seleccionador.php" method="post" class="formEquiposSeleccionador">
             <label for="deporteClub">Deporte:</label>
             <br>
             <input type="text" name="deporteClub" id="deporteClub" placeholder="Futbol">
@@ -58,6 +58,7 @@
             <br>
             <button class="estado buscarEquipo" id="btnBuscarEquipo" type="button">Buscar</button>
             <button class="estado armarEquipo" id="btnArmarEquipo" type="button">Armar equipo</button>
+            <span class="mensaje_error" id="mensaje_error_equiposSeleccionador" hidden></span>
         </form>
         
       

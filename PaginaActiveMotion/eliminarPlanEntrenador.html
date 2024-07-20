@@ -38,7 +38,7 @@
     </nav>
     <main class="body-mod-plan">
       <h3 class="tit-modificar-plan">Eliminar Plan</h1>
-        <form>
+        <form action="Verificacion de Datos PHP/formulario_eliminar_plan_entrenador.php" method="post">
           <article class="buscar-modificar-plan">
             <label id="label-input-mod-plan" class="modificar-plan-buscar-nombre">Nombre</label>
             <input id="nombre-plan" name="nombre-plan" type="text">
@@ -47,6 +47,8 @@
               <label id="label-input-mod-plan" class="modificar-plan-buscar-seccion">Seccion</label>
               <input id="seccion-plan" name="seccion-plan" type="text">
               <button id="buscar_plan" class="boton-buscar-mod-plan">Buscar</button>
+              <br>
+              <span class="mensaje_error" id="mensaje_error_eliminarPlanEntrenador" hidden></span>
           </article>
         </form>
         <table class="tabla-modificar-plan">

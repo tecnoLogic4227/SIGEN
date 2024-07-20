@@ -45,11 +45,13 @@
               <h1 class="tituloConsultaAdministrativo">Deportistas</h1>
           </header>
       
-          <form method="post" class="formDPAdminisrador">
+          <form method="post" class="formDPAdminisrador" action="Verificacion de Datos PHP/formulario_consulta_cliente_admin.php">
               <h5>Deportista</h5>
               <br>
               <label for="ciPD">Cedula:</label>
               <input type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8" placeholder="12345678"  pattern="\d*" onclick="eliminar_letras('ciPD')" inputmode="numeric">
+              <br>
+              <span class="mensaje_error" id="mensaje_error_consultarPDAdministrativo" hidden></span>
               <br>
               <button class="estado buscarPD" id="btnBuscarPD" type="button">Buscar</button>
               <button class="estado eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
@@ -59,7 +61,7 @@
               <div class="row">
                   <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
                       <table class="table table-bordered table-hover">
-                          <thead class="table-primary">
+                        iar_formulario(datos)        <thead class="table-primary">
                               <tr>
                                   <th colspan="3" class="text-center">
                                       <img class="img-fluid rounded-circle" src="img/Perfil.png" alt="Foto de perfil" style="max-width: 100px;">

@@ -58,7 +58,7 @@
     <article id="formRegistro">
       <img class="foto" src="img/Perfil.png" >
       <br>
-      <form method="post">
+      <form method="post" action="Verificacion de Datos PHP/formulario_registro.php">
           <label>Nombre de usuario:</label>
           <br>
           <input type="text" name="nombre" id="nombre" minlength="6" maxlength="20" placeholder="Escriba aquí" required onkeydown="quitarEspacios(event)">
@@ -74,6 +74,8 @@
           <input type="password" id="clave2" name="clave"
           required minlength="6" 
           placeholder="Password">
+          <br>
+          <span class="mensaje_error" id="mensaje_error_registro_claves" hidden></span>
       
           <label id="mensaje" style="color:#550303;"></label>
           <br><br>  
@@ -120,6 +122,8 @@
           <label>Aceptar Terminos y Condiciones</label>
           <br>
         <button class="estado" id="btnRegistrarse" type="button" onclick="tomar_claves()">Registrarse</button>
+        <br>
+        <span class="mensaje_error" id="mensaje_error_registro"></span>
       </form>
   </article>
   </main>

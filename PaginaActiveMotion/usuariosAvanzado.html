@@ -49,6 +49,7 @@
           <header>
               <h1 class="tituloUsuariosAvanzado">Usuarios</h1>
           </header>
+          <form action="Verificacion de Datos PHP/formulario_usuariosAvanzado.php" method="post">
           <article>
               <div class="container-fluid tablaUsuarioAvanzado">
                   <div class="row">
@@ -64,39 +65,39 @@
                               <tbody>
                                   <tr>
                                       <th scope="row">Nombre:</th>
-                                      <td><input type="text" id="nombre-cliente" class="form-control"></td>
+                                      <td><input type="text" id="nombre-cliente" name="nombre-cliente" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Apellido:</th>
-                                      <td><input type="text" id="apellido-cliente" class="form-control"></td>
+                                      <td><input type="text" id="apellido-cliente" name="apellido-cliente" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Email:</th>
-                                      <td><input type="email" id="email-cliente" class="form-control"></td>
+                                      <td><input type="email" id="email-cliente" name="email-cliente" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">CI:</th>
-                                      <td><input type="text" id="ci-cliente" class="form-control" pattern="\d*" onclick="eliminar_letras('ci-cliente')" maxlength="8" minlength="8" inputmode="numeric"></td>
+                                      <td><input type="text" id="ci-cliente" name="ci-cliente" class="form-control" pattern="\d*" onclick="eliminar_letras('ci-cliente')" maxlength="8" minlength="8" inputmode="numeric"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Matrícula:</th>
-                                      <td><input type="text" id="matricula-cliente" class="form-control"></td>
+                                      <td><input type="text" id="matricula-cliente" name="matricula-cliente" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Celular:</th>
-                                      <td><input type="tel" id="celular-cliente" class="form-control" pattern="\d*" onclick="eliminar_letras('celular-cliente')" maxlength="8" inputmode="numeric"></td>
+                                      <td><input type="tel" id="celular-cliente" name="celular-cliente" class="form-control" pattern="\d*" onclick="eliminar_letras('celular-cliente')" maxlength="8" inputmode="numeric"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Actividad:</th>
-                                      <td><input type="text" id="actividad-cliente" class="form-control"></td>
+                                      <td><input type="text" id="actividad-cliente"  name="actividad-cliente" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Club:</th>
-                                      <td><input type="text" id="club-cliente" class="form-control"></td>
+                                      <td><input type="text" id="club-cliente" name="club-cliente" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Plan:</th>
-                                      <td><input type="text" id="plan-cliente" class="form-control"></td>
+                                      <td><input type="text" id="plan-cliente" name="plan-cliente" class="form-control"></td>
                                   </tr>
                               </tbody>
                           </table>
@@ -104,7 +105,10 @@
                   </div>
               </div>
               <button type="button" id="agregar-usuario" class="buscar3">Agregar usuario</button>
+              <br>
+              <span class="mensaje_error" id="mensaje_error_usuariosAvanzados" hidden></span>
           </article>
+        </form>
       </main>
 
 

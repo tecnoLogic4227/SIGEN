@@ -1562,4 +1562,27 @@ margin-left: -30vw;
   input[type=number] {
     -moz-appearance: textfield;
   }
+
+  .mensaje_error{
+    background-color: #db3c3c;
+    border: solid 3px;
+    border-radius: 10px;
+    border-color: #e71b08;
+    width: 50vw;
+    height: 10vh;
+    color: white;
+    font-size: 0.5 rem;
+    display: none;
+  }
+
+  .mensaje_exito{
+    background-color: #44c56b;
+    border: solid 3px;
+    border-radius: 10px;
+    border-color: #058d1b;
+    width: 50vw;
+    height: 10vh;
+    color: white;
+    font-size: 0.5 rem;
+  }
 }

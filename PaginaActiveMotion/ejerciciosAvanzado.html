@@ -49,6 +49,7 @@
           <header>
               <h1 class="tituloEjerciciosAvanzado">Ejercicios</h1>
           </header>
+          <form action="Verificacion de Datos PHP/formulario_ejercicios_avanzados.php">
           <article>
               <div class="container-fluid tablaUsuarioAvanzado">
                   <div class="row">
@@ -64,23 +65,23 @@
                               <tbody>
                                   <tr>
                                       <th scope="row">Nombre:</th>
-                                      <td><input type="text" id="nombre-ejercicio" class="form-control"></td>
+                                      <td><input type="text" id="nombre-ejercicio" name="nombre-ejercicio" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Grupo Muscular:</th>
-                                      <td><input type="text" id="musculo-ejercicio" class="form-control"></td>
+                                      <td><input type="text" id="musculo-ejercicio" name="musculo-ejercicio" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Series:</th>
-                                      <td><input type="text" id="series-ejercicio" class="form-control"></td>
+                                      <td><input type="text" id="series-ejercicio" name="series-ejercicio" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Repeticiones:</th>
-                                      <td><input type="text" id="rep-ejercicio" class="form-control"></td>
+                                      <td><input type="text" id="rep-ejercicio" name="rep-ejercicio" class="form-control"></td>
                                   </tr>
                                   <tr>
                                       <th scope="row">Descripcion:</th>
-                                      <td><input type="text" id="descripcion-ejercicio" class="form-control"></td>
+                                      <td><input type="text" id="descripcion-ejercicio" name="descripcion-ejercicio" class="form-control"></td>
                                   </tr>
                               </tbody>
                           </table>
@@ -88,7 +89,10 @@
                   </div>
               </div>
               <button type="button" id="agregar-ejercicio" class="buscar3">Agregar ejercicio</button>
+              <br>
+              <span class="mensaje_error" id="mensaje_error_ejerciciosAvanzado" hidden></span>
           </article>
+        </form>
       </main>
 
 

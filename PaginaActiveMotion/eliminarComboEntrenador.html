@@ -38,7 +38,7 @@
     </nav>
     <main class="main-mod-combo">
       <h1 class="tit-modificar-combo">Eliminar Combo</h1>
-      <form>
+      <form action="Verificacion de Datos PHP/formulario_eliminar_combo_entrenador.php" method="post">
         <article class="buscar-combo">
           <label class="label-input-mod-combo">Nombre</label>
           <input id="nombre-combo" name="nombre-combo" class="label-input-mod-combo" type="text" placeholder="Fortalecer pecho">
@@ -47,6 +47,8 @@
           <label class="label-input-mod-combo">Sección</label>
           <input id="seccion-combo" name="seccion-combo" class="label-input-mod-combo" type="text" placeholder="fisioterapia">
           <button id="buscar_combo" class="buscar-mod-combo">Buscar</button>
+          <br>
+          <span class="mensaje_error" id="mensaje_error_eliminarComboEntrenador" hidden></span>
         </article>
       </form>
       <table class="tabla-mod-combo">

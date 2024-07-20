@@ -9,33 +9,71 @@ function tomar_datos_ci_agendaAdministrativo(){
 }
 
 function verificar_ci_agendaAdministrativo(ci){
+    let verificacion=true;
     if(ci == ""){
-        alert("El campo de la cedula no puede quedar vacio");
+        verificacion=false;
+        mostrar_mensaje(verificacion, "mensaje_Error_Ci", "El campo de la cedula no puede estar vacio")
     }else{
         ci=Number(ci);
         if (ci == 0){
-            alert("La cedula no puede ser 0");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_Error_Ci", "La cedula no puede ser 0");
         }else if(ci < 0){
-            alert("La cedula no puede ser negativa");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_Error_Ci", "La cedula no puede ser negativa");
         }else if(ci == null){
-            alert("El campo de la cedula no puede ser nulo");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_Error_Ci", "La cedula no puede ser nula");
         }
     }
+}
+
+function verificar_formulario(datos){
+    let verificacion=true;
+
+    for(atributo in datos){
+        if(datos[atributo] == "" || datos[atributo]==null){
+            verificacion=false;
+        }
+    }
+
+    return verificacion;
+}
+
+function mostrar_mensaje(verificacion, id_mensaje, mensaje){
+    if(!verificacion){
+        $("#"+id_mensaje).removeAttr("hidden");
+        $("#"+id_mensaje).html(mensaje);
+    }
+}
+
+function enviar_formulario(datos, id_form, id_mensaje){
+    $.ajax({
+        url: '/submit-form',
+        type: 'POST', 
+        data: $(id_form).serialize(),
+        success: function(response) {
+            $("#"+id_mensaje).html("<span class='mensaje_exito'>Formulario enviado correctamente.</span>");
+        },
+        error: function() {
+            $("#"+id_mensaje).html("<span class='mensaje_error'>Hubo un error al enviar el formulario.</span>");
+        }
+    });
 }
 
 $("#ingresar").click(tomar_datos_formulario_agendaAdministrativo);
 $("#eliminar").click(tomar_datos_formulario_agendaAdministrativo);
 
 function tomar_datos_formulario_agendaAdministrativo(){
-    let fecha_agenda=$("#fecha-agenda").val();
-    let hora=$("#hora").val();
-    verificar_formulario_agendaAdministrativo(fecha_agenda, hora);
-    controlar_fecha_input(fecha_agenda);
-}
+    datos_agenda_admin={
+        fecha: $("#fecha-agenda").val(),
+        hora: $("#hora").val()
+    };
 
-function verificar_formulario_agendaAdministrativo(fecha, hora){
-    if (fecha == "" || hora==""){
-        alert("Ninguno de los campos de fecha y hora pueden quedar vacios");
+    let ver=verificar_formulario(datos_agenda_admin);
+    let fecha_ver=controlar_fecha_input(datos_agenda_admin["fecha"]);
+    if(ver && fecha_ver){
+        enviar_formulario(ver, "mensaje_Error");
     }
 }
 
@@ -86,23 +124,16 @@ function tomar_datos_formulario_armarEquipos(){
         deporte_deportista: $("#deporteDeportista").val(),
         club_deportista: $("#clubDeportista").val()
     }
-    validar_datos_formulario_armarEquipos(datos);
-}
+    let ver=verificar_formulario(datos);
 
-function validar_datos_formulario_armarEquipos(datos_deportista){
-    let validacion=true
-    for(let atributo in datos_deportista){
-        if (datos_deportista[atributo]==""){
-            validacion=false
-        }
-    }
-
-    if (!validacion){
-        alert("Ninguno de los campos puede quedar vacio");
-        $("#nombreClub").html("");
-        $("#deportista").html("");
+    if(ver){
+        //Funcion a probar
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_equipoSeleccionador", "Ninguno de los campos puede quedar vacio");
     }
 }
+
 
 /*------------------------------Funciones para asignarEntrenamiento--------------------------------*/
 
@@ -113,23 +144,18 @@ function tomar_datos_ci_cliente_asignarEntremamiento(){
         actividad: $("#actividad").val(),
         id_rutina: $("#id-rutina").val()
     }
-    verificar_formulario_asignarEntrenamiento(datos_usu);
-}
-
-function verificar_formulario_asignarEntrenamiento(datos){
-    let verificacion=true
-    for(atributo in datos){
-        if (datos[atributo]==""){
-            verificacion=false            
-        }
-    }
-
-    if (!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    let ver=verificar_formulario(datos_usu);
+   
+    if(ver){
+        //Funcion a probar
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_ci_asignarEntrenamiento", "Ninguno de los campos puede quedar vacio");
     }
 }
 
 $("#boton-asignar-entrenamiento").click(tomar_datos_formulario_asignarEntrenamiento);
+<span class="mensaje_error" id="mensaje_error_asignarEntrenamiento" hidden></span>
 
 function tomar_datos_formulario_asignarEntrenamiento(){
     datos_usu={
@@ -139,20 +165,12 @@ function tomar_datos_formulario_asignarEntrenamiento(){
         series: $("#series").val(),
         repeticiones: $("#repeticiones").val()
     }
-    verificar_formulario_asignarEjercicio(datos_usu);
-}
-
-function verificar_formulario_asignarEjercicio(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo]==""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    let ver=verificar_formulario(datos_usu);
+    if(ver){
+        //Funcion a probar
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_asignarEntrenamiento", "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -166,16 +184,22 @@ function tomar_datos_ci_cliente_Entrenador(){
 }
 
 function verificar_ci_cliente_Entrenador(ci){
+    let verificacion=true;
     if(ci == ""){
+        verificacion=false;
         alert("El campo de la cedula no puede quedar vacio");
+        mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "El campo de la cedula no puede quedar vacio");
     }else{
         ci=Number(ci);
         if (ci == 0){
-            alert("La cedula no puede ser 0");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "La cedula no puede ser 0");
         }else if(ci < 0){
-            alert("La cedula no puede ser negativa");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "La cedula no puede ser negativa");
         }else if(ci == null){
-            alert("El campo de la cedula no puede ser nulo");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "El campo de la cedula no puede ser nulo");
         }
     }
 }
@@ -186,20 +210,25 @@ $("#btnBuscarPD").click(tomar_datos_ci_consultarPD);
 
 function tomar_datos_ci_consultarPD(){
     let ci=$("#ciPD").val();
-    verificar_formulario_PD(ci);
+    verificar_ci_PD(ci);
 }
 
-function verificar_formulario_PD(){
+function verificar_ci_PD(){
+    let verificacion=true;
     if(ci == ""){
-        alert("El campo de la cedula no puede quedar vacio");
+        verificacion=false;
+        mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "El campo de la cedula no puede quedar vacio");
     }else{
         ci=Number(ci);
         if (ci == 0){
-            alert("La cedula no puede ser 0");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "La cedula no puede ser 0");
         }else if(ci < 0){
-            alert("La cedula no puede ser negativa");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "La cedula no puede ser negativa");
         }else if(ci == null){
-            alert("El campo de la cedula no puede ser nulo");
+            verificacion=false;
+            mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "La cedula no puede ser nula");
         }
     }
 }
@@ -219,20 +248,14 @@ function tomar_datos_combo(){
         series: $("#series").val(),
         repeticiones: $("#repeticiones").val(),
         descripcion: $("#descripcion").val()
-    }
-}
+    };
 
-function verificar_formulario_combo(datos){
-    let verificacion=true;
+    let = verificar_formulario(datos_combo);
 
-    for(atributo in datos){
-        if(datos[atributo]==""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_crearComboEntrenador", "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -247,24 +270,16 @@ function tomar_datos_deporteAvanzado(){
         duracion: $("#duracion-deporte").val(),
         categoria: $("#categoria-deporte").val(),
         cantidad: Number($("#cantidad-deporte").val())
-    }
-    verificar_formulario_deporteAvanzado(datos_deporte);
+    };
+    let ver=verificar_formulario(datos_deporte);
 
-}
-
-function verificar_formulario_deporteAvanzado(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo]==""){
-            verificacion=false;
-        }
-    }
-    
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_deportesAvanzado", "Ninguno de los campos puede quedar vacio");
     }
 }
+
 
 /*------------------------------Funciones para deportistasSeleccionador--------------------------------*/
 
@@ -275,22 +290,14 @@ function tomar_datos_deportistasSeleccionador(){
         nombre: $("#nombreDeportista").val(),
         deporte: $("#deporteDeportista").val(),
         club: $("#clubDeportista").val()
-    }
+    };
 
-    verificar_formulario_deportistaSeleccionador(datos_deportista);
-}
+    let ver=verificar_formulario(datos_deportista);
 
-function verificar_formulario_deportistaSeleccionador(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo]==""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_deportistasSeleccionador", "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -302,26 +309,18 @@ function tomar_datos_detallesClineteEntrenador(){
     datos_cliente_entrenador={
         ci: $("#buscar-clinete-ci").val(),
         deporte: $("#buscar-cliente-deporte").val()
-    }
+    };
 
-    verificar_formulario_detallesClienteEntrenador(datos_cliente_entrenador);
-}
+   let ver = verificar_formulario(datos_cliente_entrenador);
 
-function verificar_formulario_detallesClienteEntrenador(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo] == ""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_detallesClienteEntrenador", "Ninguno de los campos puede quedar vacio");
     }
 }
 
-/*------------------------------Funciones para detallesClienteEntrenador--------------------------------*/
+/*------------------------------Funciones para ejerciciosAvanzado--------------------------------*/
 
 function tomar_datos_ejercicosAvanzado(){
     datos_ejercicio={
@@ -330,21 +329,13 @@ function tomar_datos_ejercicosAvanzado(){
         serie: $("#serie-ejercicio").val(),
         repeticion: $("#repeticion-ejercicio").val(),
         descripcion: $("#descripcion-ejercicio").val()
-    }
-    verificar_formulario_ejerciciosAvanzados(datos_ejercicio);
-}
+    };
+    let ver = verificar_formulario(datos_ejercicio);
 
-function verificar_formulario_ejerciciosAvanzados(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo] == ""){
-            verificacion=false;
-        }
-    }
-    
-    if (!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_ejerciciosAvanzado", "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -357,25 +348,17 @@ function tomar_datos_eliminarCombo(){
         nombre: $("#nombre-combo").val(),
         id: $("#id-combo").val(),
         seccion: $("#seccion-combo").val()
-    }
-    verificar_formulario_eliminarCombo(datos_combo);
-}
+    };
+    let ver=verificar_formulario(datos_combo);
 
-function verificar_formulario_eliminarCombo(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if(datos[atributo] ==""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_eliminarComboEntrenador", "Ninguno de los campos puede quedar vacio");
     }
 }
 
-/*------------------------------Funciones para eliminarComboEntrenador--------------------------------*/
+/*------------------------------Funciones para eliminarPlanEntrenador--------------------------------*/
 
 $("#buscar_plan").click(tomar_datos_eliminarPlanEntrenador);
 
@@ -384,24 +367,18 @@ function tomar_datos_eliminarPlanEntrenador(){
         nombre: $("#nombre-plan").val(),
         id: $("#id-plan").val(),
         seccion: $("#seccion-plan").val()
+    };
+
+    let ver = verificar_formulario(datos_plan);
+
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_eliminarPlanEntrenador", "Ninguno de los campos puede quedar vacio");
     }
 }
 
-function verificar_formulario_eliminarPlanEntrenador(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if(datos[atributo] == ""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
-    }
-}
-
-/*------------------------------Funciones para eliminarComboEntrenador--------------------------------*/
+/*------------------------------Funciones para equiposSeleccionador--------------------------------*/
 
 $("#btnBuscarEquipo").click(tomar_datos_equiposSeleccionador);
 $("#btnArmarEquipo").click(tomar_datos_equiposSeleccionador);
@@ -410,21 +387,12 @@ function tomar_datos_equiposSeleccionador(){
     datos_equipos={
         deporte: $("#deporteClub").val(),
         equipo: $("#clubEquipo").val()
-    }
-    verificar_formulario_equiposSeleccionador(datos_equipos);
-}
-
-function verificar_formulario_equiposSeleccionador(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if(datos[atributo]==""){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos pueden estar vacios");
+    };
+    let ver = verificar_formulario(datos_equipos);
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_equiposSeleccionador" , "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -441,23 +409,15 @@ function tomar_datos_ingresarDeporteEntrenador(){
         seires: $("#series").val(),
         repeticiones: $("#repeticiones").val(),
         descripcion: $("#descripcion").val()
-    }
-    verificar_formulario_ingresarDeporteEntrenador(datos_deporte);
+    };
+    let ver = verificar_formulario(datos_deporte);
 
-}
-
-function verificar_formulario_ingresarDeporteEntrenador(datos){
-    let verificacion= true;
-
-    for(atributo in datos){
-        if(datos[atributo]=="" || datos[atributo]==null){
-            verificacion=false;
-        }
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_ingresarDeporteEntrenador", "Ninguno de los campos puede quedar vacio");
     }
 
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
-    }
 }
 
 /*------------------------------Funciones para ingresarDeporteEntrenador-------------------------------*/
@@ -473,21 +433,13 @@ function tomar_datos_ingresarFisioEntrenador(){
         seires: $("#series-fisio").val(),
         repeticiones: $("#repeticiones-fisio").val(),
         descripcion: $("#descripcion-fisio").val()
-    }
-    verificar_formulario_ingresarFisioEntrenador(datos_fisio)
-}
+    };
+    let ver = verificar_formulario(datos_fisio);
 
-function verificar_formulario_ingresarFisioEntrenador(datos){
-    let verificacion= true;
-
-    for(atributo in datos){
-        if(datos[atributo]=="" || datos[atributo]==null){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_ingresarFisioEntrenador" ,"Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -497,21 +449,13 @@ function tomar_datos_login(){
     datos_usu={
         nombre: $("#nombre").val(),
         passwd: $("#clave1").val()
-    }
-    verificar_formulario_login(datos_usu);
-}
+    };
+    let ver = verificar_formulario(datos_usu);
 
-function verificar_formulario_login(datos){
-    let verificacion=false;
-
-    for(atributo in datos){
-        if(datos[atributo] == "" || datos[atributo] == null){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_login", "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -528,22 +472,14 @@ function tomar_datos_registro(){
         residencia: $("#residencia").val(),
         fecha_nac: $("#fecha").val(),
         foto_perfil: $("#archivo").val()
-    }
-    verificar_formulario_registro(datos_registro);
+    };
     controlar_fecha_input(datos_registro["fecha_nac"]);
-}
+    let ver = verificar_formulario(datos_registro);
 
-function verificar_formulario_registro(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if(datos[atributo] == "" || datos[atributo] == null){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_registro", "Ninguno de los campos puede quedar vacio");
     }
 }
 
@@ -559,7 +495,8 @@ function tomar_claves(){
     let clave1=$("#clave1").val();
     let clave2=$("#clave2").val();
 
-    mensajeClaves(verificarClaves(clave1, clave2));
+    let verificacion_claves=verificarClaves(clave1, clave2);
+    mostrar_mensaje(verificacion_claves, "mensaje_error_registro_claves", "Las claves no coinciden");
 }
 
 function verificarClaves(passwd1, passwd2){
@@ -577,23 +514,14 @@ function tomar_datos_cliente(){
     datos_cliente={
         ci_cliente: $("#ci-cliente").val(),
         actividad_clinete: $("#actividad-cliente").val()
-    }
+    };
 
-    verificar_formulario_datos_cliente(datos_cliente);
-}
-
-function verificar_formulario_datos_cliente(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo] == "" || datos[atributo] == null){
-            verificacion=false;
-        }
-    }
-
-    if (!verificacion){
-        alert("Ninguno de los campos del cliente puede quedar vacio");
-    }
+   let ver = verificar_formulario(datos_cliente);
+   if(ver){
+    enviar_formulario();
+   }else{
+    mostrar_mensaje(ver, "mensaje_error_registroCalificacion", "Ninguno de los campos del cliente pueden quedar vacios");
+   }
 }
 
 $("#registrar_calificacion").click(tomar_datos_calificacion);
@@ -607,26 +535,17 @@ function tomar_datos_calificacion(){
         flexibilidad: $("#felxibilidad").val(),
         resistencia_Monotonia: $("#resistenciaMonotonia").val(),
         resiliencia: $("#resiliencia").val()
-    }
-    verificar_formulario_calificacion(datos_calificacion);
-}
-
-function verificar_formulario_calificacion(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if (datos[atributo] == "" || datos[atributo] == null){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos de la tabla de notas puede quedar vacio");
-    }
+    };
+   let ver = verificar_formulario(datos_calificacion);
+   if(ver){
+    enviar_formulario();
+   }else{
+    mostrar_mensaje(ver, "mensaje_error_registroCalificacion", "Ninguno de los campos de las notas pueden quedar vacios");
+   }
 }
 
 /*------------------------------Funciones para usuariosAvanzado-------------------------------*/
-
+$("#agregar-usuario").click(tomar_datos_usuariosAvanzados);
 function tomar_datos_usuariosAvanzados(){
     datos_usu_avanzado={
         nombre: $("#nombre-cliente").val(),
@@ -639,19 +558,15 @@ function tomar_datos_usuariosAvanzados(){
         club: $("#club-cliente").val(),
         plan: $("#plan-cliente").val()
     };
-    verificar_formulario_usuariosAvanzados(datos_usu_avanzado);
-}
+    let ver = verificar_formulario(datos_usu_avanzado);
 
-function verificar_formulario_usuariosAvanzados(datos){
-    let verificacion=true;
-
-    for(atributo in datos){
-        if(datos[atributo] == "" || datos[atributo]==null){
-            verificacion=false;
-        }
-    }
-
-    if(!verificacion){
-        alert("Ninguno de los campos puede quedar vacio");
+    if(ver){
+        enviar_formulario();
+    }else{
+        mostrar_mensaje(ver, "mensaje_error_usuariosAvanzados", "Ninguno de los campos pueden quedar vacios");
     }
 }
+
+/*"mensaje_error_modificarComboEntrenador" CREAR FUNCION DE MODIFICAR COMBO ENTRENADOR 
+    Y LAS FUNCIONES PARA modificarPlanEntrenador
+*/

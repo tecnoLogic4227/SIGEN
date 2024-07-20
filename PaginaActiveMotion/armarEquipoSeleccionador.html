@@ -38,7 +38,7 @@
                 <h1 class="tituloEquiposSeleccionador">Equipos</h1>
             </header>
                  
-            <form method="post" class="formDeportistasSeleccionador">
+            <form action="Verificacion de Datos PHP/formulario_armarEquipo_seleccionador.php" method="post" class="formDeportistasSeleccionador">
                 <h5>Deportista</h5>
                 <br>
                 <label for="nombreDeportista">Nombre de usuario:</label>
@@ -51,6 +51,7 @@
                 <input type="text" id="clubDeportista" name="clubDeportista" placeholder="Nacional" required>
                 <br>
                 <button class="estado ingresarDeportista" id="btnIngresarDeportista" type="button">Ingresar</button>
+                <span class="mensaje_error" id="mensaje_error_equipoSeleccionador" hidden></span>
             </form>
             
             <div class="container-fluid tablaArmarEquipoSeleccionador">

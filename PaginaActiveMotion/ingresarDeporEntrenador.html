@@ -40,7 +40,7 @@
             <h1 class="tit-fisio">Ingresar Plan</h1>
             <h3 class="subtit-fisio">Deporte</h2>
         </article>
-        <form class="form-fisio">
+        <form class="form-fisio" action="Verificacion de Datos PHP/formulario_ingresar_deporte_entrenador.php" method="post">
             <label id="label-input-fisio" class="ingresar-fisio-label-nombre">Nombre</label>
             <input id="nombre-deporte" name="nombre-deporte" class="ingresar-fisio-input-nombre" placeholder="Fuerza piernas" minlength="1" required>
             <label id="label-input-fisio" class="ingresar-fisio-label-id">ID</label>
@@ -56,6 +56,8 @@
             <label id="label-input-fisio" class="ingresar-fisio-label-descripcion">Descripcion</label>
             <input id="descripcion" name="descripcion" class="ingresar-fisio-input-descripcion" placeholder="colocar barra sobre los hombros, agacharse y subir con la espalda recta" minlength="1" required>
             <button id="boton_ingresar_deporte" class="ingresar-fisio"><a href="../inicioPlanesEntrenador.html">Ingresar</a></button>
+            <br>
+            <span class="mensaje_error" id="mensaje_error_ingresarDeporteEntrenador" hidden></span>
         </form>
     </main>
     <footer class="social-footer">
