@@ -40,21 +40,21 @@
   <main>
     <article>
       <h3 class="tit-asignar-entrenamiento">Cliente</h3>
-      <form class="form-asignar-entrenamiento-buscar">
+      <form id="form-asignar_entrenamiento_buscar_CI" class="form-asignar-entrenamiento-buscar" action="Verificacion de Datos PHP/formulario_asignar_entrenamiento_cliente.php">
         <label>CI</label>
         <input type="text" id="ci-cliente" name="ci-cliente" minlength="8" maxlength="8" pattern="\d*" onclick="eliminar_letras('ci-cliente')" inputmode="numeric" required>
         <br>
-        <span class="mensaje_error" id="mensaje_error_ci_asignarEntrenamiento" hidden></span>
         <label>Actividad</label>
         <input type="text" id="actividad" name="actividad">
         <label>ID Rutina</label>
         <input type="number" id="id-rutina" name="id-rutina" pattern="\d*" onclick="eliminar_letras('id-rutina')" inputmode="numeric">
         <button id="boton_buscar" class="buscar-asignar-entrenamiento">Buscar</button>
+        <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
       </form>
       <label class="cliente-asignar-entrenamiento">Faustino Ramos</label>
      
     </article>
-    <form class="form-asignar-entrenamiento-buscar" action="Verificacion de Datos PHP/formulario_asignar_entrenamiento.php" method="post">
+    <form id="form-asignar-entrenamiento" class="form-asignar-entrenamiento-buscar" action="Verificacion de Datos PHP/formulario_asignar_entrenamiento.php" method="post">
       <label>Día</label>
       <input type="text" id="dia-entrenamiento" name="dia-entrenamiento">
       <label>Musculo</label>
@@ -66,7 +66,7 @@
       <label>Repeticiones</label>
       <input type="text" id="repeticiones" name="repeticiones">
       <button id="boton-asignar-entrenamiento" class="guardar-asignar-entrenamiento"><a href="detallesClienteEntrenador.html">Guardar Entrenamiento</a></button>
-      <span class="mensaje_error" id="mensaje_error_asignarEntrenamiento" hidden></span>
+      <span id="mensaje_asignarEntrenamiento" hidden></span>
     </form>
   </main>
   <footer class="social-footer">

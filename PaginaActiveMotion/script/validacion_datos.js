@@ -3,29 +3,43 @@
 /*------------------------------Funciones para agendaAdministrativo--------------------------------*/
 $("#buscar").click(tomar_datos_ci_agendaAdministrativo);
 
-function tomar_datos_ci_agendaAdministrativo(){
+let clase_error="mensaje_error";
+let clase_exito="mensaje_exito";
+
+function tomar_datos_ci_agendaAdministrativo(event){
+    event.preventDefault();
     let Ci = $("#ci").val();
-    verificar_ci_agendaAdministrativo(Ci)
+    let ver=verificar_ci_agendaAdministrativo(Ci);
+
+    if(ver){
+        enviar_formulario("form-agendaAdmin", "mensaje_Ci", "formulario_agendaAdmin.php", "POST");
+    }
 }
 
 function verificar_ci_agendaAdministrativo(ci){
     let verificacion=true;
+    let mensaje="";
     if(ci == ""){
         verificacion=false;
-        mostrar_mensaje(verificacion, "mensaje_Error_Ci", "El campo de la cedula no puede estar vacio")
+        mensaje="El campo de la cedula no puede estar vacio";
     }else{
         ci=Number(ci);
         if (ci == 0){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_Error_Ci", "La cedula no puede ser 0");
+            mensaje="La cedula no puede ser 0";
         }else if(ci < 0){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_Error_Ci", "La cedula no puede ser negativa");
+            mensaje="La cedula no puede ser negativa";
         }else if(ci == null){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_Error_Ci", "La cedula no puede ser nula");
+            mensaje="La cedula no puede ser nula";
         }
     }
+
+    if(!verificacion){
+        mostrar_mensaje("mensaje_agendaAmdin", mensaje, clase_error);
+    }
+    return verificacion;
 }
 
 function verificar_formulario(datos){
@@ -40,26 +54,48 @@ function verificar_formulario(datos){
     return verificacion;
 }
 
-function mostrar_mensaje(verificacion, id_mensaje, mensaje){
-    if(!verificacion){
-        $("#"+id_mensaje).removeAttr("hidden");
-        $("#"+id_mensaje).html(mensaje);
-    }
+//funcion para mostrar mensajes
+function mostrar_mensaje(id_mensaje, mensaje, clase_mensaje){
+    $("#"+id_mensaje).addClass(clase_mensaje);
+    $("#"+id_mensaje).removeAttr("hidden");
+    $("#"+id_mensaje).html(mensaje);
 }
 
-function enviar_formulario(datos, id_form, id_mensaje){
+function enviar_formulario(id_form, id_mensaje, nombre_formulario, tipo_formulario){
     $.ajax({
-        url: '/submit-form',
-        type: 'POST', 
-        data: $(id_form).serialize(),
+        url: "/Verificacion de Datos PHP/"+nombre_formulario,
+        type: tipo_formulario, 
+        data: $("#"+id_form).serialize(),
         success: function(response) {
-            $("#"+id_mensaje).html("<span class='mensaje_exito'>Formulario enviado correctamente.</span>");
+            $("#"+id_mensaje).addClass("mensaje_exito");
+            $("#"+id_mensaje).html("Formulario enviado correctamente");
+            mostrar_mensaje(id_mensaje, "Formulario enviado con exito!", clase_exito);
         },
         error: function() {
-            $("#"+id_mensaje).html("<span class='mensaje_error'>Hubo un error al enviar el formulario.</span>");
+            mostrar_mensaje(id_mensaje, "Hubo un error al enviar el formulario!", clase_error);
         }
     });
 }
+
+function eliminar_letras(id_componente, id_mensaje) {
+    $("#" + id_componente).on('input', function (e) {
+        let value = this.value.replace(/[^0-9]/g, '');
+        let maxLength = $(this).attr('maxlength');
+        if (maxLength && value.length > maxLength) {
+            value = value.substring(0, maxLength);
+        }
+        this.value = value;
+    });
+  
+    $("#" + id_componente).on('blur', function () {
+        let minLength = $(this).attr('minlength');
+        if (minLength && this.value.length < minLength) {
+            let mensaje='El número debe tener al menos ' + minLength + ' dígitos.';
+            mostrar_mensaje(id_mensaje, mensaje, clase_error);
+        }
+    });
+    
+  }
 
 $("#ingresar").click(tomar_datos_formulario_agendaAdministrativo);
 $("#eliminar").click(tomar_datos_formulario_agendaAdministrativo);
@@ -73,17 +109,24 @@ function tomar_datos_formulario_agendaAdministrativo(){
     let ver=verificar_formulario(datos_agenda_admin);
     let fecha_ver=controlar_fecha_input(datos_agenda_admin["fecha"]);
     if(ver && fecha_ver){
-        enviar_formulario(ver, "mensaje_Error");
+        //id_form, id_mensaje_ nombre_forumulario, tipo_formulario
+        enviar_formulario("form-agendaAdmin", "mensaje_Error", "formulario_agendaAdmin.php", "POST");
+    }else{
+        mostrar_mensaje("mensaje_agendaAdmin", "Ninguno de los campos puede quedar vacio y la fecha debe de ser correcta", clase_error);
     }
 }
 
 function controlar_fecha_input(fecha){
+    let mensaje="";
+    let verificacion_fecha=true;
     if(!fecha.includes("/")){
-        alert("Formato de fecha invalido!");
+        verificacion_fecha=false;
+        mensaje="Formato de fecha invalido!";
     }else{
         let fecha_particionada=fecha.split("/");
         if (fecha_particionada.length==2){
-            alert("Fecha incompleta");
+            verificacion_fecha=false;
+            mensaje="Fecha incompleta";
         }
 
         let verificacion_largo=true;
@@ -93,26 +136,37 @@ function controlar_fecha_input(fecha){
             }
         }
         if (!verificacion_largo){
-            alert("El dia esta incompleto, coloque dos numeros");
+            verificacion_fecha=false;
+            mensaje="El dia esta incompleto, coloque dos numeros";
         }
 
         if(Number(fecha_particionada[0]) > 31){
-            alert("No existen dias mayores a 31");
+            verificacion_fecha=false;
+            mensaje="No existen dias mayores a 31";
         }
 
         if(Number(fecha_particionada[1]) > 12){
-            alert("No existen mas de 12 meses al año")
+            verificacion_fecha=false;
+            mensaje="No existen mas de 12 meses al año";
         }
 
         if(fecha_particionada[2].length < 4){
-            alert("El año debe de colocarse con los 4 digitos");
+            verificacion_fecha=false;
+            mensaje="El año debe de colocarse con los 4 digitos";
         }
 
         if(fecha_particionada[1].length < 2){
-            alert("El mes debe de tener dos digitos");
+            verificacion_fecha=false;
+            mensaje="El mes debe de tener dos digitos";
         }
 
     }
+    if(!verificacion_fecha){
+        mostrar_mensaje("mensaje_Fecha", mensaje, clase_error);
+    }
+    return verificacion_fecha;
+
+
 }
 
 /*------------------------------Funciones para armarEquipoSeleccionador--------------------------------*/
@@ -127,10 +181,10 @@ function tomar_datos_formulario_armarEquipos(){
     let ver=verificar_formulario(datos);
 
     if(ver){
-        //Funcion a probar
-        enviar_formulario();
+        //id_form, id_mensaje_ nombre_forumulario, tipo_formulario
+        enviar_formulario("form-armarEquiposSeleccionador", "mensaje_equipoSeleccionador", "formulario_armarEquipo_seleccionador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_equipoSeleccionador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_equipoSeleccionador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -147,15 +201,13 @@ function tomar_datos_ci_cliente_asignarEntremamiento(){
     let ver=verificar_formulario(datos_usu);
    
     if(ver){
-        //Funcion a probar
-        enviar_formulario();
+        enviar_formulario("form-asignar_entrenamiento_buscar_CI", "mensaje_ci_asignarEntrenamiento","formulario_asignar_entrenamiento_cliente.php" ,"POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_ci_asignarEntrenamiento", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_ci_asignarEntrenamiento", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
 $("#boton-asignar-entrenamiento").click(tomar_datos_formulario_asignarEntrenamiento);
-<span class="mensaje_error" id="mensaje_error_asignarEntrenamiento" hidden></span>
 
 function tomar_datos_formulario_asignarEntrenamiento(){
     datos_usu={
@@ -167,10 +219,9 @@ function tomar_datos_formulario_asignarEntrenamiento(){
     }
     let ver=verificar_formulario(datos_usu);
     if(ver){
-        //Funcion a probar
-        enviar_formulario();
+        enviar_formulario("form-asignar-entrenamiento", "mensaje_asignarEntrenamiento", "formulario_asignar_entrenamiento.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_asignarEntrenamiento", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_asignarEntrenamiento", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -180,28 +231,37 @@ $("#boton_buscar_cliente").click(tomar_datos_ci_cliente_Entrenador);
 
 function tomar_datos_ci_cliente_Entrenador(){
     let ci=$("#buscar-cliente").val();
-    verificar_ci_cliente_Entrenador(ci);
+    let ver = verificar_ci_cliente_Entrenador(ci);
+
+    if(ver){
+        enviar_formulario("form-buscar-clientes-entrenador", "mensaje_buscar_cliente", "formulario_buscar_cliente_entrenador.php", "POST");
+    }
 }
 
 function verificar_ci_cliente_Entrenador(ci){
     let verificacion=true;
+    let mensaje="";
     if(ci == ""){
         verificacion=false;
-        alert("El campo de la cedula no puede quedar vacio");
-        mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "El campo de la cedula no puede quedar vacio");
+        mensaje="El campo de la cedula no puede quedar vacio";
     }else{
         ci=Number(ci);
         if (ci == 0){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "La cedula no puede ser 0");
+            mensaje="La cedula no puede ser 0";
         }else if(ci < 0){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "La cedula no puede ser negativa");
+            mensaje="La cedula no puede ser negativa";
         }else if(ci == null){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_error_buscar_cliente", "El campo de la cedula no puede ser nulo");
+            mensaje="El campo de la cedula no puede ser nulo";
         }
     }
+    
+    if(!verificacion){
+        mostrar_mensaje("mensaje_buscar_cliente", mensaje, clase_error);
+    }
+    return verificacion;
 }
 
 /*------------------------------Funciones para consultarPDAdministrador--------------------------------*/
@@ -210,27 +270,36 @@ $("#btnBuscarPD").click(tomar_datos_ci_consultarPD);
 
 function tomar_datos_ci_consultarPD(){
     let ci=$("#ciPD").val();
-    verificar_ci_PD(ci);
+    let ver = verificar_ci_PD(ci);
+
+    if(ver){
+        enviar_formulario("form-consultar-PDA-administrativo","mensaje_consultarPDAdministrativo", "formulario_consulta_cliente_admin.php", "POST");
+    }
 }
 
 function verificar_ci_PD(){
     let verificacion=true;
+    let mensaje="";
     if(ci == ""){
         verificacion=false;
-        mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "El campo de la cedula no puede quedar vacio");
+        mensaje="El campo de la cedula no puede quedar vacio";
     }else{
         ci=Number(ci);
         if (ci == 0){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "La cedula no puede ser 0");
+            mensaje="La cedula no puede ser 0";
         }else if(ci < 0){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "La cedula no puede ser negativa");
+            mensaje="La cedula no puede ser negativa";
         }else if(ci == null){
             verificacion=false;
-            mostrar_mensaje(verificacion, "mensaje_error_consultarPDAdministrativo", "La cedula no puede ser nula");
+            mensaje="La cedula no puede ser nula";
         }
     }
+    if(!verificacion){
+        mostrar_mensaje("mensaje_consultarPDAdministrativo", mensaje, clase_error);
+    }
+    return verificacion;
 }
 
 /*------------------------------Funciones para crearComboEntrenador--------------------------------*/
@@ -253,9 +322,9 @@ function tomar_datos_combo(){
     let = verificar_formulario(datos_combo);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-crear-combo-entrenador","mensaje_crearComboEntrenador","formulario_crear_combo_entrenador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_crearComboEntrenador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_crearComboEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -274,9 +343,9 @@ function tomar_datos_deporteAvanzado(){
     let ver=verificar_formulario(datos_deporte);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-deportes-avanzado" ,"mensaje_deportesAvanzado", "formulario_deportista_seleccionador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_deportesAvanzado", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_deportesAvanzado", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -295,9 +364,9 @@ function tomar_datos_deportistasSeleccionador(){
     let ver=verificar_formulario(datos_deportista);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-deportistas-seleccionador","mensaje_deportistasSeleccionador", "formulario_deportista_seleccionador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_deportistasSeleccionador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_deportistasSeleccionador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -314,9 +383,9 @@ function tomar_datos_detallesClineteEntrenador(){
    let ver = verificar_formulario(datos_cliente_entrenador);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-detalles-cliente-entrenador","mensaje_detallesClienteEntrenador", "formulario_detalles_entrenador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_detallesClienteEntrenador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_detallesClienteEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -333,9 +402,9 @@ function tomar_datos_ejercicosAvanzado(){
     let ver = verificar_formulario(datos_ejercicio);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-ejercicios-avanzado","mensaje_ejerciciosAvanzado", "formulario_ejercicios_avanzado.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_ejerciciosAvanzado", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_ejerciciosAvanzado", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -352,9 +421,9 @@ function tomar_datos_eliminarCombo(){
     let ver=verificar_formulario(datos_combo);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-eliminar-combo-entrenador", "mensaje_eliminarComboEntrenador", "formulario_eliminar_combo_entrenador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_eliminarComboEntrenador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_eliminarComboEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -372,9 +441,9 @@ function tomar_datos_eliminarPlanEntrenador(){
     let ver = verificar_formulario(datos_plan);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-eliminar-plan-entrenador", "mensaje_eliminarPlanEntrenador", "formulario_eliminar_plan_entrenador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_eliminarPlanEntrenador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_eliminarPlanEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -390,9 +459,9 @@ function tomar_datos_equiposSeleccionador(){
     };
     let ver = verificar_formulario(datos_equipos);
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-equiposSeleccionador", "mensaje_equiposSeleccionador", "formulario_equipo_seleccionador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_equiposSeleccionador" , "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_equiposSeleccionador" , "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -413,9 +482,9 @@ function tomar_datos_ingresarDeporteEntrenador(){
     let ver = verificar_formulario(datos_deporte);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-ingresar-deporte", "mensaje_ingresarDeporteEntrenador", "formulario_ingresar_deporte_entrenador.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_ingresarDeporteEntrenador", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_ingresarDeporteEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 
 }
@@ -437,9 +506,9 @@ function tomar_datos_ingresarFisioEntrenador(){
     let ver = verificar_formulario(datos_fisio);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-ingresar-fisio", "mensaje_ingresarFisioEntrenador", "formulario_ingresar_fisioterapia.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_ingresarFisioEntrenador" ,"Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_ingresarFisioEntrenador" ,"Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -453,9 +522,9 @@ function tomar_datos_login(){
     let ver = verificar_formulario(datos_usu);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-login", "mensaje_login", "formulario_login.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_login", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_login", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -477,9 +546,9 @@ function tomar_datos_registro(){
     let ver = verificar_formulario(datos_registro);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-registro", "mensaje_registro", "formulario_registro.php", "POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_registro", "Ninguno de los campos puede quedar vacio");
+        mostrar_mensaje("mensaje_registro", "Ninguno de los campos puede quedar vacio", clase_error);
     }
 }
 
@@ -496,7 +565,9 @@ function tomar_claves(){
     let clave2=$("#clave2").val();
 
     let verificacion_claves=verificarClaves(clave1, clave2);
-    mostrar_mensaje(verificacion_claves, "mensaje_error_registro_claves", "Las claves no coinciden");
+    if(!verificacion_claves){
+        mostrar_mensaje("mensaje_registro_claves", "Las claves no coinciden", clase_error);
+    }
 }
 
 function verificarClaves(passwd1, passwd2){
@@ -518,12 +589,12 @@ function tomar_datos_cliente(){
 
    let ver = verificar_formulario(datos_cliente);
    if(ver){
-    enviar_formulario();
+    enviar_formulario("form-buscar-cliente-registrar-calificacion", "mensaje_ci_registroCalificacion", "formulario_registrar_calificacion_buscar_cliente.php", "POST");
    }else{
-    mostrar_mensaje(ver, "mensaje_error_registroCalificacion", "Ninguno de los campos del cliente pueden quedar vacios");
+    mostrar_mensaje("mensaje_ci_registroCalificacion", "Ninguno de los campos del cliente pueden quedar vacios", clase_error);
    }
 }
-
+//Ver si con onclick o con jquery puedo pasar como parametro el id del formulario
 $("#registrar_calificacion").click(tomar_datos_calificacion);
 
 function tomar_datos_calificacion(){
@@ -538,9 +609,9 @@ function tomar_datos_calificacion(){
     };
    let ver = verificar_formulario(datos_calificacion);
    if(ver){
-    enviar_formulario();
+    enviar_formulario("form-registrar-calificacion", "mensaje_registroCalificacion", "formulario_registrar_calificacion.php", "POST");
    }else{
-    mostrar_mensaje(ver, "mensaje_error_registroCalificacion", "Ninguno de los campos de las notas pueden quedar vacios");
+    mostrar_mensaje("mensaje_registroCalificacion", "Ninguno de los campos de las notas pueden quedar vacios", clase_error);
    }
 }
 
@@ -561,12 +632,46 @@ function tomar_datos_usuariosAvanzados(){
     let ver = verificar_formulario(datos_usu_avanzado);
 
     if(ver){
-        enviar_formulario();
+        enviar_formulario("form-usuariosAvanzados", "mensaje_usuariosAvanzados", "formulario_usuariosAvanzado.php","POST");
     }else{
-        mostrar_mensaje(ver, "mensaje_error_usuariosAvanzados", "Ninguno de los campos pueden quedar vacios");
+        mostrar_mensaje("mensaje_usuariosAvanzados", "Ninguno de los campos pueden quedar vacios", clase_error);
     }
 }
 
 /*"mensaje_error_modificarComboEntrenador" CREAR FUNCION DE MODIFICAR COMBO ENTRENADOR 
     Y LAS FUNCIONES PARA modificarPlanEntrenador
 */
+
+$("#boton_modificar_combo").click(tomar_datos_modificarComboEntrenador);
+function tomar_datos_modificarComboEntrenador(){
+    datos_combo={
+        nombre_combo: $("#nombre-combo").val(),
+        id_combo: $("#id-combo").val(),
+        seccion_combo: $("#seccion-combo").val()
+    };
+
+    let ver = verificar_formulario(datos_combo);
+
+    if(ver){
+        enviar_formulario("form-modificarComboEntrenador", "mensaje_modificarComboEntrenador", "formulario_modificar_combo_entrenador.php", "POST");
+    }else{
+        mostrar_mensaje("mensaje_modificarComboEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
+    }
+}
+
+$("#boton-modificar-plan").click(tomar_datos_modificarPlanEntrenador);
+function tomar_datos_modificarPlanEntrenador(){
+    datos_plan={
+        nombre_plan: $("#nombre-plan").val(),
+        id_plan: $("#id-plan").val(),
+        seccion_plan: $("#seccion-plan").val()
+    };
+
+    let ver= verificar_formulario(datos_plan);
+
+    if(ver){
+        enviar_formulario("form-modificarPlanEntrenador", "mensaje_modificarPlanEntrenador", "formulario_modificar_plan_entrenador.php", "POST");
+    }else{
+        mostrar_mensaje("mensaje_modificarPlanEntrenador", "Ninguno de los campos puede quedar vacio", clase_error);
+    }
+}

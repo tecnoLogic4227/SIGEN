@@ -572,25 +572,6 @@ function desplegarBotonesCombosEntrenador (botonDesplegable) {
   se va a mostrar en la caja de la cedula.
 */
 
-function eliminar_letras(id_componente) {
-  $("#" + id_componente).on('input', function (e) {
-      let value = this.value.replace(/[^0-9]/g, '');
-      let maxLength = $(this).attr('maxlength');
-      if (maxLength && value.length > maxLength) {
-          value = value.substring(0, maxLength);
-      }
-      this.value = value;
-  });
-
-  $("#" + id_componente).on('blur', function () {
-      let minLength = $(this).attr('minlength');
-      if (minLength && this.value.length < minLength) {
-          alert('El número debe tener al menos ' + minLength + ' dígitos.');
-      }
-  });
-  
-}
-
 /*function controlar_fecha_input(id_componente){
   $("#"+ id_componente).on('input', function (e){
       let value = this.value;

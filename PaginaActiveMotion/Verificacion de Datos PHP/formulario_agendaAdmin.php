@@ -1,12 +1,15 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $ci=$_POST["ci"];
     $fecha_agenda = $_POST["fecha-agenda"];
     $hora = $_POST["hora"];
     
+    $errores=[];
     // Verificar si los campos estan llenos
-    if (empty($fecha_agenda) || empty($hora)) {
-    //recarga el formulario hasta que esten todos los campos llenos
-    header("Location: http://localhost/prueba_index.html");
+    if (empty($ci) ||empty($fecha_agenda) || empty($hora)) {
+        //recarga el formulario hasta que esten todos los campos llenos
+        header("Location: http://localhost/prueba_index.html");
+        array_push($errores, "Ninguno de los campos puede quedar vacio");
     } else {
         // Aca conectariamos a la base de datos para verificar la cédula
         // cuando tengaos la base de datos hacemos esto:

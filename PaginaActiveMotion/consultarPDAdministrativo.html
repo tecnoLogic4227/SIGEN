@@ -45,13 +45,13 @@
               <h1 class="tituloConsultaAdministrativo">Deportistas</h1>
           </header>
       
-          <form method="post" class="formDPAdminisrador" action="Verificacion de Datos PHP/formulario_consulta_cliente_admin.php">
+          <form id="form-consultar-PDA-administrativo" method="post" class="formDPAdminisrador" action="Verificacion de Datos PHP/formulario_consulta_cliente_admin.php">
               <h5>Deportista</h5>
               <br>
               <label for="ciPD">Cedula:</label>
-              <input type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8" placeholder="12345678"  pattern="\d*" onclick="eliminar_letras('ciPD')" inputmode="numeric">
+              <input type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8" placeholder="12345678"  pattern="\d*" onclick="eliminar_letras('ciPD', 'mensaje_consultarPDAdministrativo')" inputmode="numeric">
               <br>
-              <span class="mensaje_error" id="mensaje_error_consultarPDAdministrativo" hidden></span>
+              <span id="mensaje_consultarPDAdministrativo" hidden></span>
               <br>
               <button class="estado buscarPD" id="btnBuscarPD" type="button">Buscar</button>
               <button class="estado eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>

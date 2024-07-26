@@ -58,7 +58,7 @@
     <article id="formLogin">
       <img class="foto" src="img/Perfil.png" >
       <br>
-      <form method="post" action="Verificacion de Datos PHP/formulario_login.php">
+      <form id="form-login" method="post" action="Verificacion de Datos PHP/formulario_login.php">
           <label>Nombre de usuario:</label>
           <br>
           <input type="text" name="nombre" id="nombre" placeholder="Escriba aquí">
@@ -72,7 +72,7 @@
           <br>
           <button class="estado" id="btnLogin" type="submit">Login</button>
           <br>
-          <span class="mensaje_error" id="mensaje_error_login" hidden></span>
+          <span id="mensaje_login" hidden></span>
           <br>
           <button class="estado" id="btn-login-Registrarse" type="button">Registrarse</button>
       </form>

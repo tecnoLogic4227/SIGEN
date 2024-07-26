@@ -1,8 +1,8 @@
 <?php
     if($_SERVER['REQUEST_METHOD']== "POST"){
-        $cedula=$_POST["CI"];
-        $actividad=$_POST["actividadCliente"];
-        $idRutina=$_POST["ID_Rutina"];
+        $cedula=$_POST["ci-cliente"];
+        $actividad=$_POST["actividad"];
+        $idRutina=$_POST["id-rutina"];
     
         if(empty($cedula) || empty($actividad) || empty($idRutina)){
             header("Location: http://localhost/prueba_index.html");
