@@ -553,16 +553,11 @@ ul #servis, #fisio,#dep,#pila{
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-#map {
+gmp-map {
   margin-left: 2vw;
   margin-top: 20vh;
   height: 300px; 
   width: 40%;  
-}
-
-.leaflet-control-attribution {
-  bottom: -96px; 
-  left: 38px;
 }
 
 .container {
@@ -800,9 +795,7 @@ input::placeholder{
   font-size: 14px;
   font-weight: bold;
   margin: 10px 0;
-  margin-left: 46vw;
 }
-
 /*.................................................INDEX USUARIO.........................................................*/
 
 
@@ -1001,11 +994,13 @@ button {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
  }
 
- .grafica{  
-  margin-top: 10vh;
-  margin-left: 30vw;
+ .grafica {
+  margin-top: 60vh;
+  margin-left: 10vw;
   width: 60%;
- }
+  z-index: 0;
+}
+
 
  .containerEvolucion {
   padding: 20px;
@@ -1088,7 +1083,7 @@ button {
  .ingresar{
   position: relative;
     top: -40vh;
-    margin-left: 75vw;
+    margin-left: 60vw;
     background-color: #409dc4;
     color: white;
     border: none;
@@ -1103,7 +1098,7 @@ button {
  .ingresar2{
   position: relative;
   top: -20vh;
-  margin-left: 77vw;
+  margin-left: 60vw;
   background-color: #409dc4;
   color: white;
   border: none;
@@ -1163,9 +1158,6 @@ button {
   z-index: 0;
 }
 
-.buscarDeportista{
-margin-left: 1vw !important;
-}
 
 /*.................................................Equipos Seleccionador.....................................................*/
 
@@ -1206,13 +1198,6 @@ margin-left: 1vw !important;
   margin-left: 10vw;
 }
 
-.buscarEquipo{
-  margin-left: 1vw !important;
-}
-
-.armarEquipo{
-  margin-left: 1vw !important;
-}
 
 /*......................................................Armar equipos Seleccionador....................................*/
 .tablaArmarEquipoSeleccionador {
@@ -1249,10 +1234,6 @@ a {
   height: 100%;
   text-decoration: none;
   color: white;
-}
-
-.ingresarDeportista{
-  margin-left: 0vw !important;
 }
 
 /*..................................................Agenda Administrativo..............................................*/
@@ -1373,214 +1354,4 @@ a {
 .tablaPDAdministrador {
   margin-top: -70vh;
   margin-left: 0vw;
-}
-
-.buscarPD{
-  margin-left: 0vw !important;
-}
-
-.eliminarPD{
-  margin-left: 0vw !important;
-}
-
-/*................................................Index Avanzado.........................................................*/
-
-.indexAvanzado {
-  text-align: center;
-  height: 300vh;
-}
-
-.tituloIndexAvanzado {
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.titulo_1_IndexAvanzado{
-margin-left: -70vw !important;
-}
-
-.tablaUsuariosIndexAvanzado {
-  width: 30%;
-  border-collapse: collapse;
-  margin: 20px auto;
-  margin-left: 2vw;
-}
-
-.tablaUsuariosIndexAvanzado, th, td {
-  border: 1px solid black;
-}
-
-.btn_AgregarUsuario{
-  margin-left: 10vw;
-}
-
-.titulo_2_IndexAvanzado{
-  margin-top: -59vh ;
-  margin-left: 0vw !important;
-}
-
-.tablaEjerciciosIndexAvanzado {
-  width: 30%;
-  border-collapse: collapse;
-  margin: 20px auto;
-  margin-left: 35vw;
-}
-
-.tablaEjerciciosIndexAvanzado, th, td {
-  border: 1px solid black;
-}
-
-.btn_AgregarEjercicio{
-  margin-left: 43vw;
-}
-
-.titulo_3_IndexAvanzado{
-  margin-top: -73vh;
-  margin-left: 70vw !important;
-}
-
-.tablaDeportesIndexAvanzado {
-  width: 30%;
-  border-collapse: collapse;
-  margin: 20px auto;
-  margin-left: 68vw;
-}
-
-.tablaDeportessIndexAvanzado, th, td {
-  border: 1px solid black;
-}
-
-.btn_AgregarDeporte{
-  margin-left: 77vw;
-}
-
-/*...................................................Usuarios Avanzado.................................................*/
-
-.usuariosAvanzado {
-  text-align: center;
-  height: 300vh;
-}
-
-.tituloUsuariosAvanzado {
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
-}
-.tablaUsuarioAvanzado{
-margin-left: -30vw;
-}
-
-.buscar3 {
-  position: absolute;
-  margin-top: -50vh;
-  margin-left: 70vw;
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-/*...................................................Ejercicios Avanzado.................................................*/
-
-.ejerciciosAvanzado {
-  text-align: center;
-  height: 300vh;
-}
-
-.tituloEjerciciosAvanzado {
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
-}
-.tablaEjerciciosAvanzado{
-margin-left: -30vw;
-}
-
-.buscar3 {
-  position: absolute;
-  margin-top: -50vh;
-  margin-left: 70vw;
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-/*...................................................Deportes Avanzado.................................................*/
-
-.deportesAvanzado {
-  text-align: center;
-  height: 300vh;
-}
-
-.tituloDeportesAvanzado {
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
-}
-.tablaDeportesAvanzado{
-margin-left: -30vw;
-}
-
-.buscar3 {
-  position: absolute;
-  margin-top: -50vh;
-  margin-left: 70vw;
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-/*...................................................Quitar incrementador de inputs numericos de formularios.................................................*/
-
-
-.eliminar_botones_number{
-  input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
-
-  input[type=number] {
-    -moz-appearance: textfield;
-  }
-}
-
-.mensaje_error{
-  background-color: #db3c3c;
-  border: solid 3px;
-  border-radius: 5px;
-  border-color: #e71b08;
-  width: 10vw;
-  height: 5vh;
-  color: white;
-}
-
-.mensaje_exito{
-  background-color: #44c56b;
-  border: solid 3px;
-  border-radius: 10px;
-  border-color: #058d1b;
-  width: 50vw;
-  height: 10vh;
-  color: white;
-  font-size: 0.5 rem;
 }
