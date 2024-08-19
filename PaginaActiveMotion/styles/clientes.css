@@ -15,6 +15,18 @@ body {
     overflow-x:hidden
 }
 
+.tituloEntrenador{
+text-align: center;
+}
+  
+.titulo2Entrenador{
+margin-top: 13vh;
+background-color: #e4f4fd;
+border-radius: 15px; 
+box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+   
 h1, h3 {
     width: 100vw;
     text-align: center;
@@ -120,6 +132,14 @@ tr:hover {
     margin-top: 50vh;
 }
 
+#tit-evolucion2{
+    margin-top: 20vh;
+}
+
+#tit-cliente{
+    margin-top: 15vh;
+    height: 10vh;
+}
 /* asignar rutina */
 
 .tit-asignar-entrenamiento {

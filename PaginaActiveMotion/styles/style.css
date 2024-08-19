@@ -236,18 +236,6 @@ ul #servis, #fisio,#dep,#pila{
 
 /*.....................................................HEADER nosotros.............................................................*/
 
-
-.nosotros{
-  text-align: center;
- }
-
- .tituloNosotros{
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
- 
 .tituloEquipo {
   margin-top: 15vh;
   background-color: #e4f4fd;
@@ -312,15 +300,6 @@ ul #servis, #fisio,#dep,#pila{
 
 /*.....................................................HEADER servicios.............................................................*/
 
-.tituloServicios {
-  text-align: center;
-  margin-top: 10vh;
-  color: black;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
-}
-
 .listaServicios {
   margin-top: vh;
   margin-left: 1vw;
@@ -351,11 +330,7 @@ ul #servis, #fisio,#dep,#pila{
 }
 
 /*.....................................................HEADER fisioterapia.............................................................*/
-.tituloServicios {
-  text-align: center;
-  margin-top: 10vh;
-  color: black;
-}
+
 .tituloFisio{
   width: 15%;
   margin-left: 5vw;
@@ -532,32 +507,28 @@ ul #servis, #fisio,#dep,#pila{
     }
 
 /*..........................................................Locales........................................................*/
-
-.locales{
+.tituloGeneral{
   text-align: center;
  }
 
- .tituloLocales{
+ .titulo2General{
   margin-top: 13vh;
   background-color: #e4f4fd;
   border-radius: 15px; 
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
  }
 
-.listaLocales{
-  margin-left: 50vw;
-  margin-top: 40vh;
-  width: 40%;
-  background-color: rgba(205, 236, 255, 0.938);
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
-}
 
-gmp-map {
+#map {
   margin-left: 2vw;
   margin-top: 20vh;
   height: 300px; 
   width: 40%;  
+}
+
+.leaflet-control-attribution {
+  bottom: -96px; 
+  left: 38px;
 }
 
 .container {
@@ -685,18 +656,7 @@ gmp-map {
 }
 
 /*....................................................LOGIN.............................................................*/
-.login{
-  text-align: center;
- }
-
- .tituloLogin{
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
-
- .foto{
+.foto{
   margin-bottom: 30px;
   margin-top: 10px;
   border-radius: 100%; 
@@ -714,7 +674,7 @@ label{
 
 #formLogin{
   width: 40vw;
-  height:70vh;
+  height:90vh;
   margin-top: 10vh;
   margin-left: 30vw;
   display:flex;
@@ -723,6 +683,15 @@ label{
   background:#abdefa;
   border-radius:10px;
   
+}
+
+.login{
+  margin-left: 10px;
+}
+
+.registro{
+  margin-top: -10vh;
+  margin-left: 40vw;
 }
 
 /*.......................................................REGISTRO.......................................................*/
@@ -796,9 +765,8 @@ input::placeholder{
   font-weight: bold;
   margin: 10px 0;
 }
+
 /*.................................................INDEX USUARIO.........................................................*/
-
-
 .indexUsuario{
   text-align: center;
  }
@@ -818,14 +786,14 @@ input::placeholder{
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
   padding: 20px;
   width: 60%;
-  height: 65vh;
+  height: 70vh;
   text-align: left;
 }
 
 .carousel-container-usuario {
-  max-width: 500px;
+  max-width: 450px;
   height: 60vh;
-  margin-top: -50vh !important;
+  margin-top: -65vh !important;
   margin-left: 65vw !important;
   
 }
@@ -918,12 +886,15 @@ input::placeholder{
   margin: 10px 0;
 }
 
+.estado{
+  margin-left: 45vw;
+}
 /*........................................................Agenda Usuario................................................*/
-.agendaUsuario{
+.tituloUsuario{
   text-align: center;
  }
 
- .tituloAgendaUsuario{
+ .titulo2Usuario{
   margin-top: 13vh;
   background-color: #e4f4fd;
   border-radius: 15px; 
@@ -982,25 +953,19 @@ button {
 }
 
 /*......................................................Evolucion Usuarios...............................................*/
-.evolucionUsuario{
-  text-align: center;
-  height: 300vh;
- }
-
- .tituloEvolucionUsuario{
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
-
  .grafica {
-  margin-top: 60vh;
-  margin-left: 10vw;
+  margin-top: 0vh;
+  margin-left: 30vw;
   width: 60%;
   z-index: 0;
 }
 
+.graficaEntrenador {
+  margin-top: 0vh;
+  margin-left: 15vw;
+  width: 70%;
+  z-index: 0;
+}
 
  .containerEvolucion {
   padding: 20px;
@@ -1042,25 +1007,14 @@ button {
 }
 
 /*.............................................RUTINA USUARIO.............................................................*/
-.rutinaUsuario{
-  text-align: center;
-  height: 300vh;
- }
-
- .tituloRutinaUsuario{
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
 
  /*.................................................Perfil Usuarios.....................................................*/
- .perfilUsuario{
+ .perfil{
   text-align: center;
   height: 300vh;
  }
 
- .tituloPerfilUsuario{
+ .tituloPerfil{
   margin-top: 13vh;
   background-color: #e4f4fd;
   border-radius: 15px; 
@@ -1068,17 +1022,6 @@ button {
  }
 
  /*.................................................Perfil Seleccionador.....................................................*/
- .perfilSeleccionador{
-  text-align: center;
-  height: 300vh;
- }
-
- .tituloPerfilSeleccionador{
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
 
  .ingresar{
   position: relative;
@@ -1111,12 +1054,12 @@ button {
 }
 
 /*.................................................Deportistas Seleccionador.....................................................*/
-.deportistasSeleccionador{
+.tituloSeleccionador{
   text-align: center;
   height: 300vh;
  }
 
- .tituloDeportistasSeleccionador{
+ .titulo2Seleccionador{
   margin-top: 13vh;
   background-color: #e4f4fd;
   border-radius: 15px; 
@@ -1146,9 +1089,10 @@ button {
 }
 
 .tablaDeportistasSeleccionador {
-  margin-top: -50vh; 
+  margin-top: -80vh; 
   margin-left: -10vw;
   z-index: 0;
+  display: block;
 }
 
 .graficaSeleccionador {
@@ -1156,22 +1100,14 @@ button {
   margin-left: 60vw;
   width: 40%;
   z-index: 0;
+  display: block;
 }
 
+.buscarDeportista{
+  margin-left: 0vw;
+}
 
 /*.................................................Equipos Seleccionador.....................................................*/
-
-.equiposSeleccionador{
-  text-align: center;
-  height: 300vh;
- }
-
- .tituloEquiposSeleccionador{
-  margin-top: 13vh;
-  background-color: #e4f4fd;
-  border-radius: 15px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
 
  .formEquiposSeleccionador {
   width: 20vw;
@@ -1192,6 +1128,14 @@ button {
   color: rgb(0, 0, 0);
 }
 
+.buscarEquipo{
+  margin-left: 2vw;
+}
+  
+.armarEquipo{
+  margin-left:2vw;
+  width: 30vh;
+  }
 
 .tablaEquipoSeleccionador {
   margin-top: -60vh;
@@ -1234,6 +1178,10 @@ a {
   height: 100%;
   text-decoration: none;
   color: white;
+}
+
+.ingresarDeportista{
+  margin-left: 0vw;
 }
 
 /*..................................................Agenda Administrativo..............................................*/
@@ -1354,4 +1302,178 @@ a {
 .tablaPDAdministrador {
   margin-top: -70vh;
   margin-left: 0vw;
+}
+
+/*................................................................. AVANZADO................................................................*/
+.tituloAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.titulo2Avanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.titulo_1_IndexAvanzado{
+margin-top: 3vh ;
+margin-left: -70vw !important;
+}
+
+.tablaUsuariosIndexAvanzado {
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 2vw;
+}
+
+.tablaUsuariosIndexAvanzado, th, td {
+  border: 1px solid black;
+}
+
+.btn_AgregarUsuario{
+  margin-left: 10vw;
+}
+
+.titulo_2_IndexAvanzado{
+  margin-top: -65vh ;
+  margin-left: 0vw !important;
+}
+
+.tablaEjerciciosIndexAvanzado {
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 35vw;
+}
+
+.tablaEjerciciosIndexAvanzado, th, td {
+  border: 1px solid black;
+}
+
+.btn_AgregarEjercicio{
+  margin-left: 43vw;
+}
+
+.titulo_3_IndexAvanzado{
+  margin-top: -67vh;
+  margin-left: 70vw !important;
+}
+
+.tablaDeportesIndexAvanzado {
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-left: 68vw;
+}
+
+.tablaDeportessIndexAvanzado, th, td {
+  border: 1px solid black;
+}
+
+.btn_AgregarDeporte{
+  margin-left: 77vw;
+}
+
+/*...................................................Usuarios Avanzado.................................................*/
+
+.tituloAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.titulo2sAvanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+.tablaUsuarioAvanzado{
+margin-left: -30vw;
+}
+
+/*...................................................Ejercicios Avanzado.................................................*/
+
+.tituloAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.titulo2Avanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+
+/*...................................................Deportes Avanzado.................................................*/
+
+.tituloAvanzado {
+  text-align: center;
+  height: 300vh;
+}
+
+.titulotitulo2Avanzado {
+  margin-top: 13vh;
+  background-color: #e4f4fd;
+  border-radius: 15px; 
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
+}
+.tablaDeportesAvanzado{
+margin-left: -30vw;
+}
+
+.buscar3 {
+  position: absolute;
+  margin-top: -50vh;
+  margin-left: 70vw;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/*...................................................Quitar incrementador de inputs numericos de formularios.................................................*/
+
+
+.eliminar_botones_number{
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+.mensaje_error{
+  background-color: #db3c3c;
+  border: solid 3px;
+  border-radius: 5px;
+  border-color: #e71b08;
+  width: 10vw;
+  height: 5vh;
+  color: white;
+}
+
+.mensaje_exito{
+  background-color: #44c56b;
+  border: solid 3px;
+  border-radius: 10px;
+  border-color: #058d1b;
+  width: 50vw;
+  height: 10vh;
+  color: white;
+  font-size: 0.5 rem;
 }
