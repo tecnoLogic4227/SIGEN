@@ -1,22 +1,40 @@
 <?php
 
-$servidor = "localhost"; //el servidor de la base de datos
-$usuario = "root"; //el nombre de usuario de la base de datos
-$contraseña = ""; //la contraseña del usuario de la base de datos
-$bd = "test"; //el nombre de la base de datos
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$database = 'basephp';
 
-$conexion = new mysqli($servidor, $usuario, $contraseña, $bd);
+$conexion;
 
-//verificar si la conexion falla
-if ($conexion->connect_errno) {
-    //Si la conexión falla, muestra un mensaje de error y termina el script
-    die("Conexión fallida: " . $conexion->connect_errno . " - " . $conexion->connect_error);
-} else {
-    // Si la conexión no falla, muestra un mensaje indicando que la conexion fue exitosa
-    echo "conectado"; 
+
+function conectar($host,$user,$password,$database){
+    
+    global $conexion;
+    
+    $conexion = new mysqli($host,$user,$password,$database);
+
+    if($conexion->connect_error){
+        die("Error al conectar") . $conexion->connect_error;
+    }else{
+        echo "Conexion correcta";        
+    }
 }
 
-//cerramos la conexion
-$conexion->close();
+function desconectar($conexion){
+    $conexion->close();
+}
+
+function ping(){
+    global $conexion;
+
+        if ($conexion->ping()) {
+            echo "Conexion establecida";
+        } else{
+            echo "Conexion perdida ";
+        }
+}
+
+
 
 ?>
