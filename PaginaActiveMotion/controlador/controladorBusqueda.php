@@ -9,7 +9,7 @@ function procesarBusqueda($connection, $typeSearch, $search) {
             return buscarCliente($connection, $search);
         case 'deportista':
             return buscarDeportista($connection, $search);
-        case 'plan':
+        case 'planEntrenamiento':
             return buscarPlanEntrenamiento($connection, $search);        
         case 'equipo':
             return buscarEquipo($connection, $search);
@@ -18,7 +18,7 @@ function procesarBusqueda($connection, $typeSearch, $search) {
     }
 }
 
-$typeSearch = $_POST['tipoBusqueda'];
+$typeSearch = $_POST['type'];
 $search = $_POST['search'];
 
 $result = procesarBusqueda($connection, $typeSearch, $search);
