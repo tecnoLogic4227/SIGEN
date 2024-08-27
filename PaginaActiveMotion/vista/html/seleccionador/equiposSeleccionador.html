@@ -47,11 +47,11 @@
             <br>
             <input type="text" name="deporteClub" id="deporteClub" placeholder="Futbol">
             <br>
-            <label for="clubEquipo" class="clubEquipo">Club:</label>
+            <label for="clubEquipo" class="clubEquipo">ID del Equipo:</label>
             <br>
-            <input type="text" id="clubEquipo" name="clubEquipo" placeholder="Nacional" required>
+            <input class="inputEquiposBuscador" type="text" id="clubEquipo" name="clubEquipo" placeholder="Peñarol" required>
             <br>
-            <button class="estado buscarEquipo" id="btnBuscarEquipo" type="button">Buscar</button>
+            <button class="botonEquiposBuscador" id="btnBuscarEquipo" type="button">Buscar</button>
             <button class="estado armarEquipo" id="btnArmarEquipo" type="button">Armar equipo</button>
             <span id="mensaje_equiposSeleccionador" hidden></span>
         </form>
@@ -69,6 +69,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                      <tr>
+                        <th scope="row">ID:</th>
+                        <td id="idClub"></td>
+                    </tr>
                         <tr>
                             <th scope="row">Nombre:</th>
                             <td id="nombreClub"></td>
@@ -121,6 +125,7 @@
     <script src="../../script/jquery-3.7.1.min.js"></script>
     <script src="../../script/script.js"></script>
     <script src="../../script/calendar.js"></script>
+    <script src="../../script/buscadores/buscadorEquipo.js"></script>
     </div>
   </body>
 </html> 

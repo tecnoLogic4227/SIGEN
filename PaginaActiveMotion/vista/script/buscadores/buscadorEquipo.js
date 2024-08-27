@@ -2,8 +2,8 @@ $(document).ready(() => {
 
     $("#result").hide();
 
-    $("#botonBuscar").click(() => {
-        let search = $("#inputCliente").val();
+    $("#botonEquipoBuscador").click(() => {
+        let search = $("#inputEquipoBuscador").val();
         const type = "equipo";
 
         let template = "";
@@ -12,15 +12,14 @@ $(document).ready(() => {
         let validarEquipo = search => {
             let valida = true;
 
-            search = search.toLowerCase();
             search = search.trim();
 
-            if (search.length < 1 || search.length > 30){
-                valida = false;
+            if (search.length < 1){
+                valida= false;
             }
 
             for (let i = 0; i < search.length; i++) {
-                if (!isNaN(search[i])) {
+                if (isNaN(search[i])) {
                     valida = false;
                     break;
                 }                
@@ -34,7 +33,7 @@ $(document).ready(() => {
         if (searchValid) {
 
             $.ajax({
-                url: "buscador.php",
+                url: "../controlador/controladorBusqueda.php",
                 type: "POST",
                 data: {
                     search,
@@ -47,6 +46,7 @@ $(document).ready(() => {
                         if (equipos.length > 0) {
 
                             equipos.forEach(equipo => {
+                                template += `<li>${equipo.id_equipo}</li>`;
                                 template += `<li>${equipo.nombre_equipo}</li>`;
                                 template += `<li>${equipo.cantidad}</li>`;
                             });

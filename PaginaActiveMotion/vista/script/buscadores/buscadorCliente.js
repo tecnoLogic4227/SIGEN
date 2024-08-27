@@ -2,8 +2,8 @@ $(document).ready(() => {
 
     $("#result").hide();
 
-    $("#botonBuscar").click(() => {
-        let search = $("#inputCliente").val();
+    $("#botonClienteBuscador").click(() => {
+        let search = $("#inputClienteBuscador").val();
         const type = "cliente";
 
         let template = "";
@@ -33,7 +33,7 @@ $(document).ready(() => {
         if (searchValid) {
 
             $.ajax({
-                url: "buscador.php",
+                url: "../controlador/controladorBusqueda.php",
                 type: "POST",
                 data: {
                     search,

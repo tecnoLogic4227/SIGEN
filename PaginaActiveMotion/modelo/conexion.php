@@ -12,11 +12,11 @@ function conectar ($server, $database, $username, $password) {
 
     $connection = new mysqli ($server, $username, $password, $database);
 
-    // if ($connection->connect_error) {
-    //     die("Base de datos no conectada"). $connection->connect_error;
-    // } else {
-    //     echo "Base de datos conectada";
-    // }
+    if ($connection->connect_error) {
+        die("Base de datos no conectada: ") . $connection->connect_error;
+    } else {
+        echo "Base de datos conectada";
+    }
 }
 
 function desconectar ($connection) {

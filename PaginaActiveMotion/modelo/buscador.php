@@ -3,7 +3,7 @@
     include("conexion.php");
 
     function buscarCliente ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM usuario_cliente WHERE ci = ?");
+        $stmt = $connection->prepare("SELECT * FROM USUARIO_CLIENTE WHERE ci = ?");
         $stmt->bind_param("i", $search);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -20,7 +20,7 @@
     }
 
     function buscarDeportista ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM deportista WHERE ci = ?");
+        $stmt = $connection->prepare("SELECT * FROM DEPORTISTA WHERE ci = ?");
         $stmt->bind_param("i", $search);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -37,7 +37,7 @@
     }
 
     function buscarPlanEntrenamiento ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM plan_entrenamiento WHERE nombre_plan_entrenamiento LIKE ?");
+        $stmt = $connection->prepare("SELECT * FROM PLAN_ENTRENAMIENTO WHERE nombre_plan_entrenamiento LIKE ?");
         $search = "%$search%";
         $stmt->bind_param("s", $search);
         $stmt->execute();
@@ -55,7 +55,7 @@
     }
 
     function buscarEquipo ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM equipo WHERE nombre_equipo LIKE ?");
+        $stmt = $connection->prepare("SELECT * FROM EQUIPO WHERE id_equipo LIKE ?");
         $search = "%$search%";
         $stmt->bind_param("s", $search);
         $stmt->execute();

@@ -44,10 +44,10 @@
       <form id="form-buscar-clientes-entrenador" action="../../../Verificacion_de_Datos_PHP/formulario_buscar_cliente_entrenador.php">
         <section class="buscar-cliente">
           <label class="cliente-label">Buscar cliente por cédula</label>
-          <input type="text" class="buscarCliente" id="buscar-cliente" name="buscar-cliente" class="buscar-cliente" placeholder="12345678" maxlength="8" minlength="8" required>
+          <input type="text" class="inputClienteBuscador" id="buscar-cliente" name="buscar-cliente" class="buscar-cliente" placeholder="12345678" maxlength="8" minlength="8" required>
           <br>
           <span id="mensaje_buscar_cliente" hidden></span>
-          <button class="boton-buscar-cliente" id="boton_buscar_cliente" type="submit"><a
+          <button class="botonClienteBuscador" id="boton_buscar_cliente" type="submit"><a
               href="detallesClienteEntrenador.html">Buscar</a></button>
          </section>
       </form>
@@ -59,9 +59,9 @@
           <td class="td1">Actividad</td>
         </tr>
         <tr class="tr1">
-          <td class="td1"></td>
-          <td class="td1"></td>
-          <td class="td1"></td>
+          <td class="outputClienteCI"></td>
+          <td class="outputClienteNombre"></td>
+          <td class="outputClienteActividad"></td>
         </tr>
         <tr class="cliente2">
           <td class="td1"></td>
@@ -107,6 +107,7 @@
     <script src="../../script/jquery-3.7.1.min.js"></script>
     <script src="../../script/script.js"></script>
     <script src="../../script/calendar.js"></script>
+    <script src="../../script/buscadores/buscadorCliente.js"></script>
   </div>
 </body>
 
