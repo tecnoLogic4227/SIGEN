@@ -22,5 +22,5 @@
         }
         }else{
             echo "Acceso no permitido";
-        }*/
+        }
 ?>

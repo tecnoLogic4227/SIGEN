@@ -43,7 +43,7 @@
                 <h5>Deportista</h5>
                 <br>
                 <label for="nombreDeportista" class="nombre">Nombre de usuario:</label>
-                <input type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi">
+                <input class="inputDeportistaBuscador" type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi">
                 <br>
                 <label for="deporteDeportista" class="deporte">Deporte:</label>
                 <input type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
@@ -51,7 +51,7 @@
                 <label for="clubDeportista" class="club">Club:</label>
                 <input type="text" id="clubDeportista" name="clubDeportista" placeholder="Nacional" required>
                 <br>
-                <button class="estado buscarDeportista" id="btnBuscarDeportista" type="button">Buscar</button>
+                <button class="botonDeportistaBuscador" id="btnBuscarDeportista" type="button">Buscar</button>
                 <br>
                 <span id="mensaje_deportistasSeleccionador" hidden></span>
             </form>
@@ -70,27 +70,23 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">Nombre:</th>
-                                    <td id="nombre-deportista"></td>
+                                    <td id="nombre-deportista" class="outputClienteNombre"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Apellido:</th>
-                                    <td id="apellido-deportista"></td>
+                                    <td id="apellido-deportista" class="outputClienteApellido"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email:</th>
-                                    <td id="email-deportista"></td>
+                                    <td id="email-deportista" class="outputClienteEmail"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">CI:</th>
-                                    <td id="ci-deportista"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Matrícula:</th>
-                                    <td id="matricula-deportista"></td>
+                                    <td id="ci-deportista" class="outputClienteCI"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Celular:</th>
-                                    <td id="celular-deportista"></td>
+                                    <td id="celular-deportista" class="outputClienteTelefono"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -137,6 +133,7 @@
     <script src="../../script/script.js"></script>
         <script src="../../script/calendar.js"></script>
         <script src="../../script/grafica.js"></script>
+        <script src="../../script/buscadores/buscadorDeportista.js"></script>
     </div>
 </body>
 </html>

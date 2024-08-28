@@ -84,6 +84,6 @@
     } else {
          // Si se intenta acceder directamente al script sin POST
         echo "Acceso no permitido.";
-    }*/
+    }
     
 ?>

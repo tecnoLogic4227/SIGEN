@@ -44,10 +44,10 @@
       <form id="form-detalles-cliente-entrenador" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_detalles_entrenador.php">
         <section>
           <label class="subtit2">Cédula</label>
-          <input id="buscar-cliente-ci" name="ci" class="buscar-cliente" placeholder="12345678" maxlength="8" minlength="8" pattern="\d*" onclick="eliminar_letras('buscar-cliente-ci', 'mensaje_detallesClienteEntrenador')" inputmode="numeric" required>
+          <input id="buscar-cliente-ci" name="ci" class="inputClienteBuscador" placeholder="12345678" maxlength="8" minlength="8" pattern="\d*" onclick="eliminar_letras('buscar-cliente-ci', 'mensaje_detallesClienteEntrenador')" inputmode="numeric" required>
           <label class="cedula-tit-entrenador">Deporte</label>
           <input id="buscar-cliente-deporte" name="deporte" class="buscar-cliente-deporte" placeholder="futbol" required>
-          <button id="buscar-cliente-deportista" class="buscar2">Buscar</button>
+          <button id="buscar-cliente-deportista" class="botonClienteBuscador">Buscar</button>
           <br>
           <span id="mensaje_detallesClienteEntrenador" hidden></span>
         </section>
@@ -143,6 +143,7 @@
     <script src="../../script/jquery-3.7.1.min.js"></script>
     <script src="../../script/script.js"></script>
     <script src="../../script/grafica.js"></script>
+    <script src="../../script/buscadores/buscadorCliente.js"></script>
   </div>
 </body>
 
