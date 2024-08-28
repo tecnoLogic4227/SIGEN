@@ -63,7 +63,7 @@ function mostrar_mensaje(id_mensaje, mensaje, clase_mensaje){
 
 function enviar_formulario(id_form, id_mensaje, nombre_formulario, tipo_formulario){
     $.ajax({
-        url: "/Verificacion de Datos PHP/"+nombre_formulario,
+        url: "../../../controlador/Verificacion de Datos PHP/"+nombre_formulario,
         type: tipo_formulario, 
         data: $("#"+id_form).serialize(),
         success: function(response) {
