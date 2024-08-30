@@ -41,67 +41,38 @@
     </nav>
     <main>
       <h1 class="tituloEntrenador titulo2Entrenador" id="tit-cliente">Cliente</h1>
-      <form id="form-detalles-cliente-entrenador" action="../../../Verificacion_de_Datos_PHP/formulario_detalles_entrenador.php">
+      <form id="form-detalles-cliente-entrenador" /*action="../../../Verificacion_de_Datos_PHP/formulario_detalles_entrenador.php">
         <section>
           <label class="subtit2">Cédula</label>
           <input id="buscar-cliente-ci" name="ci" class="inputClienteBuscador" placeholder="12345678" maxlength="8" minlength="8" pattern="\d*" onclick="eliminar_letras('buscar-cliente-ci', 'mensaje_detallesClienteEntrenador')" inputmode="numeric" required>
           <label class="cedula-tit-entrenador">Deporte</label>
           <input id="buscar-cliente-deporte" name="deporte" class="buscar-cliente-deporte" placeholder="futbol" required>
-          <button id="buscar-cliente-deportista" class="botonClienteBuscador">Buscar</button>
+          <button class="botonClienteBuscador">Buscar</button>
           <br>
           <span id="mensaje_detallesClienteEntrenador" hidden></span>
         </section>
       </form>
       <section>
-        <h4 class="nombre2">Faustino Ramos</h4>
-        <button class="boton-asignar-rutina2"><a href="asignarEntrenamiento.html">Asignar Rutina</a></button>
-        <button class="boton-registrar-calificacion"><a href="registrarCalificacion.html">Registrar Calificación</a></button>
-      </section>
-      <article>
-          <table class="tabla2-1" id="tabla2-1">
-            <tr>
-              <td data-label="Cliente"  class="tabla-cliente-nombre" id="celda">Cliente</td>
-              <td data-label="Lunes" class="tabla-cliente-lunes" id="celda">Lunes</td>
-              <td data-label="Martes" class="tabla-cliente-martes" id="celda">Martes</td>
-              <td data-label="Miércoles" class="tabla-cliente-miercoles" id="celda">Miércoles</td>
-              <td data-label="Jueves" class="tabla-cliente-jueves" id="celda">Jueves</td>
-              <td data-label="Viernes" class="tabla-cliente-viernes" id="celda">Viernes</td>
-              <td data-label="Sábado" class="tabla-cliente-sabado" id="celda">Sabado</td>
-              <td data-label="Domingo" class="tabla-cliente-domingo" id="celda">Domingo</td>
+          <table class="tablaClientesEntrenador">
+            <tr class="tr1">
+              <td class="td1">Cédula</td>
+              <td class="td1">Nombre</td>
+              <td class="td1">Actividad</td>
             </tr>
-            <tr>
-              <td class="tabla-cliente-nombre1" id="celda">-</td>
-              <td class="tabla-cliente-lunes" id="celda">-</td>
-              <td class="tabla-cliente-martes" id="celda">-</td>
-              <td class="tabla-cliente-miercoles" id="celda">-</td>
-              <td class="tabla-cliente-jueves" id="celda">-</td>
-              <td class="tabla-cliente-viernes" id="celda">-</td>
-              <td class="tabla-cliente-sabado" id="celda">-</td>
-              <td class="tabla-cliente-domingo" id="celda">-</td>
+            <tr class="tr1">
+              <td class="outputClienteCI"></td>
+              <td class="outputClienteNombre"></td>
+              <td class="outputClienteActividad"></td>
             </tr>
           </table>
-        <table class="tabla2-2">
-          <tr>
-            <td data-label="Día" class="tabla2-cliente-dia" id="celda">Día</td>
-            <td data-label="Músculo" class="tabla2-cliente-musculo" id="celda">Músculo</td>
-            <td data-label="Descripción" class="tabla2-cliente-descripcion" id="celda">Descripcion</td>
-            <td data-label="Series" class="tabla2-cliente-series" id="celda">Series</td>
-            <td class="tabla2-cliente-repeticiones" id="celda">Repeticiones</td>
-          </tr>
-          <tr>
-            <td class="" id="celda">-</td>
-            <td class="" id="celda">-</td>
-            <td class="" id="celda">-</td>
-            <td class="" id="celda">-</td>
-            <td class="" id="celda">-</td>
-          </tr>
-        </table>
-      </article>
+        <button class="boton-asignar-rutina2"><a href="asignarEntrenamiento.html">Asignar Rutina</a></button>
+        <button class="boton-registrar-calificacion"><a href="registrarCalificacion.html">Registrar Calificación</a></button>
+      </section>      
       <article class="evolucion-cliente-entrenador" id="article2">
         <div class="containerEvolucion" id="evolucion2">
           <div class="accordion-headerEvolucion">
             <span>Estado: </span>
-            <span>-</span>
+            <span class="outputClienteEstado">-</span>
           </div>
         </div>
         <h3 class="tituloEvolucionUsuario" id="tit-evolucion2">Evolucion</h3>

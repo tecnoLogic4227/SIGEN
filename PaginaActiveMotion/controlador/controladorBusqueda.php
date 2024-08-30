@@ -3,8 +3,8 @@
 include("../modelo/conexion.php");
 include("../modelo/buscador.php");
 
-$typeSearch = $_POST['type'];
 $search = $_POST['search'];
+$typeSearch = $_POST['type'];
 
 function validateSearch($search, $typeSearch)
 {

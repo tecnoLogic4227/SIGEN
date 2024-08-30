@@ -1,76 +1,85 @@
-$(document).ready(() => {
+$(document).ready(() => {       
 
-    $("#result").hide();
+    let validarCedula = search => {
+        let valida = true;
 
-    $("#botonClienteBuscador").click(() => {
-        let search = $("#inputClienteBuscador").val();
+        search = search.trim();
+
+        if (search.length != 8) {
+            valida = false;
+        }
+
+        for (let i = 0; i < search.length; i++) {
+            if (isNaN(search[i])) {
+                valida = false;
+                break;
+            }
+        }
+
+        return valida;
+    }
+
+    let pasarDatos = (search, type) => {
+
+        alert("a");
+
+        $(".botonClienteCI").html("");
+        $(".botonClienteNombre").html("");
+        $(".botonClienteApellido").html("");
+        $(".botonClienteActividad").html("");
+        $(".botonClienteUltimoLogin").html("");
+        $(".botonClienteFechaNacimiento").html("");
+        $(".botonClienteEmail").html("");
+        $(".botonClienteTelefono").html("");
+        $(".botonClienteUltimoPago").html("");
+        $(".botonClienteProximoPago").html("");
+
+        $.ajax({
+            url: "http://localhost/paginaactivemotion/controlador/controladorBusqueda.php",
+            type: "POST",
+            contentType: "application/json",
+            data: {
+                search: search,
+                type: type,
+            },
+            success: (response) => {
+                try {
+                    let clientes = JSON.parse(response);
+
+                    if (clientes.length > 0) {
+
+                        clientes.forEach(cliente => {
+                            $(".outputClienteCI").html(cliente.ci);
+                            $(".outputClienteCalificacion").html(cliente.calificacion);
+                            $(".outputClienteEstadoActividad").html(cliente.estado_actividad);
+                            $(".outputClienteEstado").html(cliente.estado);
+                            $(".outputClienteActividad").html(cliente.actividad);
+                        });
+
+                    } else {
+                        alert("No se encontraron resultados.");
+                    }
+                } catch (e) {
+                    alert("Error al parsear el JSON: " + e);
+                }
+            },
+            error: (xhr, status, error) => {
+                alert("La solicitud AJAX falló: " + error)
+            }
+        })
+
+    }
+
+    let ingresarDatos = () => {
+        let search = $(".inputClienteBuscador").val();
         const type = "cliente";
 
-        let template = "";
-        $("#container").html("");
-
-        let validarCedula = search => {
-            let valida = true;
-
-            search = search.trim();
-
-            if (search.length != 8) {
-                valida = false;
-            }
-
-            for (let i = 0; i < search.length; i++) {
-                if (isNaN(search[i])) {
-                    valida = false;
-                    break;
-                }                
-            }
-
-            return valida;
-        }
-
-        let searchValid = validarCedula(search);
-
-        if (searchValid) {
-
-            $.ajax({
-                url: "../controlador/controladorBusqueda.php",
-                type: "POST",
-                data: {
-                    search,
-                    type,
-                },
-                success: (response) => {
-                    try {
-                        let clientes = JSON.parse(response);
-
-                        if (clientes.length > 0) {
-
-                            clientes.forEach(cliente => {
-                                template += `<li>${cliente.ci}</li>`;
-                                template += `<li>${cliente.calificacion}</li>`;
-                                template += `<li>${cliente.estado_actividad}</li>`;
-                                template += `<li>${cliente.estado}</li>`;
-                                template += `<li>${cliente.actividad}</li>`;
-                            });
-
-                        } else {
-                            template = "<li>No se encontraron resultados.</li>"
-                        }                        
-
-                        $("#container").html(template);
-                        $("#result").show();
-                    } catch (e) {
-                        console.error("Error al parsear el JSON: " + e);
-                    }
-                },
-                error: (xhr, status, error) => {
-                    console.error("La solicitud AJAX falló: " + error)
-                }
-            })
+        if (validarCedula(search)) {
+            pasarDatos(search, type);
         } else {
-            template = "<li>Por favor ingrese una cedula valida.</li>";
-            $("#container").html(template);
-            $("#result").show();
+            alert("Por favor ingrese una cedula válida!");
         }
-    })
+    }
+
+    $("#botonClienteBuscador").click(ingresarDatos);
 })

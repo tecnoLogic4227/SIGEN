@@ -68,10 +68,16 @@ table {
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.tabla1, .tabla2-1, .tabla2-2 {
+.tabla1 {
     width: 70vw;
     margin-left: 15vw;
     margin-top: 20vh;
+}
+
+.tablaClientesEntrenador {
+    width: 70vw;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
 }
 
 tr, td {
