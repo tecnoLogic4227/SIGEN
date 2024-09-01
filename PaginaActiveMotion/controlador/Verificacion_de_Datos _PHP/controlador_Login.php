@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         die("Error de conexion " . $conexion->connect_error);
     }
     
-
+    //funcion para registrar fecha del ultimo login
     function registrar_ultimo_login(){
         global $conexion, $ci_usu;
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $stmt->execute();
         $stmt->close();
     }
-
+    //Funcion para verificar login
     function verificar_login(){
         global $conexion, $ci_usu, $contrasenia;
         $rol_usu="";
