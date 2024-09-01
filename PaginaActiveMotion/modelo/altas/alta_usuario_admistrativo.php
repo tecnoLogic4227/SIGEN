@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion_alta.php';
+require_once 'conexion.php';
 
 function agregarUsuarioAdministrativo($ci) {
     global $conexion;

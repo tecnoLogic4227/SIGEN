@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion_alta.php';
+require_once 'conexion.php';
 
 class Agenda {
     public $nro_agenda;
