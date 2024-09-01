@@ -50,17 +50,25 @@
     <article id="formLogin">
       <img class="foto" src="../../img/Perfil.png" alt="foto perfil">
       <br>
-      <form id="form-login" method="post" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_login.php">
+      <form id="form-login" method="post" action="../../../controlador/Verificacion_de_Datos _PHP/controlador_Login.php">
           <label>Nombre de usuario:</label>
           <br>
-          <input type="text" name="nombre" id="nombre" placeholder="Escriba aquí">
+          <input type="text" name="ci" id="ci" placeholder="Escriba aquí su ci">
           <br><br>
           <label>Contraseña:</label>
           <br>
           <input type="password" id="clave1" name="clave" oninput="verificarClaves()"
           placeholder="Password">
           <br>
-          <label id="mensaje" style="color:#550303;"></label>
+          <br>
+          <select name="rol-usuario" id="rol-usuario">
+            <option value="" selected disabled>Seleccione un rol</option>
+            <option value="cliente">Cliente</option>
+            <option value="administrativo">Administrativo</option>
+            <option value="entrenador">Entrenador</option>
+            <option value="seleccionador">Seleccionador</option>
+            <option value="avanzado">Avanzado</option>
+          </select>
           <br>
           <button class="estado login" id="btnLogin" type="submit">Login</button>
           <br>

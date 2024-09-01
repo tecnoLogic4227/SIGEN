@@ -1,7 +1,7 @@
 <?php
 
 $server = "localhost";
-$database = "buscadorbd";
+$database = "activemotion";
 $username = "root";
 $password = "";
 

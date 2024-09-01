@@ -522,7 +522,7 @@ function tomar_datos_login(){
     let ver = verificar_formulario(datos_usu);
 
     if(ver){
-        enviar_formulario("form-login", "mensaje_login", "formulario_login.php", "POST");
+        enviar_formulario("form-login", "mensaje_login", "controlador_Login.php", "POST");
     }else{
         mostrar_mensaje("mensaje_login", "Ninguno de los campos puede quedar vacio", clase_error);
     }
