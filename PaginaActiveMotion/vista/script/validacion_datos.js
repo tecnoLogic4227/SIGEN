@@ -63,7 +63,7 @@ function mostrar_mensaje(id_mensaje, mensaje, clase_mensaje){
 
 function enviar_formulario(id_form, id_mensaje, nombre_formulario, tipo_formulario){
     $.ajax({
-        url: "/Verificacion de Datos PHP/"+nombre_formulario,
+        url: "../../../controlador/Verificacion de Datos PHP/"+nombre_formulario,
         type: tipo_formulario, 
         data: $("#"+id_form).serialize(),
         success: function(response) {
@@ -522,7 +522,7 @@ function tomar_datos_login(){
     let ver = verificar_formulario(datos_usu);
 
     if(ver){
-        enviar_formulario("form-login", "mensaje_login", "formulario_login.php", "POST");
+        enviar_formulario("form-login", "mensaje_login", "controlador_Login.php", "POST");
     }else{
         mostrar_mensaje("mensaje_login", "Ninguno de los campos puede quedar vacio", clase_error);
     }
