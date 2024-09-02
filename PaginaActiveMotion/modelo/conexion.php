@@ -1,7 +1,7 @@
 <?php
 
 $server = "localhost";
-$database = "buscadorbd";
+$database = "activemotion";
 $username = "root";
 $password = "";
 
@@ -14,13 +14,7 @@ function conectar ($server, $database, $username, $password) {
 
     if ($connection->connect_error) {
         die("Base de datos no conectada: ") . $connection->connect_error;
-    } else {
-        echo "Base de datos conectada";
-    }
-}
-
-function desconectar ($connection) {
-    $connection->close();
+    } 
 }
 
 conectar($server, $database, $username, $password);

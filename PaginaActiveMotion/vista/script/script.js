@@ -143,96 +143,96 @@ $(document).ready(function() {
   }
 });
 
-function buscarDeportista() {
-  // Obtener los valores de los campos de búsqueda
-  var nombre = $('#nombreDeportista').val();
-  var deporte = $('#deporteDeportista').val();
-  var club = $('#clubDeportista').val();
+// function buscarDeportista() {
+//   // Obtener los valores de los campos de búsqueda
+//   var nombre = $('#nombreDeportista').val();
+//   var deporte = $('#deporteDeportista').val();
+//   var club = $('#clubDeportista').val();
 
-  console.log("Buscando deportista:", nombre, deporte, club);
+//   console.log("Buscando deportista:", nombre, deporte, club);
 
-  // Simulación de búsqueda en base de datos
-  const deportistaBuscado = {
-      nombre: nombre || 'Leo',
-      apellido: 'Messi',
-      email: 'leomessi@gmail.com',
-      ci: '93283202',
-      matricula: 'uwbe2912',
-      celular: '0292831'
-  };
+//   // Simulación de búsqueda en base de datos
+//   const deportistaBuscado = {
+//       nombre: nombre || 'Leo',
+//       apellido: 'Messi',
+//       email: 'leomessi@gmail.com',
+//       ci: '93283202',
+//       matricula: 'uwbe2912',
+//       celular: '0292831'
+//   };
 
-  actualizarTablaDeportista(deportistaBuscado);
-}
+//   actualizarTablaDeportista(deportistaBuscado);
+// }
 
-function actualizarTablaDeportista(deportista) {
-  // Verificar si los elementos existen antes de actualizar
-  if ($('#nombre-deportista').length) $('#nombre-deportista').text(deportista.nombre);
-  if ($('#apellido-deportista').length) $('#apellido-deportista').text(deportista.apellido);
-  if ($('#email-deportista').length) $('#email-deportista').text(deportista.email);
-  if ($('#ci-deportista').length) $('#ci-deportista').text(deportista.ci);
-  if ($('#matricula-deportista').length) $('#matricula-deportista').text(deportista.matricula);
-  if ($('#celular-deportista').length) $('#celular-deportista').text(deportista.celular);
+// function actualizarTablaDeportista(deportista) {
+//   // Verificar si los elementos existen antes de actualizar
+//   if ($('#nombre-deportista').length) $('#nombre-deportista').text(deportista.nombre);
+//   if ($('#apellido-deportista').length) $('#apellido-deportista').text(deportista.apellido);
+//   if ($('#email-deportista').length) $('#email-deportista').text(deportista.email);
+//   if ($('#ci-deportista').length) $('#ci-deportista').text(deportista.ci);
+//   if ($('#matricula-deportista').length) $('#matricula-deportista').text(deportista.matricula);
+//   if ($('#celular-deportista').length) $('#celular-deportista').text(deportista.celular);
 
-  console.log("Tabla actualizada con datos:", deportista);
-}
+//   console.log("Tabla actualizada con datos:", deportista);
+// }
 
-/*..............................................Tabla Deportes Seleccionador...........................................*/
-$(document).ready(function() {
-  // Evento click para el botón de búsqueda
-  $("#btnBuscarEquipo").click(function(e) {
-      e.preventDefault();
-      buscarEquipo();
-  });
+// /*..............................................Tabla Deportes Seleccionador...........................................*/
+// $(document).ready(function() {
+//   // Evento click para el botón de búsqueda
+//   $("#btnBuscarEquipo").click(function(e) {
+//       e.preventDefault();
+//       buscarEquipo();
+//   });
 
-  // Evento click para el botón de armar equipo
-  $("#btnArmarEquipo").click(function(e) {
-      e.preventDefault();
-      console.log("Función para armar equipo aún no implementada");
-  });
+//   // Evento click para el botón de armar equipo
+//   $("#btnArmarEquipo").click(function(e) {
+//       e.preventDefault();
+//       console.log("Función para armar equipo aún no implementada");
+//   });
 
-  function buscarEquipo() {
-      // Obtenemos los valores de los campos de entrada
-      let deporte = $("#deporteClub").val();
-      let club = $("#clubEquipo").val();
+//   function buscarEquipo() {
+//       // Obtenemos los valores de los campos de entrada
+//       let deporte = $("#deporteClub").val();
+//       let club = $("#clubEquipo").val();
 
-      // Aca llamamos al servidor con ajax
-      // Simularemos una respuesta
-      let equipoEncontrado = simularBusquedaEquipo(deporte, club);
+//       // Aca llamamos al servidor con ajax
+//       // Simularemos una respuesta
+//       let equipoEncontrado = simularBusquedaEquipo(deporte, club);
 
-      // Actualizar la tabla con la información del equipo
-      actualizarTablaEquipo(equipoEncontrado);
-  }
+//       // Actualizar la tabla con la información del equipo
+//       actualizarTablaEquipo(equipoEncontrado);
+//   }
 
-  function simularBusquedaEquipo(deporte, club) {
-      // Simulación de búsqueda en base de datos
-      console.log("Buscando equipo:", deporte, club);
+//   function simularBusquedaEquipo(deporte, club) {
+//       // Simulación de búsqueda en base de datos
+//       console.log("Buscando equipo:", deporte, club);
       
-      // Datos de ejemplo
-      return {
-          nombre: club,
-          deportistas: ["Messias", "Cris Jenner", "LIT Killah"]
-      };
-  }
+//       // Datos de ejemplo
+//       return {
+//           nombre: club,
+//           deportistas: ["Messias", "Cris Jenner", "LIT Killah"]
+//       };
+//   }
 
-  function actualizarTablaEquipo(equipo) {
-      $("#nombreClub").text(equipo.nombre);
-      $("#deportista").text(equipo.deportistas.join(", "));
+//   function actualizarTablaEquipo(equipo) {
+//       $("#nombreClub").text(equipo.nombre);
+//       $("#deportista").text(equipo.deportistas.join(", "));
 
-      console.log("Tabla actualizada con datos del equipo:", equipo);
-  }
-});
+//       console.log("Tabla actualizada con datos del equipo:", equipo);
+//   }
+// });
 
-/*...............................................Tabla Equipos Seleccionador.........................................................*/
-$(document).ready(function() {
-  $('#btnIngresarDeportista').click(function() {
-    let nombreDeportista = $('#nombreDeportista').val();
-    let deporteDeportista = $('#deporteDeportista').val();
-    let clubDeportista = $('#clubDeportista').val();
+// /*...............................................Tabla Equipos Seleccionador.........................................................*/
+// $(document).ready(function() {
+//   $('#btnIngresarDeportista').click(function() {
+//     let nombreDeportista = $('#nombreDeportista').val();
+//     let deporteDeportista = $('#deporteDeportista').val();
+//     let clubDeportista = $('#clubDeportista').val();
 
-      $('#nombreClub').text(clubDeportista);
-      $('#deportista').text(nombreDeportista + ' - ' + deporteDeportista);
-  });
-});
+//       $('#nombreClub').text(clubDeportista);
+//       $('#deportista').text(nombreDeportista + ' - ' + deporteDeportista);
+//   });
+// });
 
 /*....................................................Boton Index Seleccionador........................................*/
 $(function() {
@@ -259,56 +259,56 @@ $(document).ready(function() {
 
 /*.....................................................Consultar Administrativo..................................................*/
 // Esperar a que el documento esté completamente cargado
-$(document).ready(function() {
-    // Asignar funciones a los botones
-    $("#btnBuscarPD").click(buscarCliente);
-    $("#btnEliminarPD").click(eliminarCliente);
-    $(".btn-modificar").click(habilitarEdicion);
-});
+// $(document).ready(function() {
+//     // Asignar funciones a los botones
+//     $("#btnBuscarPD").click(buscarCliente);
+//     $("#btnEliminarPD").click(eliminarCliente);
+//     $(".btn-modificar").click(habilitarEdicion);
+// });
 
-// Función para buscar un deportista
-function buscarCliente() {
-    // Obtener el valor de la cédula ingresada
-    let cedulaBuscada = $("#ciPD").val();
+// // Función para buscar un deportista
+// function buscarCliente() {
+//     // Obtener el valor de la cédula ingresada
+//     let cedulaBuscada = $("#ciPD").val();
     
-    // Simulación de búsqueda en base de datos
-    // En un caso real, aquí se haría una llamada al servidor
-    const clienteBuscado = {
-        nombre: 'Leo',
-        apellido: 'Messi',
-        email: 'leomessi@gmail.com',
-        ci: cedulaBuscada,
-        matricula: 'uwbe2912',
-        celular: '0292831',
-        club: 'Boca',
-        plan: 'Plan Premium',
-        ultimoPago: '02/03/2024',
-        proximoPago: '03/04/2024'
-    };
+//     // Simulación de búsqueda en base de datos
+//     // En un caso real, aquí se haría una llamada al servidor
+//     const clienteBuscado = {
+//         nombre: 'Leo',
+//         apellido: 'Messi',
+//         email: 'leomessi@gmail.com',
+//         ci: cedulaBuscada,
+//         matricula: 'uwbe2912',
+//         celular: '0292831',
+//         club: 'Boca',
+//         plan: 'Plan Premium',
+//         ultimoPago: '02/03/2024',
+//         proximoPago: '03/04/2024'
+//     };
 
-    // Actualizar la tabla con los datos del deportista encontrado
-    actualizarTablaCliente(clienteBuscado);
+//     // Actualizar la tabla con los datos del deportista encontrado
+//     actualizarTablaCliente(clienteBuscado);
     
-    console.log("Buscando cliente con cédula:", cedulaBuscada);
-}
+//     console.log("Buscando cliente con cédula:", cedulaBuscada);
+// }
 
-// Función para actualizar la tabla con los datos del deportista
-function actualizarTablaCliente(cliente) {
-    // Recorrer cada propiedad del objeto deportista
-    for (let campo in cliente) {
-        // Actualizar el texto de cada celda con el valor correspondiente
-        $('#' + campo + '-PD').text(cliente[campo]);
-    }
-    console.log("Tabla actualizada con datos:", cliente);
-}
+// // Función para actualizar la tabla con los datos del deportista
+// function actualizarTablaCliente(cliente) {
+//     // Recorrer cada propiedad del objeto deportista
+//     for (let campo in cliente) {
+//         // Actualizar el texto de cada celda con el valor correspondiente
+//         $('#' + campo + '-PD').text(cliente[campo]);
+//     }
+//     console.log("Tabla actualizada con datos:", cliente);
+// }
 
-// Función para eliminar un deportista (simulada)
-function eliminarCliente() {
-    let cedulaEliminar = $("#ciPD").val();
-    console.log("Eliminando cliente con cédula:", cedulaEliminar);
-    // Aquí iría la lógica para eliminar el deportista de la base de datos
-    limpiarCampos();
-}
+// // Función para eliminar un deportista (simulada)
+// function eliminarCliente() {
+//     let cedulaEliminar = $("#ciPD").val();
+//     console.log("Eliminando cliente con cédula:", cedulaEliminar);
+//     // Aquí iría la lógica para eliminar el deportista de la base de datos
+//     limpiarCampos();
+// }
 
 // Función para habilitar la edición de un campo
 function habilitarEdicion() {

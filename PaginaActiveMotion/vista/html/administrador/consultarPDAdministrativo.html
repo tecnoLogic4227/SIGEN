@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <link rel="icon" href="../../../img/logoPagina.png">
@@ -47,9 +46,8 @@
         <h5>Cliente</h5>
         <br>
         <label for="ciPD">Cedula:</label>
-        <input class="inputClienteBuscador" type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8"
-          placeholder="12345678" pattern="\d*" onclick="eliminar_letras('ciPD', 'mensaje_consultarPDAdministrativo')"
-          inputmode="numeric">
+        <br>
+        <input class="inputClienteBuscador">
         <br>
         <span id="mensaje_consultarPDAdministrativo" hidden></span>
         <br>
@@ -123,10 +121,12 @@
                 <tr>
                   <th scope="row">Ultimo Pago:</th>
                   <td id="ultimoPago-PD" class="outputClienteUltimoPago"></td>
+                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
                 </tr>
                 <tr>
                   <th scope="row">Proximo Pago:</th>
                   <td id="proximoPago-PD" class="outputClienteProximoPago"></td>
+                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
                 </tr>
               </tbody>
             </table>

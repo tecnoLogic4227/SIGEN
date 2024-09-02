@@ -39,24 +39,17 @@
                 <h1 class="titulo2Seleccionador">Deportistas</h1>
             </header>
 
-            <form id="form-deportistas-seleccionador" method="post" class="formDeportistasSeleccionador" action="../../../Verificacion_de_Datos_PHP/formulario_deportista_seleccionador.php">
+            <form id="form-deportistas-seleccionador" class="formDeportistasSeleccionador">
                 <h5>Deportista</h5>
                 <br>
-                <label for="nombreDeportista" class="nombre">Nombre de usuario:</label>
-                <input class="inputDeportistaBuscador" type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi">
+                <label class="nombre">Cedula</label>
+                <input class="inputDeportistaBuscador">
                 <br>
-                <label for="deporteDeportista" class="deporte">Deporte:</label>
-                <input type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
+                <button class="botonDeportistaBuscador">Buscar</button>
                 <br>
-                <label for="clubDeportista" class="club">Club:</label>
-                <input type="text" id="clubDeportista" name="clubDeportista" placeholder="Nacional" required>
-                <br>
-                <button class="botonDeportistaBuscador" id="btnBuscarDeportista" type="button">Buscar</button>
-                <br>
-                <span id="mensaje_deportistasSeleccionador" hidden></span>
             </form>
 
-            <div class="container-fluid tablaDeportistasSeleccionador">
+            <div /*class="container-fluid /*tablaDeportistasSeleccionador">
                 <div class="row">
                     <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
                         <table class="table table-bordered table-hover">
@@ -69,24 +62,60 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <th scope="row">Cedula:</th>
+                                    <td class="outputDeportistaCI"></td>
+                                </tr>
+                                <tr>
                                     <th scope="row">Nombre:</th>
-                                    <td id="nombre-deportista" class="outputClienteNombre"></td>
+                                    <td class="outputDeportistaNombre"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Apellido:</th>
-                                    <td id="apellido-deportista" class="outputClienteApellido"></td>
+                                    <td class="outputDeportistaApellido"></td>
                                 </tr>
+                                <!-- <tr>
+                                    <th scope="row">Direccion:</th>
+                                    <td class="outputDeportistaDireccion"></td>
+                                </tr> -->
                                 <tr>
                                     <th scope="row">Email:</th>
-                                    <td id="email-deportista" class="outputClienteEmail"></td>
+                                    <td class="outputDeportistaEmail"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">CI:</th>
-                                    <td id="ci-deportista" class="outputClienteCI"></td>
+                                    <th scope="row">Fecha nacimiento:</th>
+                                    <td class="outputDeportistaFechaNacimiento"></td>
+                                </tr>
+                                <!-- <tr>
+                                    <th scope="row">Ultimo Login:</th>
+                                    <td class="outputDeportistaUltimoLogin"></td>
+                                </tr> -->
+                                <tr>
+                                    <th scope="row">ID equipo:</th>
+                                    <td class="outputDeportistaIdEquipo"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Celular:</th>
-                                    <td id="celular-deportista" class="outputClienteTelefono"></td>
+                                    <th scope="row">Equipo:</th>
+                                    <td class="outputDeportistaNombreEquipo"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Cantidad:</th>
+                                    <td class="outputDeportistaCantidad"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ID deporte:</th>
+                                    <td class="outputDeportistaIdDeporte"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Deporte:</th>
+                                    <td class="outputDeportistaNombreDeporte"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Descripcion:</th>
+                                    <td class="outputDeportistaDescripcion"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Posicion:</th>
+                                    <td class="outputDeportistaPosicion"></td>
                                 </tr>
                             </tbody>
                         </table>

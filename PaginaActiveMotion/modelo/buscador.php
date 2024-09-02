@@ -1,75 +1,85 @@
 <?php
 
-    include("conexion.php");
+require_once("conexion.php");
 
-    function buscarCliente ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM USUARIO_CLIENTE WHERE ci = ?");
-        $stmt->bind_param("i", $search);
-        $stmt->execute();
-        $result = $stmt->get_result();
+function buscarCliente($search)
+{
+    global $connection;
 
-        $clientes = array();
+    $stmt = $connection->prepare("SELECT * FROM usuario_cliente JOIN usuario ON usuario.ci = usuario_cliente.ci JOIN usuario_telefono ON usuario.ci = usuario_telefono.ci JOIN efectua ON usuario_telefono.ci = efectua.ci JOIN ultimo_pago ON efectua.id_ultimo_pago = ultimo_pago.id_ultimo_pago WHERE usuario_cliente.ci = ?");
+    $stmt->bind_param("i", $search);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        while ($row = $result->fetch_assoc()) {
-            $clientes[] = $row;
-        }
+    $clientes = array();
 
-        $stmt->close();
-
-        return $clientes;
+    while ($row = $result->fetch_assoc()) {
+        $clientes[] = $row;
     }
 
-    function buscarDeportista ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM DEPORTISTA WHERE ci = ?");
-        $stmt->bind_param("i", $search);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    $stmt->close();
 
-        $deportistas = array();
+    return $clientes;
+}
 
-        while ($row = $result->fetch_assoc()) {
-            $deportistas[] = $row;
-        }
+function buscarDeportista($search)
+{
+    global $connection;
 
-        $stmt->close();
+    $stmt = $connection->prepare("SELECT * FROM USUARIO JOIN DEPORTISTA ON USUARIO.ci = DEPORTISTA.ci JOIN ASOCIADO ON DEPORTISTA.ci = ASOCIADO.ci JOIN DEPORTE ON ASOCIADO.id_deporte = DEPORTE.id_deporte JOIN ESTA ON DEPORTISTA.ci = ESTA.ci JOIN EQUIPO ON ESTA.id_equipo = EQUIPO.id_equipo WHERE USUARIO.ci = ?");
+    $stmt->bind_param("i", $search);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        return $deportistas;
+    $deportistas = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $deportistas[] = $row;
     }
 
-    function buscarPlanEntrenamiento ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM PLAN_ENTRENAMIENTO WHERE nombre_plan_entrenamiento LIKE ?");
-        $search = "%$search%";
-        $stmt->bind_param("s", $search);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    $stmt->close();
 
-        $planes = array();
+    return $deportistas;
+}
 
-        while ($row = $result->fetch_assoc()) {
-            $planes[] = $row;
-        }
+function buscarPlanEntrenamiento($search)
+{
+    global $connection;
 
-        $stmt->close();
+    $stmt = $connection->prepare("SELECT * FROM plan_entrenamiento JOIN rutina ON rutina.id_rutina = plan_entrenamiento.id_rutina WHERE id_plan_entrenamiento = ?");
+    $stmt->bind_param("i", $search);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        return $planes;
+    $planes = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $planes[] = $row;
     }
 
-    function buscarEquipo ($connection, $search) {
-        $stmt = $connection->prepare("SELECT * FROM EQUIPO WHERE id_equipo LIKE ?");
-        $search = "%$search%";
-        $stmt->bind_param("s", $search);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    $stmt->close();
 
-        $equipos = array();
+    return $planes;
+}
 
-        while ($row = $result->fetch_assoc()) {
-            $equipos[] = $row;
-        }
+function buscarEquipo($search)
+{
+    global $connection;
 
-        $stmt->close();
+    $stmt = $connection->prepare("SELECT * FROM equipo WHERE id_equipo = ?");
+    $stmt->bind_param("s", $search);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        return $equipos;
+    $equipos = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $equipos[] = $row;
     }
+
+    $stmt->close();
+
+    return $equipos;
+}
 
 ?>

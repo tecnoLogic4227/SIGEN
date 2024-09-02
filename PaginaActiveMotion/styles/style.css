@@ -1452,9 +1452,9 @@ margin-left: -30vw;
       margin: 0;
   }
 
-  input[type=number] {
+  /* input[type=number] {
     -moz-appearance: textfield;
-  }
+  } */
 }
 
 .mensaje_error{
@@ -1476,4 +1476,12 @@ margin-left: -30vw;
   height: 10vh;
   color: white;
   font-size: 0.5 rem;
+}
+
+#thModPlan {
+  width: 20%;
+}
+
+#botonModificarPlan {
+  width: 100%;
 }

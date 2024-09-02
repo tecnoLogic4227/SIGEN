@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+.body1 {
+    height: 110vh;
+}
+
+h1, h2, h3 {
+    width: 100vw;
+    text-align: center;
+    background-color: rgb(209, 240, 255);
+    border-radius: 10px;
+    padding: 1vh;
+    box-shadow: 0 10px 5px 5px rgba(0,0,0,0.3);}
+
+.tit1 {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.main1 {
+    width: 100vw;
+    justify-content: center;
+}
+
+.centrar1 {
+    display: flex;
+    flex-direction: row;
+}
+
+#art1 {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    align-items: center;
+}
+
+.ingresar-plan-entrenador{
+    margin-top: -15vh;
+}
+
+.gestionar-combos{
+    margin-top: -5vh;
+}
+.boton-fisioterapia-deportista-entrenador, .gestionar-combos-boton {
+    margin-top: 5vh;
+    visibility: hidden;
+}
+
+.modificar-plan1{
+    margin-top: -25vh;
+    width: 15vw;
+}
+
+.eliminar-plan1{
+    margin-top: -25vh;
+    width: 15vw;
+}
+
+/* ingresar fisioterapia */
+
+.tit-fisio {
+    margin-top: 15vh;
+}
+
+.subtit-fisio {
+    width: 100vw;
+    margin-top: 5vh;
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.form-fisio {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#label-input-fisio {
+    width: 15vw;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.ingresar-fisio {
+    margin-top: 10vh;
+}
+
+/* Modificar plan */
+
+.body-mod-plan {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tit-modificar-plan {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.buscar-modificar-plan {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabla-modificar-plan {
+    width: 90vw;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    border-collapse: collapse;
+}
+
+.tabla-modificar-plan tr th{
+    background-color: rgb(183, 230, 253);
+}
+
+.input-mod-plan {
+    width: 90%;
+    margin-left: 0vw;
+}
+
+.tabla-mod-plan-mobile{
+    display: none;
+}
+
+/* Crear combo */
+
+.main-crear-combo {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.tit-crear-combo {
+    margin-top: 15vh;
+    margin-bottom: 25vh;
+}
+
+.tabla-crear-combo {
+    width: 90vw;
+    margin-bottom: 15vh;
+    border-collapse: collapse;
+}
+
+.tabla-crear-combo tr th{
+    background-color: rgb(183, 230, 253);
+}
+
+.input-crear-combo {
+    width: 90%;
+    margin-left: 0vw;
+}
+
+.tabla-crear-combo-mobile{
+    display: none;
+}
+
+/* Modificar combo */
+/* NORMAL*/
+
+.main-mod-combo {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.tit-modificar-combo {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.boton-modificar-combo{
+    margin-top: 10vh;
+
+}
+.buscar-combo {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-input-mod-combo {
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.buscar-mod-combo {
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+
+.tabla-eli-combo{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.tabla-eli-combo tr th{
+    background-color: rgb(183, 230, 253);
+    border: 1px solid rgb(193, 193, 193);
+    padding: 5px;
+}
+
+.tabla-eli-combo tr td{
+    border: 1px solid rgb(193, 193, 193);
+    padding: 5px;
+}
+
+
+/* MOBILE*/
+
+.tabla-eli-mobile{
+    display: none;
+    width: 90%;
+}
+
+.tabla-eli-mobile .fila .columna{
+    display: flex;
+}
+
+.tabla-eli-mobile .fila .columna .header, .tabla-eli-mobile .fila .columna .contenido{
+    border: 1px solid rgb(193, 193, 193);
+    border-bottom: none;
+    padding: 10px;
+}
+
+.tabla-eli-mobile .fila .columna .header{
+    width: 40%;
+    background-color:rgb(183, 230, 253);
+    font-weight: bold;
+}
+
+.tabla-eli-mobile .fila .columna .contenido{
+    width: 50%;
+}
+
+
+@media screen and (max-width:600px) {
+
+/*..............................................CREAR COMBO...............................*/
+.tabla-crear-combo {
+    display: none;
+}
+          
+.tabla-crear-combo-mobile{
+ margin-top: -20vh;
+    display: block;
+}
+        
+.boton-crear-combo{
+    width: 20vw;
+}
+
+/*................................................ELIMINAR..........................................*/
+.tabla-eli-mobile{
+    margin-top: -10vh;
+    display: block;
+}
+
+.tabla-eli-combo{
+    display: none;
+}
+
+
+/*...................................................MODIFICAR COMBO................................................*/
+.boton-modificar-combo{
+        width: 20vw;
+}
+/*....................................................MODIFICAR PLAN................................................*/
+.tabla-modificar-plan {
+    display: none;
+}
+          
+.tabla-mod-plan-mobile{
+ margin-top: 10vh;
+    display: block;
+}
+        
+.boton-modificar-plan{
+    width: 20vw;
+}
+}

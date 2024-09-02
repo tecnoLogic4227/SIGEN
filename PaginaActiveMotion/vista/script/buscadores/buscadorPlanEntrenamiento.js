@@ -1,75 +1,89 @@
 $(document).ready(() => {
 
-    $("#result").hide();
+    let validarID = search => {
 
-    $("#botonPlanBuscador").click(() => {
-        let search = $("#inputPlanBuscador").val();
+        search = search.trim();
+
+        if (search.length < 1) {
+            return false;
+        }
+
+        for (let i = 0; i < search.length; i++) {
+            if (isNaN(search[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    let pasarDatos = (search, type) => {
+
+        event.preventDefault();
+
+        $.ajax({
+            url: "http://localhost/paginaactivemotion/controlador/controladorBusqueda.php",
+            type: "POST",
+            data: {
+                search: search,
+                type: type,
+            },
+            success: (response) => {
+
+                try {
+                    let planes = JSON.parse(response);
+
+                    if (planes.length > 0) {
+
+                        planes.forEach(plan => {
+
+                            //atributo de rutina
+                            $(".outputPlanIDRutina").html(plan.id_rutina);
+
+                            //atributos de plan_entrenamiento
+                            $(".outputPlanIDPlan").html(plan.id_plan_entrenamiento);
+                            $(".outputPlanNombre").html(plan.nombre_plan_entrenamiento);
+                            $(".outputPlanNroEjercicios").html(plan.nro_ejercicios);
+                            $(".outputPlanDescripcion").html(plan.descripcion);
+                        });
+
+                    } else {
+                        alert("No se encontraron resultados.");
+                    }
+                } catch (e) {
+                    // console.log("Error al parsear el JSON: " + e);
+                }
+            },
+            error: (xhr, status, error) => {
+                console.log("La solicitud AJAX falló: " + error);
+            }
+        })
+
+    }
+
+    let ingresarDatos = () => {
+
+        let search = $(".inputPlanBuscador").val();
         const type = "planEntrenamiento";
 
-        let template = "";
-        $("#container").html("");
-
-        let validarPlan = search => {
-            let valida = true;
-
-            search = search.trim();
-
-            if (search.length < 1){
-                valida= false;
-            }
-
-            for (let i = 0; i < search.length; i++) {
-                if (isNaN(search[i])) {
-                    valida = false;
-                    break;
-                }                
-            }
-
-            return valida;
-        }
-
-        let searchValid = validarPlan(search);
-
-        if (searchValid) {
-
-            $.ajax({
-                url: "../../controlador/controladorBusqueda.php",
-                type: "POST",
-                data: {
-                    search,
-                    type,
-                },
-                success: (response) => {
-                    try {
-                        let planes = JSON.parse(response);
-
-                        if (planes.length > 0) {
-
-                            planes.forEach(plan => {
-                                template += `<li>${plan.id_plan_entrenamiento}</li>`;
-                                template += `<li>${plan.nombre_plan_entrenamiento}</li>`;
-                                template += `<li>${plan.nro_ejercicios}</li>`;
-                                template += `<li>${plan.descripcion}</li>`;
-                            });
-
-                        } else {
-                            template = "<li>No se encontraron resultados.</li>"
-                        }                        
-
-                        $("#container").html(template);
-                        $("#result").show();
-                    } catch (e) {
-                        console.error("Error al parsear el JSON: " + e);
-                    }
-                },
-                error: (xhr, status, error) => {
-                    console.error("La solicitud AJAX falló: " + error)
-                }
-            })
+        if (validarID(search)) {
+            pasarDatos(search, type);
         } else {
-            template = "<li>Por favor ingrese un id valido.</li>";
-            $("#container").html(template);
-            $("#result").show();
+            alert("Por favor ingrese un ID válido!");
         }
-    })
-})
+    }
+
+    let limpiar = () => {
+
+        $(".outputPlanIDRutina").html("");
+        $(".outputPlanIDPlan").html("");
+        $(".outputPlanNombre").html("");
+        $(".outputPlanNroEjercicios").html("");
+        $(".outputPlanDescripcion").html("");
+
+        ingresarDatos();
+    }
+
+    $(".botonPlanBuscador").click(limpiar);
+});
