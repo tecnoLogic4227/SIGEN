@@ -1,4 +1,8 @@
 <?php
+
+//aca no se que persona tiene que registrar supongo yo que es el avanzado
+require_once 'controlador_session.php';
+verificarSesion('usuario_avanzado');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST["nombre"];
         $contrasenia = $_POST["contrasenia"];

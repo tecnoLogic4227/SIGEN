@@ -1,4 +1,5 @@
 <?php
+
     if($_SERVER['REQUESTED_METHOD']=='POST'){
         $nombre_deporte=$_POST["nombre-deporte"];
         $tipo_deporte=$_POST["tipo-deporte"];

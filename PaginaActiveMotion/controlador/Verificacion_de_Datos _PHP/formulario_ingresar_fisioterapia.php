@@ -1,4 +1,6 @@
 <?php
+require_once 'controlador_session.php';
+verificarSesion('usuario_entrenador');
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $nombre = $_POST["nombre-fisio"];
         $id = $_POST["id-fisio"];

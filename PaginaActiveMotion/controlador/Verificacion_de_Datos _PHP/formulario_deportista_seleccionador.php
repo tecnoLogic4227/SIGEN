@@ -1,4 +1,7 @@
 <?php
+require_once 'controlador_session.php';
+
+verificarSesion('usuario_seleccionador');
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombreDeportista= $_POST["nombreDeportista"];
         $deporteDeportista=$_POST["deporteDeportista"];

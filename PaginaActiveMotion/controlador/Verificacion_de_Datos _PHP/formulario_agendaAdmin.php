@@ -1,4 +1,9 @@
 <?php
+
+require_once 'controlador_session.php';
+
+verificarSesion('usuario_administrativo');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ci=$_POST["ci"];
     $fecha_agenda = $_POST["fecha-agenda"];

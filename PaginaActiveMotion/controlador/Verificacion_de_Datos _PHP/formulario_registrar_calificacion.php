@@ -1,4 +1,6 @@
 <?php
+require_once 'controlador_session.php';
+verificarSesion('usuario_entrenador');
     if($_SERVER['REQUESTED_METHOD']=='POST'){
         /*
         $ci_cliente=$_POST['ci-cliente'];

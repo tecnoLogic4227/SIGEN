@@ -1,4 +1,7 @@
 <?php
+require_once 'controlador_session.php';
+
+verificarSesion('usuario_entrenador');
     if($_SERVER['REQUESTED_METHOD']=='POST'){
         $nombre_plan=$_POST["nombre-plan"];
         $id_plan=$_POST["id-plan"];

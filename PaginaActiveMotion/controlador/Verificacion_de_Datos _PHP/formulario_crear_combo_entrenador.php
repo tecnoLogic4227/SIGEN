@@ -1,4 +1,7 @@
 <?php
+require_once 'controlador_session.php';
+
+verificarSesion('usuario_entrenador');
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $nombreCombo = $_POST["nombreCombo"];
         $ID_Combo = $_POST["ID_Combo"];

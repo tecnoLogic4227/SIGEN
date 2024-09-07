@@ -1,4 +1,9 @@
 <?php
+    require_once 'controlador_session.php';
+    verificarSesion('usuario_avanzado');
+
+
+
     if($_SERVER['REQUESTED_METHOD']=='POST'){
         $datos_cliente=["nombre cliente" => $_POST["nombre-cliente"],
                         "apellido cliente" => $_POST["apellido-cliente"],
