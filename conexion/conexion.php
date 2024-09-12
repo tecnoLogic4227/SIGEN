@@ -21,20 +21,4 @@ function conectar($host,$user,$password,$database){
     }
 }
 
-function desconectar($conexion){
-    $conexion->close();
-}
-
-function ping(){
-    global $conexion;
-
-        if ($conexion->ping()) {
-            echo "Conexion establecida";
-        } else{
-            echo "Conexion perdida ";
-        }
-}
-
-
-
 ?>
