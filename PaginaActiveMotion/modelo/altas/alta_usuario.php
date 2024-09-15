@@ -10,9 +10,9 @@ class Usuario {
     public $contrasenia;
     public $fecha_nac;
     public $ultimo_login;
+    public $rol; // Agregamos la propiedad rol
 
-    public function __construct($ci, $nombre, $apellido, $direccion, $email, $contrasenia, $fecha_nac, $ultimo_login)
-    {
+    public function __construct($ci, $nombre, $apellido, $direccion, $email, $contrasenia, $fecha_nac, $ultimo_login, $rol) {
         $this->ci = $ci;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -21,6 +21,7 @@ class Usuario {
         $this->contrasenia = $contrasenia;
         $this->fecha_nac = $fecha_nac;
         $this->ultimo_login = $ultimo_login;
+        $this->rol = $rol; // Asignamos el valor de rol
     }
 
     function get_ci()
@@ -97,6 +98,16 @@ class Usuario {
     {
         $this->ultimo_login = $ultimo_login;
     }
+
+    function get_rol(){
+            return $this->rol;
+    }
+
+    function setRol($rol)
+    {
+        $this->rol = $rol;
+    }
+
 }
 
 function agregarUsuario($usuario)
@@ -114,14 +125,15 @@ function agregarUsuario($usuario)
     $contrasenia = $usuario->get_contrasenia();
     $fecha_nac = $usuario->get_fecha_nac();
     $ultimo_login = $usuario->get_ultimo_login();
+    $rol = $usuario->get_rol(); // Agregamos la propiedad rol
 
-    $stmt = $conexion->prepare("INSERT INTO usuario (ci, nombre, apellido, direccion, email, contrasenia, fecha_nac, ultimo_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conexion->prepare("INSERT INTO usuario (ci, nombre, apellido, direccion, email, contrasenia, fecha_nac, ultimo_login, rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if (!$stmt) {
         die("Error en la preparación de la consulta: " . $conexion->error);
     }
 
-    $stmt->bind_param("isssssss", $ci, $nombre, $apellido, $direccion, $email, $contrasenia, $fecha_nac, $ultimo_login);
+    $stmt->bind_param("issssssss", $ci, $nombre, $apellido, $direccion, $email, $contrasenia, $fecha_nac, $ultimo_login, $rol);
     $stmt->execute();
 
     if ($stmt->error) {
@@ -135,13 +147,7 @@ function agregarUsuario($usuario)
 
 conectar();
 
-//hacemos de a uno claramente
-$usu = new Usuario("56341434", "Lucia", "Gilene", "Comandante Braga 2678", "gileneaixa04@gmail.com", "ABCD1234", "2007-01-04", "2024-07-21");
-$usu = new Usuario("12345678", "Mike", "Gomez", "Avenida Libertador 456", "maria.gomez@example.org", "Abc123!@", "1990-03-15", "2024-02-14");
-$usu = new Usuario("87654321", "Aurora", "Perez", "Carrera 7 #89-10", "carlos.lopez@example.net", "Secure#456", "1985-07-22", "2024-04-01");
-$usu = new Usuario("13243576", "Lucas", "Rodriguez", "Rua das Flores 789", "sofia.martinez@example.com", "Passw0rd$", "1995-01-30", "2024-05-25");
-$usu = new Usuario("67534231", "Paola", "Harols", "Paseo de la Reforma 101", "pedro.alvarez@example.org", "XyZ987&*", "2003-06-12", "2024-07-18");
-$usu = new Usuario("09876543", "Pablo", "Smith", "Hauptstraße 202", "ana.rodriguez@example.net", "MyP@ssw0rd", "2007-01-04", "2024-09-09");
 
-agregarUsuario($usu);
+
+
 ?>
