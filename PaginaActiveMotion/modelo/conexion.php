@@ -1,22 +1,24 @@
 <?php
+$server = 'localhost';
+$user = 'root';
+$password = '';
+$data_base = 'activemotion';
+$conexion;
 
-$server = "localhost";
-$database = "activemotion";
-$username = "root";
-$password = "";
-
-$connection;
-
-function conectar ($server, $database, $username, $password) {
-    global $connection;
-
-    $connection = new mysqli ($server, $username, $password, $database);
-
-    if ($connection->connect_error) {
-        die("Base de datos no conectada: ") . $connection->connect_error;
-    } 
+function conectar() {
+    global $conexion, $server, $user, $password, $data_base;
+    $conexion = new mysqli($server, $user, $password, $data_base);
+    if ($conexion->connect_error) {
+        die("Error de conexión: " . $conexion->connect_error);
+    }
+    echo "Conectado a la base de datos<br>";
 }
 
-conectar($server, $database, $username, $password);
-
+function desconectar() {
+    global $conexion;
+    if ($conexion) {
+        $conexion->close();
+        echo "Desconectado de la base de datos<br>";
+    }
+}
 ?>
