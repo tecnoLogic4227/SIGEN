@@ -1,6 +1,6 @@
 <?php
 require_once 'controlador_session.php';
-verificarSesion('usuario_entrenador');
+verificarSesion('usuario_avanzado');
     if($_SERVER['REQUESTED_METHOD']=='POST'){
         $nombre_ejercicio=$_POST["nombre-ejercicio"];
         $musculo_ejercicio=$_POST["musculo-ejercicio"];
