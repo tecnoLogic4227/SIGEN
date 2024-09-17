@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-
 
   <head>
     <meta charset="utf-8">
@@ -14,10 +11,6 @@
     <link rel="stylesheet" href="../../styles/style.css">
     <link rel="stylesheet" href="../../styles/media_style.css">
 </head>
-
-
-
-
   <body>
     <div id="wrapper">
         <nav>
@@ -52,12 +45,13 @@
               <h5>Deportista</h5>
               <br>
               <label for="ciPD">Cedula:</label>
-              <input type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8" placeholder="12345678"  pattern="\d*" onclick="eliminar_letras('ciPD', 'mensaje_consultarPDAdministrativo')" inputmode="numeric">
+              <input class="ciPD_input" type="number" name="ciPD" id="ciPD" minlength="8" maxlength="8" placeholder="12345678"  pattern="\d*" onclick="eliminar_letras('ciPD', 'mensaje_consultarPDAdministrativo')" inputmode="numeric">
               <br>
               <span id="mensaje_consultarPDAdministrativo" hidden></span>
               <br>
-              <button class="estado buscarPD" id="btnBuscarPD" type="button">Buscar</button>
-              <button class="estado eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
+              <button class="estado_buscarPD" id="btnBuscarPD" type="button">Buscar</button>
+              <br>
+              <button class="estado_eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
           </form>
       
           <div class="container-fluid tablaPDAdministrador">
@@ -128,10 +122,6 @@
       </main>
       
 
-
-
-
-
 <head>
   <meta charset="utf-8">
   <link rel="icon" href="../../../img/logoPagina.png">
@@ -179,12 +169,13 @@
         <br>
         <label for="ciPD">Cedula:</label>
         <br>
-        <input class="inputClienteBuscador">
+        <input class="ciPD_input" id="ciPD_Cliente" type="number" placeholder="12345678">
         <br>
         <span id="mensaje_consultarPDAdministrativo" hidden></span>
         <br>
         <button class="botonClienteBuscador" id="btnBuscarPD" type="button">Buscar</button>
-        <button class="estado eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
+        <br>
+        <button class="estado_eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
       </form>
 
       <div class="container-fluid tablaPDAdministrador">
@@ -267,7 +258,6 @@
       </div>
     </main>
 
->>>>>>> fb4fea2e8afa622ddcb2f5f8953c1109347ebe1f
 
     <footer class="social-footer">
       <div class="footer-content">

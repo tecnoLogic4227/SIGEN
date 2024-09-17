@@ -271,7 +271,7 @@ ul #servis, #fisio,#dep,#pila{
 
 
 .comb2{
-  margin-top: -90vh;
+  margin-top: -120vh;
   margin-left: 55vw;
   position: absolute;
 }
@@ -723,8 +723,8 @@ label{
 }
 
  #formRegistro{
-  width: 40vw;
-  height:170vh;
+  width: 50vw;
+  height:180vh;
   margin-top: 10vh;
   margin-left: 30vw;
   display:flex;
@@ -732,6 +732,8 @@ label{
   flex-direction:column;
   background:#abdefa;
   border-radius:10px;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
@@ -764,6 +766,7 @@ input::placeholder{
   font-size: 14px;
   font-weight: bold;
   margin: 10px 0;
+  margin-right: 45vw;
 }
 
 /*.................................................INDEX USUARIO.........................................................*/
@@ -786,7 +789,7 @@ input::placeholder{
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
   padding: 20px;
   width: 60%;
-  height: 70vh;
+  height: 80vh;
   text-align: left;
 }
 
@@ -959,7 +962,7 @@ button {
   width: 60%;
   z-index: 0;
 }
-
+.tablaDeportistasSeleccionador
 .graficaEntrenador {
   margin-top: 0vh;
   margin-left: 15vw;
@@ -1089,15 +1092,16 @@ button {
 }
 
 .tablaDeportistasSeleccionador {
-  margin-top: -80vh; 
+  margin-top: 250vh; 
   margin-left: -10vw;
   z-index: 0;
   display: block;
 }
 
 .graficaSeleccionador {
-  margin-top: -65vh;
-  margin-left: 60vw;
+  margin-top: -10vh;
+  margin-left: auto;
+  margin-right: auto;
   width: 40%;
   z-index: 0;
   display: block;
@@ -1290,9 +1294,9 @@ a {
   flex-direction: column;
 }
 
-#ciPD {
+.ciPD_input {
   background: rgba(121, 121, 121, 0.6);
-  width: 20vh;
+  width: 20vw;
   height: 30px;
   outline: none;
   border: 1px dashed #222;
@@ -1302,6 +1306,15 @@ a {
 .tablaPDAdministrador {
   margin-top: -70vh;
   margin-left: 0vw;
+}
+
+.estado_buscarPD{
+  border-radius: 10px;
+
+}
+
+.estado_eliminarPD{
+  border-radius: 10px;
 }
 
 /*................................................................. AVANZADO................................................................*/
@@ -1335,7 +1348,8 @@ margin-left: -70vw !important;
   width: 30%;
   border-collapse: collapse;
   margin: 20px auto;
-  margin-left: 2vw;
+  margin-left: 10px;
+  bottom: 10px;
 }
 
 .tablaUsuariosIndexAvanzado, th, td {
@@ -1355,7 +1369,9 @@ margin-left: -70vw !important;
   width: 30%;
   border-collapse: collapse;
   margin: 20px auto;
-  margin-left: 35vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
 }
 
 .tablaEjerciciosIndexAvanzado, th, td {
@@ -1386,6 +1402,23 @@ margin-left: -70vw !important;
   margin-left: 77vw;
 }
 
+
+
+/*
+#resultsTableUsuarios{
+  margin-left: 100%;
+}
+
+#resultsTableEjercicios{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#resultsTableDeportes{
+  margin-right: 100%;
+}
+*/
+
 /*...................................................Usuarios Avanzado.................................................*/
 
 .tituloAvanzado {
@@ -1400,10 +1433,31 @@ margin-left: -70vw !important;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 .tablaUsuarioAvanzado{
-margin-left: -30vw;
+  margin-left: -30vw;
 }
 
+#agregar-usuario-avanzado{
+  bottom: -80vh;
+  right: 42.5vw;
+  width: 15vw;
+}
+
+
 /*...................................................Ejercicios Avanzado.................................................*/
+
+.tablaUsuarioAvanzado{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#agregar-ejercicio{
+  bottom: -30vh;
+  margin-left: 50vw;
+  margin-right: 50vw;
+  width: 20vw;
+  right: 35vw;
+  left: -11vw;
+}
 
 .tituloAvanzado {
   text-align: center;
@@ -1431,7 +1485,8 @@ margin-left: -30vw;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 .tablaDeportesAvanzado{
-margin-left: -30vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .buscar3 {
@@ -1440,6 +1495,10 @@ margin-left: -30vw;
   margin-left: 70vw;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+#agregar-deporte{
+  margin-left: 41vw;
 }
 
 /*...................................................Quitar incrementador de inputs numericos de formularios.................................................*/
@@ -1476,4 +1535,18 @@ margin-left: -30vw;
   height: 10vh;
   color: white;
   font-size: 0.5 rem;
+}
+
+/*---------------------------------------------Clases de Entrenador-----------------------------------------*/
+
+/*-----------------------------------------------Asignar Entrenamiento---------------------------------------*/
+
+.ci_cliente_box{
+  top: 80vh;
+  background-color: #1acfdc;
+  border: solid 4px;
+  width: 30vw;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
 }
