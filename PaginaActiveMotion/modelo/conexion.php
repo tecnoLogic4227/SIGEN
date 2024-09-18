@@ -11,14 +11,10 @@ function conectar() {
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
-    echo "Conectado a la base de datos<br>";
+
+    return $conexion;
 }
 
-function desconectar() {
-    global $conexion;
-    if ($conexion) {
-        $conexion->close();
-        echo "Desconectado de la base de datos<br>";
-    }
-}
+$conexion = conectar();
+
 ?>

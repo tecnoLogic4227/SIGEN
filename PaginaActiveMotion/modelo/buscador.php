@@ -4,9 +4,9 @@ require_once("conexion.php");
 
 function buscarCliente($search)
 {
-    global $connection;
+    global $conexion;
 
-    $stmt = $connection->prepare("SELECT * FROM usuario_cliente JOIN usuario ON usuario.ci = usuario_cliente.ci JOIN usuario_telefono ON usuario.ci = usuario_telefono.ci JOIN efectua ON usuario_telefono.ci = efectua.ci JOIN ultimo_pago ON efectua.id_ultimo_pago = ultimo_pago.id_ultimo_pago WHERE usuario_cliente.ci = ?");
+    $stmt = $conexion->prepare("SELECT * FROM usuario_cliente JOIN usuario ON usuario.ci = usuario_cliente.ci JOIN usuario_telefono ON usuario.ci = usuario_telefono.ci JOIN efectua ON usuario_telefono.ci = efectua.ci JOIN ultimo_pago ON efectua.id_ultimo_pago = ultimo_pago.id_ultimo_pago WHERE usuario_cliente.ci = ?");
     $stmt->bind_param("i", $search);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -24,9 +24,9 @@ function buscarCliente($search)
 
 function buscarDeportista($search)
 {
-    global $connection;
+    global $conexion;
 
-    $stmt = $connection->prepare("SELECT * FROM USUARIO JOIN DEPORTISTA ON USUARIO.ci = DEPORTISTA.ci JOIN ASOCIADO ON DEPORTISTA.ci = ASOCIADO.ci JOIN DEPORTE ON ASOCIADO.id_deporte = DEPORTE.id_deporte JOIN ESTA ON DEPORTISTA.ci = ESTA.ci JOIN EQUIPO ON ESTA.id_equipo = EQUIPO.id_equipo WHERE USUARIO.ci = ?");
+    $stmt = $conexion->prepare("SELECT * FROM USUARIO JOIN DEPORTISTA ON USUARIO.ci = DEPORTISTA.ci JOIN ASOCIADO ON DEPORTISTA.ci = ASOCIADO.ci JOIN DEPORTE ON ASOCIADO.id_deporte = DEPORTE.id_deporte JOIN ESTA ON DEPORTISTA.ci = ESTA.ci JOIN EQUIPO ON ESTA.id_equipo = EQUIPO.id_equipo WHERE USUARIO.ci = ?");
     $stmt->bind_param("i", $search);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -44,9 +44,9 @@ function buscarDeportista($search)
 
 function buscarPlanEntrenamiento($search)
 {
-    global $connection;
+    global $conexion;
 
-    $stmt = $connection->prepare("SELECT * FROM plan_entrenamiento JOIN rutina ON rutina.id_rutina = plan_entrenamiento.id_rutina WHERE id_plan_entrenamiento = ?");
+    $stmt = $conexion->prepare("SELECT * FROM rutina JOIN posee ON rutina.id_rutina = posee.id_rutina JOIN ejercicio ON posee.id_ejercicio = ejercicio.id_ejercicio WHERE rutina.id_rutina = ?");
     $stmt->bind_param("i", $search);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -64,9 +64,9 @@ function buscarPlanEntrenamiento($search)
 
 function buscarEquipo($search)
 {
-    global $connection;
+    global $conexion;
 
-    $stmt = $connection->prepare("SELECT * FROM equipo WHERE id_equipo = ?");
+    $stmt = $conexion->prepare("SELECT * FROM equipo WHERE nombre_equipo = ?");
     $stmt->bind_param("s", $search);
     $stmt->execute();
     $result = $stmt->get_result();

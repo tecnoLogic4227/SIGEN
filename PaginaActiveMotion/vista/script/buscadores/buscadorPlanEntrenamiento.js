@@ -39,20 +39,22 @@ $(document).ready(() => {
                         planes.forEach(plan => {
 
                             //atributo de rutina
-                            $(".outputPlanIDRutina").html(plan.id_rutina);
+                            $(".outputEjercicioRutina").html("Plan ID: " + plan.id_rutina);
 
-                            //atributos de plan_entrenamiento
-                            $(".outputPlanIDPlan").html(plan.id_plan_entrenamiento);
-                            $(".outputPlanNombre").html(plan.nombre_plan_entrenamiento);
-                            $(".outputPlanNroEjercicios").html(plan.nro_ejercicios);
-                            $(".outputPlanDescripcion").html(plan.descripcion);
+                            //atributos de ejercicio
+                            $(".outputIDEjercicio").html(plan.id_ejercicio);
+                            $(".outputNombreEjercicio").html(plan.nombre_ejercicio);
+                            $(".outputNroRepEjercicio").html(plan.nro_rep);
+                            $(".outputNroSeriesEjercicio").html(plan.nro_series);
+                            $(".outputGrupoMuscularEjercicio").html(plan.grupo_muscular);
+                            $(".outputDescripcionEjercicio").html(plan.descripcion);
                         });
 
                     } else {
                         alert("No se encontraron resultados.");
                     }
                 } catch (e) {
-                    // console.log("Error al parsear el JSON: " + e);
+                    console.log("Error al parsear el JSON: " + e);
                 }
             },
             error: (xhr, status, error) => {
@@ -86,4 +88,7 @@ $(document).ready(() => {
     }
 
     $(".botonPlanBuscador").click(limpiar);
+
 });
+
+export {search};

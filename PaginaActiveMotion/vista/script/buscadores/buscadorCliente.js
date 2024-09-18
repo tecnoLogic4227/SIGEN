@@ -103,7 +103,7 @@ $(document).ready(() => {
                 }
             },
             error: (xhr, status, error) => {
-                console.log("La solicitud AJAX falló: " + error)
+                console.log("La solicitud AJAX falló: " + error);
             }
         })
 
