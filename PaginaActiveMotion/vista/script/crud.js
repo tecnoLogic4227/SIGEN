@@ -1,43 +1,41 @@
-import {search} from "buscadores/buscadorPlanEntrenamiento";
-
 $(document).ready(() => {
-    
 
-    let tabla, typeRequest, par1, par2;
+    let tabla = "rutina";
+    let par1, par2;
 
-    let eliminarRutina = (event) => {
+    let crearRutina = (event) => {
 
         event.preventDefault();
 
-        par1 = search;
+        par1 = Number($(".inputCrearRutina").val());
         par2 = "";
 
-        $(".popupEliminarRutina").css("visibility", "hidden");
+        $("body").css("visibility", "visible");
 
-        tabla = "rutina";
-        typeRequest = "delete";
-
+        $(".popupCrearRutina").css("visibility", "hidden");
 
         $.ajax({
-            url: "http://localhost/paginaactivemotion/controlador/crud/delete.php",
+            url: "http://localhost/sigen/paginaactivemotion/controlador/crud/create.php",
             type: "POST",
             data: {
                 tabla: tabla,
-                typeRequest: typeRequest,
                 par1: par1,
-                par2: par2
             },
             success: (response) => {
 
+                alert(response);
+
                 try {
-                    console.log(response);
 
                     let respuesta = JSON.parse(response);
 
                     if (respuesta == true) {
-                        console.log("Rutina eliminada correctamente.");
+
+                        alert("Rutina creada correctamente.");
+
                     } else {
-                        console.log("Error: " + respuesta);
+
+                        alert("Error al crear la rutina.");
                     }
 
                 } catch (e) {
@@ -48,6 +46,77 @@ $(document).ready(() => {
                 console.log("La solicitud AJAX falló: " + error);
             }
         })
+
+    }
+
+    let listarRutinas = (event) => {
+
+    }
+
+    let consultarRutina = (event) => {
+
+    }
+
+    let modificarRutina = (event) => {
+
+    }
+
+    let eliminarRutina = (event) => {
+
+        event.preventDefault();
+
+        par1 = search;
+        par2 = "";
+
+        $(".popupEliminarRutina").css("visibility", "hidden");
+
+        $.ajax({
+            url: "../../../controlador/crud/delete.php",
+            type: "POST",
+            data: {
+                tabla: tabla,
+                par1: par1,
+                par2: par2
+            },
+            success: (response) => {
+
+                try {
+
+                    let respuesta = JSON.parse(response);
+
+                    if (respuesta == true) {
+                        alert("Rutina eliminada correctamente.");
+
+                        $(".outputEjercicioRutina").html("");
+                        $(".outputIDEjercicio").html("");
+                        $(".outputNombreEjercicio").html("");
+                        $(".outputNroRepEjercicio").html("");
+                        $(".outputNroSeriesEjercicio").html("");
+                        $(".outputGrupoMuscularEjercicio").html("");
+                        $(".outputDescripcionEjercicio").html("");
+
+                    } else {
+                        alert("Error al eliminar la rutina.");
+                    }
+
+                } catch (e) {
+                    console.log("Error al parsear el JSON: " + e);
+                }
+            },
+            error: (xhr, status, error) => {
+                console.log("La solicitud AJAX falló: " + error);
+            }
+        })
+    }
+
+    let confirmarCreacionRutina = (event) => {
+
+        event.preventDefault();
+
+        $("body").css("visibility", "hidden");
+
+        $(".popupCrearRutina").css("visibility", "visible");
+
     }
 
     let confimarEliminacionRutina = (event) => {
@@ -61,6 +130,15 @@ $(document).ready(() => {
         }
     }
 
+
+    $(".botonCrearRutina").click(confirmarCreacionRutina);
+    $(".confirmarCrearRutina").click(crearRutina);
+
+    $(".botonConsultarRutina").click(consultarRutina);
+
+    $(".botonModificarRutina").click(modificarRutina);
+
+    $(".botonEliminarRutina").click(eliminarRutina);
     $(".confirmarEliminarRutina").click(eliminarRutina);
-    $(".botonEliminarRutina").click(confimarEliminacionRutina);
+
 })

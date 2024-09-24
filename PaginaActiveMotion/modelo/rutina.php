@@ -4,8 +4,8 @@ require_once 'conexion.php';
 class Rutina {
     public $id_rutina;
 
-    public function __construct($id_rutina) {
-        $this->id_rutina = $id_rutina;
+    public function __construct(array $data) {
+        $this->id_rutina = $data["id_rutina"] ?? null;
     }
 
     public function getIdRutina() {
@@ -21,4 +21,5 @@ class Rutina {
         return $result ? true : false;
     }
 }
+
 ?>

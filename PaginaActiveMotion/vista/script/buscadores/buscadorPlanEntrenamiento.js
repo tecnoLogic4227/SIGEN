@@ -1,8 +1,8 @@
+var search;
+
 $(document).ready(() => {
 
     let validarID = search => {
-
-        search = search.trim();
 
         if (search.length < 1) {
             return false;
@@ -23,7 +23,7 @@ $(document).ready(() => {
         event.preventDefault();
 
         $.ajax({
-            url: "http://localhost/paginaactivemotion/controlador/controladorBusqueda.php",
+            url: "http://localhost/sigen/paginaactivemotion/controlador/controladorBusqueda.php",
             type: "POST",
             data: {
                 search: search,
@@ -66,7 +66,7 @@ $(document).ready(() => {
 
     let ingresarDatos = () => {
 
-        let search = $(".inputPlanBuscador").val();
+        search = $(".inputPlanBuscador").val();
         const type = "planEntrenamiento";
 
         if (validarID(search)) {
@@ -90,5 +90,3 @@ $(document).ready(() => {
     $(".botonPlanBuscador").click(limpiar);
 
 });
-
-export {search};

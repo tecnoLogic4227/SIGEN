@@ -1550,3 +1550,12 @@ margin-left: -70vw !important;
   justify-content: center;
   align-items: center;
 }
+
+.outputEjercicioRutina {
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+.botonCrearRutina {
+  margin-top: 10vh;
+}

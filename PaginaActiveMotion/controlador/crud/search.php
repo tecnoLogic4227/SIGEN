@@ -3,7 +3,8 @@
 require_once("../../modelo/tablas/rutinaModel.php");
 
 $tabla = isset($_REQUEST["tabla"]) ? $_REQUEST["tabla"] : null;
-$valores = isset($_REQUEST["valores"]) ? $_REQUEST["valores"] : null;
+$par1 = isset($_REQUEST["par1"]) ? $_REQUEST["par1"] : null;
+$par2 = isset($_REQUEST["par2"]) ? $_REQUEST["par2"] : null;
 
 switch($tabla) {
     // case "asiste":
@@ -111,8 +112,7 @@ switch($tabla) {
     //     $params = ['i', $par1];
     //     break;
     case "rutina":
-        $rutina = new Rutina($valores);
-        $resultado = registrarRutina($rutina);
+        $resultado = consultarRutina($par1);
         break;
     // case "rutDeporte":
     //     $consulta = "DELETE FROM RUT_DEPORTE WHERE id_rutina = ?; ";
@@ -152,5 +152,10 @@ switch($tabla) {
         break;
 }
 
+if ($consulta != null) {
+    echo json_encode($resultado);
+} else {
+    echo json_encode(false);
+}
 
 ?>
