@@ -5,8 +5,9 @@ require_once '../conexion.php';
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   
   if ($_GET['accion'] == 'getTelefonos') {
+    global $conexion;
     $query = "SELECT * FROM USUARIO_TELEFONO";
-    $result = $connection->query($query);
+    $result = $conexion->query($query);
 
 
     $data = array();

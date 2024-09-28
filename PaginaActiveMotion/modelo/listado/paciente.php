@@ -5,8 +5,9 @@ require_once '../conexion.php';
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   
   if ($_GET['accion'] == 'getPacientes') {
+    global $conexion;
     $query = "SELECT * FROM PACIENTE";
-    $result = $connection->query($query);
+    $result = $conexion->query($query);
 
     $data = array();
     while ($row = $result->fetch_assoc()) {
@@ -17,4 +18,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit;
 }
   }
-}
+?>

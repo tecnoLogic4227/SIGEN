@@ -26,10 +26,6 @@ function listarUsuarios() {
               <td>${usuario.email}</td>
               <td>${usuario.fecha_nac}</td>
               <td>${usuario.rol}</td>
-              <td>
-                <button class="btn btn-warning btn-sm">Editar</button>
-                <button class="btn btn-danger btn-sm">Eliminar</button>
-              </td>
             </tr>
           `;
 

@@ -4,9 +4,10 @@ require_once '../conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   
-  iif ($_GET['accion'] == 'getLibres') {
+  if ($_GET['accion'] == 'getLibres') {
+    global $conexion;
     $query = "SELECT * FROM LIBRE";
-    $result = $connection->query($query);
+    $result = $conexion->query($query);
 
     $data = array();
     while ($row = $result->fetch_assoc()) {
