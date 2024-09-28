@@ -6,12 +6,13 @@ $(document).ready(function () {
 
 function listarDeportistas() {
   $.ajax({
-    url: "http://localhost/SIGEN/PaginaActiveMotion/modelo/listado/deportistas.php",
+    url: "http://localhost/SIGEN/PaginaActiveMotion/modelo/listado/deportista.php",
     type: "GET",
     data: {
       accion: "getDeportistas",
     },
     success: function (response) {
+      
       try {
         let data = JSON.parse(response);
 

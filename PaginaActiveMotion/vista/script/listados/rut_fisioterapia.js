@@ -12,7 +12,6 @@ function listarRutinas() {
       accion: "getRutinasFisioterapia",
     },
     success: function (response) {
-        console.error(response);
       try {
         let data = JSON.parse(response);
 
