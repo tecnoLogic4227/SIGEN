@@ -22,7 +22,6 @@ function buscarCliente($search)
         $stmt->close();
 
         return $clientes;
-        
     } catch (Exception $e) {
         die($e->getMessage());
     }
@@ -48,7 +47,6 @@ function buscarDeportista($search)
         $stmt->close();
 
         return $deportistas;
-
     } catch (Exception $e) {
         die($e->getMessage());
     }
@@ -60,7 +58,23 @@ function buscarPlanEntrenamiento($search)
 
     try {
 
-        $stmt = $conexion->prepare("SELECT * FROM rutina JOIN posee ON rutina.id_rutina = posee.id_rutina JOIN ejercicio ON posee.id_ejercicio = ejercicio.id_ejercicio WHERE rutina.id_rutina = ?");
+        $stmt = $conexion->prepare("SELECT 
+    rutina.id_rutina, 
+    rutina.nombre_rutina, 
+    ejercicio.id_ejercicio, 
+    ejercicio.nombre_ejercicio, 
+    ejercicio.nro_rep, 
+    ejercicio.nro_series, 
+    ejercicio.grupo_muscular, 
+    ejercicio.descripcion
+FROM 
+    rutina 
+LEFT JOIN 
+    posee ON rutina.id_rutina = posee.id_rutina 
+LEFT JOIN 
+    ejercicio ON posee.id_ejercicio = ejercicio.id_ejercicio 
+WHERE 
+    rutina.id_rutina = ?;");
         $stmt->bind_param("i", $search);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -74,7 +88,6 @@ function buscarPlanEntrenamiento($search)
         $stmt->close();
 
         return $planes;
-
     } catch (Exception $e) {
         die($e->getMessage());
     }
@@ -100,7 +113,6 @@ function buscarEquipo($search)
         $stmt->close();
 
         return $equipos;
-
     } catch (Exception $e) {
         die($e->getMessage());
     }

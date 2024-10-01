@@ -53,7 +53,8 @@
           <button id="boton-modificar-plan" class="botonPlanBuscador" type="button">Buscar</button>
         </article>
       </form>
-      <h4 class="outputEjercicioRutina">Plan ID: </h4>
+      <h4 class="outputEjercicioRutina">ID: </h4>
+      <h4 class="outputEjercicioRutinaNombre">Nombre: </h4>
       <table>
         <thead>
           <tr>
@@ -67,7 +68,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="outputIDEjercicio">b</td>
+            <td class="outputIDEjercicio"></td>
             <td class="outputNombreEjercicio"></td>
             <td class="outputNroRepEjercicio"></td>
             <td class="outputNroSeriesEjercicio"></td>
@@ -84,14 +85,20 @@
       <article class="popupCrearRutina" style="visibility: hidden;">
         <form>
           <h4>Crear Rutina</h3>
-          <label>Ingrese ID:</label>
-          <input class="inputCrearRutina">
+          <label>Ingrese nombre de rutina:</label>
+          <input class="inputParametro1">
           <button class="confirmarCrearRutina" type="button">Guardar</button>
         </form>
       </article>
 
       <article class="popupModificarRutina" style="visibility: hidden;">
-
+        <form>
+          <h4>Modificar Rutina</h3>
+          <label class="outputEjercicioRutinaNombre">Nombre de la rutina: </label>
+          <label>Modificar nombre de rutina:</label>
+          <input class="inputParametro1">
+          <button class="confirmarCrearRutina" type="button">Guardar</button>
+        </form>
       </article>
 
       <article class="popupEliminarRutina" style="visibility: hidden;">

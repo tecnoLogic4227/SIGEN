@@ -1,14 +1,26 @@
 $(document).ready(() => {
 
-    let tabla = "rutina";
-    let par1, par2;
+    let tabla, par1, par2, par3, par4, par5, par6, par7, par8;
+
+    tabla = "";
+    par1 = "";
+    par2 = "";
+    par3 = "";
+    par4 = "";
+    par5 = "";
+    par6 = "";
+    par7 = "";
+    par8 = "";
+
+    let verificarDatos
 
     let crearRutina = (event) => {
 
+        tabla = "rutina";
+
         event.preventDefault();
 
-        par1 = Number($(".inputCrearRutina").val());
-        par2 = "";
+        par1 = ($(".inputParametro1").val());
 
         $("body").css("visibility", "visible");
 
@@ -20,10 +32,15 @@ $(document).ready(() => {
             data: {
                 tabla: tabla,
                 par1: par1,
+                par2: par2,
+                par3: par3,
+                par4: par4,
+                par5: par5,
+                par6: par6,
+                par7: par7,
+                par8: par8,
             },
             success: (response) => {
-
-                alert(response);
 
                 try {
 
@@ -31,7 +48,7 @@ $(document).ready(() => {
 
                     if (respuesta == true) {
 
-                        alert("Rutina creada correctamente.");
+                        alert(`${tabla} creado/a correctamente.`);
 
                     } else {
 
@@ -51,6 +68,10 @@ $(document).ready(() => {
 
     let listarRutinas = (event) => {
 
+        event.preventDefault();
+
+
+
     }
 
     let consultarRutina = (event) => {
@@ -67,6 +88,8 @@ $(document).ready(() => {
 
         par1 = search;
         par2 = "";
+
+        $("body").css("visibility", "visible");
 
         $(".popupEliminarRutina").css("visibility", "hidden");
 
@@ -123,11 +146,16 @@ $(document).ready(() => {
 
         event.preventDefault();
 
-        if ($(".outputIDEjercicio").html() != "") {
+        if ($(".outputEjercicioRutina").html() != "ID: ") {
+
+            $("body").css("visibility", "hidden");
+
             $(".popupEliminarRutina").css("visibility", "visible");
+            
         } else {
             alert("No nay nada que eliminar!");
         }
+
     }
 
 
@@ -138,7 +166,7 @@ $(document).ready(() => {
 
     $(".botonModificarRutina").click(modificarRutina);
 
-    $(".botonEliminarRutina").click(eliminarRutina);
+    $(".botonEliminarRutina").click(confimarEliminacionRutina);
     $(".confirmarEliminarRutina").click(eliminarRutina);
 
 })

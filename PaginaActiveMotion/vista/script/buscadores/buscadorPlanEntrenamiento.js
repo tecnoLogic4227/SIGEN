@@ -39,7 +39,8 @@ $(document).ready(() => {
                         planes.forEach(plan => {
 
                             //atributo de rutina
-                            $(".outputEjercicioRutina").html("Plan ID: " + plan.id_rutina);
+                            $(".outputEjercicioRutina").html("ID: " + plan.id_rutina);
+                            $(".outputEjercicioRutinaNombre").html("Nombre: " + plan.nombre_rutina);
 
                             //atributos de ejercicio
                             $(".outputIDEjercicio").html(plan.id_ejercicio);
