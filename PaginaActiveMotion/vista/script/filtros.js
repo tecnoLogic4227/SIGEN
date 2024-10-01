@@ -1,0 +1,6 @@
+$(document).ready(() => {
+    let tabla = "";
+
+    
+
+})
