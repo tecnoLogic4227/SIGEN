@@ -1,17 +1,62 @@
 $(document).ready(() => {
     let ci, idRutina, nivel, fechaInicio, fechaTermino;
     const tabla = "asiste";
+    datos = "";
+
+    const listarAsiste = (datos) => {
+        $.ajax({
+            url: "../../../controlador/crud/crudController.php",
+            type: "GET",
+            data: {
+                tabla: tabla,
+                ...datos,
+            },
+            success: (response) => {
+                try {
+                    let clienteAsiste = JSON.parse(response);
+                    if (clienteAsiste.length > 0) {
+                        $(".tablaAsiste tbody").html("");
+                        let tbody = $(".tablaAsiste tbody");
+                        clienteAsiste.forEach(cliente => {
+                            let tr = $("<tr></tr>");
+                            tr.append(`<td>${cliente.ci}</td>`);
+                            tr.append(`<td>${cliente.id_rutina}</td>`);
+                            tr.append(`<td>${cliente.nivel}</td>`);
+                            tr.append(`<td>${cliente.fecha_inicio}</td>`);
+                            tr.append(`<td>${cliente.fecha_termino}</td>`);
+                            tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
+                            tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
+                            tbody.append(tr);
+                        });
+                    } else {
+                        alert("No se encontraron resultados.");
+                        $(".tablaAsiste tbody").html("");
+                    }
+                } catch (e) {
+                    console.log("Error al parsear el JSON: " + e);
+                }
+            },
+            error: (xhr, status, error) => {
+                console.log("La solicitud AJAX falló: " + error);
+            }
+        });
+    };
 
     const manejarSolicitud = (url, tipo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
             url: url,
             type: tipo,
-            data: datos,
+            data: { 
+                tabla,
+                ...datos,
+            },
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta === true) {
+                    if (respuesta == true) {
                         alert(exitoMensaje);
+                        datos = "";
+                        listarAsiste(datos);
                     } else {
                         alert(errorMensaje);
                     }
@@ -26,9 +71,8 @@ $(document).ready(() => {
     };
 
     const crearAsiste = (ci, idRutina, nivel, fechaInicio, fechaTermino) => {
-        $(".divConfirmarCrearAsiste").css("visibility", "hidden");
+        limpiarPantalla();
         manejarSolicitud("../../../controlador/crud/crudController.php", "POST", {
-            tabla: tabla,
             ci: ci,
             idRutina: idRutina,
             nivel: nivel,
@@ -37,7 +81,9 @@ $(document).ready(() => {
         }, "Asiste creado correctamente.", "Error al crear Asiste.");
     };
 
-    const datosCrearAsiste = () => {
+    const datosCrearAsiste = (event) => {
+        event.preventDefault();
+
         ci = $(".inputCrearAsisteCI").val();
         idRutina = $(".inputCrearAsisteIDRutina").val();
         nivel = $(".inputCrearAsisteNivel").val();
@@ -46,58 +92,27 @@ $(document).ready(() => {
         crearAsiste(ci, idRutina, nivel, fechaInicio, fechaTermino);
     };
 
-    const listarAsiste = () => {
-        $.ajax({
-            url: "../../../controlador/crud/crudController.php",
-            type: "GET",
-            data: { tabla: tabla },
-            success: (response) => {
-                try {
-                    let clienteAsiste = JSON.parse(response);
-                    if (clienteAsiste.length > 0) {
-                        $(".tablaAsiste tbody").html("");
-                        let tbody = $(".tablaAsiste tbody");
-                        clienteAsiste.forEach(cliente => {
-                            let tr = $("<tr></tr>");
-                            tr.append(`<td>${cliente.ci}</td>`);
-                            tr.append(`<td>${cliente.idRutina}</td>`);
-                            tr.append(`<td>${cliente.nivel}</td>`);
-                            tr.append(`<td>${cliente.fechaInicio}</td>`);
-                            tr.append(`<td>${cliente.fechaTermino}</td>`);
-                            tbody.append(tr);
-                        });
-                    } else {
-                        alert("No se encontraron resultados.");
-                    }
-                } catch (e) {
-                    console.log("Error al parsear el JSON: " + e);
-                }
-            },
-            error: (xhr, status, error) => {
-                console.log("La solicitud AJAX falló: " + error);
-            }
-        });
-    };
+    listarAsiste(datos);
 
     const buscarAsiste = (ci, idRutina) => {
-        manejarSolicitud("../../../controlador/crud/crudController.php", "GET", {
+        listarAsiste({
             tabla: tabla,
             ci: ci,
             idRutina: idRutina
-        }, "Asiste encontrado.", "No se encontraron resultados.");
+        });
     };
 
     const datosBuscarAsiste = (event) => {
         event.preventDefault();
         ci = $(".inputBuscarAsisteCI").val();
-        idRutina = $(".inputBuscarAsisteIdRutina").val();
+        idRutina = $(".inputBuscarAsisteID").val();
         buscarAsiste(ci, idRutina);
     };
 
-    const modificarAsiste = (ci, idRutina, nivel, fechaInicio, fechaTermino) => {
-        $(".divConfirmarModificarAsiste").css("visibility", "hidden");
+    const modificarAsiste = (event, ci, idRutina, nivel, fechaInicio, fechaTermino) => {
+        event.preventDefault();
+        limpiarPantalla();
         manejarSolicitud("../../../controlador/crud/crudController.php", "PUT", {
-            tabla: tabla,
             ci: ci,
             idRutina: idRutina,
             nivel: nivel,
@@ -106,24 +121,48 @@ $(document).ready(() => {
         }, "Asiste modificado correctamente.", "Error al modificar Asiste.");
     };
 
-    const eliminarAsiste = (ci, idRutina) => {
-        $(".divConfirmarEliminarAsiste").css("visibility", "hidden");
+    const eliminarAsiste = (event, ci, idRutina) => {
+        event.preventDefault();
+        limpiarPantalla();
         manejarSolicitud("../../../controlador/crud/crudController.php", "DELETE", {
-            tabla: tabla,
             ci: ci,
             idRutina: idRutina
         }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
     };
 
-    listarAsiste();
+    const confirmarCrearAsiste = () => {
+        limpiarPantalla();
+        $(".confirmarCrearAsiste").css("display", "block");
+    }
 
-    $(".asisteCrear").click(() => $(".divConfirmarCrearAsiste").css("visibility", "visible"));
+    const confirmarModificarAsiste = () => {
+        limpiarPantalla();
+        $(".confirmarModificarAsiste").css("display", "block");
+    }
+
+    const confirmarEliminarAsiste = () => {
+        limpiarPantalla();
+        $(".confirmarEliminarAsiste").css("display", "block");
+    }
+
+    const limpiarPantalla = () => {
+        $(".confirmarCrearAsiste").css("display", "none");
+        $(".confirmarModificarAsiste").css("display", "none");
+        $(".confirmarEliminarAsiste").css("display", "none");
+    }
+
+    $(".asisteCrear").click(confirmarCrearAsiste);
     $(".asisteConfirmarCrear").click(datosCrearAsiste);
     $(".asisteBuscar").click(datosBuscarAsiste);
-    $(".asisteModificar").click(() => $(".divConfirmarModificarAsiste").css("visibility", "visible"));
+    $(".asisteModificar").click(confirmarModificarAsiste);
     $(".asisteConfirmarModificar").click(modificarAsiste);
-    $(".asisteEliminar").click(() => $(".divConfirmarEliminarAsiste").css("visibility", "visible"));
+    $(".asisteEliminar").click(confirmarEliminarAsiste);
     $(".asisteConfirmarEliminar").click(eliminarAsiste);
+
+    $(".asisteCancelarCrear").click(limpiarPantalla);
+    $(".asisteCancelarModificar").click(limpiarPantalla);
+    $(".asisteCancelarEliminar").click(limpiarPantalla);
+
 });
 
 // $(document).ready(() => {
