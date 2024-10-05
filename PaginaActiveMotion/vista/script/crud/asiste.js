@@ -1,14 +1,16 @@
 $(document).ready(() => {
-    let ci, idRutina, nivel, fechaInicio, fechaTermino;
+    let ci, idRutina, nivel, fechaInicio, fechaTermino, metodo;
     const tabla = "asiste";
     datos = "";
 
     const listarAsiste = (datos) => {
+        metodo = "GET";
         $.ajax({
             url: "../../../controlador/crud/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
+                metodo: metodo,
                 ...datos,
             },
             success: (response) => {
@@ -42,12 +44,13 @@ $(document).ready(() => {
         });
     };
 
-    const manejarSolicitud = (url, tipo, datos, exitoMensaje, errorMensaje) => {
+    const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: url,
-            type: tipo,
+            url: "../../../controlador/crud/crudController.php",
+            type: "POST",
             data: { 
-                tabla,
+                tabla: tabla,
+                metodo: metodo,
                 ...datos,
             },
             success: (response) => {
@@ -72,7 +75,7 @@ $(document).ready(() => {
 
     const crearAsiste = (ci, idRutina, nivel, fechaInicio, fechaTermino) => {
         limpiarPantalla();
-        manejarSolicitud("../../../controlador/crud/crudController.php", "POST", {
+        manejarSolicitud("POST", {
             ci: ci,
             idRutina: idRutina,
             nivel: nivel,
@@ -83,7 +86,6 @@ $(document).ready(() => {
 
     const datosCrearAsiste = (event) => {
         event.preventDefault();
-
         ci = $(".inputCrearAsisteCI").val();
         idRutina = $(".inputCrearAsisteIDRutina").val();
         nivel = $(".inputCrearAsisteNivel").val();
@@ -109,22 +111,29 @@ $(document).ready(() => {
         buscarAsiste(ci, idRutina);
     };
 
-    const modificarAsiste = (event, ci, idRutina, nivel, fechaInicio, fechaTermino) => {
+    const modificarAsiste = (event) => {
         event.preventDefault();
+        ci = $(".inputModificarAsisteCI").val();
+        idRutina = $(".inputModificarAsisteIDRutina").val();
+        nivel = $(".inputModificarAsisteNivel").val();
+        fechaInicio = $(".inputModificarAsisteFechaInicio").val();
+        fechaTermino = $(".inputModificarAsisteFechaTermino").val();
         limpiarPantalla();
-        manejarSolicitud("../../../controlador/crud/crudController.php", "PUT", {
+        manejarSolicitud("PUT", {
             ci: ci,
             idRutina: idRutina,
             nivel: nivel,
             fechaInicio: fechaInicio,
             fechaTermino: fechaTermino,
-        }, "Asiste modificado correctamente.", "Error al modificar Asiste.");
+        }, "Asiste modificado correctamente.", "No se encontraron los datos.");
     };
 
     const eliminarAsiste = (event, ci, idRutina) => {
         event.preventDefault();
+        ci = $(".inputEliminarAsisteCI").val();
+        idRutina = $(".inputEliminarAsisteIDRutina").val();
         limpiarPantalla();
-        manejarSolicitud("../../../controlador/crud/crudController.php", "DELETE", {
+        manejarSolicitud("DELETE", {
             ci: ci,
             idRutina: idRutina
         }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
@@ -164,55 +173,3 @@ $(document).ready(() => {
     $(".asisteCancelarEliminar").click(limpiarPantalla);
 
 });
-
-// $(document).ready(() => {
-
-//     let crear = (event) => {
-
-//     }
-
-//     let listar = (event) => {
-
-//     }
-
-//     let buscar = (event) => {
-
-//     }
-
-//     let modificar = (event) => {
-
-//     }
-
-//     let eliminar = (event) => {
-
-//     }
-
-//     let previoCrear = (event) => {
-
-//     }
-
-//     let previoBuscar = (event) => {
-
-//     }
-
-//     let previoModificar = (event) => {
-
-//     }
-
-//     let previoEliminar = (event) => {
-
-//     }
-
-//     listar();
-
-//     $(".Crear").click(crear);
-//     $(".ConfirmarCrear").click(previoCrear);
-
-//     $(".Buscar").click(previoBuscar);
-
-//     $(".Modificar").click(previoModificar);
-//     $(".ConfirmarModificar").click(modificar);
-
-//     $(".Eliminar").click(previoEliminar);
-//     $(".ConfirmarEliminar").click(eliminar);
-// })

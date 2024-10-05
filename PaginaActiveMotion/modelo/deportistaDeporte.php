@@ -1,7 +1,7 @@
 <?php
 require_once 'conexion.php';
 
-class Deportista_Deportes {
+class DeportistaDeporte {
     public $ci;
     public $deporte;
 
