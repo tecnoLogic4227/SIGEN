@@ -1,25 +1,25 @@
 <?php
 require_once 'conexion.php';
 
-class Ultimo_Pago {
-    public $id_ultimo_pago;
+class UltimoPago {
+    public $idUltimoPago;
     public $hora;
     public $fecha;
     public $valor;
 
-    public function __construct($id_ultimo_pago, $hora, $fecha, $valor) {
-        $this->id_ultimo_pago = $id_ultimo_pago;
+    public function __construct($idUltimoPago, $hora, $fecha, $valor) {
+        $this->idUltimoPago = $idUltimoPago;
         $this->hora = $hora;
         $this->fecha = $fecha;
         $this->valor = $valor;
     }
 
     public function getIdUltimoPago() {
-        return $this->id_ultimo_pago;
+        return $this->idUltimoPago;
     }
 
-    public function setIdUltimoPago($id_ultimo_pago) {
-        $this->id_ultimo_pago = $id_ultimo_pago;
+    public function setIdUltimoPago($idUltimoPago) {
+        $this->idUltimoPago = $idUltimoPago;
     }
 
     public function getHora() {
@@ -49,7 +49,7 @@ class Ultimo_Pago {
     public function save() {
         global $conexion;
         $query = $conexion->prepare("INSERT INTO ultimo_pago (id_ultimo_pago, hora, fecha, valor) VALUES (?, ?, ?, ?)");
-        $query->bind_param('issi', $this->id_ultimo_pago, $this->hora, $this->fecha, $this->valor);
+        $query->bind_param('issi', $this->idUltimoPago, $this->hora, $this->fecha, $this->valor);
 
         $result = $query->execute();
         return $result ? true : false;

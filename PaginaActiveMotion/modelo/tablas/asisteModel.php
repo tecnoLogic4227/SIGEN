@@ -136,7 +136,9 @@ function verificarExistenciaAsiste($ci, $idRutina, $nivel, $fechaInicio, $fechaT
             return false;
         }
     } catch (Exception $e) {
-        echo json_encode(["Error: " => $e->getMessage()]);
+        echo json_encode(["Error" => $e->getMessage()]);
         return false;
     }
 }
+
+?>

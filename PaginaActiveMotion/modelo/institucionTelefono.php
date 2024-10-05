@@ -2,7 +2,7 @@
 require_once 'conexion.php';
 require_once 'institucion.php';
 
-class Institucion_Telefono {
+class InstitucionTelefono {
     public $id_institucion;
     public $telefono;
 

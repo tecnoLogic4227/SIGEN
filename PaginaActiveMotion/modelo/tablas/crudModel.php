@@ -20,7 +20,7 @@ function conectarBD()
     return $conexion;
 }
 
-function registrarBD($sql, $params, $atributos)
+function registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)
 {
     $conexion = conectarBD();
 
@@ -31,7 +31,7 @@ function registrarBD($sql, $params, $atributos)
         $stmt->execute();
         $stmt->close();
 
-        return true;
+        return verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta);
     } catch (Exception $e) {
         die($e->getMessage());
     }
@@ -57,7 +57,6 @@ function listarBD($sql, $params, $atributos)
             }
 
             $stmt->close();
-
         } else {
             $stmt = $conexion->prepare($sql);
             $stmt->execute();
@@ -70,7 +69,6 @@ function listarBD($sql, $params, $atributos)
             }
 
             $stmt->close();
-
         }
 
         return $resultado;
@@ -79,73 +77,40 @@ function listarBD($sql, $params, $atributos)
     }
 }
 
-// function consultar($sql, $params, $data)
-// {
-$conexion = conectarBD();
-
-// try {
-//     $stmt = $conexion->prepare("SELECT * FROM rutina JOIN posee ON rutina.id_rutina = posee.id_rutina JOIN ejercicio ON posee.id_ejercicio = ejercicio.id_ejercicio WHERE rutina.id_rutina = ?");
-//     $stmt->bind_param("i", $search);
-//     $stmt->execute();
-//     $result = $stmt->get_result();
-
-//     $resultado = new Rutina($result);
-
-//     $stmt->close();
-
-//     return $resultado;
-// } catch (Exception $e) {
-//     die($e->getMessage());
-// }
-// }
-
-function modificarBD($sql, $params, $data)
+function modificarBD($sql, $params, $atributos)
 {
     $conexion = conectarBD();
 
-    // try {
+    try {
 
-    //     $sql = "UPDATE rutina SET id_rutina = ? WHERE id_rutina = ?";
-    //     $data = $rutina->getIdRutina();
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param($params, ...$atributos);
+        $stmt->execute();
+        $stmt->close();
 
-    //     $stmt = $conexion->prepare($sql);
-    //     $stmt->bind_param("i", $data);
-    //     $stmt->execute();
-    //     $stmt->close();
-
-    //     return true;
-    // } catch (Exception $e) {
-    //     die($e->getMessage());
-    // }
+        return true;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
 }
 
-function eliminarBD($sql, $params, $data)
+function eliminarBD($sql, $params, $atributos, $sqlConsulta)
 {
     $conexion = conectarBD();
 
-    // try {
-    //     $conexion->begin_transaction();
+    try {
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param($params, ...$atributos);
+        $stmt->execute();
+        $stmt->close();
 
-    //     $stmt = $conexion->prepare("DELETE FROM posee WHERE id_rutina = ?");
-    //     $stmt->bind_param("i", $search);
-    //     $stmt->execute();
-    //     $stmt->close();
+        return !verificarExistencia($sqlConsulta, $params, $atributos);
 
-    //     $stmt = $conexion->prepare("DELETE FROM rutina WHERE id_rutina = ?");
-    //     $stmt->bind_param("i", $search);
-    //     $stmt->execute();
-    //     $stmt->close();
-
-    //     $conexion->commit();
-
-    //     $verificar = verificarCreacion($search);
-
-    //     return !$verificar;
-
-    // } catch (Exception $e) {
-    //     $conexion->rollback();
-    //     return $e->getMessage();
-    // }
+        return $resultado;
+    } catch (Exception $e) {
+        $conexion->rollback();
+        return $e->getMessage();
+    }
 }
 
 
@@ -158,9 +123,9 @@ function verificarExistencia($sql, $params, $atributos)
     $stmt->execute();
     $resultado = $stmt->get_result();
 
-    $existe = ($resultado->num_rows > 0);
-
-    $stmt->close();
-
-    return $existe;
+    if ($resultado) {
+        return ($resultado->num_rows > 0);
+    } else {
+        return false;
+    }
 }

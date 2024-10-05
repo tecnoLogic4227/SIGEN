@@ -7,20 +7,18 @@ class Usuario {
     public $apellido;
     public $direccion;
     public $email;
-    public $contrasenia;
     public $fecha_nac;
-    public $ultimo_login;
+    public $rol;
 
-    public function __construct($ci, $nombre, $apellido, $direccion, $email, $contrasenia, $fecha_nac, $ultimo_login)
+    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fecha_nac, $rol)
     {
         $this->ci = $ci;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->direccion = $direccion;
         $this->email = $email;
-        $this->contrasenia = $contrasenia;
         $this->fecha_nac = $fecha_nac;
-        $this->ultimo_login = $ultimo_login;
+        $this->rol = $rol;
     }
 
     function getCi()
@@ -68,16 +66,6 @@ class Usuario {
         $this->email = $email;
     }
 
-    function getContrasenia()
-    {
-        return $this->contrasenia;
-    }
-
-    function setContrasenia($contrasenia)
-    {
-        $this->contrasenia = $contrasenia;
-    }
-
     function getFechaNac()
     {
         return $this->fecha_nac;
@@ -88,22 +76,22 @@ class Usuario {
         $this->fecha_nac = $fecha_nac;
     }
 
-    function getUltimoLogin()
+    function getRol()
     {
-        return $this->ultimo_login;
+        return $this->rol;
     }
 
-    function setUltimoLogin($ultimo_login)
+    function setRol($rol)
     {
-        $this->ultimo_login = $ultimo_login;
+        $this->rol = $rol;
     }
 
     public function save() {
         global $conexion;
     
         if ($this->ci == '') {
-          $query = $conexion->prepare("INSERT INTO usuario (CI, NOMBRE, APELLIDO, DIRECCION, EMAIL, CONTRASENIA, FECHA_NAC,  ULTIMO_LOGIN) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-          $query->bind_param('isssssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->contrasenia, $this->fecha_nac, $this->ultimo_login);
+          $query = $conexion->prepare("INSERT INTO usuario (CI, NOMBRE, APELLIDO, DIRECCION, EMAIL,  FECHA_NAC, ROL) VALUES (?, ?, ?, ?, ?, ?, ?)");
+          $query->bind_param('issssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->fecha_nac, $this->rol);
         }
     
         $result = $query->execute();
