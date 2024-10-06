@@ -7,17 +7,17 @@ class Usuario {
     public $apellido;
     public $direccion;
     public $email;
-    public $fecha_nac;
+    public $fechaNac;
     public $rol;
 
-    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fecha_nac, $rol)
+    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $rol)
     {
         $this->ci = $ci;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->direccion = $direccion;
         $this->email = $email;
-        $this->fecha_nac = $fecha_nac;
+        $this->fechaNac = $fechaNac;
         $this->rol = $rol;
     }
 
@@ -68,12 +68,12 @@ class Usuario {
 
     function getFechaNac()
     {
-        return $this->fecha_nac;
+        return $this->fechaNac;
     }
 
-    function setFechaNac($fecha_nac)
+    function setFechaNac($fechaNac)
     {
-        $this->fecha_nac = $fecha_nac;
+        $this->fechaNac = $fechaNac;
     }
 
     function getRol()
@@ -91,7 +91,7 @@ class Usuario {
     
         if ($this->ci == '') {
           $query = $conexion->prepare("INSERT INTO usuario (CI, NOMBRE, APELLIDO, DIRECCION, EMAIL,  FECHA_NAC, ROL) VALUES (?, ?, ?, ?, ?, ?, ?)");
-          $query->bind_param('issssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->fecha_nac, $this->rol);
+          $query->bind_param('issssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->fechaNac, $this->rol);
         }
     
         $result = $query->execute();
