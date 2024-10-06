@@ -2,25 +2,25 @@
 require_once 'conexion.php';
 
 class Institucion {
-    public $id_institucion;
-    public $nombre_institucion;
+    public $idInstitucion;
+    public $nombreInstitucion;
     public $direccion;
 
-    public function __construct($id_institucion, $nombre_institucion, $direccion)
+    public function __construct($idInstitucion, $nombreInstitucion, $direccion)
     {
-        $this->id_institucion = $id_institucion;
-        $this->nombre_institucion = $nombre_institucion;
+        $this->idInstitucion = $idInstitucion;
+        $this->nombreInstitucion = $nombreInstitucion;
         $this->direccion = $direccion;
     }
 
     function getIdInstitucion()
     {
-        return $this->id_institucion;
+        return $this->idInstitucion;
     }
 
     function getNombreInsitucion()
     {
-        return $this->nombre_institucion;
+        return $this->nombreInstitucion;
     }
 
     function getDireccion()
@@ -28,9 +28,9 @@ class Institucion {
         return $this->direccion;
     }
 
-    function setNombreInstitucion($nombre_institucion)
+    function setNombreInstitucion($nombreInstitucion)
     {
-        $this->nombre_institucion = $nombre_institucion;
+        $this->nombreInstitucion = $nombreInstitucion;
     }
 
     function setDireccion($direccion)
@@ -41,7 +41,7 @@ class Institucion {
     public function save() {
         global $conexion;
         $query = $conexion->prepare("INSERT INTO institucion (ID_INSTITUCION, NOMBRE_INSTITUCION, DIRECCION) VALUES (?, ?, ?)");
-        $query->bind_param('iss', $this->id_institucion,  $this->nombre_institucion, $this->direccion);
+        $query->bind_param('iss', $this->idInstitucion,  $this->nombreInstitucion, $this->direccion);
 
 
         $result = $query->execute();

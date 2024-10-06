@@ -3,7 +3,7 @@ require_once 'conexion.php';
 require_once 'cliente.php';
 
 class Deportista extends Cliente {
-    private $posicion;
+    public $posicion;
 
     public function __construct($ci, $posicion) {
         parent::__construct($ci, '', '', '', '', '', '', '');

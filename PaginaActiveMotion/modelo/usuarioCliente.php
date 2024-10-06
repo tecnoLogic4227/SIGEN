@@ -6,20 +6,20 @@ class Cliente extends Usuario {
     private $actividad;
     private $estado;
     private $calificacion;
-    private $estado_actividad;
+    private $estadoActividad;
     private $fecha;
     private $hora;
-    private $turno_agenda;
+    private $turnoAgenda;
 
-    public function __construct($ci, $actividad, $estado, $calificacion, $estado_actividad, $fecha, $hora, $turno_agenda) {
+    public function __construct($ci, $actividad, $estado, $calificacion, $estadoActividad, $fecha, $hora, $turnoAgenda) {
         parent::__construct($ci, '', '', '', '', '', '', '');
         $this->actividad = $actividad;
         $this->estado = $estado;
         $this->calificacion = $calificacion;
-        $this->estado_actividad = $estado_actividad;
+        $this->estadoActividad = $estadoActividad;
         $this->fecha = $fecha;
         $this->hora = $hora;
-        $this->turno_agenda = $turno_agenda;
+        $this->turnoAgenda = $turnoAgenda;
     }
 
     public function getActividad() {
@@ -35,7 +35,7 @@ class Cliente extends Usuario {
     }
 
     public function getEstadoActividad() {
-        return $this->estado_actividad;
+        return $this->estadoActividad;
     }
 
     public function getFecha() {
@@ -47,7 +47,7 @@ class Cliente extends Usuario {
     }
 
     public function getTurnoAgenda() {
-        return $this->turno_agenda;
+        return $this->turnoAgenda;
     }
 
     public function setActividad($actividad) {
@@ -62,8 +62,8 @@ class Cliente extends Usuario {
         $this->calificacion = $calificacion;
     }
 
-    public function setEstadoActividad($estado_actividad) {
-        $this->estado_actividad = $estado_actividad;
+    public function setEstadoActividad($estadoActividad) {
+        $this->estadoActividad = $estadoActividad;
     }
 
     public function setFecha($fecha) {
@@ -74,14 +74,14 @@ class Cliente extends Usuario {
         $this->hora = $hora;
     }
 
-    public function setTurnoAgenda($turno_agenda) {
-        $this->turno_agenda = $turno_agenda;
+    public function setTurnoAgenda($turnoAgenda) {
+        $this->turnoAgenda = $turnoAgenda;
     }
 
     public function save() {
         global $conexion;
         $query = $conexion->prepare("INSERT INTO usuario_cliente (CI, ACTIVIDAD, ESTADO, CALIFICACION, ESTADO_ACTIVIDAD, FECHA, HORA, TURNO_AGENDA) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $query->bind_param('isssssss', $this->ci, $this->actividad, $this->estado, $this->calificacion, $this->estado_actividad, $this->fecha, $this->hora, $this->turno_agenda);
+        $query->bind_param('isssssss', $this->ci, $this->actividad, $this->estado, $this->calificacion, $this->estadoActividad, $this->fecha, $this->hora, $this->turnoAgenda);
         return $query->execute();
     }
 }
