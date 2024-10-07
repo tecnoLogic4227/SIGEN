@@ -2,60 +2,60 @@
 require_once 'conexion.php';
 
 class Ejercicio {
-    public $id_ejercicio;
-    public $nombre_ejercicio;
-    public $nro_rep;
-    public $nro_series;
-    public $grupo_muscular;
+    public $idEjercicio;
+    public $nombreEjercicio;
+    public $nroRep;
+    public $nroSeries;
+    public $grupoMuscular;
     public $descripcion;
 
-    public function __construct($id_ejercicio, $nombre_ejercicio, $nro_rep, $nro_series, $grupo_muscular, $descripcion) {
-        $this->id_ejercicio = $id_ejercicio;
-        $this->nombre_ejercicio = $nombre_ejercicio;
-        $this->nro_rep = $nro_rep;
-        $this->nro_series = $nro_series;
-        $this->grupo_muscular = $grupo_muscular;
+    public function __construct($idEjercicio, $nombreEjercicio, $nroRep, $nroSeries, $grupoMuscular, $descripcion) {
+        $this->idEjercicio = $idEjercicio;
+        $this->nombreEjercicio = $nombreEjercicio;
+        $this->nroRep = $nroRep;
+        $this->nroSeries = $nroSeries;
+        $this->grupoMuscular = $grupoMuscular;
         $this->descripcion = $descripcion;
     }
 
     public function getIdEjercicio() {
-        return $this->id_ejercicio;
+        return $this->idEjercicio;
     }
 
-    public function setIdEjercicio($id_ejercicio) {
-        $this->id_ejercicio = $id_ejercicio;
+    public function setIdEjercicio($idEjercicio) {
+        $this->idRjercicio = $idEjercicio;
     }
 
     public function getNombreEjercicio() {
-        return $this->nombre_ejercicio;
+        return $this->nombreEjercicio;
     }
 
-    public function setNombreEjercicio($nombre_ejercicio) {
-        $this->nombre_ejercicio = $nombre_ejercicio;
+    public function setNombreEjercicio($nombreEjercicio) {
+        $this->nombreEjercicio = $nombreEjercicio;
     }
 
     public function getNroRep() {
-        return $this->nro_rep;
+        return $this->nroRep;
     }
 
-    public function setNroRep($nro_rep) {
-        $this->nro_rep = $nro_rep;
+    public function setNroRep($nroRep) {
+        $this->nroRep = $nroRep;
     }
 
     public function getNroSeries() {
-        return $this->nro_series;
+        return $this->nroSeries;
     }
 
-    public function setNroSeries($nro_series) {
-        $this->nro_series = $nro_series;
+    public function setNroSeries($nroSeries) {
+        $this->nroSeries = $nroSeries;
     }
 
     public function getGrupoMuscular() {
-        return $this->grupo_muscular;
+        return $this->grupoMuscular;
     }
 
-    public function setGrupoMuscular($grupo_muscular) {
-        $this->grupo_muscular = $grupo_muscular;
+    public function setGrupoMuscular($grupoMuscular) {
+        $this->grupoMuscular = $grupoMuscular;
     }
 
     public function getDescripcion() {
@@ -69,7 +69,7 @@ class Ejercicio {
     public function save() {
         global $conexion;
         $query = $conexion->prepare("INSERT INTO ejercicio (id_ejercicio, nombre_ejercicio, nro_rep, nro_series, grupo_muscular, descripcion) VALUES (?, ?, ?, ?, ?, ?)");
-        $query->bind_param('ssisii', $this->id_ejercicio, $this->nombre_ejercicio, $this->nro_rep, $this->nro_series, $this->grupo_muscular, $this->descripcion);
+        $query->bind_param('ssisii', $this->idEjercicio, $this->nombreEjercicio, $this->nroRep, $this->nroSeries, $this->grupoMuscular, $this->descripcion);
 
         $result = $query->execute();
         return $result ? true : false;

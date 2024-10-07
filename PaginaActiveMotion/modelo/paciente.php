@@ -3,8 +3,8 @@ require_once 'conexion.php';
 require_once 'usuario_cliente.php';
 
 class Paciente extends Cliente {
-    private $motivo;
-    private $lesion;
+    public $motivo;
+    public $lesion;
 
     public function __construct($ci, $motivo, $lesion) {
         parent::__construct($ci, '', '', '', '', '', '', '');
