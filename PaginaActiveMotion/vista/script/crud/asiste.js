@@ -6,7 +6,7 @@ $(document).ready(() => {
     const listarAsiste = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../controlador/crud/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -15,19 +15,19 @@ $(document).ready(() => {
             },
             success: (response) => {
                 try {
-                    let clienteAsiste = JSON.parse(response);
-                    if (clienteAsiste.length > 0) {
+                    let asiste = JSON.parse(response);
+                    if (asiste.length > 0) {
                         $(".tablaAsiste tbody").html("");
                         let tbody = $(".tablaAsiste tbody");
-                        clienteAsiste.forEach(cliente => {
+                        asiste.forEach(asiste1 => {
                             let tr = $("<tr></tr>");
-                            tr.append(`<td>${cliente.ci}</td>`);
-                            tr.append(`<td>${cliente.id_rutina}</td>`);
-                            tr.append(`<td>${cliente.nivel}</td>`);
-                            tr.append(`<td>${cliente.fecha_inicio}</td>`);
-                            tr.append(`<td>${cliente.fecha_termino}</td>`);
-                            tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
-                            tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
+                            tr.append(`<td>${asiste1.ci}</td>`);
+                            tr.append(`<td>${asiste1.id_rutina}</td>`);
+                            tr.append(`<td>${asiste1.nivel}</td>`);
+                            tr.append(`<td>${asiste1.fecha_inicio}</td>`);
+                            tr.append(`<td>${asiste1.fecha_termino}</td>`);
+                            // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
+                            // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
                             tbody.append(tr);
                         });
                     } else {
@@ -128,7 +128,7 @@ $(document).ready(() => {
         }, "Asiste modificado correctamente.", "No se encontraron los datos.");
     };
 
-    const eliminarAsiste = (event, ci, idRutina) => {
+    const eliminarAsiste = (event) => {
         event.preventDefault();
         ci = $(".inputEliminarAsisteCI").val();
         idRutina = $(".inputEliminarAsisteIDRutina").val();
