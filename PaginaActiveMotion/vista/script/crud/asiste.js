@@ -119,7 +119,7 @@ $(document).ready(() => {
         fechaInicio = $(".inputModificarAsisteFechaInicio").val();
         fechaTermino = $(".inputModificarAsisteFechaTermino").val();
         limpiarPantalla();
-        manejarSolicitud("PUT", {
+        manejarSolicitud("POST", {
             ci: ci,
             idRutina: idRutina,
             nivel: nivel,
