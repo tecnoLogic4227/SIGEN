@@ -1,4 +1,4 @@
-$(document).ready(() => {
+(document).ready(() => {
 
     let tabla, par1, par2, par3, par4, par5, par6, par7, par8;
 

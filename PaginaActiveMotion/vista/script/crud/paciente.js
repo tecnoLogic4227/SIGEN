@@ -1,9 +1,9 @@
 $(document).ready(() => {
-    let ci, idRutina, nivel, fechaInicio, fechaTermino, metodo;
-    const tabla = "asiste";
+    let ci, motivo, lesion, metodo;
+    const tabla = "paciente";
     datos = "";
 
-    const listarAsiste = (datos) => {
+    const listarPaciente = (datos) => {
         metodo = "GET";
         $.ajax({
             url: "../../controlador/crud/crudController.php",
@@ -15,24 +15,22 @@ $(document).ready(() => {
             },
             success: (response) => {
                 try {
-                    let asiste = JSON.parse(response);
-                    if (asiste.length > 0) {
-                        $(".tablaAsiste tbody").html("");
-                        let tbody = $(".tablaAsiste tbody");
-                        asiste.forEach(asiste1 => {
+                    let paciente = JSON.parse(response);
+                    if (paciente.length > 0) {
+                        $(".tablaPaciente tbody").html("");
+                        let tbody = $(".tablaPaciente tbody");
+                        paciente.forEach(paciente1 => {
                             let tr = $("<tr></tr>");
-                            tr.append(`<td>${asiste1.ci}</td>`);
-                            tr.append(`<td>${asiste1.id_rutina}</td>`);
-                            tr.append(`<td>${asiste1.nivel}</td>`);
-                            tr.append(`<td>${asiste1.fecha_inicio}</td>`);
-                            tr.append(`<td>${asiste1.fecha_termino}</td>`);
+                            tr.append(`<td>${paciente1.ci}</td>`);
+                            tr.append(`<td>${paciente1.motivo}</td>`);
+                            tr.append(`<td>${paciente1.lesion}</td>`);
                             // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
                             // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
                             tbody.append(tr);
                         });
                     } else {
                         alert("No se encontraron resultados.");
-                        $(".tablaAsiste tbody").html("");
+                        $(".tablaPaciente tbody").html("");
                     }
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
@@ -59,7 +57,7 @@ $(document).ready(() => {
                     if (respuesta == true) {
                         alert(exitoMensaje);
                         datos = "";
-                        listarAsiste(datos);
+                        listarPaciente(datos);
                     } else {
                         alert(errorMensaje);
                     }
@@ -73,103 +71,91 @@ $(document).ready(() => {
         });
     };
 
-    const crearAsiste = (ci, idRutina, nivel, fechaInicio, fechaTermino) => {
+    const crearPaciente = (ci, motivo, lesion) => {
         limpiarPantalla();
         manejarSolicitud("POST", {
             ci: ci,
-            idRutina: idRutina,
-            nivel: nivel,
-            fechaInicio: fechaInicio,
-            fechaTermino: fechaTermino,
-        }, "Asiste creado correctamente.", "Error al crear Asiste.");
+            motivo: motivo,
+            lesion: lesion,
+        }, "Paciente creado correctamente.", "Error al crear Paciente.");
     };
 
-    const datosCrearAsiste = (event) => {
+    const datosCrearPaciente = (event) => {
         event.preventDefault();
-        ci = $(".inputCrearAsisteCI").val();
-        idRutina = $(".inputCrearAsisteIDRutina").val();
-        nivel = $(".inputCrearAsisteNivel").val();
-        fechaInicio = $(".inputCrearAsisteFechaInicio").val();
-        fechaTermino = $(".inputCrearAsisteFechaTermino").val();
-        crearAsiste(ci, idRutina, nivel, fechaInicio, fechaTermino);
+        ci = $(".inputCrearPacienteCi").val();
+        motivo = $(".inputCrearPacienteMotivo").val();
+        lesion = $(".inputCrearPacienteLesion").val();
+        crearPaciente(ci, motivo, lesion);
     };
 
-    listarAsiste(datos);
+    listarPaciente(datos);
 
-    const buscarAsiste = (ci, idRutina) => {
-        listarAsiste({
+    const buscarPaciente = (ci) => {
+        listarPaciente({
             tabla: tabla,
             ci: ci,
-            idRutina: idRutina
         });
     };
 
-    const datosBuscarAsiste = (event) => {
+    const datosBuscarPaciente = (event) => {
         event.preventDefault();
-        ci = $(".inputBuscarAsisteCI").val();
-        idRutina = $(".inputBuscarAsisteID").val();
-        buscarAsiste(ci, idRutina);
+        ci = $(".inputCrearPacienteCi").val();
+        buscarPaciente(ci);
     };
 
-    const modificarAsiste = (event) => {
+    const modificarPaciente = (event) => {
         event.preventDefault();
-        ci = $(".inputModificarAsisteCI").val();
-        idRutina = $(".inputModificarAsisteIDRutina").val();
-        nivel = $(".inputModificarAsisteNivel").val();
-        fechaInicio = $(".inputModificarAsisteFechaInicio").val();
-        fechaTermino = $(".inputModificarAsisteFechaTermino").val();
+        ci = $(".inputCrearPacienteCi").val();
+        motivo = $(".inputCrearPacienteMotivo").val();
+        lesion = $(".inputCrearPacienteLesion").val();
         limpiarPantalla();
         manejarSolicitud("POST", {
             ci: ci,
-            idRutina: idRutina,
-            nivel: nivel,
-            fechaInicio: fechaInicio,
-            fechaTermino: fechaTermino,
-        }, "Asiste modificado correctamente.", "No se encontraron los datos.");
+            motivo: motivo,
+            lesion: lesion,
+        }, "Paciente modificado correctamente.", "No se encontraron los datos.");
     };
 
-    const eliminarAsiste = (event) => {
+    const eliminarPaciente = (event) => {
         event.preventDefault();
-        ci = $(".inputEliminarAsisteCI").val();
-        idRutina = $(".inputEliminarAsisteIDRutina").val();
+        ci = $(".inputCrearPacienteCi").val();
         limpiarPantalla();
         manejarSolicitud("DELETE", {
             ci: ci,
-            idRutina: idRutina
-        }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
+        }, "Paciente eliminado correctamente.", "Error al eliminar Paciente.");
     };
 
-    const confirmarCrearAsiste = () => {
+    const confirmarCrearPaciente = () => {
         limpiarPantalla();
-        $(".confirmarCrearAsiste").css("display", "block");
+        $(".confirmarCrearPaciente").css("display", "block");
     }
 
-    const confirmarModificarAsiste = () => {
+    const confirmarModificarPaciente = () => {
         limpiarPantalla();
-        $(".confirmarModificarAsiste").css("display", "block");
+        $(".confirmarModificarPaciente").css("display", "block");
     }
 
-    const confirmarEliminarAsiste = () => {
+    const confirmarEliminarPaciente = () => {
         limpiarPantalla();
-        $(".confirmarEliminarAsiste").css("display", "block");
+        $(".confirmarEliminarPaciente").css("display", "block");
     }
 
     const limpiarPantalla = () => {
-        $(".confirmarCrearAsiste").css("display", "none");
-        $(".confirmarModificarAsiste").css("display", "none");
-        $(".confirmarEliminarAsiste").css("display", "none");
+        $(".confirmarCrearPaciente").css("display", "none");
+        $(".confirmarModificarPaciente").css("display", "none");
+        $(".confirmarEliminarPaciente").css("display", "none");
     }
 
-    $(".asisteCrear").click(confirmarCrearAsiste);
-    $(".asisteConfirmarCrear").click(datosCrearAsiste);
-    $(".asisteBuscar").click(datosBuscarAsiste);
-    $(".asisteModificar").click(confirmarModificarAsiste);
-    $(".asisteConfirmarModificar").click(modificarAsiste);
-    $(".asisteEliminar").click(confirmarEliminarAsiste);
-    $(".asisteConfirmarEliminar").click(eliminarAsiste);
+    $(".pacienteCrear").click(confirmarCrearPaciente);
+    $(".pacienteConfirmarCrear").click(datosCrearPaciente);
+    $(".pacienteBuscar").click(datosBuscarPaciente);
+    $(".pacienteModificar").click(confirmarModificarPaciente);
+    $(".pacienteConfirmarModificar").click(modificarPaciente);
+    $(".pacienteEliminar").click(confirmarEliminarPaciente);
+    $(".pacienteConfirmarEliminar").click(eliminarPaciente);
 
-    $(".asisteCancelarCrear").click(limpiarPantalla);
-    $(".asisteCancelarModificar").click(limpiarPantalla);
-    $(".asisteCancelarEliminar").click(limpiarPantalla);
+    $(".pacienteCancelarCrear").click(limpiarPantalla);
+    $(".pacienteCancelarModificar").click(limpiarPantalla);
+    $(".pacienteCancelarEliminar").click(limpiarPantalla);
 
 });

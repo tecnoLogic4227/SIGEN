@@ -98,7 +98,6 @@ $(document).ready(() => {
 
     const buscarAsiste = (ci, idRutina) => {
         listarAsiste({
-            tabla: tabla,
             ci: ci,
             idRutina: idRutina
         });

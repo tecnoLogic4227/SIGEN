@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    let idInstitucion, nombreInstitucion, direccion, metodo;
+    let idInstitucion, nombreInstitucion, direccion, telefono, metodo;
     const tabla = "institucion";
     datos = "";
 
@@ -24,6 +24,7 @@ $(document).ready(() => {
                             tr.append(`<td>${institucion1.id_institucion}</td>`);
                             tr.append(`<td>${institucion1.nombre_institucion}</td>`);
                             tr.append(`<td>${institucion1.direccion}</td>`);
+                            tr.append(`<td>${institucion1.telefono}</td>`);
                             // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
                             // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
                             tbody.append(tr);
@@ -71,12 +72,13 @@ $(document).ready(() => {
         });
     };
 
-    const crearInstitucion = (idInstitucion, nombreInstitucion, direccion) => {
+    const crearInstitucion = (idInstitucion, nombreInstitucion, direccion, telefono) => {
         limpiarPantalla();
         manejarSolicitud("POST", {
             idInstitucion: idInstitucion,
             nombreInstitucion: nombreInstitucion,
             direccion: direccion,
+            telefono: telefono,
         }, "Institucion creado correctamente.", "Error al crear Institucion.");
     };
 
@@ -85,7 +87,8 @@ $(document).ready(() => {
         idInstitucion = $(".inputCrearInstitucionIdInstitucion").val();
         nombreInstitucion = $(".inputCrearInstitucionNombreInstitucion").val();
         direccion = $(".inputCrearInstitucionDireccion").val();
-        crearInstitucion(idInstitucion, nombreInstitucion, direccion);
+        telefono = $(".inputCrearInstitucionTelefono").val();
+        crearInstitucion(idInstitucion, nombreInstitucion, direccion, telefono);
     };
 
     listarInstitucion(datos);
@@ -108,11 +111,13 @@ $(document).ready(() => {
         idInstitucion = $(".inputCrearInstitucionIdInstitucion").val();
         nombreInstitucion = $(".inputCrearInstitucionNombreInstitucion").val();
         direccion = $(".inputCrearInstitucionDireccion").val();
+        telefono = $(".inputCrearInstitucionTelefono").val();
         limpiarPantalla();
         manejarSolicitud("POST", {
             idInstitucion: idInstitucion,
             nombreInstitucion: nombreInstitucion,
             direccion: direccion,
+            telefono: telefono,
         }, "Institucion modificado correctamente.", "No se encontraron los datos.");
     };
 

@@ -74,7 +74,7 @@ function datos($tabla)
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
             $posicion = isset($_REQUEST["posicion"]) ? $_REQUEST["posicion"] : null;
 
-            return new Deporte($ci, $posicion);
+            return new Deportista($ci, $posicion);
             break;
         case "deportistaDeporte":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
@@ -136,27 +136,27 @@ function datos($tabla)
             $idInstitucion = isset($_REQUEST["idInstitucion"]) ? $_REQUEST["idInstitucion"] : null;
             $nombreInstitucion = isset($_REQUEST["nombreInstitucion"]) ? $_REQUEST["nombreInstitucion"] : null;
             $direccion = isset($_REQUEST["direccion"]) ? $_REQUEST["direccion"] : null;
+            $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
             return new Institucion($idInstitucion, $nombreInstitucion, $direccion);
             break;
-        case "institucionTelefono":
-            $idInstitucion = isset($_REQUEST["idInstitucion"]) ? $_REQUEST["idInstitucion"] : null;
-            $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
+        // case "institucionTelefono":
+        //     $idInstitucion = isset($_REQUEST["idInstitucion"]) ? $_REQUEST["idInstitucion"] : null;
+        //     $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
-            return new InstitucionTelefono($idInstitucion, $telefono);
-            break;
+        //     return new InstitucionTelefono($idInstitucion, $telefono);
+        //     break;
         case "libre":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
 
             return new Libre($ci);
             break;
-            // case "login":
-            //     $idEquipo = isset($_REQUEST["idEquipo"]) ? $_REQUEST["idEquipo"] : null;
-            //     $nombreEquipo = isset($_REQUEST["nombreEquipo"]) ? $_REQUEST["nombreEquipo"] : null;
-            //     $cantidad = isset($_REQUEST["cantidad"]) ? $_REQUEST["cantidad"] : null;
+            case "login":
+                $idLogin = isset($_REQUEST["idLogin"]) ? $_REQUEST["idLogin"] : null;
+                $contrasenia = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
 
-            //     return new Equipo($idEquipo, $nombreEquipo, $cantidad);
-            //     break;
+                return new Login($idLogin, $contrasenia);
+                break;
         case "paciente":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
             $motivo = isset($_REQUEST["motivo"]) ? $_REQUEST["motivo"] : null;
@@ -211,32 +211,39 @@ function datos($tabla)
             $email = isset($_REQUEST["email"]) ? $_REQUEST["email"] : null;
             $fechaNac = isset($_REQUEST["fechaNac"]) ? $_REQUEST["fechaNac"] : null;
             $rol = isset($_REQUEST["rol"]) ? $_REQUEST["rol"] : null;
+            $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
-            return new Usuario($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $rol);
+            return new Usuario($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $rol, $telefono);
             break;
         case "usuarioCliente":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
             $actividad = isset($_REQUEST["actividad"]) ? $_REQUEST["actividad"] : null;
             $estado = isset($_REQUEST["estado"]) ? $_REQUEST["estado"] : null;
-            $calificacion = isset($_REQUEST["calificacion"]) ? $_REQUEST["calificacion"] : null;
             $estadoActividad = isset($_REQUEST["estadoActividad"]) ? $_REQUEST["estadoActividad"] : null;
             $fecha = isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : null;
             $hora = isset($_REQUEST["hora"]) ? $_REQUEST["hora"] : null;
             $turnoAgenda = isset($_REQUEST["turnoAgenda"]) ? $_REQUEST["turnoAgenda"] : null;
+            $cumplimientoAgenda = isset($_REQUEST["cumplimientoAgenda"]) ? $_REQUEST["cumplimientoAgenda"] : null;
+            $resistenciaAnaerobica = isset($_REQUEST["resistenciaAnaerobica"]) ? $_REQUEST["resistenciaAnaerobica"] : null;
+            $fuerzaMuscular = isset($_REQUEST["fuerzaMuscular"]) ? $_REQUEST["fuerzaMuscular"] : null;
+            $resistenciaMuscular = isset($_REQUEST["resistenciaMuscular"]) ? $_REQUEST["resistenciaMuscular"] : null;
+            $flexibilidad = isset($_REQUEST["flexibilidad"]) ? $_REQUEST["flexibilidad"] : null;
+            $resistenciaMonotonia = isset($_REQUEST["resistenciaMonotonia"]) ? $_REQUEST["resistenciaMonotonia"] : null;
+            $resiliencia = isset($_REQUEST["resiliencia"]) ? $_REQUEST["resiliencia"] : null;
 
-            return new Cliente($ci, $actividad, $estado, $calificacion, $estadoActividad, $fecha, $hora, $turnoAgenda);
+            return new Cliente($ci, $actividad, $estado, $estadoActividad, $fecha, $hora, $turnoAgenda, $cumplimientoAgenda, $resistenciaAnaerobica, $fuerzaMuscular, $resistenciaMuscular, $flexibilidad, $resistenciaMonotonia, $resiliencia);
             break;
         case "usuarioEntrenador":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
 
             return new Entrenador($ci);
             break;
-        case "usuarioTelefono":
-            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-            $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
+        // case "usuarioTelefono":
+        //     $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+        //     $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
-            return new UsuarioTelefono($ci, $telefono);
-            break;
+        //     return new UsuarioTelefono($ci, $telefono);
+        //     break;
         default:
             break;
     }
@@ -472,34 +479,34 @@ function crearModificar($tabla)
             $atributosConsulta = [$institucion->idInstitucion];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE INSTITUCION SET nombre_institucion = ?, direccion = ? WHERE id_institucion = ?";
-                $params = "ssi";
-                $atributos = [$institucion->nombreInstitucion, $institucion->direccion, $institucion->idInstitucion];
+                $sql = "UPDATE INSTITUCION SET nombre_institucion = ?, direccion = ?, telefono = ? WHERE id_institucion = ?";
+                $params = "ssii";
+                $atributos = [$institucion->nombreInstitucion, $institucion->direccion, $institucion->idInstitucion, $institucion->telefono];
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaInstitucion($institucion->idInstitucion, $institucion->nombreInstitucion, $institucion->direccion));
+                echo json_encode(verificarExistenciaInstitucion($institucion->idInstitucion, $institucion->nombreInstitucion, $institucion->direccion, $institucion->telefono));
             }
 
             break;
-        case "institucionTelefono":
-            $institucionTelefono = datos($tabla);
+        // case "institucionTelefono":
+        //     $institucionTelefono = datos($tabla);
 
-            $sqlConsulta = "SELECT * FROM INSTITUCION_TELEFONO WHERE id_institucion = ? AND telefono = ?";
-            $paramsConsulta = "is";
-            $atributosConsulta = [$institucionTelefono->idInstitucion, $institucionTelefono->telefono];
+        //     $sqlConsulta = "SELECT * FROM INSTITUCION_TELEFONO WHERE id_institucion = ? AND telefono = ?";
+        //     $paramsConsulta = "is";
+        //     $atributosConsulta = [$institucionTelefono->idInstitucion, $institucionTelefono->telefono];
 
-            if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE INSTITUCION_TELEFONO SET telefono = ? WHERE id_institucion = ? AND telefono = ?";
-                $params = "sis";
-                $atributos = [$institucionTelefono->telefonoNuevo, $institucionTelefono->idInstitucion, $institucionTelefono->telefono];
+        //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+        //         $sql = "UPDATE INSTITUCION_TELEFONO SET telefono = ? WHERE id_institucion = ? AND telefono = ?";
+        //         $params = "sis";
+        //         $atributos = [$institucionTelefono->telefonoNuevo, $institucionTelefono->idInstitucion, $institucionTelefono->telefono];
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
-            } else {
-                echo json_encode(verificarExistenciaInstitucionTelefono($institucionTelefono->idInstitucion, $institucionTelefono->telefono));
-            }
+        //         echo json_encode(modificarBD($sql, $params, $atributos));
+        //     } else {
+        //         echo json_encode(verificarExistenciaInstitucionTelefono($institucionTelefono->idInstitucion, $institucionTelefono->telefono));
+        //     }
 
-            break;
+        //     break;
         case "libre":
             $libre = datos($tabla);
 
@@ -661,13 +668,13 @@ function crearModificar($tabla)
             $atributosConsulta = [$usuario->ci];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE USUARIO SET nombre = ?, apellido = ?, direccion = ?, email = ?, fecha_nac = ?, rol = ? WHERE ci = ?";
-                $params = "ssssssi";
-                $atributos = [$usuario->nombre, $usuario->apellido, $usuario->direccion, $usuario->email, $usuario->fechaNac, $usuario->rol, $usuario->ci];
+                $sql = "UPDATE USUARIO SET nombre = ?, apellido = ?, direccion = ?, email = ?, fecha_nac = ?, rol = ?, telefono = ? WHERE ci = ?";
+                $params = "ssssssii";
+                $atributos = [$usuario->nombre, $usuario->apellido, $usuario->direccion, $usuario->email, $usuario->fechaNac, $usuario->rol, $usuario->ci, $usuario->telefono];
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaUsuario($usuario->ci, $usuario->nombre, $usuario->apellido, $usuario->direccion, $usuario->email, $usuario->fechaNac, $usuario->rol));
+                echo json_encode(verificarExistenciaUsuario($usuario->ci, $usuario->nombre, $usuario->apellido, $usuario->direccion, $usuario->email, $usuario->fechaNac, $usuario->rol, $usuario->telefono));
             }
 
             break;
@@ -679,9 +686,9 @@ function crearModificar($tabla)
             $atributosConsulta = [$usuarioCliente->ci];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE USUARIO_CLIENTE SET actividad = ?, estado = ?, calificacion = ?, estado_actividad = ?, fecha = ?, hora = ?, turno_agenda = ? WHERE ci = ?";
-                $params = "ssissssi";
-                $atributos = [$usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->calificacion, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda, $usuarioCliente->ci];
+                $sql = "UPDATE USUARIO_CLIENTE SET actividad = ?, estado = ?, estado_actividad = ?, fecha = ?, hora = ?, turno_agenda = ?, cumplimiento_agenda = ?, resistencia_anaerobica = ?, fuerza_muscular = ?, resistencia_muscular = ?, flexibilidad = ?, resistencia_monotonia = ?, resiliencia = ? WHERE ci = ?";
+                $params = "ssssssiiiiiiii";
+                $atributos = [$usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda, $usuarioCliente->cumplimientoAgenda, $usuarioCliente->resistenciaAnaerobica, $usuarioCliente->fuerzaMuscular, $usuarioCliente->resistenciaMuscular, $usuarioCliente->flexibilidad, $usuarioCliente->resistenciaMonotonia, $usuarioCliente->resiliencia, $usuarioCliente->ci];
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
@@ -702,25 +709,24 @@ function crearModificar($tabla)
             }
 
             break;
-        case "usuarioTelefono":
-            $usuarioTelefono = datos($tabla);
+        // case "usuarioTelefono":
+        //     $usuarioTelefono = datos($tabla);
 
-            $sqlConsulta = "SELECT * FROM USUARIO_TELEFONO WHERE ci = ? AND telefono = ?";
-            $paramsConsulta = "is";
-            $atributosConsulta = [$usuarioTelefono->ci, $usuarioTelefono->telefono];
+        //     $sqlConsulta = "SELECT * FROM USUARIO_TELEFONO WHERE ci = ? AND telefono = ?";
+        //     $paramsConsulta = "is";
+        //     $atributosConsulta = [$usuarioTelefono->ci, $usuarioTelefono->telefono];
 
-            if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE USUARIO_TELEFONO SET telefono = ? WHERE ci = ? AND telefono = ?";
-                $params = "sis";
-                $atributos = [$usuarioTelefono->telefono, $usuarioTelefono->ci, $usuarioTelefono->telefono];
+        //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+        //         $sql = "UPDATE USUARIO_TELEFONO SET telefono = ? WHERE ci = ? AND telefono = ?";
+        //         $params = "sis";
+        //         $atributos = [$usuarioTelefono->telefono, $usuarioTelefono->ci, $usuarioTelefono->telefono];
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
-            } else {
-                echo json_encode(verificarExistenciaUsuarioTelefono($usuarioTelefono->ci, $usuarioTelefono->telefono));
-            }
+        //         echo json_encode(modificarBD($sql, $params, $atributos));
+        //     } else {
+        //         echo json_encode(verificarExistenciaUsuarioTelefono($usuarioTelefono->ci, $usuarioTelefono->telefono));
+        //     }
 
-            break;
-
+        //     break;
         default:
             $consulta = null;
             break;

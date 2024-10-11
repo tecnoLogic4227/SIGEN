@@ -123,7 +123,7 @@ $(document).ready(() => {
 
     let limpiar = () => {
 
-        $(".outputClienteCI").html("")
+        $(".outputClienteCi").html("");
         $(".outputClienteUltimoLogin").html("");
         $(".outputClienteFechaNacimiento").html("");
         $(".outputClienteNombre").html("");

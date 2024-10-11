@@ -10,8 +10,9 @@ class Usuario {
     public $email;
     public $fechaNac;
     public $rol;
+    public $telefono;
 
-    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $rol)
+    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $rol, $telefono)
     {
         $this->ci = $ci;
         $this->nombre = $nombre;
@@ -20,6 +21,7 @@ class Usuario {
         $this->email = $email;
         $this->fechaNac = $fechaNac;
         $this->rol = $rol;
+        $this->telefono = $telefono;
     }
 
     function getCi()
@@ -87,12 +89,22 @@ class Usuario {
         $this->rol = $rol;
     }
 
+    function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+    }
+
     public function save() {
         global $conexion;
     
         if ($this->ci == '') {
-          $query = $conexion->prepare("INSERT INTO usuario (CI, NOMBRE, APELLIDO, DIRECCION, EMAIL,  FECHA_NAC, ROL) VALUES (?, ?, ?, ?, ?, ?, ?)");
-          $query->bind_param('issssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->fechaNac, $this->rol);
+          $query = $conexion->prepare("INSERT INTO usuario (CI, NOMBRE, APELLIDO, DIRECCION, EMAIL,  FECHA_NAC, ROL, TELEFONO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+          $query->bind_param('issssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->fechaNac, $this->rol, $this->telefono);
         }
     
         $result = $query->execute();
