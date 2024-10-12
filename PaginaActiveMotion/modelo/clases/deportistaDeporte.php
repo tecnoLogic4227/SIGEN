@@ -22,14 +22,14 @@ class DeportistaDeporte {
         $this->deporte = $deporte;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO deportista_deportes (ci, deporte) VALUES (?, ?)");
-        $query->bind_param('is', $this->ci, $this->deporte);
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO deportista_deportes (ci, deporte) VALUES (?, ?)");
+    //     $query->bind_param('is', $this->ci, $this->deporte);
 
-        $result = $query->execute();
-        return $result ? true : false;
-    }
+    //     $result = $query->execute();
+    //     return $result ? true : false;
+    // }
 
 }
 ?>

@@ -1,7 +1,6 @@
 <?php
 
-// require_once("../conexion.php");
-// require_once("../rutina.php");
+// require_once("../config/conexion.php");
 
 $server = 'localhost';
 $user = 'root';
@@ -23,6 +22,7 @@ function conectarBD()
 function registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)
 {
     $conexion = conectarBD();
+    // global $conexion;
 
     try {
 

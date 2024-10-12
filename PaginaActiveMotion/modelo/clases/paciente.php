@@ -28,11 +28,11 @@ class Paciente extends Cliente {
         $this->lesion = $lesion;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO paciente (CI, MOTIVO, LESION) VALUES (?, ?, ?)");
-        $query->bind_param('iss', $this->ci, $this->motivo, $this->lesion);
-        return $query->execute();
-    }
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO paciente (CI, MOTIVO, LESION) VALUES (?, ?, ?)");
+    //     $query->bind_param('iss', $this->ci, $this->motivo, $this->lesion);
+    //     return $query->execute();
+    // }
 }
 ?>

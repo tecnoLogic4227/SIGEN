@@ -78,13 +78,12 @@ class Cliente extends Usuario {
         $this->turnoAgenda = $turnoAgenda;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO usuario_cliente (CI, ACTIVIDAD, ESTADO, CALIFICACION, ESTADO_ACTIVIDAD, FECHA, HORA, TURNO_AGENDA) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $query->bind_param('isssssss', $this->ci, $this->actividad, $this->estado, $this->calificacion, $this->estadoActividad, $this->fecha, $this->hora, $this->turnoAgenda);
-        return $query->execute();
-    }
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO usuario_cliente (CI, ACTIVIDAD, ESTADO, CALIFICACION, ESTADO_ACTIVIDAD, FECHA, HORA, TURNO_AGENDA) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    //     $query->bind_param('isssssss', $this->ci, $this->actividad, $this->estado, $this->calificacion, $this->estadoActividad, $this->fecha, $this->hora, $this->turnoAgenda);
+    //     return $query->execute();
+    // }
 }
 ?>
 
-?>

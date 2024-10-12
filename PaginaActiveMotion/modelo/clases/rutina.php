@@ -23,14 +23,14 @@ class Rutina {
         $this->nombreRutina = $nombreRutina;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO rutina (nombre_rutina) VALUES (?)");
-        $query->bind_param('s', $this->nombreRutina);
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO rutina (nombre_rutina) VALUES (?)");
+    //     $query->bind_param('s', $this->nombreRutina);
 
-        $result = $query->execute();
-        return $result ? true : false;
-    }
+    //     $result = $query->execute();
+    //     return $result ? true : false;
+    // }
 
 }
 ?>

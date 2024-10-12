@@ -46,13 +46,13 @@ class UltimoPago {
         $this->valor = $valor;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO ultimo_pago (id_ultimo_pago, hora, fecha, valor) VALUES (?, ?, ?, ?)");
-        $query->bind_param('issi', $this->idUltimoPago, $this->hora, $this->fecha, $this->valor);
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO ultimo_pago (id_ultimo_pago, hora, fecha, valor) VALUES (?, ?, ?, ?)");
+    //     $query->bind_param('issi', $this->idUltimoPago, $this->hora, $this->fecha, $this->valor);
 
-        $result = $query->execute();
-        return $result ? true : false;
-    }
+    //     $result = $query->execute();
+    //     return $result ? true : false;
+    // }
 }
 ?>
