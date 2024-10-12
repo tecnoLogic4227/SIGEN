@@ -6,7 +6,7 @@ $(document).ready(() => {
     const listarAsiste = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
