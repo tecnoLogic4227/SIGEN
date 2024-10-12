@@ -18,11 +18,11 @@ class Deportista extends Cliente {
         $this->posicion = $posicion;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO deportistas (CI, POSICION) VALUES (?, ?)");
-        $query->bind_param('is', $this->ci, $this->posicion);
-        return $query->execute();
-    }
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO deportistas (CI, POSICION) VALUES (?, ?)");
+    //     $query->bind_param('is', $this->ci, $this->posicion);
+    //     return $query->execute();
+    // }
 }
 ?>

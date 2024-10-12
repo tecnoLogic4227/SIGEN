@@ -23,7 +23,7 @@ class Ejercicio {
     }
 
     public function setIdEjercicio($idEjercicio) {
-        $this->idRjercicio = $idEjercicio;
+        $this->idEjercicio = $idEjercicio;
     }
 
     public function getNombreEjercicio() {
@@ -66,13 +66,13 @@ class Ejercicio {
         $this->descripcion = $descripcion;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO ejercicio (id_ejercicio, nombre_ejercicio, nro_rep, nro_series, grupo_muscular, descripcion) VALUES (?, ?, ?, ?, ?, ?)");
-        $query->bind_param('ssisii', $this->idEjercicio, $this->nombreEjercicio, $this->nroRep, $this->nroSeries, $this->grupoMuscular, $this->descripcion);
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO ejercicio (id_ejercicio, nombre_ejercicio, nro_rep, nro_series, grupo_muscular, descripcion) VALUES (?, ?, ?, ?, ?, ?)");
+    //     $query->bind_param('ssisii', $this->idEjercicio, $this->nombreEjercicio, $this->nroRep, $this->nroSeries, $this->grupoMuscular, $this->descripcion);
 
-        $result = $query->execute();
-        return $result ? true : false;
-    }
+    //     $result = $query->execute();
+    //     return $result ? true : false;
+    // }
 }
 ?>

@@ -46,13 +46,13 @@ class Fisioterapia {
         $this->descripcion = $descripcion;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO fisioterapia (id_fisioterapia, nombre_fisioterapia, tipo_fisioterapia, descripcion) VALUES (?, ?, ?, ?)");
-        $query->bind_param('isss', $this->idFisioterapia, $this->nombreFisioterapia, $this->tipoFisioterapia, $this->descripcion);
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO fisioterapia (id_fisioterapia, nombre_fisioterapia, tipo_fisioterapia, descripcion) VALUES (?, ?, ?, ?)");
+    //     $query->bind_param('isss', $this->idFisioterapia, $this->nombreFisioterapia, $this->tipoFisioterapia, $this->descripcion);
 
-        $result = $query->execute();
-        return $result ? true : false;
-    }
+    //     $result = $query->execute();
+    //     return $result ? true : false;
+    // }
 }
 ?>

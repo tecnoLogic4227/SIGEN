@@ -36,13 +36,13 @@ class Equipo {
         $this->cantidad = $cantidad;
     }
 
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO equipo (id_equipo, nombre_equipo, cantidad) VALUES (?, ?, ?)");
-        $query->bind_param('ssi', $this->idEquipo, $this->nombreEquipo, $this->cantidad);
+    // public function save() {
+    //     global $conexion;
+    //     $query = $conexion->prepare("INSERT INTO equipo (id_equipo, nombre_equipo, cantidad) VALUES (?, ?, ?)");
+    //     $query->bind_param('ssi', $this->idEquipo, $this->nombreEquipo, $this->cantidad);
 
-        $result = $query->execute();
-        return $result ? true : false;
-    }
+    //     $result = $query->execute();
+    //     return $result ? true : false;
+    // }
 }
 ?>
