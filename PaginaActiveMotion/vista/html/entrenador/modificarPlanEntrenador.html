@@ -20,171 +20,138 @@
   <link rel="stylesheet" href="../../styles/planes.css">
 </head>
 
-<body>
+<body class="body1">
   <div id="wrapper">
     <nav>
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-      </div>
+    </div>
+    
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+
+      <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">🔍</button>
+    </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li class="op-menu-oculto"><a href="buscarClientesEntrenador.html">Clientes</a>
-          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
+        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
+
     <main class="body-mod-plan">
-      <h3 class="tit-modificar-plan">Gestionar Rutinas</h3>
+      <h3 class="tit-modificar-plan">Modificar Rutina</h3>
       <form id="form-modificarPlanEntrenador">
         <article class="buscar-modificar-plan">
           <label id="etiqueta-id" class="modificar-plan-buscar-id">ID</label>
           <input class="inputPlanBuscador" id="id-plan" type="text">
-          <button id="boton-modificar-plan" class="botonPlanBuscador" type="button">Buscar</button>
+          <label id="etiqueta-nombre" class="modificar-plan-buscar-nombre">Nombre</label>
+          <input class="inputPlanBuscador" id="nombre-plan" type="text">
+          <button id="boton-modificar-plan" class="botonPlanBuscador">Buscar</button>
         </article>
       </form>
-      <h4 class="outputEjercicioRutina">ID: </h4>
-      <h4 class="outputEjercicioRutinaNombre">Nombre: </h4>
-      <table>
-        <thead>
-          <tr>
-            <th>ID Ejercicio</th>
-            <th>Nombre</th>
-            <th>Repeticiones</th>
-            <th>Series</th>
-            <th>Grupo muscular</th>
-            <th>Descripcion</th>
-          </tr>
+
+
+      <table id="routineTable">
+        <thead class="theadRoutine">
+            <tr class="trRoutine">
+                <th class="thRoutine">ID Rutina</th>
+                <th class="thRoutine">Nombre</th>
+                <th class="thRoutine">Cantidad ejercicios</th>
+                <th class="thRoutine">Ejercicios</th>
+                <th class="thRoutine">Descripcion ejercicios</th>
+                <th class="thRoutine">Descripcion rutina</th>
+            </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td class="outputIDEjercicio"></td>
-            <td class="outputNombreEjercicio"></td>
-            <td class="outputNroRepEjercicio"></td>
-            <td class="outputNroSeriesEjercicio"></td>
-            <td class="outputGrupoMuscularEjercicio"></td>
-            <td class="outputDescripcionEjercicio"></td>
-            <td><button class="botonModificarRutina">Modificar</button></td>
-            <td><button class="botonEliminarRutina">Eliminar</button></td>
-          </tr>
+        <tbody class="tbodyRoutine">
+            <tr class="input-row trRoutine">
+                <td data-label="ID Rutina" class="tdRoutine">
+                  <input type="text" id="rutinaId" disabled>
+                  <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Nombre" class="tdRoutine"> 
+                    <input type="text" id="nombreRoutine">
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Cantidad ejercicios" class="tdRoutine">
+                    <input type="number" id="cantidadEjercicios">
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Ejercicios" id="ejerciciosCell" class="tdRoutine">
+                  <input type="text" id="ejercicio">
+                    <button class="btn btn-agregar" id="agregarEjercicio">+</button>
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Descripcion ejercicios" id="descripcionesCell" class="tdRoutine">
+                        <input type="text" id="descripcion">
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Descripcion rutina" class="tdRoutine">
+                    <textarea id="descripcionRutina"></textarea>
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+            </tr>
         </tbody>
-      </table>
+    </table>
+    <button class="btn-guardar">Guardar</button>
+    
+     
+    </main>
+  
 
-      <button class="botonCrearRutina">Crear</button>
-
-      <article class="popupCrearRutina" style="visibility: hidden;">
-        <form>
-          <h4>Crear Rutina</h3>
-          <label>Ingrese nombre de rutina:</label>
-          <input class="inputParametro1">
-          <button class="confirmarCrearRutina" type="button">Guardar</button>
-        </form>
-      </article>
-
-      <article class="popupModificarRutina" style="visibility: hidden;">
-        <form>
-          <h4>Modificar Rutina</h3>
-          <label class="outputEjercicioRutinaNombre">Nombre de la rutina: </label>
-          <label>Modificar nombre de rutina:</label>
-          <input class="inputParametro1">
-          <button class="confirmarCrearRutina" type="button">Guardar</button>
-        </form>
-      </article>
-
-      <article class="popupEliminarRutina" style="visibility: hidden;">
-        <p>¿Está seguro que quiere eliminar la rutina?</p>
-        <button class="cancelarEliminarRutina">Cancelar</button>
-        <button class="confirmarEliminarRutina">Confirmar</button>
-      </article>
-      <!-- <form>
-        <table class="tabla-modificar-plan">
-          <tr>
-            <th id="thModPlan">ID Rutina</th>
-            <th id="thModPlan">ID Plan Entrenamiento</th>
-            <th id="thModPlan">Nombre</th>
-            <th id="thModPlan">Numero de ejercicios</th>
-            <th id="thModPlan">Descripcion</th>
-          </tr>
-          <tr>
-            <td class="outputPlanIDRutina"></td>
-            <td class="outputPlanIDPlan"></td>
-            <td class="outputPlanNombre"></td>
-            <td class="outputPlanNroEjercicios"></td>
-            <td class="outputPlanDescripcion"></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><input></td>
-            <td><input></td>
-            <td><input></td>
-            <td></td>
-            <td><button class="boton-modificar-plan" id="botonModificarPlan">Modificar</button></td>
-          </tr>
-        </table>
-        <div class="tabla-mod-plan-mobile">
-          <div class="fila">
-            <div class="columna">
-              <div class="header">Ejercicio</div>
-              <div class="contenido"><input class="input-mod-plan"></div>
-            </div>
-            <div class="columna">
-              <div class="header">Musculo</div>
-              <div class="contenido"><input class="input-mod-plan"></div>
-            </div>
-            <div class="columna">
-              <div class="header">Series</div>
-              <div class="contenido"><input class="input-mod-plan"></div>
-            </div>
-            <div class="columna">
-              <div class="header">Repeticiones</div>
-              <div class="contenido"><input class="input-mod-plan"></div>
-            </div>
-            <div class="columna">
-              <div class="header">Descripcion</div>
-              <div class="contenido"><input class="input-mod-plan"></div>
-            </div>
-          </div>
+    <footer class="social-footer">
+      <div class="footer-content">
+        <ul class="footer-menu">
+          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
+          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
+          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+          <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
+            <i class="far fa-envelope"></i>
+          </a>
         </div>
-      </form> -->
-      <footer class="social-footer">
-        <div class="footer-content">
-          <ul class="footer-menu">
-            <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-            <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-            <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
-            <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-            <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
-          </ul>
-          <div class="social-icons">
-            <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
-              <i class="far fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-        <div class="copyright-bar">
-          © 2024 ActiveMotion. Todos los derechos reservados.
-        </div>
-      </footer>
+      </div>
+      <div class="copyright-bar">
+        © 2024 ActiveMotion. Todos los derechos reservados.
+      </div>
+    </footer>
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../script/jquery-3.7.1.min.js"></script>
+    <script src="../../script/script.js"></script>
+    <script src="../../script/calendar.js"></script>
   </div>
 </body>
 
 </html>
+

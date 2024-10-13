@@ -25,128 +25,130 @@
     <nav>
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-      </div>
+    </div>
+    
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+
+      <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">🔍</button>
+    </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li class="op-menu-oculto"><a href="buscarClientesEntrenador.html">Clientes</a>
-          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
+        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
-    <main>
-      <article>
-        <h3 class="tit-asignar-entrenamiento">Gestionar rutinas pacientes</h3>
+    
+  <main>
+    <article>
+      <h3 class="tit-asignar-entrenamiento">Cliente</h3>
+      <form>
+        <label class="label-ci">CI</label>
+        <input class="inputClienteBuscador buscador-ci">
+        <label class="label-nombre">Nombre</label>
+        <input class="inputClienteBuscador buscador-nombre">
+        <button class="botonClienteBuscador-asg-rut">Buscar</button>
+        <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
+      </form>
+      <label class="label-cliente" style="margin-top: 10vh; margin-bottom: 10vh;">Cliente:</label>
+      <label class="outputClienteNombre"></label>
+      <label class="outputClienteApellido"></label>
+     
+    </article>
+    <form id="form-asignar-entrenamiento" class="form-asignar-entrenamiento-buscar">
+      <table id="routineTable">
+        <thead class="theadRoutine">
+            <tr class="trRoutine">
+                <th class="thRoutine">ID Rutina</th>
+                <th class="thRoutine">Nombre</th>
+                <th class="thRoutine">Cantidad ejercicios</th>
+                <th class="thRoutine">Ejercicios</th>
+                <th class="thRoutine">Descripcion ejercicios</th>
+                <th class="thRoutine">Descripcion rutina</th>
+            </tr>
+        </thead>
+        <tbody class="tbodyRoutine">
+            <tr class="input-row trRoutine">
+                <td data-label="ID Rutina" class="tdRoutine">
+                  <input type="text" id="rutinaId" disabled>
+                  <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Nombre" class="tdRoutine"> 
+                    <input type="text" id="nombreRoutine">
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Cantidad ejercicios" class="tdRoutine">
+                    <input type="number" id="cantidadEjercicios">
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Ejercicios" id="ejerciciosCell" class="tdRoutine">
+                  <input type="text" id="ejercicio">
+                    <button class="btn btn-agregar" id="agregarEjercicio">+</button>
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Descripcion ejercicios" id="descripcionesCell" class="tdRoutine">
+                        <input type="text" id="descripcion">
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+                <td data-label="Descripcion rutina" class="tdRoutine">
+                    <textarea id="descripcionRutina"></textarea>
+                    <button class="btn btn-modificar">Modificar</button>
+                    <button class="btn btn-eliminar">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <button id="boton-asignar-entrenamiento" class="guardar-asignar-entrenamiento"><a href="detallesClienteEntrenador.html">Guardar Entrenamiento</a></button>
+      <span id="mensaje_asignarEntrenamiento" hidden></span>
+    </form>
+  </main>
 
-        <!-- Formulario para Buscar -->
-        <form>
-          <label>CI:</label><input type="text" class="inputBuscarAsisteCI"><br>
-          <label>ID Rutina:</label><input type="text" class="inputBuscarAsisteID"><br>
-          <button class="asisteBuscar">Buscar</button>
-        </form>
-
-        <!-- Tabla para Listar -->
-        <div>
-          <table class="tablaAsiste">
-            <thead>
-              <tr>
-                <th>CI</th>
-                <th>ID Rutina</th>
-                <th>Nivel</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Termino</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button class="asisteModificar">Modificar</button></td>
-                <td><button class="asisteEliminar">Eliminar</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button class="asisteCrear">Crear</button>
-        <button class="asisteModificar">Modificar</button>
-        <button class="asisteEliminar">Eliminar</button>
-
-        <!-- Formulario para Crear -->
-        <form class="confirmarCrearAsiste" style="display: none;">
-          <label>CI:</label><input type="text" class="inputCrearAsisteCI"><br>
-          <label>ID Rutina:</label><input type="text" class="inputCrearAsisteIDRutina"><br>
-          <label>Nivel:</label><input type="text" class="inputCrearAsisteNivel"><br>
-          <label>Fecha Inicio:</label><input type="date" class="inputCrearAsisteFechaInicio"><br>
-          <label>Fecha Termino:</label><input type="date" class="inputCrearAsisteFechaTermino"><br>
-          <button class="asisteConfirmarCrear">Crear</button>
-          <button class="asisteCancelarCrear">Cancelar</button>
-        </form>
-
-        <!-- Formulario para Modificar -->
-        <form class="confirmarModificarAsiste" style="display: none;">
-          <label>CI:</label><input type="text" class="inputModificarAsisteCI"><br>
-          <label>ID Rutina:</label><input type="text" class="inputModificarAsisteIDRutina"><br>
-          <label>Nivel:</label><input type="text" class="inputModificarAsisteNivel"><br>
-          <label>Fecha Inicio:</label><input type="date" class="inputModificarAsisteFechaInicio"><br>
-          <label>Fecha Termino:</label><input type="date" class="inputModificarAsisteFechaTermino"><br>
-          <div class="divConfirmarModificarAsiste">
-            <button class="asisteConfirmarModificar">Modificar</button>
-            <button class="asisteCancelarModificar">Cancelar</button>
-          </div>
-        </form>
-
-        <!-- Formulario para Eliminar -->
-        <form class="confirmarEliminarAsiste" style="display: none;">
-          <label>CI:</label><input type="text" class="inputEliminarAsisteCI"><br>
-          <label>ID Rutina:</label><input type="text" class="inputEliminarAsisteIDRutina"><br>
-          <div class="divConfirmarEliminarAsiste">
-            <button class="asisteConfirmarEliminar">Eliminar</button>
-            <button class="asisteCancelarEliminar">Cancelar</button>
-          </div>
-        </form>
-    </main>
-
-    <footer class="social-footer">
-      <div class="footer-content">
-        <ul class="footer-menu">
-          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
-          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
-        </ul>
-        <div class="social-icons">
-          <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-          <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
-            <i class="far fa-envelope"></i>
-          </a>
-        </div>
+  <footer class="social-footer">
+    <div class="footer-content">
+      <ul class="footer-menu">
+        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
+        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+        <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
+          <i class="far fa-envelope"></i>
+        </a>
       </div>
-      <div class="copyright-bar">
-        © 2024 ActiveMotion. Todos los derechos reservados.
-      </div>
-    </footer>
+    </div>
+    <div class="copyright-bar">
+      © 2024 ActiveMotion. Todos los derechos reservados.
+    </div>
+  </footer>
+  
   </div>
 </body>
 

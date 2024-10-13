@@ -28,6 +28,11 @@
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
       
+            <div class="search-container">
+              <input type="text" placeholder="Buscar...">
+              <button type="submit">🔍</button>
+          </div>
+
             <div class="menu-adaptable">
               <ul class="menu-oculto">
                 <li class="op-menu-oculto"><a href="indexAvanzado.html">Inicio</a></li>
@@ -46,7 +51,7 @@
           </header>
           <form id="form-deportes-avanzado" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_deportista_seleccionador.php" method="post">
           <article>
-              <div class="container-fluid tablaDeportesAvanzado">
+              <div class="container-fluid tablaUsuarioAvanzado">
                   <div class="row">
                       <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
                           <table class="table table-bordered table-hover" id="tablaDeporteAvanzado">
@@ -85,7 +90,7 @@
               </div>
               <br>
               <span id="mensaje_deportesAvanzado" hidden></span>
-              <button type="button" id="agregar-deporte" class="estado">Agregar deporte</button>
+              <button type="button" id="agregar-deporte" class="estado buscar3 agregarDepAvanzado">Agregar deporte</button>
           </article>
         </form>
       </main>

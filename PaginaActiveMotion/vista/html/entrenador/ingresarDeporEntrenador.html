@@ -18,47 +18,89 @@
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
     </div>
+    
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+
+      <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">🔍</button>
+    </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li class="op-menu-oculto"><a href="buscarClientesEntrenador.html">Clientes</a>
-          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
+        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
+    
     <main>
         <article>
             <h1 class="tit-fisio">Ingresar Plan</h1>
             <h3 class="subtit-fisio">Deporte</h3>
         </article>
         <form id="form-ingresar-deporte" class="form-fisio" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_ingresar_deporte_entrenador.php" method="post">
-            <label id="label-input-fisio" class="ingresar-fisio-label-nombre">Nombre</label>
-            <input id="nombre-deporte" name="nombre-deporte" class="ingresar-fisio-input-nombre" placeholder="Fuerza piernas" minlength="1" required>
-            <label id="label-input-fisio" class="ingresar-fisio-label-id">ID</label>
-            <input id="id-deporte" name="id-deporte" class="ingresar-fisio-input-id" placeholder="1" minlength="1" required>
-            <label id="label-input-fisio" class="ingresar-fisio-label-ejercicio">Ejercicio</label>
-            <input id="nombre-ejercicio" name="nombre-ejercicio" class="ingresar-fisio-input-ejercicio" placeholder="sentadillas" minlength="1" required>
-            <label id="label-input-fisio" class="ingresar-fisio-label-musculo">Musculo</label>
-            <input id="musculo" name="musculo" class="ingresar-fisio-input-musculo" placeholder="cuadriceps" minlength="1" required>
-            <label id="label-input-fisio" class="ingresar-fisio-label-series">Series</label>
-            <input id="series" name="series" class="ingresar-fisio-input-series" placeholder="4" minlength="1" required>
-            <label id="label-input-fisio" class="ingresar-fisio-label-repeticiones">Repeticiones</label>
-            <input id="repeticiones" name="repeticiones" class="ingresar-fisio-input-repeticiones" placeholder="12" minlength="1" required>
-            <label id="label-input-fisio" class="ingresar-fisio-label-descripcion">Descripcion</label>
-            <input id="descripcion" name="descripcion" class="ingresar-fisio-input-descripcion" placeholder="colocar barra sobre los hombros, agacharse y subir con la espalda recta" minlength="1" required>
-            <button id="boton_ingresar_deporte" class="ingresar-fisio"><a href="inicioPlanesEntrenador.html">Ingresar</a></button>
-            <br>
-            <span id="mensaje_ingresarDeporteEntrenador" hidden></span>
+            <article>
+              <div class="container-fluid tablaUsuarioAvanzado">
+                  <div class="row justify-content-center">
+                      <div class="col-md-10 col-lg-8 col-sm-12">
+                          <table class="table table-bordered table-hover" style="width: 100%;">
+                              <thead class="table-primary">
+                                  <tr>
+                                      <th colspan="2" class="text-center">
+                                         Deporte
+                                      </th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-nombre">Nombre:</th>
+                                      <td><input type="text" id="nombre-fisio" name="nombre-ejercicio" class="form-control ingresar-fisio-input-nombre" placeholder="Kinesiologia" minlength="1" required></td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-id">ID:</th>
+                                      <td><input type="text" id="id-fisio" name="id-fisio" class="form-control ingresar-fisio-input-id" placeholder="123" minlength="1" required></td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-ejercicio">Ejercicio:</th>
+                                      <td><input type="text" id="ejercicio-fisio" name="ejercicio-fisio"  class="form-control ingresar-fisio-input-ejercicio" placeholder="Sentadillas" minlength="1" required></td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-musculo">Musculo:</th>
+                                      <td><input type="text" id="musculo-fisio" name="musculo-fisio" class="form-control ingresar-fisio-input-musculo" placeholder="Nagis" minlength="1" required></td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-series">Series:</th>
+                                      <td><input type="text" id="series-fisio" name="series-fisio" class="form-control ingresar-fisio-input-series" placeholder="4" minlength="1" required></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-repeticiones">Repeticiones:</th>
+                                    <td><input type="text" id="repeticiones-fisio" name="repeticiones-fisio" class="form-control ingresar-fisio-input-repeticiones" placeholder="12" minlength="1" required></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-descripcion">Descripcion:</th>
+                                  <td><input type="text" id="descripcion-fisio" name="descripcion-fisio" class="form-control ingresar-fisio-input-descripcion" placeholder="colocar barra sobre los hombros, agacharse y subir con la espalda recta" minlength="1" required></td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+              <button id="boton_ingresar_fisio" class="ingresar-fisio"><a href="inicioPlanesEntrenador.html">Ingresar</a></button>
+              <br>
+              <span id="mensaje_ingresarDeporteEntrenador" hidden></span>
+            </article>
+
         </form>
     </main>
     <footer class="social-footer">

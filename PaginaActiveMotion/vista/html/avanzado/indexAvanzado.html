@@ -13,32 +13,37 @@
 </head>
   <body>
     <div id="wrapper">
-        <nav>
+      <nav>
 
-          <div class="clase1">
-            <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
+        <div class="clase1">
+          <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
+      </div>
+    
+          <ul>
+              <li id="inicio" class="op-menu"><a href="indexAvanzado.html">Inicio</a></li>
+              <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html">Usuarios</a></li>
+              <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html">Ejercicios</a>
+              <li id="nosotros" class="op-menu"><a href="deportesAvanzado.html">Deportes</a></li> 
+              <li id="login" class="op-menu"><a href="perfilAdministrativo.html">Perfil</a></li>
+              <li><a class="menu-barras" href="#barras">☰</a></li>
+          </ul>
+    
+          <div class="search-container">
+            <input type="text" placeholder="Buscar...">
+            <button type="submit">🔍</button>
         </div>
-      
-            <ul>
-                <li id="inicio" class="op-menu"><a href="indexAvanzado.html">Inicio</a></li>
-                <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html">Usuarios</a></li> 
-                <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html">Ejerecicios</a>
-                <li id="login" class="op-menu"><a href="deportesAvanzado.html">Deportes</a></li>
-                <li id="login" class="op-menu"><a href="perfilAvanzado.html">Perfil</a></li>
-                <li><a class="menu-barras" href="#barras">☰</a></li>
+
+          <div class="menu-adaptable">
+            <ul class="menu-oculto">
+              <li class="op-menu-oculto"><a href="indexAvanzado.html">Inicio</a></li>
+              <li class="op-menu-oculto"><a href="usuariosAvanzado.html">Usuarios</a></li> 
+              <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html">Ejercicios</a></li>
+              <li class="op-menu-oculto"><a href="deportesAvanzado.html">Deportes</a></li>
+              <li class="op-menu-oculto"><a href="perfilAdministrativo.html">Perfil</a></li>
             </ul>
-      
-            <div class="menu-adaptable">
-              <ul class="menu-oculto">
-                <li class="op-menu-oculto"><a href="indexAvanzado.html">Inicio</a></li>
-                <li class="op-menu-oculto"><a href="usuariosAvanzado.html">Usuarios</a></li> 
-                <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html">Ejerecicios</a>
-                <li class="op-menu-oculto"><a href="deportesAvanzado.html">Deportes</a></li>
-                <li class="op-menu-oculto"><a href="perfilAvanzado.html">Perfil</a></li>
-              </ul>
-          </div>
-      
-        </nav>
+        </div>
+    
+      </nav>
     
         <main class="tituloAvanzado">
           <header> 
@@ -138,7 +143,6 @@
                       </tbody>
                     </table>
                     <button class="btn_AgregarDeporte estado" id="btnAgregarDeporte" href="deportesAvanzado.html">Agregar deporte</button>
-              </div>
             </article>
   
       </main>

@@ -22,7 +22,7 @@
 
           <div class="clase1">
             <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-        </div>
+          </div>
       
             <ul>
                 <li id="inicio" class="op-menu"><a href="indexAdministrativo.html">Inicio</a></li>
@@ -31,6 +31,11 @@
                 <li id="login" class="op-menu"><a href="perfilAdministrativo.html">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
+
+            <div class="search-container">
+              <input type="text" placeholder="Buscar...">
+              <button type="submit">🔍</button>
+          </div>
       
             <div class="menu-adaptable">
               <ul class="menu-oculto">
@@ -53,11 +58,14 @@
                     <label for="ci">CI</label>
                     <input class="inputClienteBuscador">
                     <br>
+                    <label for="nombre">Nombre</label>
+                    <input class="inputClienteBuscador">
+                    <br>
                     <button class="botonClienteBuscador" id="buscar">Buscar</button>
                 </div>
                 <div class="form-group">
                     <label for="fecha-agenda" class="fechaAgendaAdmin">Fecha</label>
-                    <input type="text" id="fecha-agenda" class="fechaAgendaAdminInput" name="fecha-agenda" placeholder="dd/mm/aaaa">
+                    <input type="date" id="fecha-agenda" class="fechaAgendaAdminInput" name="fecha-agenda" placeholder="dd/mm/aaaa">
                     <br>
                     <span id="mensaje_Fecha" hidden></span>
                     <label for="hora" class="horaAgendaAdmin">Hora</label>
@@ -74,33 +82,39 @@
             <p class="outputClienteApellido"></p>
             
           </section>
-          <section class="calendar-container-administrativo">
-              <div class="selector line">
-                  <button id="prev-year">&lt;</button>
-                  <span id="year-display">2024</span>
-                  <button id="next-year">&gt;</button>
-              </div>
-              <div class="selector line">
-                  <button id="prev-month">&lt;</button>
-                  <span id="month-display">Junio</span>
-                  <button id="next-month">&gt;</button>
-              </div>
-              <table id="calendar-table-administrativo">
-                  <thead>
-                      <tr>
-                          <th>Dom</th>
-                          <th>Lun</th>
-                          <th>Mar</th>
-                          <th>Mié</th>
-                          <th>Jue</th>
-                          <th>Vie</th>
-                          <th>Sáb</th>
-                      </tr>
-                  </thead>
-                  <tbody id="calendar-body">
-                  </tbody>
-              </table>
-          </section>
+          <div class="calendar-container-adm">
+            <div class="year-navigation-adm">
+              <button class="nav-button-adm" id="prevYear-adm">
+                <svg class="chevron-adm" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <span class="year-adm" id="currentYear-adm"></span>
+              <button class="nav-button-adm" id="nextYear-adm">
+                <svg class="chevron-adm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+            
+            <div class="month-navigation-adm">
+              <button class="nav-button-adm" id="prevMonth-adm">
+                <svg class="chevron-adm" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <span class="month-adm" id="currentMonth-adm"></span>
+              <button class="nav-button-adm" id="nextMonth-adm">
+                <svg class="chevron-adm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+      
+            <div class="weekdays-adm" id="weekdays-adm">
+              <div class="weekday-adm">Lun</div>
+              <div class="weekday-adm">Mar</div>
+              <div class="weekday-adm">Mié</div>
+              <div class="weekday-adm">Jue</div>
+              <div class="weekday-adm">Vie</div>
+              <div class="weekday-adm">Sáb</div>
+              <div class="weekday-adm">Dom</div>
+            </div>
+            
+            <div class="calendar-adm" id="calendar-adm"></div>
+          </div>
       </main>
 
     <footer class="social-footer">

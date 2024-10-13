@@ -34,6 +34,11 @@
           <li id="login"class="op-menu"><a href="login.html">Login</a></li>
           <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+      
+      <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">🔍</button>
+    </div>
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
@@ -58,6 +63,10 @@
           <label>Nombre de usuario:</label>
           <br>
           <input type="text" name="nombre" id="nombre" minlength="6" maxlength="20" placeholder="Escriba aquí" required onkeydown="quitarEspacios(event)">
+          <br><br>
+          <label>Cedula:</label>
+          <br>
+          <input type="text" name="ci" id="ci" placeholder="12345678" required onkeydown="quitarEspacios(event)">
           <br><br>
           <label>Contraseña:</label>
           <br>
@@ -85,14 +94,6 @@
           <input type="tel" id="tel" name="tel" maxlength="9"
           pattern="[0-9]{9}" placeholder="099123456" required>
           <br><br>
-          <label>Residencia actual:</label>
-          <br>
-          <select id="residencia" name="residencia" required>
-              <option value="Artigas">Artigas</option>
-              <option value="Canelones">Canelones</option>
-              <option value="Montevideo" selected>Montevideo</option>
-          </select>
-          <br><br>
           <label>Fecha de nacimiento:</label>
           <br>
           <input type="text" id="fecha" name="fecha">
@@ -117,7 +118,7 @@
           <input type="checkbox" name="terminos">
           <label>Aceptar Terminos y Condiciones</label>
           <br>
-        <button class="estado" id="btnRegistrarse" type="button" onclick="tomar_claves()">Registrarse</button>
+        <button class="estado registrarse" id="btnRegistrarse" type="button" onclick="tomar_claves()">Registrarse</button>
         <br>
         <span id="mensaje_registro"></span>
       </form>

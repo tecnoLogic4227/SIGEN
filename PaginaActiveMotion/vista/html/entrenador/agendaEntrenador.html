@@ -14,70 +14,85 @@
   <link rel="stylesheet" href="../../styles/planes.css">
 </head>
 <body>
+
   <div id="wrapper">
     <nav>
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
     </div>
+    
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+
+      <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">🔍</button>
+    </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
         <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li class="op-menu-oculto"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
+
   <main class="tituloEntrenador">
     <header>
       <h1 class="titulo2Entrenador">Tu agenda</h1>
 
     </header>
 
-    <div class="calendar-container">
-      <div class="selector line">
-        <button id="prev-year">&lt;</button>
-        <span id="year-display">2024</span>
-        <button id="next-year">&gt;</button>
+    <div class="container">
+      <div class="year-navigation">
+        <button class="nav-button" id="prevYear">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="year" id="currentYear"></span>
+        <button class="nav-button" id="nextYear">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
-      <div class="selector line">
-        <button id="prev-month">&lt;</button>
-        <span id="month-display">Junio</span>
-        <button id="next-month">&gt;</button>
+      
+      <div class="month-navigation">
+        <button class="nav-button" id="prevMonth">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="month" id="currentMonth"></span>
+        <button class="nav-button" id="nextMonth">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
-      <table id="calendar-table">
-        <thead>
-          <tr>
-            <th>Dom</th>
-            <th>Lun</th>
-            <th>Mar</th>
-            <th>Mié</th>
-            <th>Jue</th>
-            <th>Vie</th>
-            <th>Sáb</th>
-          </tr>
-        </thead>
-        <tbody id="calendar-body">
 
-        </tbody>
-      </table>
+      <div class="weekdays" id="weekdays">
+        <div class="weekday">Lun</div>
+        <div class="weekday">Mar</div>
+        <div class="weekday">Mié</div>
+        <div class="weekday">Jue</div>
+        <div class="weekday">Vie</div>
+        <div class="weekday">Sáb</div>
+        <div class="weekday">Dom</div>
+      </div>
+      
+      <div class="calendar" id="calendar"></div>
     </div>
   </main>
+  
   <footer class="social-footer">
     <div class="footer-content">
       <ul class="footer-menu">
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
       </ul>

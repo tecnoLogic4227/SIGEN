@@ -26,48 +26,44 @@
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
     </div>
+    
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+
+      <div class="search-container">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">🔍</button>
+    </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li class="op-menu-oculto"><a href="buscarClientesEntrenador.html">Clientes</a>
-          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
+        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
+    
     <main>
       <article>
         <h3 class="tit-registrar-calificacion">Cliente</h3>
         <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
-          <label>CI</label>
-          <input class="inputClienteBuscador">
+        <label>CI</label>
+        <input class="inputClienteBuscador">
+        <label>Nombre</label>
+        <input class="inputClienteBuscador ">
           <button class="botonClienteBuscador">Buscar</button>
         </form>
       </article>
       <h2 class="tit-tabla-registrar-calificacion">Evolución</h2>
-      <section style="display: flex; justify-content: center;">
-        <h4 style="margin-top: 5vh;">Cliente:</h4>
-        <br>
-        <label class="outputClienteNombre"></label>
-        <label style="margin-bottom: 5vh;" class="outputClienteApellido"></label>
-
-        <h4 style="margin-top: 5vh;">Nivel:</h4>
-        <br>
-        <label style="margin-bottom: 5vh;" class="outputClienteEstado"></label>
-
-        <h4 style="margin-top: 5vh;">Estado:</h4>
-        <br>
-        <label style="margin-bottom: 10vh;" class="outputClienteEstadoActividad">
-      </section>
       <form id="form-registrar-calificacion" class="form-registrar-calificacion">
         <table class="table-registrar-calificacion">
           <tr>
@@ -79,15 +75,18 @@
             <td class="outputClienteCalificacion"></td>
           </tr>
           <tr>
-            <th>Modificar Calificación
-            </th>
+            <th>Modificar Calificación</th>
             <td><input type="text"></td>
-            <td><button>Modificar</button></td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
+            </td>
           </tr>
-          <!-- <tr>
             <th>Cumplimiento con la agenda</th>
             <td><input type="number" id="cumplimientoAgenda" name="cumplimientoAgenda"
                 onclick="eliminar_letras('cumplimientoAgenda', 'mensaje_registroCalificacion')" inputmode="numeric">
+            </td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
             </td>
           </tr>
           <tr>
@@ -95,51 +94,76 @@
             <td><input type="number" id="resistenciaAnaerobica" name="resistenciaAnaerobica"
                 onclick="eliminar_letras('resistenciaAnaerobica', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
+            </td>
           </tr>
           <tr>
             <th>Fuerza muscular</th>
             <td><input type="number" id="fuerzaMuscular" name="fuerzaMuscular"
-                onclick="eliminar_letras('fuerzaMuscular', 'mensaje_registroCalificacion')" inputmode="numeric"></td>
+                onclick="eliminar_letras('fuerzaMuscular', 'mensaje_registroCalificacion')" inputmode="numeric">
+            </td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
+            </td>
           </tr>
           <tr>
             <th>Resistencia muscular</th>
             <td><input type="number" id="resistenciaMuscular" name="resistenciaMuscular"
                 onclick="eliminar_letras('resistenciaMuscular', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
+            </td>
           </tr>
           <tr>
             <th>Flexibilidad</th>
-            <td><input type="number" id="flexibilidad" name="flexibilidad" onclick="eliminar_letras('flexibilidad', '')"
-                inputmode="numeric"></td>
+            <td><input type="number" id="flexibilidad" name="flexibilidad" onclick="eliminar_letras('flexibilidad', '')" inputmode="numeric">
+              </td>
+              <td><button class="btn btn-modificar">Modificar</button>
+                <button class="btn btn-eliminar">Eliminar</button>
+              </td>
           </tr>
           <tr>
             <th>Resistencia a la monotonía</th>
             <td><input type="number" id="resistenciaMonotonia" name="resistenciaMonotonia"
                 onclick="eliminar_letras('resistenciaMonotonia', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
+            </td>
           </tr>
           <tr>
             <th>Resiliencia</th>
             <td><input type="number" id="resiliencia" name="resiliencia"
-                onclick="eliminar_letras('resiliencia', 'mensaje_registroCalificacion')" inputmode="numeric"></td>
+                onclick="eliminar_letras('resiliencia', 'mensaje_registroCalificacion')" inputmode="numeric">
+              </td>
+              <td><button class="btn btn-modificar">Modificar</button>
+                <button class="btn btn-eliminar">Eliminar</button>
+              </td>
           </tr>
           <tr>
             <th>Total</th>
             <td><input type="number" name="total" onclick="eliminar_letras('total', 'mensaje_registroCalificacion')"
-                inputmode="numeric"></td>
-          </tr> -->
+                inputmode="numeric">
+            </td>
+            <td><button class="btn btn-modificar">Modificar</button>
+              <button class="btn btn-eliminar">Eliminar</button>
+            </td>
+          </tr> 
         </table>
-        <button id="registrar_calificacion" class="button-registrar-calificacion">Registrar Calificación</button>
+        <button id="registrar_calificacion" class="button-registrar-calificacion"><a href="detallesClienteEntrenador.html">Registrar calificación</a></button>
         <br>
         <span id="mensaje_registroCalificacion" hidden></span>
       </form>
     </main>
+    
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
           <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
           <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li id="servicios" class="op-menu"><a href="buscarClientesEntrenador.html">Clientes</a>
+          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
           <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
           <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
@@ -162,6 +186,7 @@
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>
+
   </div>
 </body>
 
