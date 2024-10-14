@@ -10,7 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     <link rel="stylesheet" href="../../styles/style.css">
     <link rel="stylesheet" href="../../styles/media_style.css">
-</head>
+    <link rel="stylesheet" href="../../styles/planes.css">
+</head> 
 <body>
     <div id="wrapper">
         <nav>
@@ -47,7 +48,6 @@
             </header>
 
             <form id="form-deportistas-seleccionador" class="formDeportistasSeleccionador">
-                <h5>Deportista</h5>
                 <br>
                 <label class="nombre">Cedula</label>
                 <input class="inputDeportistaBuscador">
@@ -59,7 +59,7 @@
                 <br>
             </form>
 
-            <div /*class="container-fluid /*tablaDeportistasSeleccionador">
+            <div class="container-fluid /*tablaDeportistasSeleccionador">
                 <div class="row">
                     <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
                         <table class="table table-bordered table-hover">
@@ -83,22 +83,10 @@
                                     <th scope="row">Apellido:</th>
                                     <td class="outputDeportistaApellido"></td>
                                 </tr>
-                                <!-- <tr>
-                                    <th scope="row">Direccion:</th>
-                                    <td class="outputDeportistaDireccion"></td>
-                                </tr> -->
-                                <tr>
-                                    <th scope="row">Email:</th>
-                                    <td class="outputDeportistaEmail"></td>
-                                </tr>
                                 <tr>
                                     <th scope="row">Fecha nacimiento:</th>
                                     <td class="outputDeportistaFechaNacimiento"></td>
                                 </tr>
-                                <!-- <tr>
-                                    <th scope="row">Ultimo Login:</th>
-                                    <td class="outputDeportistaUltimoLogin"></td>
-                                </tr> -->
                                 <tr>
                                     <th scope="row">ID equipo:</th>
                                     <td class="outputDeportistaIdEquipo"></td>
@@ -106,14 +94,6 @@
                                 <tr>
                                     <th scope="row">Equipo:</th>
                                     <td class="outputDeportistaNombreEquipo"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Cantidad:</th>
-                                    <td class="outputDeportistaCantidad"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">ID deporte:</th>
-                                    <td class="outputDeportistaIdDeporte"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Deporte:</th>
@@ -133,10 +113,44 @@
                 </div>
             </div>
             <br>
+            <h1 class="titulo2Seleccionador">Evolucion y calificacion</h1>
             <br>
             <div class="graficaSeleccionador">
                 <canvas id="graficaSeleccionador"></canvas>
             </div>
+
+            <table  class="tablaCaliSeleccionador">
+                <tbody>
+                  <tr>
+                    <th>Calificacion</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>Modificar Calificación</th>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <th>Cumplimiento con la agenda</th>
+                    <td><input type="number"></td>
+                  </tr>
+                  <tr>
+                    <th>Resistencia anaeróbica</th>
+                    <td><input type="number"></td>
+                  </tr>
+                  <tr>
+                    <th>Fuerza muscular</th>
+                    <td><input type="number"></td>
+                  </tr>
+                  <tr>
+                    <th>Resistencia muscular</th>
+                    <td><input type="number"></td>
+                  </tr>
+                  <tr>
+                    <th>Flexibilidad</th>
+                    <td><input type="number"></td>
+                  </tr>
+                </tbody>
+              </table>
             
         </main>
 

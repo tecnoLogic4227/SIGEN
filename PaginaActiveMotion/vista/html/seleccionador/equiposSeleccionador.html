@@ -43,49 +43,6 @@
       
         </nav>
     
-        <main class="tituloSeleccionador">
-          <header> 
-              <h1 class="titulo2Seleccionador">Equipos</h1>
-          </header>
-             
-          <form id="form-equiposSeleccionador" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_equipo_seleccionador.php" method="post" class="formEquiposSeleccionador">
-            <label for="deporteClub">Deporte:</label>
-            <br>
-            <input type="text" name="deporteClub" id="deporteClub" placeholder="Futbol">
-            <br>
-            <label for="clubEquipo" class="clubEquipo">ID del Equipo:</label>
-            <br>
-            <input class="inputEquiposBuscador" type="text" id="clubEquipo" name="clubEquipo" placeholder="Peñarol" required>
-            <br>
-            <button class="botonEquiposBuscador" id="btnBuscarEquipo" type="button">Buscar</button>
-            <button class="estado armarEquipo" id="btnArmarEquipo" type="button">Armar equipo</button>
-            <span id="mensaje_equiposSeleccionador" hidden></span>
-        </form>
-        
-      
-      <div class="clase1">
-        <img src="../../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-      </div>
-
-      <ul>
-        <li id="inicio" class="op-menu"><a href="indexSeleccionador.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-        <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html">Equipos</a>
-        <li id="login" class="op-menu"><a href="perfilSeleccionador.html">Perfil</a></li>
-        <li><a class="menu-barras" href="#barras">☰</a></li>
-      </ul>
-
-      <div class="menu-adaptable">
-        <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="indexSeleccionador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-          <li class="op-menu-oculto"><a href="equiposSeleccionador.html">Equipos</a></li>
-          <li class="op-menu-oculto"><a href="perfilSeleccionador.html">Perfil</a></li>
-        </ul>
-      </div>
-
-    </nav>
-
     <main class="tituloSeleccionador">
       <header>
         <h1 class="titulo2Seleccionador">Equipos</h1>
@@ -96,8 +53,14 @@
         <br>
         <input class="inputEquipoBuscador">
         <br>
-        <button class="botonEquipoBuscador">Buscar</button>
-        <button class="estado armarEquipo" id="btnArmarEquipo" type="button">Armar equipo</button>
+        <button id="btnBuscarEquipo" class="estado botonEquipoBuscador">Buscar</button>
+        <article id="art1">
+          <button class="estado armarEquipo btnArmarEquipo" type="button">Armar equipo</button>
+          <div id="botonesDespleglables" style="display: none;">
+            <button class="boton-equipo-seleccionador estado btnArmarNuevo"><a href="armarEquipoSeleccionador.html">Nuevo</a></button>
+            <button class="boton-equipo-seleccionador estado btnArmarExistente"><a href="armarEquipoSeleccionador.html">Existente</a></button>
+          </div>
+        </article>
         <span id="mensaje_equiposSeleccionador" hidden></span>
       </form>
 
@@ -109,7 +72,7 @@
               <thead class="table-primary">
                 <tr>
                   <th colspan="2" class="text-center">
-                    <img class="img-fluid rounded-circle" src="../../../img/Perfil.png" alt="Foto de perfil"
+                    <img class="img-fluid rounded-circle" src="../../../vista/img/Perfil.png" alt="Foto de perfil"
                       style="max-width: 100px;">
                   </th>
                 </tr>
@@ -122,6 +85,14 @@
                 <tr>
                   <th scope="row">Nombre:</th>
                   <td class="outputEquipoNombre"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Deporte:</th>
+                  <td class="outputEquipoDeporte"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Cantidad  de deportistas:</th>
+                  <td class="outputEquipoCantidadDep"></td>
                 </tr>
                 <tr>
                   <th scope="row">Deportistas:</th>

@@ -12,45 +12,48 @@
 </head>
   <body>
     <div id="wrapper">
-    <nav>
-
-      <div class="clase1">
-        <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-    </div>
-
+      <nav>
+        <div class="clase1">
+            <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
+        </div>
+        
         <ul>
-            <li id="inicio" class="op-menu"><a href="index.html">Inicio</a></li>
-            <li id="nosotros" class="op-menu"><a href="nosotros.html">Nosotros</a></li> 
-            <li id="servicios" class="op-menu"><a href="servicios.html">Servicios</a>
-            <ul>
-             <li id="servis" class="op-menu "><a href="servicios.html"><strong>Nuestros servicios</strong></a></li>
-             <li id="fisio" class="op-menu"><a href="servFisio.html"><strong>Fisioterapia</strong></a></li>
-             <li id="dep" class="op-menu"><a href="servDep.html"><strong>Deporte</strong></a></li>
-             <li id="pila" class="op-menu"><a href="servPila.html"><strong>Pilates</strong></a></li>
-            </ul>
+            <li id="inicio" class="op-menu" ><a href="index.html" data-translate="inicio">Inicio</a></li>
+            <li id="nosotros" class="op-menu"><a href="nosotros.html" data-translate="nosotros">Nosotros</a></li>
+            <li id="servicios" class="op-menu"><a href="servicios.html" data-translate="servicios">Servicios</a>
+                <ul>
+                    <li id="fisio" class="op-menu"><a href="servFisio.html" data-translate="fisioterapia"><strong>Fisioterapia</strong></a></li>
+                    <li id="dep" class="op-menu"><a href="servDep.html" data-translate="deporte"><strong>Deporte</strong></a></li>
+                    <li id="pila" class="op-menu"><a href="servPila.html" data-translate="pilates"><strong>Pilates</strong></a></li>
+                </ul>
             </li>
-            <li id="locales" class="op-menu"><a href="locales.html">Locales</a></li>
-            <li id="planes" class="op-menu"><a href="planes.html">Planes</a></li>
-            <li id="login" class="op-menu"><a href="login.html">Login</a></li>
+            <li id="locales" class="op-menu"><a href="locales.html" data-translate="locales">Locales</a></li>
+            <li id="planes" class="op-menu"><a href="planes.html"  data-translate="planes">Planes</a></li>
+
+            <li id="login" class="op-menu"><a href="login.html"  data-translate="login">Login</a></li>
+
             <li><a class="menu-barras" href="#barras">☰</a></li>
         </ul>
-  
+
         <div class="search-container">
           <input type="text" placeholder="Buscar...">
           <button type="submit">🔍</button>
       </div>
 
-        <div class="menu-adaptable">
-          <ul class="menu-oculto">
-              <li><a class="op-menu-oculto" href="index.html">Inicio</a></li>
-              <li><a class="op-menu-oculto" href="nosotros.html">Nosotros</a></li>
-              <li><a class="op-menu-oculto" href="servicios.html">Servicios</a></li>
-              <li><a class="op-menu-oculto" href="locales.html">Locales</a></li>
-              <li><a class="op-menu-oculto" href="planes.html">Planes</a></li>
-              <li><a class="op-menu-oculto" href="login.html">Login</a></li>
-          </ul>
+      <div class="language-toggle">
+        <button id="langToggle">EN</button>
       </div>
-  
+
+        <div class="menu-adaptable">
+            <ul class="menu-oculto">
+                <li><a class="op-menu-oculto" href="index.html" data-translate="inicio">Inicio</a></li>
+                <li><a class="op-menu-oculto" href="nosotros.html"  data-translate="nosotros">Nosotros</a></li>
+                <li><a class="op-menu-oculto" href="servicios.html" data-translate="servicios">Servicios</a></li>
+                <li><a class="op-menu-oculto" href="locales.html"  data-translate="locales">Locales</a></li>
+                <li><a class="op-menu-oculto" href="planes.html"   data-translate="planes">Planes</a></li>
+                <li><a class="op-menu-oculto" href="login.html" data-translate="login">Login</a></li>
+            </ul>
+        </div>
     </nav>
     
     <header class="tituloGeneral">
@@ -133,15 +136,16 @@
         </li>
       </ol>
     </div>
+
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="locales.html">Locales</a></li>
-          <li><a href="planes.html">Planes</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="index.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="nosotros.html" data-translate="nosotros">Nosotros</a></li>
+          <li><a href="servicios.html" data-translate="servicios">Servicios</a></li>
+          <li><a href="locales.html" data-translate="locales">Locales</a></li>
+          <li><a href="planes.html" data-translate="planes">Planes</a></li>
+          <li><a href="login.html" data-translate="login">Login</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">

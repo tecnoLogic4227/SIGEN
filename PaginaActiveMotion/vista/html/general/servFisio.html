@@ -12,54 +12,57 @@
 </head>
   <body>
     <div id="wrapper">
-    <nav>
-
-      <div class="clase1">
-        <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-    </div>
-    
+      <nav>
+        <div class="clase1">
+            <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
+        </div>
+        
         <ul>
-            <li id="inicio" class="op-menu"><a href="index.html">Inicio</a></li>
-            <li id="nosotros" class="op-menu"><a href="nosotros.html">Nosotros</a></li> 
-            <li id="servicios" class="op-menu"><a href="servicios.html">Servicios</a>
-            <ul>
-             <li id="servis" class="op-menu "><a href="servicios.html"><strong>Nuestros servicios</strong></a></li>
-             <li id="fisio" class="op-menu"><a href="servFisio.html"><strong>Fisioterapia</strong></a></li>
-             <li id="dep" class="op-menu"><a href="servDep.html"><strong>Deporte</strong></a></li>
-             <li id="pila" class="op-menu"><a href="servPila.html"><strong>Pilates</strong></a></li>
-            </ul>
+            <li id="inicio" class="op-menu" ><a href="index.html" data-translate="inicio">Inicio</a></li>
+            <li id="nosotros" class="op-menu"><a href="nosotros.html" data-translate="nosotros">Nosotros</a></li>
+            <li id="servicios" class="op-menu"><a href="servicios.html" data-translate="servicios">Servicios</a>
+                <ul>
+                    <li id="fisio" class="op-menu"><a href="servFisio.html" data-translate="fisioterapia"><strong>Fisioterapia</strong></a></li>
+                    <li id="dep" class="op-menu"><a href="servDep.html" data-translate="deporte"><strong>Deporte</strong></a></li>
+                    <li id="pila" class="op-menu"><a href="servPila.html" data-translate="pilates"><strong>Pilates</strong></a></li>
+                </ul>
             </li>
-            <li id="locales" class="op-menu"><a href="locales.html">Locales</a></li>
-            <li id="planes" class="op-menu"><a href="planes.html">Planes</a></li>
-            <li id="login" class="op-menu"><a href="login.html">Login</a></li>
+            <li id="locales" class="op-menu"><a href="locales.html" data-translate="locales">Locales</a></li>
+            <li id="planes" class="op-menu"><a href="planes.html"  data-translate="planes">Planes</a></li>
+
+            <li id="login" class="op-menu"><a href="login.html"  data-translate="login">Login</a></li>
+
             <li><a class="menu-barras" href="#barras">☰</a></li>
         </ul>
-        
+
         <div class="search-container">
           <input type="text" placeholder="Buscar...">
           <button type="submit">🔍</button>
       </div>
 
-        <div class="menu-adaptable">
-          <ul class="menu-oculto">
-              <li><a class="op-menu-oculto" href="index.html">Inicio</a></li>
-              <li><a class="op-menu-oculto" href="nosotros.html">Nosotros</a></li>
-              <li><a class="op-menu-oculto" href="servicios.html">Servicios</a></li>
-              <li><a class="op-menu-oculto" href="locales.html">Locales</a></li>
-              <li><a class="op-menu-oculto" href="planes.html">Planes</a></li>
-              <li><a class="op-menu-oculto" href="login.html">Login</a></li>
-          </ul>
+      <div class="language-toggle">
+        <button id="langToggle">EN</button>
       </div>
-  
+
+        <div class="menu-adaptable">
+            <ul class="menu-oculto">
+                <li><a class="op-menu-oculto" href="index.html" data-translate="inicio">Inicio</a></li>
+                <li><a class="op-menu-oculto" href="nosotros.html"  data-translate="nosotros">Nosotros</a></li>
+                <li><a class="op-menu-oculto" href="servicios.html" data-translate="servicios">Servicios</a></li>
+                <li><a class="op-menu-oculto" href="locales.html"  data-translate="locales">Locales</a></li>
+                <li><a class="op-menu-oculto" href="planes.html"   data-translate="planes">Planes</a></li>
+                <li><a class="op-menu-oculto" href="login.html" data-translate="login">Login</a></li>
+            </ul>
+        </div>
     </nav>
     
     <header class="tituloGeneral">
 
       <section>
         <article>
-          <h1 class="titulo2General">Nuestros Servicios</h1>
-          <p class="tituloFisio"><strong>Fisioterapia</strong></p>
-          <p class="descFisio">En ActiveMotion, nos especializamos en proporcionar tratamientos y servicios de rehabilitación de alta calidad para ayudar a nuestros pacientes a recuperar su movilidad y funcionalidad física. Nuestro objetivo es mejorar la calidad de vida de quienes nos visitan, reduciendo el dolor y restaurando la funcionalidad a través de un enfoque personalizado y profesional.</p>
+          <h1 class="titulo2General" data-translate="servicios">Nuestros Servicios</h1>
+          <p class="tituloFisio" data-translate="fisioterapia"><strong>Fisioterapia</strong></p>
+          <p class="descFisio" data-translate="descFisio">En ActiveMotion, nos especializamos en proporcionar tratamientos y servicios de rehabilitación de alta calidad para ayudar a nuestros pacientes a recuperar su movilidad y funcionalidad física. Nuestro objetivo es mejorar la calidad de vida de quienes nos visitan, reduciendo el dolor y restaurando la funcionalidad a través de un enfoque personalizado y profesional.</p>
         </article>
       </section>
 
@@ -106,43 +109,72 @@
     </header>
 
     <div class="servicios-container">
-      <h2 class="servicios-titulo">Servicios Ofrecidos:</h2>
+      <h2 class="servicios-titulo" data-translate="servOfrecidos">Servicios Ofrecidos:</h2>
       <ol class="servicios-lista">
-        <li><strong>Evaluación y Diagnóstico</strong>
+        <li>
+          <strong data-translate="evaYdiag">Evaluación y Diagnóstico</strong>
           <ol class="sublista">
-            <li><strong>Evaluación Inicial:</strong> En ActiveMotion, comenzamos con una evaluación exhaustiva para entender la condición del paciente, que incluye un detallado historial médico, exámenes físicos y pruebas funcionales.</li>
-            <li><strong>Diagnóstico:</strong> Con base en esta evaluación, nuestros expertos establecen un diagnóstico fisioterapéutico preciso para guiar el plan de tratamiento personalizado.</li>
+            <li>
+              <strong data-translate="evalIni">Evaluación Inicial:</strong>
+              <span data-translate="evalIni-desc">En ActiveMotion, comenzamos con una evaluación exhaustiva para entender la condición del paciente, que incluye un detallado historial médico, exámenes físicos y pruebas funcionales.</span>
+            </li>
+            <li>
+              <strong data-translate="diagnostico">Diagnóstico:</strong>
+              <span data-translate="diagnostico-desc">Con base en esta evaluación, nuestros expertos establecen un diagnóstico fisioterapéutico preciso para guiar el plan de tratamiento personalizado.</span>
+            </li>
           </ol>
         </li>
-        <li><strong>Planes de Tratamiento Personalizados</strong>
+        <li>
+          <strong data-translate="planTrat">Planes de Tratamiento Personalizados</strong>
           <ol class="sublista">
-            <li><strong>Diseño de Planes Individualizados:</strong> Cada paciente recibe un plan de tratamiento adaptado a sus necesidades específicas, con objetivos claros y alcanzables.</li>
-            <li><strong>Terapia Manual:</strong> Utilizamos técnicas manuales avanzadas para movilizar tejidos blandos y articulaciones, reduciendo el dolor y mejorando la movilidad.</li>
+            <li>
+              <strong data-translate="disenoPlan">Diseño de Planes Individualizados:</strong>
+              <span data-translate="disenoPlan-desc">Cada paciente recibe un plan de tratamiento adaptado a sus necesidades específicas, con objetivos claros y alcanzables.</span>
+            </li>
+            <li>
+              <strong data-translate="terapiaManual">Terapia Manual:</strong>
+              <span data-translate="terapiaManual-desc">Utilizamos técnicas manuales avanzadas para movilizar tejidos blandos y articulaciones, reduciendo el dolor y mejorando la movilidad.</span>
+            </li>
           </ol>
         </li>
-        <li><strong>Terapias Especializadas</strong>
+        <li>
+          <strong data-translate="terapiaEsp">Terapias Especializadas</strong>
           <ol class="sublista">
-            <li><strong>Ejercicio Terapéutico:</strong> Desarrollamos programas de ejercicios específicos para fortalecer músculos, mejorar la flexibilidad y aumentar la resistencia.</li>
-            <li><strong>Termoterapia y Crioterapia:</strong> Empleamos calor o frío para reducir la inflamación y el dolor.</li>
+            <li>
+              <strong data-translate="ejercicioTer">Ejercicio Terapéutico:</strong>
+              <span data-translate="ejercicioTer-desc">Desarrollamos programas de ejercicios específicos para fortalecer músculos, mejorar la flexibilidad y aumentar la resistencia.</span>
+            </li>
+            <li>
+              <strong data-translate="termocrioterapia">Termoterapia y Crioterapia:</strong>
+              <span data-translate="termocrioterapia-desc">Empleamos calor o frío para reducir la inflamación y el dolor.</span>
+            </li>
           </ol>
         </li>
-        <li><strong>Prevención de Lesiones</strong>
+        <li>
+          <strong data-translate="prevLesiones">Prevención de Lesiones</strong>
           <ol class="sublista">
-            <li><strong>Educación:</strong> Proporcionamos instrucción sobre técnicas adecuadas de movimiento y ergonomía para prevenir futuras lesiones.</li>
-            <li><strong>Programas de Prevención:</strong> Desarrollamos rutinas de ejercicios y hábitos saludables para mantener una buena condición física.</li>
+            <li>
+              <strong data-translate="educacion">Educación:</strong>
+              <span data-translate="educacion-desc">Proporcionamos instrucción sobre técnicas adecuadas de movimiento y ergonomía para prevenir futuras lesiones.</span>
+            </li>
+            <li>
+              <strong data-translate="progPrevencion">Programas de Prevención:</strong>
+              <span data-translate="progPrevencion-desc">Desarrollamos rutinas de ejercicios y hábitos saludables para mantener una buena condición física.</span>
+            </li>
           </ol>
         </li>
       </ol>
     </div>
+    
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="locales.html">Locales</a></li>
-          <li><a href="planes.html">Planes</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="index.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="nosotros.html" data-translate="nosotros">Nosotros</a></li>
+          <li><a href="servicios.html" data-translate="servicios">Servicios</a></li>
+          <li><a href="locales.html" data-translate="locales">Locales</a></li>
+          <li><a href="planes.html" data-translate="planes">Planes</a></li>
+          <li><a href="login.html" data-translate="login">Login</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -163,7 +195,6 @@
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../script/jquery-3.7.1.min.js"></script>

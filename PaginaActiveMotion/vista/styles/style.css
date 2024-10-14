@@ -45,6 +45,25 @@ nav {
   cursor: pointer;
 }
 
+/*.....................................................BOTON IDIOMA................................................................*/
+.language-toggle {
+  margin-left: 13px;
+}
+
+#langToggle {
+  background-color: #72c8f1;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#langToggle:hover {
+  background-color: #5babdb;
+}
+
 /*.......................................................BODY..........................................................*/
 .inicio::before, body::after {
     content: "";
@@ -281,12 +300,7 @@ ul #servis, #fisio,#dep,#pila{
   margin-top: 35px;
   width: 80%;
 }
-.descNosotros4 {
-  margin-left: 8vw;
-  margin-top: 10px;
-  width: 80%;
-}
-.descNosotros, .descNosotros2, .descNosotros3, .descNosotros4{
+.descNosotros, .descNosotros2, .descNosotros3{
   background-color: #e4f4fd;
   border-radius: 15px; 
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
@@ -294,7 +308,7 @@ ul #servis, #fisio,#dep,#pila{
 
 
 .comb2{
-  margin-top: -120vh;
+  margin-top: -70vh;
   margin-left: 55vw;
   position: absolute;
 }
@@ -337,7 +351,7 @@ ul #servis, #fisio,#dep,#pila{
 }
 
 .descServicios{
-  margin-left: 5vw;
+  margin-left: -50vw;
   color: black;
   font-size: 22px;
 }
@@ -714,14 +728,12 @@ label{
 .login {
   position: relative;
   display: block;
-  left: -20vw; 
 }
 
 .registro {
   position: relative;
   display: block;
-  top: -5vh;
-  left: -21.5vw; 
+  top: 5vh;
 }
 
 /*.......................................................REGISTRO.......................................................*/
@@ -1106,7 +1118,7 @@ input::placeholder{
   margin-top: -8.5vh;
   margin-left: 52vw;
 }
- /*.................................................Perfil Seleccionador.....................................................*/
+ /*.................................................INDEX Seleccionador.....................................................*/
 
  .ingresar{
   position: relative;
@@ -1138,6 +1150,11 @@ input::placeholder{
   font-weight: bold;
 }
 
+/*.......................................................PERFIL SELECCIONADOR.......................................................*/
+
+#btnModificarSelec{
+  margin-left: 37vw;
+}
 /*.................................................Deportistas Seleccionador.....................................................*/
 .tituloSeleccionador{
   text-align: center;
@@ -1155,7 +1172,7 @@ input::placeholder{
   width: 20vw;
   height: auto;
   margin-top: 10vh;
-  margin-left: 5vw;
+  margin-left: 40vw;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -1181,16 +1198,22 @@ input::placeholder{
 }
 
 .graficaSeleccionador {
-  margin-top: -10vh;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 15vh;
+  margin-left: 5vw;
   width: 40%;
   z-index: 0;
   display: block;
 }
 
-.buscarDeportista{
-  margin-left: 0vw;
+.botonDeportistaBuscador{
+  margin-top: 4vh;
+  margin-left: 5vw;
+}
+
+.tablaCaliSeleccionador{
+  width: 40vw;
+  margin-top: -60vh;
+  margin-left: 50vw;
 }
 
 /*.................................................Equipos Seleccionador.....................................................*/
@@ -1214,28 +1237,44 @@ input::placeholder{
   color: rgb(0, 0, 0);
 }
 
-.buscarEquipo{
-  margin-left: 2vw;
+.botonEquipoBuscador{
+  margin-top: 5vh;
+  margin-left:45vw;
 }
   
-.armarEquipo{
-  margin-left:2vw;
+.armarEquipo {
+  margin-top: 10vh;
+  margin-left: 45vw;
   width: 30vh;
-  }
+}
+
+.btnArmarNuevo, .btnArmarExistente {
+  margin-top: 2vh;
+  margin-left: 47vw;
+  width: 20vh;
+  display: block;
+}
 
 .tablaEquipoSeleccionador {
-  margin-top: -60vh;
+  margin-top: -70vh;
   margin-left: 10vw;
 }
 
+.boton-equipo-seleccionador a {
+  font-size: inherit;
+  text-decoration: none;
+  color: inherit;
+}
 
 /*......................................................Armar equipos Seleccionador....................................*/
 .tablaArmarEquipoSeleccionador {
-  margin-top: -60vh;
+  margin-top: -40vh;
+  margin-left: 10vw;
 }
 
-
-/* botones */
+#form-armarEquiposSeleccionador{
+  margin-left: 10vw !important;
+}
 
 
 /* botones */

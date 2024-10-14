@@ -108,7 +108,8 @@ h1, h2, h3 {
 }
 
 .form-fisio {
-    margin-left: 10vw;
+    margin-top: -20vh;
+    margin-left: -10vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,8 +121,8 @@ h1, h2, h3 {
 }
 
 .ingresar-fisio {
-    margin-top: 10vh;
-    margin-left: -3vw !important;
+    margin-top: 5vh;
+    margin-left: 10vw !important;
 }
 
 /* Modificar plan */
@@ -395,7 +396,6 @@ textarea {
     display: none !important;
 }
 
-/* Asegurarse de que solo se muestren los elementos del tbody */
 .tbodyRoutine {
     display: block;
 }
