@@ -138,25 +138,25 @@ function datos($tabla)
             $direccion = isset($_REQUEST["direccion"]) ? $_REQUEST["direccion"] : null;
             $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
-            return new Institucion($idInstitucion, $nombreInstitucion, $direccion);
+            return new Institucion($idInstitucion, $nombreInstitucion, $direccion, $telefono);
             break;
-        // case "institucionTelefono":
-        //     $idInstitucion = isset($_REQUEST["idInstitucion"]) ? $_REQUEST["idInstitucion"] : null;
-        //     $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
+            // case "institucionTelefono":
+            //     $idInstitucion = isset($_REQUEST["idInstitucion"]) ? $_REQUEST["idInstitucion"] : null;
+            //     $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
-        //     return new InstitucionTelefono($idInstitucion, $telefono);
-        //     break;
+            //     return new InstitucionTelefono($idInstitucion, $telefono);
+            //     break;
         case "libre":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
 
             return new Libre($ci);
             break;
-            case "login":
-                $idLogin = isset($_REQUEST["idLogin"]) ? $_REQUEST["idLogin"] : null;
-                $contrasenia = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
+        case "login":
+            $idLogin = isset($_REQUEST["idLogin"]) ? $_REQUEST["idLogin"] : null;
+            $contrasenia = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
 
-                return new Login($idLogin, $contrasenia);
-                break;
+            return new Login($idLogin, $contrasenia);
+            break;
         case "paciente":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
             $motivo = isset($_REQUEST["motivo"]) ? $_REQUEST["motivo"] : null;
@@ -238,12 +238,12 @@ function datos($tabla)
 
             return new Entrenador($ci);
             break;
-        // case "usuarioTelefono":
-        //     $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-        //     $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
+            // case "usuarioTelefono":
+            //     $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+            //     $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
 
-        //     return new UsuarioTelefono($ci, $telefono);
-        //     break;
+            //     return new UsuarioTelefono($ci, $telefono);
+            //     break;
         default:
             break;
     }
@@ -266,8 +266,9 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaAsiste($asiste->ci, $asiste->idRutina, $asiste->nivel, $asiste->fechaInicio, $asiste->fechaTermino));
+                echo json_encode(false);
             }
+            break;
         case "concurre":
             $concurre = datos($tabla);
 
@@ -282,7 +283,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaConcurre($concurre->ci, $concurre->idInstitucion));
+                echo json_encode(false);
             }
             break;
         case "contiene":
@@ -299,7 +300,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaContiene($contiene->nombreDeporte, $contiene->idEquipo));
+                echo json_encode(false);
             }
             break;
         case "deporte":
@@ -316,7 +317,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaDeporte($deporte->nombreDeporte, $deporte->descripcion));
+                echo json_encode(false);
             }
             break;
         case "deportista":
@@ -333,7 +334,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaDeportista($deportista->ci, $deportista->posicion));
+                echo json_encode(false);
             }
             break;
         case "deportistaDeporte":
@@ -346,7 +347,7 @@ function crearModificar($tabla)
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 echo json_encode(false);
             } else {
-                echo json_encode(verificarExistenciaDeportistaDeporte($deportistaDeporte->ci, $deportistaDeporte->nombreDeporte));
+                echo json_encode(false);
             }
             break;
         case "efectua":
@@ -363,7 +364,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaEfectua($efectua->ci, $efectua->idUltimoPago));
+                echo json_encode(false);
             }
             break;
         case "ejercicio":
@@ -380,7 +381,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaEjercicio($ejercicio->idEjercicio, $ejercicio->nombreEjercicio, $ejercicio->nroRep, $ejercicio->nroSeries, $ejercicio->grupoMuscular, $ejercicio->descripcion));
+                echo json_encode(false);
             }
             break;
         case "equipo":
@@ -397,7 +398,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaEquipo($equipo->idEquipo, $equipo->nombreEquipo, $equipo->cantidad));
+                echo json_encode(false);
             }
             break;
         case "esta":
@@ -414,7 +415,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaEsta($esta->ci, $esta->idEquipo));
+                echo json_encode(false);
             }
             break;
         case "fisioterapia":
@@ -431,7 +432,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaFisioterapia($fisioterapia->idFisioterapia, $fisioterapia->nombreFisioterapia, $fisioterapia->tipoFisioterapia, $fisioterapia->descripcion));
+                echo json_encode(false);
             }
 
             break;
@@ -449,7 +450,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaHace($hace->ci, $hace->idEjercicio));
+                echo json_encode(false);
             }
 
             break;
@@ -467,7 +468,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaIncluye($incluye->ci, $incluye->idRutina, $incluye->idFisioterapia));
+                echo json_encode(false);
             }
 
             break;
@@ -485,28 +486,28 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaInstitucion($institucion->idInstitucion, $institucion->nombreInstitucion, $institucion->direccion, $institucion->telefono));
+                echo json_encode(false);
             }
 
             break;
-        // case "institucionTelefono":
-        //     $institucionTelefono = datos($tabla);
+            // case "institucionTelefono":
+            //     $institucionTelefono = datos($tabla);
 
-        //     $sqlConsulta = "SELECT * FROM INSTITUCION_TELEFONO WHERE id_institucion = ? AND telefono = ?";
-        //     $paramsConsulta = "is";
-        //     $atributosConsulta = [$institucionTelefono->idInstitucion, $institucionTelefono->telefono];
+            //     $sqlConsulta = "SELECT * FROM INSTITUCION_TELEFONO WHERE id_institucion = ? AND telefono = ?";
+            //     $paramsConsulta = "is";
+            //     $atributosConsulta = [$institucionTelefono->idInstitucion, $institucionTelefono->telefono];
 
-        //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-        //         $sql = "UPDATE INSTITUCION_TELEFONO SET telefono = ? WHERE id_institucion = ? AND telefono = ?";
-        //         $params = "sis";
-        //         $atributos = [$institucionTelefono->telefonoNuevo, $institucionTelefono->idInstitucion, $institucionTelefono->telefono];
+            //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+            //         $sql = "UPDATE INSTITUCION_TELEFONO SET telefono = ? WHERE id_institucion = ? AND telefono = ?";
+            //         $params = "sis";
+            //         $atributos = [$institucionTelefono->telefonoNuevo, $institucionTelefono->idInstitucion, $institucionTelefono->telefono];
 
-        //         echo json_encode(modificarBD($sql, $params, $atributos));
-        //     } else {
-        //         echo json_encode(verificarExistenciaInstitucionTelefono($institucionTelefono->idInstitucion, $institucionTelefono->telefono));
-        //     }
+            //         echo json_encode(modificarBD($sql, $params, $atributos));
+            //     } else {
+            //         echo json_encode(verificarExistenciaInstitucionTelefono($institucionTelefono->idInstitucion, $institucionTelefono->telefono));
+            //     }
 
-        //     break;
+            //     break;
         case "libre":
             $libre = datos($tabla);
 
@@ -517,7 +518,7 @@ function crearModificar($tabla)
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 echo json_encode(false);
             } else {
-                echo json_encode(verificarExistenciaLibre($libre->ci));
+                echo json_encode(false);
             }
 
             break;
@@ -535,7 +536,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaLogin($login->ci, $login->contrasenia));
+                echo json_encode(false);
             }
 
             break;
@@ -553,7 +554,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaPaciente($paciente->ci, $paciente->motivo, $paciente->lesion));
+                echo json_encode(false);
             }
 
             break;
@@ -567,7 +568,7 @@ function crearModificar($tabla)
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 echo json_encode(false);
             } else {
-                echo json_encode(verificarExistenciaPosee($posee->idRutina, $posee->idEjercicio));
+                echo json_encode(false);
             }
             break;
         case "realiza":
@@ -584,7 +585,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaRealiza($realiza->ci, $realiza->idRutina));
+                echo json_encode(false);
             }
 
             break;
@@ -602,7 +603,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaRutina($rutina->idRutina, $rutina->nombreRutina));
+                echo json_encode(false);
             }
 
             break;
@@ -620,7 +621,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaRutDeporte($rutDeporte->idRutina));
+                echo json_encode(false);
             }
 
             break;
@@ -638,7 +639,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaRutFisioterapia($rutFisioterapia->idRutina));
+                echo json_encode(false);
             }
 
             break;
@@ -656,7 +657,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaUltimoPago($ultimoPago->idUltimoPago, $ultimoPago->hora, $ultimoPago->fecha, $ultimoPago->valor));
+                echo json_encode(false);
             }
 
             break;
@@ -674,7 +675,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaUsuario($usuario->ci, $usuario->nombre, $usuario->apellido, $usuario->direccion, $usuario->email, $usuario->fechaNac, $usuario->rol, $usuario->telefono));
+                echo json_encode(false);
             }
 
             break;
@@ -692,7 +693,7 @@ function crearModificar($tabla)
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(verificarExistenciaUsuarioCliente($usuarioCliente->ci, $usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->calificacion, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda));
+                echo json_encode(false);
             }
             break;
         case "usuarioEntrenador":
@@ -705,28 +706,28 @@ function crearModificar($tabla)
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 echo json_encode(modificarBD("UPDATE USUARIO_ENTRENADOR SET ci = ? WHERE ci = ?", "i", [$usuarioEntrenador->ci]));
             } else {
-                echo json_encode(verificarExistenciaUsuarioEntrenador($usuarioEntrenador->ci));
+                echo json_encode(false);
             }
 
             break;
-        // case "usuarioTelefono":
-        //     $usuarioTelefono = datos($tabla);
+            // case "usuarioTelefono":
+            //     $usuarioTelefono = datos($tabla);
 
-        //     $sqlConsulta = "SELECT * FROM USUARIO_TELEFONO WHERE ci = ? AND telefono = ?";
-        //     $paramsConsulta = "is";
-        //     $atributosConsulta = [$usuarioTelefono->ci, $usuarioTelefono->telefono];
+            //     $sqlConsulta = "SELECT * FROM USUARIO_TELEFONO WHERE ci = ? AND telefono = ?";
+            //     $paramsConsulta = "is";
+            //     $atributosConsulta = [$usuarioTelefono->ci, $usuarioTelefono->telefono];
 
-        //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-        //         $sql = "UPDATE USUARIO_TELEFONO SET telefono = ? WHERE ci = ? AND telefono = ?";
-        //         $params = "sis";
-        //         $atributos = [$usuarioTelefono->telefono, $usuarioTelefono->ci, $usuarioTelefono->telefono];
+            //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+            //         $sql = "UPDATE USUARIO_TELEFONO SET telefono = ? WHERE ci = ? AND telefono = ?";
+            //         $params = "sis";
+            //         $atributos = [$usuarioTelefono->telefono, $usuarioTelefono->ci, $usuarioTelefono->telefono];
 
-        //         echo json_encode(modificarBD($sql, $params, $atributos));
-        //     } else {
-        //         echo json_encode(verificarExistenciaUsuarioTelefono($usuarioTelefono->ci, $usuarioTelefono->telefono));
-        //     }
+            //         echo json_encode(modificarBD($sql, $params, $atributos));
+            //     } else {
+            //         echo json_encode(verificarExistenciaUsuarioTelefono($usuarioTelefono->ci, $usuarioTelefono->telefono));
+            //     }
 
-        //     break;
+            //     break;
         default:
             $consulta = null;
             break;
@@ -1347,14 +1348,14 @@ function eliminar($tabla)
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             break;
         case "efectua":
-            if (isset($_REQUEST["ci"]) && isset($_REQUEST["nombreDeporte"])) {
+            if (isset($_REQUEST["ci"])) {
                 $efectua = datos($tabla);
 
-                $sql = "DELETE FROM deportistaDeporte WHERE ci = ? AND nombre_deporte = ?";
-                $params = "is";
-                $atributos = [$deportistaDeporte->ci, $deportistaDeporte->deporte];
+                $sql = "DELETE FROM efectua WHERE ci = ?";
+                $params = "i";
+                $atributos = [$efectua->ci];
 
-                $sqlConsulta = "SELECT * FROM deporte WHERE ci = ? AND nombre_deporte = ?";
+                $sqlConsulta = "SELECT * FROM deporte WHERE ci = ?";
             } else {
                 echo json_encode(false);
             }
@@ -1675,6 +1676,100 @@ function eliminar($tabla)
             }
 
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+            break;
+        default:
+            break;
+    }
+}
+
+function verificarDatos(object $objeto, $tabla)
+{
+    $atributos = [];
+    $params = [];
+    $valores = [];
+
+    switch ($tabla) {
+        case "asiste":
+            if (!empty($objeto->ci)) {
+                array_push($atributos, "ci = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            break;
+        case "concurre":
+
+            break;
+        case "contiene":
+
+            break;
+        case "deporte":
+
+            break;
+        case "deportista":
+
+            break;
+        case "deportistaDeporte":
+
+            break;
+        case "efectua":
+
+            break;
+        case "ejercicio":
+
+            break;
+        case "equipo":
+
+            break;
+        case "esta":
+
+            break;
+        case "fisioterapia":
+
+            break;
+        case "hace":
+
+            break;
+        case "incluye":
+
+            break;
+        case "institucion":
+
+            break;
+        case "libre":
+
+            break;
+        case "login":
+
+            break;
+        case "paciente":
+
+            break;
+        case "posee":
+
+            break;
+        case "realiza":
+
+            break;
+        case "rutina":
+
+            break;
+        case "rutDeporte":
+
+            break;
+        case "rutFisioterapia":
+
+            break;
+        case "ultimoPago":
+
+            break;
+        case "usuario":
+
+            break;
+        case "usuarioCliente":
+
+            break;
+        case "usuarioEntrenador":
+
             break;
         default:
             break;

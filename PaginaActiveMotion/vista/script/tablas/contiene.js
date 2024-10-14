@@ -6,7 +6,7 @@ $(document).ready(() => {
     const listarContiene = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -23,8 +23,6 @@ $(document).ready(() => {
                             let tr = $("<tr></tr>");
                             tr.append(`<td>${contiene1.id_equipo}</td>`);
                             tr.append(`<td>${contiene1.nombre_deporte}</td>`);
-                            // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
-                            // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
                             tbody.append(tr);
                         });
                     } else {
@@ -43,7 +41,7 @@ $(document).ready(() => {
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: { 
                 tabla: tabla,
@@ -78,18 +76,42 @@ $(document).ready(() => {
         }, "Contiene creado correctamente.", "Error al crear Contiene.");
     };
 
+    const modificarContiene = (idEquipo, nombreDeporte) => {
+        limpiarPantalla();
+        manejarSolicitud("POST", {
+            idEquipo: idEquipo,
+            nombreDeporte: nombreDeporte,
+        }, "Contiene modificado correctamente.", "Error al modificar Contiene.");
+    };
+
+    const filtrarDatos = (idEquipo, nombreDeporte, accion) => {
+        let v1 = filtroId(idEquipo);
+        let v2 = filtroPalabra(nombreDeporte);
+
+        if (v1 && v2) {
+            if (accion == "crear") {
+                crearContiene(idEquipo, nombreDeporte);
+            } else if (accion == "modificar") {
+                modificarContiene(idEquipo, nombreDeporte);
+            } else {
+                alert("Error, acción incorrecta.");
+            }
+        } else {
+            alert("Error, los datos no son válidos.");
+        }
+    };
+
     const datosCrearContiene = (event) => {
         event.preventDefault();
         idEquipo = $(".inputCrearContieneIdEquipo").val();
         nombreDeporte = $(".inputCrearContieneNombreDeporte").val();
-        crearContiene(idEquipo, nombreDeporte);
+        filtrarDatos(idEquipo, nombreDeporte, "crear");
     };
 
     listarContiene(datos);
 
     const buscarContiene = (idEquipo) => {
         listarContiene({
-            tabla: tabla,
             idEquipo: idEquipo,
         });
     };
@@ -100,15 +122,11 @@ $(document).ready(() => {
         buscarContiene(idEquipo);
     };
 
-    const modificarContiene = (event) => {
+    const datosModificarContiene = (event) => {
         event.preventDefault();
         idEquipo = $(".inputModificarContieneIdEquipo").val();
         nombreDeporte = $(".inputModificarContieneNombreDeporte").val();
-        limpiarPantalla();
-        manejarSolicitud("POST", {
-            idEquipo: idEquipo,
-            nombreDeporte: nombreDeporte,
-        }, "Contiene modificado correctamente.", "No se encontraron los datos.");
+        filtrarDatos(idEquipo, nombreDeporte, "modificar");
     };
 
     const eliminarContiene = (event) => {
@@ -145,7 +163,7 @@ $(document).ready(() => {
     $(".contieneConfirmarCrear").click(datosCrearContiene);
     $(".contieneBuscar").click(datosBuscarContiene);
     $(".contieneModificar").click(confirmarModificarContiene);
-    $(".contieneConfirmarModificar").click(modificarContiene);
+    $(".contieneConfirmarModificar").click(datosModificarContiene);
     $(".contieneEliminar").click(confirmarEliminarContiene);
     $(".contieneConfirmarEliminar").click(eliminarContiene);
 

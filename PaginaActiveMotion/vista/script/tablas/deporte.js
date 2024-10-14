@@ -23,8 +23,6 @@ $(document).ready(() => {
                             let tr = $("<tr></tr>");
                             tr.append(`<td>${deporte1.nombre_deporte}</td>`);
                             tr.append(`<td>${deporte1.descripcion}</td>`);
-                            // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
-                            // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
                             tbody.append(tr);
                         });
                     } else {
@@ -44,7 +42,7 @@ $(document).ready(() => {
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
             url: "../../../controlador/crud/crudController.php",
-            type: "POST",
+            type: metodo === "DELETE" ? "DELETE" : "POST", // Ajustar método DELETE
             data: { 
                 tabla: tabla,
                 metodo: metodo,
@@ -89,8 +87,6 @@ $(document).ready(() => {
 
     const buscarDeporte = (nombreDeporte) => {
         listarDeporte({
-            tabla: tabla,
-            ci: ci,
             nombreDeporte: nombreDeporte,
         });
     };
@@ -112,7 +108,7 @@ $(document).ready(() => {
         }, "Deporte modificado correctamente.", "No se encontraron los datos.");
     };
 
-    const eliminarDeporte = (event, ci, idRutina) => {
+    const eliminarDeporte = (event) => {
         event.preventDefault();
         nombreDeporte = $(".inputEliminarDeporteNombreDeporte").val();
         limpiarPantalla();
@@ -121,7 +117,7 @@ $(document).ready(() => {
         }, "Deporte eliminado correctamente.", "Error al eliminar Deporte.");
     };
 
-    const confirmarCrearDeporte= () => {
+    const confirmarCrearDeporte = () => {
         limpiarPantalla();
         $(".confirmarCrearDeporte").css("display", "block");
     }

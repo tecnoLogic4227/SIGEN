@@ -1,7 +1,7 @@
 $(document).ready(() => {
     let ci, idRutina, nivel, fechaInicio, fechaTermino, metodo;
     const tabla = "asiste";
-    datos = "";
+    let datos = "";
 
     const listarAsiste = (datos) => {
         metodo = "GET";
@@ -44,11 +44,13 @@ $(document).ready(() => {
         });
     };
 
+    listarAsiste(datos);
+
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
             url: "../../../controlador/crud/crudController.php",
             type: "POST",
-            data: { 
+            data: {
                 tabla: tabla,
                 metodo: metodo,
                 ...datos,
@@ -84,17 +86,16 @@ $(document).ready(() => {
         }, "Asiste creado correctamente.", "Error al crear Asiste.");
     };
 
-    const datosCrearAsiste = (event) => {
-        event.preventDefault();
-        ci = $(".inputCrearAsisteCI").val();
-        idRutina = $(".inputCrearAsisteIDRutina").val();
-        nivel = $(".inputCrearAsisteNivel").val();
-        fechaInicio = $(".inputCrearAsisteFechaInicio").val();
-        fechaTermino = $(".inputCrearAsisteFechaTermino").val();
-        crearAsiste(ci, idRutina, nivel, fechaInicio, fechaTermino);
+    const modificarAsiste = (ci, idRutina, nivel, fechaInicio, fechaTermino) => {
+        limpiarPantalla();
+        manejarSolicitud("POST", {
+            ci: ci,
+            idRutina: idRutina,
+            nivel: nivel,
+            fechaInicio: fechaInicio,
+            fechaTermino: fechaTermino,
+        }, "Asiste modificado correctamente.", "Error al modificar Asiste.");
     };
-
-    listarAsiste(datos);
 
     const buscarAsiste = (ci, idRutina) => {
         listarAsiste({
@@ -103,31 +104,14 @@ $(document).ready(() => {
         });
     };
 
-    const datosBuscarAsiste = (event) => {
-        event.preventDefault();
-        ci = $(".inputBuscarAsisteCI").val();
-        idRutina = $(".inputBuscarAsisteID").val();
-        buscarAsiste(ci, idRutina);
-    };
-
-    const modificarAsiste = (event) => {
-        event.preventDefault();
-        ci = $(".inputModificarAsisteCI").val();
-        idRutina = $(".inputModificarAsisteIDRutina").val();
-        nivel = $(".inputModificarAsisteNivel").val();
-        fechaInicio = $(".inputModificarAsisteFechaInicio").val();
-        fechaTermino = $(".inputModificarAsisteFechaTermino").val();
-        limpiarPantalla();
-        manejarSolicitud("POST", {
+    const eliminarAsiste = (ci, idRutina) => {
+        manejarSolicitud("DELETE", {
             ci: ci,
-            idRutina: idRutina,
-            nivel: nivel,
-            fechaInicio: fechaInicio,
-            fechaTermino: fechaTermino,
-        }, "Asiste modificado correctamente.", "No se encontraron los datos.");
+            idRutina: idRutina
+        }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
     };
 
-    const eliminarAsiste = (event) => {
+    const datosEliminarAsiste = (event) => {
         event.preventDefault();
         ci = $(".inputEliminarAsisteCI").val();
         idRutina = $(".inputEliminarAsisteIDRutina").val();
@@ -136,6 +120,86 @@ $(document).ready(() => {
             ci: ci,
             idRutina: idRutina
         }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
+    };
+
+    const filtrarDatos = (accion, ci, idRutina, nivel, fechaInicio, fechaTermino) => {
+        if (accion == "crear" || accion == "modificar") {
+            if (ci != undefined) {
+                let v1 = filtroCedula(ci);
+            }
+            if (idRutina != undefined) {
+                let v2 = filtroId(idRutina);
+            }
+            if (nivel != undefined) {
+                let v3 = filtroPalabra(nivel);
+            }
+            if (fechaInicio != undefined) {
+                let v4 = filtroFecha(fechaInicio);
+            }
+            if (fechaTermino != undefined) {
+                let v5 = filtroFecha(fechaTermino);
+            }
+
+            if (v1 && v2 && v3 && v4 && v5) {
+                alert("quedate a tdt boludo");
+                if (accion == "crear") {
+                    crearAsiste(ci, idRutina, nivel, fechaInicio, fechaTermino);
+                } else {
+                    modificarAsiste(ci, idRutina, nivel, fechaInicio, fechaTermino);
+                }
+            } else {
+                alert("Error, los datos no son válidos.")
+            }
+        } else {
+            if (accion == "eliminar" || accion == "buscar") {
+                if (ci != undefined) {
+                    let v1 = filtroCedula(ci);
+                }
+                if (idRutina != undefined) {
+                    let v2 = filtroId(idRutina);
+                }
+
+                if (v1 && v2) {
+                    if (accion == "eliminar") {
+                        eliminarAsiste(ci, idRutina);
+                    } else {
+                        buscarAsiste(ci, idRutina);
+                    }
+                }
+
+            } else {
+                alert("Error, acción no válida.");
+            }
+        }
+    }
+
+    const datosCrearAsiste = (event) => {
+        event.preventDefault();
+        ci = $(".inputCrearAsisteCI").val();
+        idRutina = $(".inputCrearAsisteIDRutina").val();
+        nivel = $(".inputCrearAsisteNivel").val();
+        fechaInicio = $(".inputCrearAsisteFechaInicio").val();
+        fechaTermino = $(".inputCrearAsisteFechaTermino").val();
+
+        filtrarDatos(ci, idRutina, nivel, fechaInicio, fechaTermino, "crear");
+    };
+
+    const datosBuscarAsiste = (event) => {
+        event.preventDefault();
+        ci = $(".inputBuscarAsisteCI").val();
+        idRutina = $(".inputBuscarAsisteID").val();
+        filtrarDatos(ci, idRutina);
+    };
+
+    const datosModificarAsiste = (event) => {
+        event.preventDefault();
+        ci = $(".inputModificarAsisteCI").val();
+        idRutina = $(".inputModificarAsisteIDRutina").val();
+        nivel = $(".inputModificarAsisteNivel").val();
+        fechaInicio = $(".inputModificarAsisteFechaInicio").val();
+        fechaTermino = $(".inputModificarAsisteFechaTermino").val();
+        filtrarDatos("modificar", ci, idRutina, nivel, fechaInicio, fechaTermino);
+        limpiarPantalla();
     };
 
     const confirmarCrearAsiste = () => {
@@ -163,9 +227,9 @@ $(document).ready(() => {
     $(".asisteConfirmarCrear").click(datosCrearAsiste);
     $(".asisteBuscar").click(datosBuscarAsiste);
     $(".asisteModificar").click(confirmarModificarAsiste);
-    $(".asisteConfirmarModificar").click(modificarAsiste);
+    $(".asisteConfirmarModificar").click(datosModificarAsiste);
     $(".asisteEliminar").click(confirmarEliminarAsiste);
-    $(".asisteConfirmarEliminar").click(eliminarAsiste);
+    $(".asisteConfirmarEliminar").click(datosEliminarAsiste);
 
     $(".asisteCancelarCrear").click(limpiarPantalla);
     $(".asisteCancelarModificar").click(limpiarPantalla);
