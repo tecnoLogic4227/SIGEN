@@ -2,23 +2,26 @@
 
 require_once("usuario.php");
 
-class Cliente extends Usuario {
-    private $actividad;
-    private $estado;
-    private $estadoActividad;
-    private $fecha;
-    private $hora;
-    private $turnoAgenda;
-    private $cumplimientoAgenda; 
-    private $resistenciaAnaerobica; 
-    private $fuerzaMuscular; 
-    private $resistenciaMuscular; 
-    private $flexibilidad; 
-    private $resistenciaMonotonia;
-    private $resiliencia; 
+class Cliente extends Usuario
+{
+    public $ci;
+    public $actividad;
+    public $estado;
+    public $estadoActividad;
+    public $fecha;
+    public $hora;
+    public $turnoAgenda;
+    public $cumplimientoAgenda;
+    public $resistenciaAnaerobica;
+    public $fuerzaMuscular;
+    public $resistenciaMuscular;
+    public $flexibilidad;
+    public $resistenciaMonotonia;
+    public $resiliencia;
 
-    public function __construct($ci, $actividad, $estado, $estadoActividad, $fecha, $hora, $turnoAgenda, $cumplimientoAgenda, $resistenciaAnaerobica, $fuerzaMuscular, $resistenciaMuscular, $flexibilidad, $resistenciaMonotonia, $resiliencia) {
-        parent::__construct($ci, '', '', '', '', '', '', '');
+    public function __construct($ci, $actividad, $estado, $estadoActividad, $fecha, $hora, $turnoAgenda, $cumplimientoAgenda, $resistenciaAnaerobica, $fuerzaMuscular, $resistenciaMuscular, $flexibilidad, $resistenciaMonotonia, $resiliencia)
+    {
+        $this->ci = $ci;
         $this->actividad = $actividad;
         $this->estado = $estado;
         $this->estadoActividad = $estadoActividad;
@@ -34,114 +37,114 @@ class Cliente extends Usuario {
         $this->resiliencia = $resiliencia;
     }
 
-    public function getCi() {
-        return $this->ci;
-    }
 
-    public function getActividad() {
-        return $this->actividad;
-    }
+public function getCi() {
+return $this->ci;
+}
 
-    public function getEstado() {
-        return $this->estado;
-    }
+public function getActividad() {
+return $this->actividad;
+}
 
-    public function getEstadoActividad() {
-        return $this->estadoActividad;
-    }
+public function getEstado() {
+return $this->estado;
+}
 
-    public function getFecha() {
-        return $this->fecha;
-    }
+public function getEstadoActividad() {
+return $this->estadoActividad;
+}
 
-    public function getHora() {
-        return $this->hora;
-    }
+public function getFecha() {
+return $this->fecha;
+}
 
-    public function getTurnoAgenda() {
-        return $this->turnoAgenda;
-    }
+public function getHora() {
+return $this->hora;
+}
 
-    public function setActividad($actividad) {
-        $this->actividad = $actividad;
-    }
+public function getTurnoAgenda() {
+return $this->turnoAgenda;
+}
 
-    public function setEstado($estado) {
-        $this->estado = $estado;
-    }
+public function setActividad($actividad) {
+$this->actividad = $actividad;
+}
 
-    public function setEstadoActividad($estadoActividad) {
-        $this->estadoActividad = $estadoActividad;
-    }
+public function setEstado($estado) {
+$this->estado = $estado;
+}
 
-    public function setFecha($fecha) {
-        $this->fecha = $fecha;
-    }
+public function setEstadoActividad($estadoActividad) {
+$this->estadoActividad = $estadoActividad;
+}
 
-    public function setHora($hora) {
-        $this->hora = $hora;
-    }
+public function setFecha($fecha) {
+$this->fecha = $fecha;
+}
 
-    public function setTurnoAgenda($turnoAgenda) {
-        $this->turnoAgenda = $turnoAgenda;
-    }
+public function setHora($hora) {
+$this->hora = $hora;
+}
 
-    public function getCumplimientoAgenda() {
-        return $this->cumplimientoAgenda;
-    }
+public function setTurnoAgenda($turnoAgenda) {
+$this->turnoAgenda = $turnoAgenda;
+}
 
-    public function setCumplimientoAgenda($cumplimientoAgenda) {
-        $this->cumplimientoAgenda = $cumplimientoAgenda;
-    }
+public function getCumplimientoAgenda() {
+return $this->cumplimientoAgenda;
+}
 
-    public function getResistenciaAnaerobica() {
-        return $this->resistenciaAnaerobica;
-    }
+public function setCumplimientoAgenda($cumplimientoAgenda) {
+$this->cumplimientoAgenda = $cumplimientoAgenda;
+}
 
-    public function setResistenciaAnaerobica($resistenciaAnaerobica) {
-        $this->resistenciaAnaerobica = $resistenciaAnaerobica;
-    }
+public function getResistenciaAnaerobica() {
+return $this->resistenciaAnaerobica;
+}
 
-    public function getFuerzaMuscular() {
-        return $this->fuerzaMuscular;
-    }
+public function setResistenciaAnaerobica($resistenciaAnaerobica) {
+$this->resistenciaAnaerobica = $resistenciaAnaerobica;
+}
 
-    public function setFuerzaMuscular($fuerzaMuscular) {
-        $this->fuerzaMuscular = $fuerzaMuscular;
-    }
+public function getFuerzaMuscular() {
+return $this->fuerzaMuscular;
+}
 
-    public function getResistenciaMuscular() {
-        return $this->resistenciaMuscular;
-    }
+public function setFuerzaMuscular($fuerzaMuscular) {
+$this->fuerzaMuscular = $fuerzaMuscular;
+}
 
-    public function setResistenciaMuscular($resistenciaMuscular) {
-        $this->resistenciaMuscular = $resistenciaMuscular;
-    }
+public function getResistenciaMuscular() {
+return $this->resistenciaMuscular;
+}
 
-    public function getFlexibilidad() {
-        return $this->flexibilidad;
-    }
+public function setResistenciaMuscular($resistenciaMuscular) {
+$this->resistenciaMuscular = $resistenciaMuscular;
+}
 
-    public function setFlexibilidad($flexibilidad) {
-        $this->flexibilidad = $flexibilidad;
-    }
+public function getFlexibilidad() {
+return $this->flexibilidad;
+}
 
-    public function getResistenciaMonotonia() {
-        return $this->resistenciaMonotonia;
-    }
+public function setFlexibilidad($flexibilidad) {
+$this->flexibilidad = $flexibilidad;
+}
 
-    public function setResistenciaMonotonia($resistenciaMonotonia) {
-        $this->resistenciaMonotonia = $resistenciaMonotonia;
-    }
+public function getResistenciaMonotonia() {
+return $this->resistenciaMonotonia;
+}
 
-    public function getResiliencia() {
-        return $this->resiliencia;
-    }
+public function setResistenciaMonotonia($resistenciaMonotonia) {
+$this->resistenciaMonotonia = $resistenciaMonotonia;
+}
 
-    public function setResiliencia($resiliencia) {
-        $this->resiliencia = $resiliencia;
-    }
+public function getResiliencia() {
+return $this->resiliencia;
+}
+
+public function setResiliencia($resiliencia) {
+$this->resiliencia = $resiliencia;
+}
 }
 
 ?>
-

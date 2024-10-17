@@ -27,7 +27,17 @@ function registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $
     try {
 
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param($params, ...$atributos);
+        if (is_array($atributos)) {
+            if (count($atributos) > 1) {
+                $stmt->bind_param($params, ...array_map(function (&$value) {
+                    return $value;
+                }, $atributos));
+            } else {
+                $stmt->bind_param($params, $atributos[0]);
+            }
+        } else {
+            $stmt->bind_param($params, $atributos);
+        }
         $stmt->execute();
         $stmt->close();
 
@@ -48,10 +58,12 @@ function listarBD($sql, $params, $atributos)
 
         if ($params != "" && !empty($atributos)) {
             $stmt = $conexion->prepare($sql);
-    
+
             if (is_array($atributos)) {
                 if (count($atributos) > 1) {
-                    $stmt->bind_param($params, ...array_map(function (&$value) { return $value; }, $atributos));
+                    $stmt->bind_param($params, ...array_map(function (&$value) {
+                        return $value;
+                    }, $atributos));
                 } else {
                     $stmt->bind_param($params, $atributos[0]);
                 }
@@ -136,7 +148,6 @@ function verificarExistencia($sql, $params, $atributos)
     $resultado = $stmt->get_result();
 
     if ($resultado) {
-        echo json_encode($resultado->num_rows);
         return ($resultado->num_rows > 0);
     } else {
         return false;

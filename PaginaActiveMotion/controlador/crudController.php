@@ -1,6 +1,9 @@
 <?php
 
 $resultado;
+$atributos = "";
+$params = "";
+$valores = [];
 
 require_once("../modelo/crudModel.php");
 require_once("../modelo/clases/usuarioCliente.php");
@@ -22,7 +25,7 @@ if (is_null($metodo) || empty($metodo)) {
 
 switch ($metodo) {
     case "POST":
-        crearModificar($tabla);
+        crearModificar($atributos, $params, $valores, $tabla);
         break;
     case "GET":
         listar($tabla);
@@ -215,20 +218,20 @@ function datos($tabla)
             return new Usuario($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $rol, $telefono);
             break;
         case "usuarioCliente":
-            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-            $actividad = isset($_REQUEST["actividad"]) ? $_REQUEST["actividad"] : null;
-            $estado = isset($_REQUEST["estado"]) ? $_REQUEST["estado"] : null;
-            $estadoActividad = isset($_REQUEST["estadoActividad"]) ? $_REQUEST["estadoActividad"] : null;
-            $fecha = isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : null;
-            $hora = isset($_REQUEST["hora"]) ? $_REQUEST["hora"] : null;
-            $turnoAgenda = isset($_REQUEST["turnoAgenda"]) ? $_REQUEST["turnoAgenda"] : null;
-            $cumplimientoAgenda = isset($_REQUEST["cumplimientoAgenda"]) ? $_REQUEST["cumplimientoAgenda"] : null;
-            $resistenciaAnaerobica = isset($_REQUEST["resistenciaAnaerobica"]) ? $_REQUEST["resistenciaAnaerobica"] : null;
-            $fuerzaMuscular = isset($_REQUEST["fuerzaMuscular"]) ? $_REQUEST["fuerzaMuscular"] : null;
-            $resistenciaMuscular = isset($_REQUEST["resistenciaMuscular"]) ? $_REQUEST["resistenciaMuscular"] : null;
-            $flexibilidad = isset($_REQUEST["flexibilidad"]) ? $_REQUEST["flexibilidad"] : null;
-            $resistenciaMonotonia = isset($_REQUEST["resistenciaMonotonia"]) ? $_REQUEST["resistenciaMonotonia"] : null;
-            $resiliencia = isset($_REQUEST["resiliencia"]) ? $_REQUEST["resiliencia"] : null;
+            $ci = isset($_REQUEST["datos"]["ci"]) && !empty($_REQUEST["datos"]["ci"]) ? $_REQUEST["datos"]["ci"] : null;
+            $actividad = isset($_REQUEST["actividad"]) && !empty($_REQUEST["actividad"]) ? $_REQUEST["actividad"] : null;
+            $estado = isset($_REQUEST["estado"]) && !empty($_REQUEST["estado"]) ? $_REQUEST["estado"] : null;
+            $estadoActividad = isset($_REQUEST["estadoActividad"]) && !empty($_REQUEST["estadoActividad"]) ? $_REQUEST["estadoActividad"] : null;
+            $fecha = isset($_REQUEST["fecha"]) && !empty($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : null;
+            $hora = isset($_REQUEST["hora"]) && !empty($_REQUEST["hora"]) ? $_REQUEST["hora"] : null;
+            $turnoAgenda = isset($_REQUEST["turnoAgenda"]) && !empty($_REQUEST["turnoAgenda"]) ? $_REQUEST["turnoAgenda"] : null;
+            $cumplimientoAgenda = isset($_REQUEST["cumplimientoAgenda"]) && !empty($_REQUEST["cumplimientoAgenda"]) ? $_REQUEST["cumplimientoAgenda"] : null;
+            $resistenciaAnaerobica = isset($_REQUEST["resistenciaAnaerobica"]) && !empty($_REQUEST["resistenciaAnaerobica"]) ? $_REQUEST["resistenciaAnaerobica"] : null;
+            $fuerzaMuscular = isset($_REQUEST["fuerzaMuscular"]) && !empty($_REQUEST["fuerzaMuscular"]) ? $_REQUEST["fuerzaMuscular"] : null;
+            $resistenciaMuscular = isset($_REQUEST["resistenciaMuscular"]) && !empty($_REQUEST["resistenciaMuscular"]) ? $_REQUEST["resistenciaMuscular"] : null;
+            $flexibilidad = isset($_REQUEST["flexibilidad"]) && !empty($_REQUEST["flexibilidad"]) ? $_REQUEST["flexibilidad"] : null;
+            $resistenciaMonotonia = isset($_REQUEST["resistenciaMonotonia"]) && !empty($_REQUEST["resistenciaMonotonia"]) ? $_REQUEST["resistenciaMonotonia"] : null;
+            $resiliencia = isset($_REQUEST["resiliencia"]) && !empty($_REQUEST["resiliencia"]) ? $_REQUEST["resiliencia"] : null;
 
             return new Cliente($ci, $actividad, $estado, $estadoActividad, $fecha, $hora, $turnoAgenda, $cumplimientoAgenda, $resistenciaAnaerobica, $fuerzaMuscular, $resistenciaMuscular, $flexibilidad, $resistenciaMonotonia, $resiliencia);
             break;
@@ -248,7 +251,7 @@ function datos($tabla)
     }
 }
 
-function crearModificar($tabla)
+function crearModificar($atributos, $params, $valores, $tabla)
 {
     switch ($tabla) {
         case "asiste":
@@ -685,15 +688,15 @@ function crearModificar($tabla)
             $paramsConsulta = "i";
             $atributosConsulta = [$usuarioCliente->ci];
 
-            echo json_encode(verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta));
-
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+
+                verificarDatos($atributos, $params, $valores, $usuarioCliente, $tabla);
+
                 $sql = "UPDATE USUARIO_CLIENTE SET actividad = ?, estado = ?, estado_actividad = ?, fecha = ?, hora = ?, turno_agenda = ?, cumplimiento_agenda = ?, resistencia_anaerobica = ?, fuerza_muscular = ?, resistencia_muscular = ?, flexibilidad = ?, resistencia_monotonia = ?, resiliencia = ? WHERE ci = ?";
                 $params = "ssssssiiiiiiii";
-                // $atributos = [$usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda, $usuarioCliente->cumplimientoAgenda, $usuarioCliente->resistenciaAnaerobica, $usuarioCliente->fuerzaMuscular, $usuarioCliente->resistenciaMuscular, $usuarioCliente->flexibilidad, $usuarioCliente->resistenciaMonotonia, $usuarioCliente->resiliencia, $usuarioCliente->ci];
+                $atributos = [$usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda, $usuarioCliente->cumplimientoAgenda, $usuarioCliente->resistenciaAnaerobica, $usuarioCliente->fuerzaMuscular, $usuarioCliente->resistenciaMuscular, $usuarioCliente->flexibilidad, $usuarioCliente->resistenciaMonotonia, $usuarioCliente->resiliencia, $usuarioCliente->ci];
 
-                //echo json_encode(modificarBD($sql, $params, $atributos));
-                echo json_encode($usuarioCliente);
+                echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
                 echo json_encode(false);
             }
@@ -1044,21 +1047,21 @@ function listar($tabla)
 
             echo json_encode(listarBD($sql, $params, $atributos));
             break;
-        // case "login":
-        //     $login = datos($tabla);
+            // case "login":
+            //     $login = datos($tabla);
 
-        //     if (!is_null($login->idLogin) && !empty($libre->ci)) {
-        //         $sql = "SELECT * FROM `login` WHERE id_login = ?";
-        //         $params = "i";
-        //         $atributos = $login->idLogin;
-        //     } else {
-        //         $sql = "SELECT * FROM `login`";
-        //         $params = "";
-        //         $atributos = "";
-        //     }
+            //     if (!is_null($login->idLogin) && !empty($libre->ci)) {
+            //         $sql = "SELECT * FROM `login` WHERE id_login = ?";
+            //         $params = "i";
+            //         $atributos = $login->idLogin;
+            //     } else {
+            //         $sql = "SELECT * FROM `login`";
+            //         $params = "";
+            //         $atributos = "";
+            //     }
 
-        //     echo json_encode(listarBD($sql, $params, $atributos));
-        //     break;
+            //     echo json_encode(listarBD($sql, $params, $atributos));
+            //     break;
         case "paciente":
             $paciente = datos($tabla);
 
@@ -1194,12 +1197,12 @@ function listar($tabla)
             break;
         case "usuarioCliente":
 
-            $ci = $_REQUEST["ci"];
+            $usuarioCliente = datos($tabla);
 
-            if (!is_null($ci) && !empty($ci)) {
+            if (!is_null($usuarioCliente->ci) && !empty($usuarioCliente->ci)) {
                 $sql = "SELECT * FROM usuario_cliente WHERE ci = ?";
                 $params = "i";
-                $atributos = $ci;
+                $atributos = $usuarioCliente->ci;
             } else {
                 $sql = "SELECT * FROM usuario_cliente";
                 $params = "";
@@ -1500,21 +1503,21 @@ function eliminar($tabla)
 
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             break;
-        // case "login":
-        //     if (isset($_REQUEST["idLogin"])) {
-        //         $login = datos($tabla);
+            // case "login":
+            //     if (isset($_REQUEST["idLogin"])) {
+            //         $login = datos($tabla);
 
-        //         $sql = "DELETE FROM `login` WHERE id_login = ?";
-        //         $params = "i";
-        //         $atributos = [$login->idLogin];
+            //         $sql = "DELETE FROM `login` WHERE id_login = ?";
+            //         $params = "i";
+            //         $atributos = [$login->idLogin];
 
-        //         $sqlConsulta = "SELECT * FROM `login` WHERE id_login = ?";
-        //     } else {
-        //         echo json_encode(false);
-        //     }
+            //         $sqlConsulta = "SELECT * FROM `login` WHERE id_login = ?";
+            //     } else {
+            //         echo json_encode(false);
+            //     }
 
-        //     echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
-        //     break;
+            //     echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+            //     break;
         case "paciente":
             if (isset($_REQUEST["ci"])) {
                 $paciente = datos($tabla);
@@ -1685,19 +1688,16 @@ function eliminar($tabla)
     }
 }
 
-function verificarDatos(object $objeto, $tabla)
+function verificarDatos($atributos, $params, $valores, object $objeto, $tabla)
 {
-    $atributos = [];
-    $params = [];
-    $valores = [];
 
     switch ($tabla) {
         case "asiste":
-            if (!empty($objeto->ci)) {
-                array_push($atributos, "ci = ?, ");
-                array_push($params, "i");
-                array_push($valores, $objeto->ci);
-            }
+            // if (!empty($objeto->ci)) {
+            //     array_push($atributos, "ci = ?, ");
+            //     array_push($params, "i");
+            //     array_push($valores, $objeto->ci);
+            // }
             break;
         case "concurre":
 
@@ -1769,7 +1769,76 @@ function verificarDatos(object $objeto, $tabla)
 
             break;
         case "usuarioCliente":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->actividad != null) {
+                array_push($atributos, "actividad = ?, ");
+                array_push($params, "s");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->estado != null) {
+                array_push($atributos, "estado = ?, ");
+                array_push($params, "s");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->estadoActividad != null) {
+                array_push($atributos, "estado_actividad = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->fecha != null) {
+                array_push($atributos, "fecha = ?, ");
+                array_push($params, "s");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->hora != null) {
+                array_push($atributos, "hora = ?, ");
+                array_push($params, "s");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->turnoAgenda != null) {
+                array_push($atributos, "turno_agenda = ?, ");
+                array_push($params, "s");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->cumplimientoAgenda != null) {
+                array_push($atributos, "cumplimiento_agenda = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->resistenciaAnaerobica != null) {
+                array_push($atributos, "resistencia_anaerobica = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->fuerzaMuscular != null) {
+                array_push($atributos, "fuerza_muscular = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->resistenciaMuscular != null) {
+                array_push($atributos, "resistencia_muscular = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->flexibilidad != null) {
+                array_push($atributos, "flexibilidad = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->resistenciaMonotonia != null) {
+                array_push($atributos, "resistencia_monotonia = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->resiliencia != null) {
+                array_push($atributos, "resiliencia = ?, ");
+                array_push($params, "i");
+                array_push($valores, $objeto->ci);
+            }
             break;
         case "usuarioEntrenador":
 
