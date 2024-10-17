@@ -42,11 +42,23 @@ function listarBD($sql, $params, $atributos)
 
     $conexion = conectarBD();
 
+    // var_dump($sql, $params, $atributos);
+
     try {
 
-        if ($params  != "" && $atributos != "") {
+        if ($params != "" && !empty($atributos)) {
             $stmt = $conexion->prepare($sql);
-            $stmt->bind_param($params, ...$atributos);
+    
+            if (is_array($atributos)) {
+                if (count($atributos) > 1) {
+                    $stmt->bind_param($params, ...array_map(function (&$value) { return $value; }, $atributos));
+                } else {
+                    $stmt->bind_param($params, $atributos[0]);
+                }
+            } else {
+                $stmt->bind_param($params, $atributos);
+            }
+
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -124,6 +136,7 @@ function verificarExistencia($sql, $params, $atributos)
     $resultado = $stmt->get_result();
 
     if ($resultado) {
+        echo json_encode($resultado->num_rows);
         return ($resultado->num_rows > 0);
     } else {
         return false;

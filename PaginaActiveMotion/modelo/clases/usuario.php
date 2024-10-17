@@ -1,6 +1,4 @@
--
 <?php
-require_once 'conexion.php';
 
 class Usuario {
     public $ci;

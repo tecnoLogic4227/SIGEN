@@ -6,7 +6,7 @@ $(document).ready(() => {
     const listarUsuarioCliente = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -16,8 +16,8 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let usuarioCliente = JSON.parse(response);
+                    $(".tablaUsuarioCliente tbody").html("");
                     if (usuarioCliente.length > 0) {
-                        $(".tablaUsuarioCliente tbody").html("");
                         let tbody = $(".tablaUsuarioCliente tbody");
                         usuarioCliente.forEach(usuarioCliente1 => {
                             let tr = $("<tr></tr>");
@@ -54,15 +54,17 @@ $(document).ready(() => {
     };
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
+        console.log(datos);
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: { 
                 tabla: tabla,
                 metodo: metodo,
-                ...datos,
+                datos,
             },
             success: (response) => {
+                // alert(response);
                 try {
                     let respuesta = JSON.parse(response);
                     if (respuesta == true) {
@@ -125,7 +127,7 @@ $(document).ready(() => {
 
     const buscarUsuarioCliente = (ci) => {
         listarUsuarioCliente({
-            ci: ci,
+            ci: ci
         });
     };
 
@@ -204,9 +206,9 @@ $(document).ready(() => {
     $(".usuarioClienteConfirmarCrear").click(datosCrearUsuarioCliente);
     $(".usuarioClienteBuscar").click(datosBuscarUsuarioCliente);
     $(".usuarioClienteModificar").click(confirmarModificarUsuarioCliente);
-    $(".usuarioClienteConfirmarModificar").click(modificarUsuarioCliente);
+    $("#usuarioClienteConfirmarModificar").click(modificarUsuarioCliente);
     $(".usuarioClienteEliminar").click(confirmarEliminarUsuarioCliente);
-    $(".usuarioClienteConfirmarEliminar").click(eliminarUsuarioCliente);
+    $("#usuarioClienteConfirmarEliminar").click(eliminarUsuarioCliente);
 
     $(".usuarioClienteCancelarCrear").click(limpiarPantalla);
     $(".usuarioClienteCancelarModificar").click(limpiarPantalla);

@@ -2,9 +2,8 @@
 
 $resultado;
 
-require_once("../../modelo/tablas/crudModel.php");
-require_once("../../modelo/asiste.php");
-require_once("../../modelo/tablas/asisteModel.php");
+require_once("../modelo/crudModel.php");
+require_once("../modelo/clases/usuarioCliente.php");
 
 $tabla = isset($_REQUEST["tabla"]) ? $_REQUEST["tabla"] : null;
 $metodo = isset($_REQUEST["metodo"]) ? $_REQUEST["metodo"] : null;
@@ -330,9 +329,9 @@ function crearModificar($tabla)
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 $sql = "UPDATE deportista SET posicion = ? WHERE ci = ? ";
                 $params = "si";
-                $atributos = [$deportista->ci, $deportista->posicion];
+                // $atributos = [$deportista->ci, $deportista->posicion];
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                // echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
                 echo json_encode(false);
             }
@@ -550,9 +549,9 @@ function crearModificar($tabla)
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 $sql = "UPDATE PACIENTE SET motivo = ?, lesion = ? WHERE ci = ?";
                 $params = "ssi";
-                $atributos = [$paciente->motivo, $paciente->lesion, $paciente->ci];
+                // $atributos = [$paciente->motivo, $paciente->lesion, $paciente->ci];
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                // echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
                 echo json_encode(false);
             }
@@ -686,12 +685,15 @@ function crearModificar($tabla)
             $paramsConsulta = "i";
             $atributosConsulta = [$usuarioCliente->ci];
 
+            echo json_encode(verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta));
+
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 $sql = "UPDATE USUARIO_CLIENTE SET actividad = ?, estado = ?, estado_actividad = ?, fecha = ?, hora = ?, turno_agenda = ?, cumplimiento_agenda = ?, resistencia_anaerobica = ?, fuerza_muscular = ?, resistencia_muscular = ?, flexibilidad = ?, resistencia_monotonia = ?, resiliencia = ? WHERE ci = ?";
                 $params = "ssssssiiiiiiii";
-                $atributos = [$usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda, $usuarioCliente->cumplimientoAgenda, $usuarioCliente->resistenciaAnaerobica, $usuarioCliente->fuerzaMuscular, $usuarioCliente->resistenciaMuscular, $usuarioCliente->flexibilidad, $usuarioCliente->resistenciaMonotonia, $usuarioCliente->resiliencia, $usuarioCliente->ci];
+                // $atributos = [$usuarioCliente->actividad, $usuarioCliente->estado, $usuarioCliente->estadoActividad, $usuarioCliente->fecha, $usuarioCliente->hora, $usuarioCliente->turnoAgenda, $usuarioCliente->cumplimientoAgenda, $usuarioCliente->resistenciaAnaerobica, $usuarioCliente->fuerzaMuscular, $usuarioCliente->resistenciaMuscular, $usuarioCliente->flexibilidad, $usuarioCliente->resistenciaMonotonia, $usuarioCliente->resiliencia, $usuarioCliente->ci];
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                //echo json_encode(modificarBD($sql, $params, $atributos));
+                echo json_encode($usuarioCliente);
             } else {
                 echo json_encode(false);
             }
@@ -1042,21 +1044,21 @@ function listar($tabla)
 
             echo json_encode(listarBD($sql, $params, $atributos));
             break;
-        case "login":
-            $login = datos($tabla);
+        // case "login":
+        //     $login = datos($tabla);
 
-            if (!is_null($login->idLogin) && !empty($libre->ci)) {
-                $sql = "SELECT * FROM `login` WHERE id_login = ?";
-                $params = "i";
-                $atributos = $login->idLogin;
-            } else {
-                $sql = "SELECT * FROM `login`";
-                $params = "";
-                $atributos = "";
-            }
+        //     if (!is_null($login->idLogin) && !empty($libre->ci)) {
+        //         $sql = "SELECT * FROM `login` WHERE id_login = ?";
+        //         $params = "i";
+        //         $atributos = $login->idLogin;
+        //     } else {
+        //         $sql = "SELECT * FROM `login`";
+        //         $params = "";
+        //         $atributos = "";
+        //     }
 
-            echo json_encode(listarBD($sql, $params, $atributos));
-            break;
+        //     echo json_encode(listarBD($sql, $params, $atributos));
+        //     break;
         case "paciente":
             $paciente = datos($tabla);
 
@@ -1191,12 +1193,13 @@ function listar($tabla)
             echo json_encode(listarBD($sql, $params, $atributos));
             break;
         case "usuarioCliente":
-            $usuarioCliente = datos($tabla);
 
-            if (!is_null($usuarioCliente->ci) && !empty($usuarioCliente->ci)) {
+            $ci = $_REQUEST["ci"];
+
+            if (!is_null($ci) && !empty($ci)) {
                 $sql = "SELECT * FROM usuario_cliente WHERE ci = ?";
                 $params = "i";
-                $atributos = $usuarioCliente->ci;
+                $atributos = $ci;
             } else {
                 $sql = "SELECT * FROM usuario_cliente";
                 $params = "";
@@ -1497,21 +1500,21 @@ function eliminar($tabla)
 
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             break;
-        case "login":
-            if (isset($_REQUEST["idLogin"])) {
-                $login = datos($tabla);
+        // case "login":
+        //     if (isset($_REQUEST["idLogin"])) {
+        //         $login = datos($tabla);
 
-                $sql = "DELETE FROM `login` WHERE id_login = ?";
-                $params = "i";
-                $atributos = [$login->idLogin];
+        //         $sql = "DELETE FROM `login` WHERE id_login = ?";
+        //         $params = "i";
+        //         $atributos = [$login->idLogin];
 
-                $sqlConsulta = "SELECT * FROM `login` WHERE id_login = ?";
-            } else {
-                echo json_encode(false);
-            }
+        //         $sqlConsulta = "SELECT * FROM `login` WHERE id_login = ?";
+        //     } else {
+        //         echo json_encode(false);
+        //     }
 
-            echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
-            break;
+        //     echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+        //     break;
         case "paciente":
             if (isset($_REQUEST["ci"])) {
                 $paciente = datos($tabla);
