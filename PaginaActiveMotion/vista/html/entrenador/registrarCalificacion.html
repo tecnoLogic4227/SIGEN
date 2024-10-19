@@ -12,7 +12,7 @@
   <script src="../../script/validacion_datos.js"></script>
   <script src="../../script/calendar.js"></script>
   <script src="../../script/buscadores/buscadorCliente.js"></script>
-  <script src="../../script/tablas/usuarioCliente.js"></script>
+  <script src="../../script/tablas/datosClienteEntrenador.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../styles/style.css">
@@ -55,51 +55,55 @@
 
     <main>
       <article>
-        <h3 class="tit-registrar-calificacion">Cliente</h3>
+        <h3 class="tit-registrar-calificacion">Evolución de clientes</h3>
         <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
           <label>CI</label>
-          <input class="inputClienteBuscador">
-          <label>Nombre</label>
-          <input class="inputClienteBuscador ">
-          <button class="botonClienteBuscador">Buscar</button>
+          <input class="inputCrearUsuarioClienteCi">
+          <button type="button" class="usuarioClienteBuscar">Buscar</button>
         </form>
       </article>
-      <h2 class="tit-tabla-registrar-calificacion">Evolución</h2>
       <form id="form-registrar-calificacion" class="form-registrar-calificacion">
         <table class="table-registrar-calificacion">
           <tr>
             <th>Ítem</th>
-            <td>Nota</td>
+            <th>Agregar/modificar nota</th>
+            <th>Nota actual</th>
           </tr>
           <tr>
-            <th>Calificacion</th>
-            <td class="outputClienteCalificacion"></td>
-          </tr>
-          <!-- <tr>
-            <th>Modificar Calificación</th>
-            <td><input type="text"></td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <th>Cedula</th>
+            <td>
+              <label class="outputUsuarioClienteCi"></label>
             </td>
-          </tr> -->
-          <th>Cedula</th>
-          <td><input type="number" class="inputCrearUsuarioClienteCi" id="cumplimientoAgenda"
-              name="cumplimientoAgenda" onclick="eliminar_letras('cumplimientoAgenda', 'mensaje_registroCalificacion')"
-              inputmode="numeric">
-          </td>
-          <td><button class="btn btn-modificar">Modificar</button>
-            <button class="btn btn-eliminar">Eliminar</button>
-          </td>
           </tr>
+          <tr>
+            <th>Estado</th>
+            <td>
+              <select name="select" class="inputCrearUsuarioClienteEstado">
+                <option value="" disabled selected>...</option>
+                <option value="principiante">Principiante</option>
+                <option value="bajo">Bajo</option>
+                <option value="medio">Medio</option>
+                <option value="alto">Alto</option>
+                <option value="para seleccionar">Para seleccionar</option>
+                <option value="inicio">Inicio</option>
+                <option value="sin evolucion">Sin evolucion</option>
+                <option value="en evolucion">En evolucion</option>
+                <option value="satisfactorio">Satisfactorio</option>
+              </select>
+            </td>
+            <td>
+              <label class="outputUsuarioClienteEstado"></label>
+            </td>
           </tr>
-          <th>Cumplimiento con la agenda</th>
-          <td><input type="number" class="inputCrearUsuarioClienteCumplimientoAgenda" id="cumplimientoAgenda"
-              name="cumplimientoAgenda" onclick="eliminar_letras('cumplimientoAgenda', 'mensaje_registroCalificacion')"
-              inputmode="numeric">
-          </td>
-          <td><button class="btn btn-modificar">Modificar</button>
-            <button class="btn btn-eliminar">Eliminar</button>
-          </td>
+          <tr>
+            <th>Cumplimiento con la agenda</th>
+            <td><input type="number" class="inputCrearUsuarioClienteCumplimientoAgenda" id="cumplimientoAgenda"
+                name="cumplimientoAgenda"
+                onclick="eliminar_letras('cumplimientoAgenda', 'mensaje_registroCalificacion')" inputmode="numeric">
+            </td>
+            <td>
+              <label class="outputUsuarioClienteCumplimientoAgenda"></label>
+            </td>
           </tr>
           <tr>
             <th>Resistencia anaeróbica</th>
@@ -107,9 +111,10 @@
                 name="resistenciaAnaerobica"
                 onclick="eliminar_letras('resistenciaAnaerobica', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <td>
+              <label class="outputUsuarioClienteResistenciaAnaerobica"></label>
             </td>
+
           </tr>
           <tr>
             <th>Fuerza muscular</th>
@@ -117,9 +122,10 @@
                 name="fuerzaMuscular" onclick="eliminar_letras('fuerzaMuscular', 'mensaje_registroCalificacion')"
                 inputmode="numeric">
             </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <td>
+              <label class="outputUsuarioClienteFuerzaMuscular"></label>
             </td>
+
           </tr>
           <tr>
             <th>Resistencia muscular</th>
@@ -127,18 +133,20 @@
                 name="resistenciaMuscular"
                 onclick="eliminar_letras('resistenciaMuscular', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <td>
+              <label class="outputUsuarioClienteResistenciaMuscular"></label>
             </td>
+
           </tr>
           <tr>
             <th>Flexibilidad</th>
             <td><input type="number" class="inputCrearUsuarioClienteFlexibilidad" id="flexibilidad" name="flexibilidad"
                 onclick="eliminar_letras('flexibilidad', '')" inputmode="numeric">
             </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <td>
+              <label class="outputUsuarioClienteFlexibilidad"></label>
             </td>
+
           </tr>
           <tr>
             <th>Resistencia a la monotonía</th>
@@ -146,34 +154,24 @@
                 name="resistenciaMonotonia"
                 onclick="eliminar_letras('resistenciaMonotonia', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <td>
+              <label class="outputUsuarioClienteResistenciaMonotonia"></label>
             </td>
+
           </tr>
           <tr>
             <th>Resiliencia</th>
             <td><input type="number" class="inputCrearUsuarioClienteResiliencia" id="resiliencia" name="resiliencia"
                 onclick="eliminar_letras('resiliencia', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
+            <td>
+              <label class="outputUsuarioClienteResiliencia"></label>
             </td>
+
           </tr>
-          <!-- <tr>
-            <th>Total</th>
-            <td><input type="number" class="inputCrearUsuarioCliente" name="total" onclick="eliminar_letras('total', 'mensaje_registroCalificacion')"
-                inputmode="numeric">
-            </td>
-            <td><button class="btn btn-modificar">Modificar</button>
-              <button class="btn btn-eliminar">Eliminar</button>
-            </td>
-          </tr>  -->
         </table>
 
-        <button type="button" class="btn btn-modificar" id="usuarioClienteConfirmarModificar">Modificar</button>
-        <button type="button" id="usuarioClienteConfirmarEliminar" class="btn btn-eliminar">Eliminar</button>
-        <button id="registrar_calificacion" class="button-registrar-calificacion"><a
-            href="detallesClienteEntrenador.html">Registrar calificación</a></button>
+        <button type="button" class="btn btn-modificar" id="usuarioClienteModificar">Guardar</button>
         <br>
         <span id="mensaje_registroCalificacion" hidden></span>
       </form>

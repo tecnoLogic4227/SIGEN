@@ -58,7 +58,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarAsiste(datos);
@@ -111,17 +111,6 @@ $(document).ready(() => {
         }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
     };
 
-    const datosEliminarAsiste = (event) => {
-        event.preventDefault();
-        ci = $(".inputEliminarAsisteCI").val();
-        idRutina = $(".inputEliminarAsisteIDRutina").val();
-        limpiarPantalla();
-        manejarSolicitud("DELETE", {
-            ci: ci,
-            idRutina: idRutina
-        }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
-    };
-
     const filtrarDatos = (accion, ci, idRutina, nivel, fechaInicio, fechaTermino) => {
         if (accion == "crear" || accion == "modificar") {
             if (ci != undefined) {
@@ -141,7 +130,6 @@ $(document).ready(() => {
             }
 
             if (v1 && v2 && v3 && v4 && v5) {
-                alert("quedate a tdt boludo");
                 if (accion == "crear") {
                     crearAsiste(ci, idRutina, nivel, fechaInicio, fechaTermino);
                 } else {
@@ -173,6 +161,17 @@ $(document).ready(() => {
         }
     }
 
+    const datosEliminarAsiste = (event) => {
+        event.preventDefault();
+        ci = $(".inputEliminarAsisteCI").val();
+        idRutina = $(".inputEliminarAsisteIDRutina").val();
+        limpiarPantalla();
+        manejarSolicitud("DELETE", {
+            ci: ci,
+            idRutina: idRutina
+        }, "Asiste eliminado correctamente.", "Error al eliminar Asiste.");
+    };
+
     const datosCrearAsiste = (event) => {
         event.preventDefault();
         ci = $(".inputCrearAsisteCI").val();
@@ -201,6 +200,7 @@ $(document).ready(() => {
         filtrarDatos("modificar", ci, idRutina, nivel, fechaInicio, fechaTermino);
         limpiarPantalla();
     };
+
 
     const confirmarCrearAsiste = () => {
         limpiarPantalla();

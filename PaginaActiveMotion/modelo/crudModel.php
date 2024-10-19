@@ -103,10 +103,10 @@ function listarBD($sql, $params, $atributos)
 
 function modificarBD($sql, $params, $atributos)
 {
+    var_dump($sql, $params, $atributos);
     $conexion = conectarBD();
 
     try {
-
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param($params, ...$atributos);
         $stmt->execute();
@@ -120,36 +120,53 @@ function modificarBD($sql, $params, $atributos)
 
 function eliminarBD($sql, $params, $atributos, $sqlConsulta)
 {
+
     $conexion = conectarBD();
+    // global $conexion;
 
     try {
+
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param($params, ...$atributos);
+        if (is_array($atributos)) {
+            if (count($atributos) > 1) {
+                $stmt->bind_param($params, ...array_map(function (&$value) {
+                    return $value;
+                }, $atributos));
+            } else {
+                $stmt->bind_param($params, $atributos[0]);
+            }
+        } else {
+            $stmt->bind_param($params, $atributos);
+        }
         $stmt->execute();
         $stmt->close();
 
         return !verificarExistencia($sqlConsulta, $params, $atributos);
-
-        return $resultado;
     } catch (Exception $e) {
-        $conexion->rollback();
-        return $e->getMessage();
+        die($e->getMessage());
     }
 }
-
 
 function verificarExistencia($sql, $params, $atributos)
 {
     $conexion = conectarBD();
 
     $stmt = $conexion->prepare($sql);
-    $stmt->bind_param($params, ...$atributos);
+
+    if (is_array($atributos)) {
+        if (count($atributos) > 1) {
+            $stmt->bind_param($params, ...array_map(function (&$value) {
+                return $value;
+            }, $atributos));
+        } else {
+            $stmt->bind_param($params, $atributos[0]);
+        }
+    } else {
+        $stmt->bind_param($params, $atributos);
+    }
+
     $stmt->execute();
     $resultado = $stmt->get_result();
 
-    if ($resultado) {
-        return ($resultado->num_rows > 0);
-    } else {
-        return false;
-    }
+    return $resultado->num_rows > 0;
 }

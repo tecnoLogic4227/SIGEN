@@ -67,7 +67,7 @@ $(document).ready(() => {
                 // alert(response);
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarUsuarioCliente(datos);

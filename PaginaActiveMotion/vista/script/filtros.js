@@ -209,7 +209,6 @@ $(document).ready(() => {
         }
 
         return true;
-
     }
 
     // const filtro = dato => {
