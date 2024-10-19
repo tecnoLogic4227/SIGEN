@@ -29,9 +29,7 @@ function registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $
         $stmt = $conexion->prepare($sql);
         if (is_array($atributos)) {
             if (count($atributos) > 1) {
-                $stmt->bind_param($params, ...array_map(function (&$value) {
-                    return $value;
-                }, $atributos));
+                $stmt->bind_param($params, ...$atributos);
             } else {
                 $stmt->bind_param($params, $atributos[0]);
             }
@@ -61,9 +59,7 @@ function listarBD($sql, $params, $atributos)
 
             if (is_array($atributos)) {
                 if (count($atributos) > 1) {
-                    $stmt->bind_param($params, ...array_map(function (&$value) {
-                        return $value;
-                    }, $atributos));
+                    $stmt->bind_param($params, ...$atributos);
                 } else {
                     $stmt->bind_param($params, $atributos[0]);
                 }
@@ -103,12 +99,19 @@ function listarBD($sql, $params, $atributos)
 
 function modificarBD($sql, $params, $atributos)
 {
-    var_dump($sql, $params, $atributos);
     $conexion = conectarBD();
 
     try {
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param($params, ...$atributos);
+        if (is_array($atributos)) {
+            if (count($atributos) > 1) {
+                $stmt->bind_param($params, ...$atributos);
+            } else {
+                $stmt->bind_param($params, $atributos[0]);
+            }
+        } else {
+            $stmt->bind_param($params, $atributos);
+        }
         $stmt->execute();
         $stmt->close();
 
@@ -117,6 +120,7 @@ function modificarBD($sql, $params, $atributos)
         die($e->getMessage());
     }
 }
+
 
 function eliminarBD($sql, $params, $atributos, $sqlConsulta)
 {
@@ -129,9 +133,7 @@ function eliminarBD($sql, $params, $atributos, $sqlConsulta)
         $stmt = $conexion->prepare($sql);
         if (is_array($atributos)) {
             if (count($atributos) > 1) {
-                $stmt->bind_param($params, ...array_map(function (&$value) {
-                    return $value;
-                }, $atributos));
+                $stmt->bind_param($params, ...$atributos);
             } else {
                 $stmt->bind_param($params, $atributos[0]);
             }
@@ -155,9 +157,7 @@ function verificarExistencia($sql, $params, $atributos)
 
     if (is_array($atributos)) {
         if (count($atributos) > 1) {
-            $stmt->bind_param($params, ...array_map(function (&$value) {
-                return $value;
-            }, $atributos));
+            $stmt->bind_param($params, ...$atributos);
         } else {
             $stmt->bind_param($params, $atributos[0]);
         }
