@@ -494,7 +494,7 @@ function crearModificar($atributos, $params, $valores, $tabla)
             }
 
             break;
-            // case "institucionTelefono":
+           // case "institucionTelefono":
             //     $institucionTelefono = datos($tabla);
 
             //     $sqlConsulta = "SELECT * FROM INSTITUCION_TELEFONO WHERE id_institucion = ? AND telefono = ?";
@@ -1499,8 +1499,8 @@ function eliminar($tabla)
 
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             break;
-            // case "login":
-            //     if (isset($_REQUEST["idLogin"])) {
+             //case "login":
+              //   if (isset($_REQUEST["idLogin"])) {
             //         $login = datos($tabla);
 
             //         $sql = "DELETE FROM `login` WHERE id_login = ?";
@@ -1712,77 +1712,418 @@ function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla
                 $params .= "s";
                 array_push($valores, $objeto->fechaTermino);
             }
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->idRutina != null) {
+                $atributos .= "id_rutina = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idRutina);
+            }
+            if ($objeto->nivel != null) {
+                $atributos .= "nivel = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nivel);
+            }
+            if ($objeto->fechaInicio != null) {
+                $atributos .= "fecha_inicio = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->fechaInicio);
+            }
+            if ($objeto->fechaTermino != null) {
+                $atributos .= "fecha_termino = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->fechaTermino);
+            }
             break;
         case "concurre":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->idInstitucion != null) {
+                $atributos .= "id_institucion = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idInstitucion);
+            }
             break;
         case "contiene":
-
+            if ($objeto->idEquipo != null) {
+                $atributos .= "id_equipo = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idEquipo);
+            }
+            if ($objeto->nombreDeporte != null) {
+                $atributos .= "nombre_deporte = ?, ";
+                $params .= "s";  
+                array_push($valores, $objeto->nombreDeporte);
+            }
             break;
         case "deporte":
-
+            if ($objeto->nombreDeporte != null) {
+                $atributos .= "nombre_deporte = ?, ";
+                $params .= "s";  
+            }
+            if ($objeto->descripcion != null) {
+                $atributos .= "descripcion = ?, ";
+                $params .= "s"; 
+                array_push($valores, $objeto->descripcion);
+            }
             break;
         case "deportista":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->posicion != null) {
+                $atributos .= "posicion = ?, ";
+                $params .= "s"; 
+                array_push($valores, $objeto->posicion);
+            }
             break;
         case "deportistaDeporte":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->nombreDeporte != null) {
+                $atributos .= "nombre_deporte = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nombreDeporte);
+            }
             break;
         case "efectua":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->idUltimoPago != null) {
+                $atributos .= "id_ultimo_pago = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idUltimoPago);
+            }
             break;
         case "ejercicio":
-
+            if ($objeto->idEjercicio != null) {
+                $atributos .= "id_ejercicio = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idEjercicio);
+            }
+            if ($objeto->nombreEjercicio != null) {
+                $atributos .= "nombre_ejercicio = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nombreEjercicio);
+            }
+            if ($objeto->nroRep != null) {
+                $atributos .= "nro_rep = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->nroRep);
+            }
+            if ($objeto->nroSeries != null) {
+                $atributos .= "nro_series = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->nroSeries);
+            }
+            if ($objeto->grupoMuscular != null) {
+                $atributos .= "grupo_muscular = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->grupoMuscular);
+            }
+            if ($objeto->descripcion != null) {
+                $atributos .= "descripcion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->descripcion);
+            }
             break;
         case "equipo":
-
+            if ($objeto->idEquipo != null) {
+                $atributos .= "id_equipo = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idEquipo);
+            }
+            if ($objeto->nombreEquipo != null) {
+                $atributos .= "nombre_equipo = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nombreEquipo);
+            }
+            if ($objeto->cantidad != null) {
+                $atributos .= "cantidad = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->cantidad);
+            }
             break;
         case "esta":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->idEquipo != null) {
+                $atributos .= "id_equipo = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idEquipo);
+            }
             break;
         case "fisioterapia":
-
+            if ($objeto->idFisioterapia != null) {
+                $atributos .= "id_fisioterapia = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idFisioterapia);
+            }
+            if ($objeto->nombreFisioterapia != null) {
+                $atributos .= "nombre_fisioterapia = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nombreFisioterapia);
+            }
+            if ($objeto->tipoFisioterapia != null) {
+                $atributos .= "tipo_fisioterapia = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->tipoFisioterapia);
+            }
+            if ($objeto->descripcion != null) {
+                $atributos .= "descripcion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->descripcion);
+            }
             break;
         case "hace":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->idEjercicio != null) {
+                $atributos .= "id_ejercicio = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idEjercicio);
+            }
             break;
         case "incluye":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->idRutina != null) {
+                $atributos .= "id_rutina = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idRutina);
+            }
+            if ($objeto->idFisioterapia != null) {
+                $atributos .= "id_fisioterapia = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idFisioterapia);
+            }
             break;
         case "institucion":
-
+            if ($objeto->idInstitucion != null) {
+                $atributos .= "id_institucion = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idInstitucion);
+            }
+            if ($objeto->nombreInstitucion != null) {
+                $atributos .= "nombre_institucion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nombreInstitucion);
+            }
+            if ($objeto->direccion != null) {
+                $atributos .= "direccion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->direccion);
+            }
+            if ($objeto->telefono != null) {
+                $atributos .= "telefono = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->telefono);
+            }
             break;
         case "libre":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
             break;
         case "login":
+//falta poner login aca ,estaba comentado lo que pasa y lo deje quieto
+//falta poner login aca
+//falta poner login aca
+//falta poner login aca
+//falta poner login aca
+//falta poner login aca
+
+
+
+
+
+
+
+
+
+
 
             break;
         case "paciente":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->motivo != null) {
+                $atributos .= "motivo = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->motivo);
+            }
+            if ($objeto->lesion != null) {
+                $atributos .= "lesion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->lesion);
+            }
             break;
         case "posee":
-
+            if ($objeto->idRutina != null) {
+                $atributos .= "id_rutina = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idRutina);
+            }
+            if ($objeto->idEjercicio != null) {
+                $atributos .= "id_ejercicio = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idEjercicio);
+            }
             break;
         case "realiza":
-
+            if ($objeto->idRutina != null) {
+                $atributos .= "id_rutina = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idRutina);
+            }
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->nivel != null) {
+                $atributos .= "nivel = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->nivel);
+            }
+            if ($objeto->fechaInicio != null) {
+                $atributos .= "fecha_inicio = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->fechaInicio);
+            }
+            if ($objeto->fechaTermino != null) {
+                $atributos .= "fecha_termino = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->fechaTermino);
+            }
             break;
         case "rutina":
-
+            if ($objeto->idRutina != null) {
+                $atributos .= "id_rutina = ?, ";
+                $params .= "i";  
+                array_push($valores, $objeto->idRutina);
+            }
             break;
         case "rutDeporte":
-
+            if ($objeto->idRutDeporte != null) {
+                $atributos .= "id_rut_deporte = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idRutDeporte);
+            }
+            if ($objeto->descripcion != null) {
+                $atributos .= "descripcion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->descripcion);
+            }
             break;
         case "rutFisioterapia":
-
+            if ($objeto->idRutFisioterapia != null) {
+                $atributos .= "id_rut_fisioterapia = ?, ";
+                $params .= "i";
+                array_push($valores, $objeto->idRutFisioterapia);
+            }
+            if ($objeto->descripcion != null) {
+                $atributos .= "descripcion = ?, ";
+                $params .= "s";
+                array_push($valores, $objeto->descripcion);
+            }
             break;
         case "ultimoPago":
-
+            //este fue el de prueba que dijiste que sigiera paso a paso y depues te mostre lo 
+            //de .= y me dijiste que lo aga con ese y me dijiste que hacian lo mismo asi que lo deje igual
+            if ($objeto->idUltimoPago != null) {
+                $atributos .= "id_ultimo_pago = ?, ";
+                $params .= "i"; 
+                array_push($valores, $objeto->idUltimoPago);
+            }
+            if ($objeto->hora != null) {
+                array_push($atributos, "hora = ?, ");
+                array_push($params, "s"); 
+                array_push($valores, $objeto->hora);
+            }
+            if ($objeto->fecha != null) {
+                array_push($atributos, "fecha = ?, ");
+                array_push($params, "s"); 
+                array_push($valores, $objeto->fecha);
+            }
+            if ($objeto->valor != null) {
+                array_push($atributos, "valor = ?, ");
+                array_push($params, "d");
+                array_push($valores, $objeto->valor);
+            }
             break;
         case "usuario":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i";  
+                array_push($valores, $objeto->ci);
+            }
+            if ($objeto->nombre != null) {
+                $atributos .= "nombre = ?, ";
+                $params .= "s";  
+                array_push($valores, $objeto->nombre);
+            }
+            if ($objeto->apellido != null) {
+                $atributos .= "apellido = ?, ";
+                $params .= "s"; 
+                array_push($valores, $objeto->apellido);
+            }
+            if ($objeto->direccion != null) {
+                $atributos .= "direccion = ?, ";
+                $params .= "s";  
+                array_push($valores, $objeto->direccion);
+            }
+            if ($objeto->email != null) {
+                $atributos .= "email = ?, ";
+                $params .= "s"; 
+                array_push($valores, $objeto->email);
+            }
+            if ($objeto->fechaNac != null) {
+                $atributos .= "fecha_nac = ?, ";
+                $params .= "s";  
+                array_push($valores, $objeto->fechaNac);
+            }
+            if ($objeto->rol != null) {
+                $atributos .= "rol = ?, ";
+                $params .= "s";  
+                array_push($valores, $objeto->rol);
+            }
+            if ($objeto->telefono != null) {
+                $atributos .= "telefono = ?, ";
+                $params .= "i";  
+                array_push($valores, $objeto->telefono);
+            }
             break;
         case "usuarioCliente":
+            //este creo que lo hiciste vos lo dejo asi como esta 
             if ($objeto->ci != null) {
                 $atributos .= "ci = ?, ";
                 $params .= "i";
@@ -1856,7 +2197,11 @@ function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla
 
             break;
         case "usuarioEntrenador":
-
+            if ($objeto->ci != null) {
+                $atributos .= "ci = ?, ";
+                $params .= "i"; 
+                array_push($valores, $objeto->ci);
+            }
             break;
         default:
             break;
