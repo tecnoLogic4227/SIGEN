@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Equipo {
     public $idEquipo;
@@ -35,14 +34,5 @@ class Equipo {
     public function setCantidad($cantidad) {
         $this->cantidad = $cantidad;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO equipo (id_equipo, nombre_equipo, cantidad) VALUES (?, ?, ?)");
-    //     $query->bind_param('ssi', $this->idEquipo, $this->nombreEquipo, $this->cantidad);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

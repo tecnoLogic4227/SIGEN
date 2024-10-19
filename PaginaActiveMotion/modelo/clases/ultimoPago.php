@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class UltimoPago {
     public $idUltimoPago;
@@ -45,14 +44,5 @@ class UltimoPago {
     public function setValor($valor) {
         $this->valor = $valor;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO ultimo_pago (id_ultimo_pago, hora, fecha, valor) VALUES (?, ?, ?, ?)");
-    //     $query->bind_param('issi', $this->idUltimoPago, $this->hora, $this->fecha, $this->valor);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

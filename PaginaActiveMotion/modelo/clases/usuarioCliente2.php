@@ -1,7 +1,5 @@
 <?php
 
-require_once("usuario.php");
-
 class Cliente extends Usuario {
     private $actividad;
     private $estado;

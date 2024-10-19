@@ -96,25 +96,5 @@ class Usuario {
     {
         $this->telefono = $telefono;
     }
-
-    // public function save() {
-    //     global $conexion;
-    
-    //     if ($this->ci == '') {
-    //       $query = $conexion->prepare("INSERT INTO usuario (CI, NOMBRE, APELLIDO, DIRECCION, EMAIL,  FECHA_NAC, ROL, TELEFONO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    //       $query->bind_param('issssss', $this->ci, $this->nombre, $this->apellido, $this->direccion, $this->email, $this->fechaNac, $this->rol, $this->telefono);
-    //     }
-    
-    //     $result = $query->execute();
-        
-    //     if ($result) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   }
 }
-
-
-
 ?>

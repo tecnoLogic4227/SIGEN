@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Login {
     public $ci;
@@ -25,15 +24,5 @@ class Login {
     public function setContraseniaLogin($contrasenia) {
         $this->contrasenia = $contrasenia;
     }
-
-    // public function save() {
-    //     global $conexion;
-
-    //     $query = $conexion->prepare("INSERT INTO LOGIN (ci, contrasenia) VALUES (?, ?)");
-    //     $query->bind_param('is', $this->ci, $this->contrasenia);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

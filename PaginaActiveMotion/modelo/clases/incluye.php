@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Incluye {
     public $ci;
@@ -35,14 +34,5 @@ class Incluye {
     public function setIdFisioterapiaIncluye($idFisioterapia) {
         $this->idFisioterapia = $idFisioterapia;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO INCLUYE (ci, id_rutina, id_fisioterapia) VALUES (?, ?, ?)");
-    //     $query->bind_param('iii', $this->ci, $this->idRutina, $this->idFisioterapia);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

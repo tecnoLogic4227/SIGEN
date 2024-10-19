@@ -1,6 +1,5 @@
 <?php
-require_once 'conexion.php';
-require_once 'usuario_cliente.php';
+require_once 'usuarioCliente.php';
 
 class Paciente extends Cliente {
     public $motivo;
@@ -27,12 +26,5 @@ class Paciente extends Cliente {
     public function setLesion($lesion) {
         $this->lesion = $lesion;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO paciente (CI, MOTIVO, LESION) VALUES (?, ?, ?)");
-    //     $query->bind_param('iss', $this->ci, $this->motivo, $this->lesion);
-    //     return $query->execute();
-    // }
 }
 ?>

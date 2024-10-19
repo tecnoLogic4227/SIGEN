@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Esta {
     public $ci;
@@ -25,14 +24,5 @@ class Esta {
     public function setIdEquipoEsta($idEquipo) {
         $this->idEquipo = $idEquipo;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO ESTA (ci, id_equipo) VALUES (?, ?)");
-    //     $query->bind_param('ii', $this->ci, $this->idEquipo);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

@@ -33,6 +33,9 @@ $(document).ready(() => {
                     if (usuarioCliente) {
                         if (usuarioCliente.length > 0) {
                             $(".outputUsuarioClienteCi").html("");
+                            $(".outputUsuarioClienteNombre").html("");
+                            $(".outputUsuarioClienteApellido").html("");
+                            $(".outputUsuarioClienteActividad").html("");
                             $(".outputUsuarioClienteEstado").html("");
                             $(".outputUsuarioClienteCumplimientoAgenda").html("");
                             $(".outputUsuarioClienteResistenciaAnaerobica").html("");
@@ -43,6 +46,9 @@ $(document).ready(() => {
                             $(".outputUsuarioClienteResiliencia").html("");
                             usuarioCliente.forEach(usuarioCliente1 => {
                                 $(".outputUsuarioClienteCi").append(usuarioCliente1.ci);
+                                $(".outputUsuarioClienteNombre").append(usuarioCliente1.nombre);
+                                $(".outputUsuarioClienteApellido").append(usuarioCliente1.appelido);
+                                $(".outputUsuarioClienteActividad").append(usuarioCliente1.actividad);
                                 $(".outputUsuarioClienteEstado").append(usuarioCliente1.estado);
                                 $(".outputUsuarioClienteCumplimientoAgenda").append(usuarioCliente1.cumplimiento_agenda);
                                 $(".outputUsuarioClienteResistenciaAnaerobica").append(usuarioCliente1.resistencia_anaerobica);
@@ -52,9 +58,19 @@ $(document).ready(() => {
                                 $(".outputUsuarioClienteResistenciaMonotonia").append(usuarioCliente1.resistencia_monotonia);
                                 $(".outputUsuarioClienteResiliencia").append(usuarioCliente1.resiliencia);
                             });
+                            // agregarCalificacion(cumplimientoAgenda, usuarioCliente1.cumplimiento_agenda);
+                            // agregarCalificacion(resistenciaAnaerobica, usuarioCliente1.resistencia_anaerobica);
+                            // agregarCalificacion(fuerzaMuscular, usuarioCliente1.fuerza_muscular);
+                            // agregarCalificacion(resistenciaMuscular, usuarioCliente1.resistencia_muscular);
+                            // agregarCalificacion(flexibilidad, usuarioCliente1.flexibilidad);
+                            // agregarCalificacion(resistenciaMonotonia, usuarioCliente1.resistencia_monotonia);
+                            // agregarCalificacion(resiliencia, usuarioCliente1.resiliencia);
                         } else {
                             alert("No se encontraron resultados.");
                             $(".outputUsuarioClienteCi").html("");
+                            $(".outputUsuarioClienteNombre").html("");
+                            $(".outputUsuarioClienteApellido").html("");
+                            $(".outputUsuarioClienteActividad").html("");
                             $(".outputUsuarioClienteEstado").html("");
                             $(".outputUsuarioClienteCumplimientoAgenda").html("");
                             $(".outputUsuarioClienteResistenciaAnaerobica").html("");
@@ -129,9 +145,9 @@ $(document).ready(() => {
         flexibilidad = $(".inputCrearUsuarioClienteFlexibilidad").val();
         resistenciaMonotonia = $(".inputCrearUsuarioClienteResistenciaMonotonia").val();
         resiliencia = $(".inputCrearUsuarioClienteResiliencia").val();
-    
+
         limpiarCampos();
-        
+
         manejarSolicitud("POST", {
             ci: valorCi,
             estado: estado,
@@ -144,13 +160,13 @@ $(document).ready(() => {
             resiliencia: resiliencia,
         }, "UsuarioCliente modificado correctamente.", "No se encontraron los datos.");
     };
-    
+
     function auxiliar() {
         listarUsuarioCliente({
             ci: valorCi
         });
     }
-    
+
 
     $(".usuarioClienteBuscar").click(datosBuscarUsuarioCliente);
     $("#usuarioClienteModificar").click(modificarUsuarioCliente);

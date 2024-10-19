@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Institucion
 {
@@ -50,14 +49,4 @@ class Institucion
     {
         $this->telefono = $telefono;
     }
-
-    // public function save()
-    // {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO institucion (ID_INSTITUCION, NOMBRE_INSTITUCION, DIRECCION, TELEFONO) VALUES (?, ?, ?, ?)");
-    //     $query->bind_param('issi', $this->idInstitucion,  $this->nombreInstitucion, $this->direccion, $this->telefono);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }

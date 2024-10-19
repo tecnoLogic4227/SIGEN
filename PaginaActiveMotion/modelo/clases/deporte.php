@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Deporte {
     public $nombreDeporte;
@@ -20,15 +19,6 @@ class Deporte {
 
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
-    }
-
-    public function save() {
-        global $conexion;
-        $query = $conexion->prepare("INSERT INTO deporte (nombre_deporte, descripcion) VALUES (?, ?)");
-        $query->bind_param('ss', $this->nombreDeporte, $this->descripcion);
-
-        $result = $query->execute();
-        return $result ? true : false;
     }
 }
 ?>

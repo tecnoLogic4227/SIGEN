@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../../styles/media_style.css">
   <link rel="stylesheet" href="../../styles/clientes.css">
   <link rel="stylesheet" href="../../styles/planes.css">
+  <script src="../../script/tablas/datosClienteEntrenador.js"></script>
 </head>
 
 <body>
@@ -21,8 +22,8 @@
     <nav>
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-    </div>
-    
+      </div>
+
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
@@ -35,51 +36,52 @@
       <div class="search-container">
         <input type="text" placeholder="Buscar...">
         <button type="submit">🔍</button>
-    </div>
+      </div>
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
-        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+          <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
+          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
 
     <main>
-      <h1 class="tituloEntrenador titulo2Entrenador" id="tit-cliente">Cliente</h1>
-      <form //id="form-detalles-cliente-entrenador" //action="../../../controlador/Verificacion_de_Datos_PHP/formulario_detalles_entrenador.php">
-        <section>
-          <label class="subtit2">Cédula</label>
-          <input id="buscar-cliente-ci" name="ci" class="inputClienteBuscador" placeholder="12345678" maxlength="8" minlength="8" pattern="\d*" onclick="eliminar_letras('buscar-cliente-ci', 'mensaje_detallesClienteEntrenador')" inputmode="numeric" required>
-          <label class="cedula-tit-entrenador">Deporte</label>
-          <input id="buscar-cliente-deporte" name="deporte" class="buscar-cliente-deporte" placeholder="futbol" required>
-          <label class="subtit2">Nombre</label>
-          <input type="buscar-cliente-nombre" name="nombre" placeholder="Mario">
-          <button class="botonClienteBuscador">Buscar</button>
-          <br>
-          <span id="mensaje_detallesClienteEntrenador" hidden></span>
-        </section>
-      </form>
+      <h1 class="tituloEntrenador titulo2Entrenador" id="tit-cliente">Clientes</h1>
+      <article>
+        <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
+          <label>CI</label>
+          <input class="inputCrearUsuarioClienteCi">
+          <button type="button" class="usuarioClienteBuscar">Buscar</button>
+        </form>
+      </article>
       <section>
-          <table class="tablaClientesEntrenador">
-            <tr class="tr1">
-              <td class="td1">Cédula</td>
-              <td class="td1">Nombre</td>
-              <td class="td1">Actividad</td>
-            </tr>
-            <tr class="tr1">
-              <td class="outputClienteCI"></td>
-              <td class="outputClienteNombre"></td>
-              <td class="outputClienteActividad"></td>
-            </tr>
-          </table>
-          <br>
+        <table class="table-registrar-calificacion">
+          <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Actividad</th>
+          </tr>
+          <tr>
+            <td>
+              <label class="outputUsuarioClienteCi"></label>
+            </td>
+            <td>
+              <label class="outputUsuarioClienteNombre"></label>
+            </td>
+            <td>
+              <label class="outputUsuarioClienteActividad"></label>
+            </td>
+          </tr>
+        </table>
+        <br>
         <button class="boton-asignar-rutina2"><a href="asignarEntrenamiento.html">Asignar Rutina</a></button>
-        <button class="boton-registrar-calificacion"><a href="registrarCalificacion.html">Registrar Calificación</a></button>
-      </section>      
+        <button class="boton-registrar-calificacion"><a href="registrarCalificacion.html">Registrar
+            Calificación</a></button>
+      </section>
       <article class="evolucion-cliente-entrenador" id="article2">
         <div class="containerEvolucion" id="evolucion2">
           <div class="accordion-headerEvolucion">

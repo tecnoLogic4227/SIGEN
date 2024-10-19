@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Realiza {
     public $ci;
@@ -55,14 +54,5 @@ class Realiza {
     public function setFechaTerminoRealiza($fechaTermino) {
         $this->fechaTermino = $fechaTermino;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO REALIZA (ci, id_rutina, nivel, fecha_inicio, fecha_termino) VALUES (?, ?, ?, ?, ?)");
-    //     $query->bind_param('iisss', $this->ci, $this->idRutina, $this->nivel, $this->fechaInicio, $this->fechaTermino);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

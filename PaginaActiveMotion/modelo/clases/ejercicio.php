@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Ejercicio {
     public $idEjercicio;
@@ -65,14 +64,5 @@ class Ejercicio {
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO ejercicio (id_ejercicio, nombre_ejercicio, nro_rep, nro_series, grupo_muscular, descripcion) VALUES (?, ?, ?, ?, ?, ?)");
-    //     $query->bind_param('ssisii', $this->idEjercicio, $this->nombreEjercicio, $this->nroRep, $this->nroSeries, $this->grupoMuscular, $this->descripcion);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

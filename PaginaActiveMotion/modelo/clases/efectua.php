@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Efectua {
     public $ci;
@@ -25,14 +24,5 @@ class Efectua {
     public function setIdUltimoPagoEfectua($idUltimoPago) {
         $this->idUltimoPago = $idUltimoPago;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO EFECTUA (ci, id_ultimo_pago) VALUES (?, ?)");
-    //     $query->bind_param('ii', $this->ci, $this->idUltimoPago);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

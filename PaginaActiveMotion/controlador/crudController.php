@@ -5,10 +5,33 @@ $atributos = "";
 $params = "";
 $valores = [];
 
-// var_dump($_REQUEST);
-
 require_once("../modelo/crudModel.php");
+require_once("../modelo/clases/asiste.php");
+require_once("../modelo/clases/concurre.php");
+require_once("../modelo/clases/contiene.php");
+require_once("../modelo/clases/deporte.php");
+require_once("../modelo/clases/deportista.php");
+require_once("../modelo/clases/deportistaDeporte.php");
+require_once("../modelo/clases/efectua.php");
+require_once("../modelo/clases/ejercicio.php");
+require_once("../modelo/clases/equipo.php");
+require_once("../modelo/clases/esta.php");
+require_once("../modelo/clases/fisioterapia.php");
+require_once("../modelo/clases/hace.php");
+require_once("../modelo/clases/incluye.php");
+require_once("../modelo/clases/institucion.php");
+require_once("../modelo/clases/libre.php");
+require_once("../modelo/clases/login.php");
+require_once("../modelo/clases/paciente.php");
+require_once("../modelo/clases/posee.php");
+require_once("../modelo/clases/realiza.php");
+require_once("../modelo/clases/rutDeporte.php");
+require_once("../modelo/clases/rutFisioterapia.php");
+require_once("../modelo/clases/rutina.php");
+require_once("../modelo/clases/ultimoPago.php");
+require_once("../modelo/clases/usuario.php");
 require_once("../modelo/clases/usuarioCliente.php");
+require_once("../modelo/clases/usuarioEntrenador.php");
 
 $tabla = isset($_REQUEST["tabla"]) ? $_REQUEST["tabla"] : null;
 $metodo = isset($_REQUEST["metodo"]) ? $_REQUEST["metodo"] : null;
@@ -48,40 +71,40 @@ function datos($tabla)
 {
     switch ($tabla) {
         case "asiste":
-            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
-            $nivel = isset($_REQUEST["nivel"]) ? $_REQUEST["nivel"] : null;
-            $fechaInicio = isset($_REQUEST["fechaInicio"]) ? $_REQUEST["fechaInicio"] : null;
-            $fechaTermino =  isset($_REQUEST["fechaTermino"]) ? $_REQUEST["fechaTermino"] : null;
+            $ci = isset($_REQUEST["datos"]["ci"]) ? $_REQUEST["datos"]["ci"] : null;
+            $idRutina = isset($_REQUEST["datos"]["idRutina"]) ? $_REQUEST["datos"]["idRutina"] : null;
+            $nivel = isset($_REQUEST["datos"]["nivel"]) ? $_REQUEST["datos"]["nivel"] : null;
+            $fechaInicio = isset($_REQUEST["datos"]["fechaInicio"]) ? $_REQUEST["datos"]["fechaInicio"] : null;
+            $fechaTermino =  isset($_REQUEST["datos"]["fechaTermino"]) ? $_REQUEST["datos"]["fechaTermino"] : null;
 
             return new Asiste($ci, $idRutina, $nivel, $fechaInicio, $fechaTermino);
             break;
         case "concurre":
             $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-            $idInstitucion = isset($_REQUEST["idInstitucion"]) ? $_REQUEST["idInstitucion"] : null;
+            $idInstitucion = isset($_REQUEST["datos"]["idInstitucion"]) ? $_REQUEST["datos"]["idInstitucion"] : null;
 
             return new Concurre($ci, $idInstitucion);
             break;
         case "contiene":
-            $idEquipo = isset($_REQUEST["idEquipo"]) ? $_REQUEST["idEquipo"] : null;
-            $nombreDeporte = isset($_REQUEST["nombreDeporte"]) ? $_REQUEST["nombreDeporte"] : null;
+            $idEquipo = isset($_REQUEST["datos"]["idEquipo"]) ? $_REQUEST["datos"]["idEquipo"] : null;
+            $nombreDeporte = isset($_REQUEST["datos"]["nombreDeporte"]) ? $_REQUEST["datos"]["nombreDeporte"] : null;
 
             return new Contiene($idEquipo, $nombreDeporte);
             break;
         case "deporte":
-            $nombreDeporte = isset($_REQUEST["nombreDeporte"]) ? $_REQUEST["nombreDeporte"] : null;
-            $descripcion = isset($_REQUEST["descripcion"]) ? $_REQUEST["descripcion"] : null;
+            $nombreDeporte = isset($_REQUEST["datos"]["nombreDeporte"]) ? $_REQUEST["datos"]["nombreDeporte"] : null;
+            $descripcion = isset($_REQUEST["datos"]["descripcion"]) ? $_REQUEST["datos"]["descripcion"] : null;
 
             return new Deporte($nombreDeporte, $descripcion);
             break;
         case "deportista":
-            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-            $posicion = isset($_REQUEST["posicion"]) ? $_REQUEST["posicion"] : null;
+            $ci = isset($_REQUEST["datos"]["ci"]) ? $_REQUEST["datos"]["ci"] : null;
+            $posicion = isset($_REQUEST["datos"]["posicion"]) ? $_REQUEST["datos"]["posicion"] : null;
 
             return new Deportista($ci, $posicion);
             break;
         case "deportistaDeporte":
-            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+            $ci = isset($_REQUEST["datos"]["ci"]) ? $_REQUEST["datos"]["ci"] : null;
             $nombreDeporte = isset($_REQUEST["nombreDeporte"]) ? $_REQUEST["nombreDeporte"] : null;
 
             return new DeportistaDeporte($ci, $nombreDeporte);
@@ -184,8 +207,8 @@ function datos($tabla)
             return new Realiza($ci, $idRutina, $nivel, $fechaInicio, $fechaTermino);
             break;
         case "rutina":
-            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
-            $nombreRutina = isset($_REQUEST["nombreRutina"]) ? $_REQUEST["nombreRutina"] : null;
+            $idRutina = isset($_REQUEST["datos"]["idRutina"]) ? $_REQUEST["datos"]["idRutina"] : null;
+            $nombreRutina = isset($_REQUEST["datos"]["nombreRutina"]) ? $_REQUEST["datos"]["nombreRutina"] : null;
 
             return new Rutina($idRutina, $nombreRutina);
             break;
@@ -1198,7 +1221,7 @@ function listar($tabla)
             $ci = isset($_REQUEST["ci"]) && !empty($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
 
             if (!is_null($ci) && !empty($ci)) {
-                $sql = "SELECT * FROM usuario_cliente WHERE ci = ?";
+                $sql = "SELECT uc.*, u.nombre, u.apellido FROM usuario_cliente uc INNER JOIN usuario u ON uc.ci = u.ci WHERE uc.ci = ?;";
                 $params = "i";
                 $atributos = $ci;
             } else {
@@ -1218,34 +1241,6 @@ function listar($tabla)
                 $atributos = $usuarioEntrenador->ci;
             } else {
                 $sql = "SELECT * FROM usuario_entrenador";
-                $params = "";
-                $atributos = "";
-            }
-
-            echo json_encode(listarBD($sql, $params, $atributos));
-            break;
-        case "usuarioTelefono":
-            $usuarioTelefono = datos($tabla);
-
-            if (!is_null($usuarioTelefono->ci) && !empty($usuarioTelefono->ci) || !is_null($usuarioTelefono->telefono) && !empty($usuarioTelefono->telefono)) {
-
-                if (!is_null($usuarioTelefono->ci) && !empty($usuarioTelefono->ci) && !is_null($usuarioTelefono->telefono) && !empty($usuarioTelefono->telefono)) {
-                    $sql = "SELECT * FROM usuario_telefono WHERE ci = ? AND telefono = ?";
-                    $params = "ii";
-                    $atributos = [$usuarioTelefono->ci, $usuarioTelefono->telefono];
-                } else {
-                    if (!is_null($usuarioTelefono->ci) && !empty($usuarioTelefono->ci)) {
-                        $sql = "SELECT * FROM usuario_telefono WHERE ci = ?";
-                        $params = "i";
-                        $atributos = [$usuarioTelefono->ci];
-                    } else {
-                        $sql = "SELECT * FROM usuario_telefono WHERE telefono = ?";
-                        $params = "i";
-                        $atributos = [$usuarioTelefono->telefono];
-                    }
-                }
-            } else {
-                $sql = "SELECT * FROM usuario_telefono";
                 $params = "";
                 $atributos = "";
             }

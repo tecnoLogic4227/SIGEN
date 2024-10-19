@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../../styles/media_style.css">
   <link rel="stylesheet" href="../../styles/clientes.css">
   <link rel="stylesheet" href="../../styles/planes.css">
+  <script src="../../script/tablas/rutina.js"></script>
 </head>
 
 <body>
@@ -53,30 +54,36 @@
     </nav>
     
   <main>
+    <h1 class="tituloEntrenador titulo2Entrenador" id="tit-cliente">Asignar entrenamiento</h1>
+
     <article>
-      <h3 class="tit-asignar-entrenamiento">Cliente</h3>
-      <form>
-        <label class="label-ci">CI</label>
-        <input class="inputClienteBuscador buscador-ci">
-        <label class="label-nombre">Nombre</label>
-        <input class="inputClienteBuscador buscador-nombre">
-        <button class="botonClienteBuscador-asg-rut">Buscar</button>
-        <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
+      <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
+        <label>Id rutina</label>
+        <input class="inputBuscarRutinaIdRutina">
+        <button type="button" class="rutinaBuscar">Buscar</button>
       </form>
-      <label class="label-cliente" style="margin-top: 10vh; margin-bottom: 10vh;">Cliente:</label>
-      <label class="outputClienteNombre"></label>
-      <label class="outputClienteApellido"></label>
+    </article>
+
+    <!-- <article>
+      <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
+        <label>CI</label>
+        <input class="inputCrearUsuarioClienteCi">
+        <button type="button" class="usuarioClienteBuscar">Buscar</button>
+      </form>
+    </article> -->
+
+    
      
     </article>
-    <form id="form-asignar-entrenamiento" class="form-asignar-entrenamiento-buscar">
+    <!-- <form id="form-asignar-entrenamiento" class="form-asignar-entrenamiento-buscar">
       <table id="routineTable">
         <thead class="theadRoutine">
             <tr class="trRoutine">
                 <th class="thRoutine">ID Rutina</th>
                 <th class="thRoutine">Nombre</th>
-                <th class="thRoutine">Ejercicios</th>
-                <th class="thRoutine">Descripcion ejercicios</th>
                 <th class="thRoutine">Descripcion rutina</th>
+                <th class="thRoutine">Ejercicio</th>
+                <th class="thRoutine">Descripcion ejercicio</th>
             </tr>
         </thead>
         <tbody class="tbodyRoutine">
@@ -111,7 +118,7 @@
     </table>
         <button id="boton-asignar-entrenamiento" class="guardar-asignar-entrenamiento"><a href="detallesClienteEntrenador.html">Guardar Entrenamiento</a></button>
       <span id="mensaje_asignarEntrenamiento" hidden></span>
-    </form>
+    </form> -->
   </main>
 
   <footer class="social-footer">

@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class DeportistaDeporte {
     public $ci;
@@ -21,15 +20,5 @@ class DeportistaDeporte {
     public function setDeporte($deporte) {
         $this->deporte = $deporte;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO deportista_deportes (ci, deporte) VALUES (?, ?)");
-    //     $query->bind_param('is', $this->ci, $this->deporte);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
-
 }
 ?>

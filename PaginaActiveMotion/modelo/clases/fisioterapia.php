@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Fisioterapia {
     public $idFisioterapia;
@@ -45,14 +44,5 @@ class Fisioterapia {
     public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }
-
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO fisioterapia (id_fisioterapia, nombre_fisioterapia, tipo_fisioterapia, descripcion) VALUES (?, ?, ?, ?)");
-    //     $query->bind_param('isss', $this->idFisioterapia, $this->nombreFisioterapia, $this->tipoFisioterapia, $this->descripcion);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>

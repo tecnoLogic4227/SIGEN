@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 
 class Concurre {
     public $ci;
@@ -26,13 +25,5 @@ class Concurre {
         $this->idInstitucion = $idInstitucion;
     }
 
-    // public function save() {
-    //     global $conexion;
-    //     $query = $conexion->prepare("INSERT INTO CONCURRE (ci, id_institucion) VALUES (?, ?)");
-    //     $query->bind_param('ii', $this->ci, $this->idInstitucion);
-
-    //     $result = $query->execute();
-    //     return $result ? true : false;
-    // }
 }
 ?>
