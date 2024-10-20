@@ -1495,7 +1495,7 @@ a {
 
 .formDPAdminisrador {
   width: 20vw;
-  height: 70vh;
+  height: 40vh;
   margin-top: 10vh;
   margin-left: 0vw;
   display: flex;
@@ -1525,6 +1525,22 @@ a {
   margin-top: 5vh;
   margin-right: 45vw;
   width: 10vw;
+}
+
+.sectionEliminar, .confirmarEliminar {
+  display: none;
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.eliminarCliente, .confirmarEliminarCliente, .cancelarEliminarCliente {
+  margin-top: 5vh;
+  width: 50%;
+  position: relative;
+  left: 25%;
 }
 
 /*................................................................. AVANZADO................................................................*/

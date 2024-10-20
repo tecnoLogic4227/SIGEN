@@ -54,93 +54,87 @@
         <h1 class="tituloConsultaAdministrativo">Consultar clientes</h1>
       </header>
 
-      <form style="margin-left: 40%;" //id="form-consultar-PDA-administrativo" //method="post" //class="formDPAdminisrador"
+      <form style="margin-left: 40%;" //id="form-consultar-PDA-administrativo" //method="post"
+        //class="formDPAdminisrador"
         //action="../../../controlador/Verificacion_de_Datos_PHP/formulario_consulta_cliente_admin.php">
-        <h5>Cliente</h5>
         <br>
         <label for="ciPD">Cedula:</label>
+        <br>
         <input class="inputCrearUsuarioClienteCi">
-        <br>
-        <label for="ciPD">Nombre:</label>
-        <input >
-        <br>
-        <span id="mensaje_consultarPDAdministrativo" hidden></span>
         <br>
         <button class="usuarioClienteBuscar" id="btnBuscarPD" type="button">Buscar</button>
         <br>
-        <button class="estado_eliminarPD" id="btnEliminarPD" type="button">Eliminar Usuario</button>
       </form>
 
-      <img class="img-fluid rounded-circle" src="../../img/Perfil.png" alt="Foto de perfil" style="max-width: 100px; margin-bottom: 10vh;">
+      <img class="img-fluid rounded-circle" src="../../img/Perfil.png" alt="Foto de perfil"
+        style="max-width: 100px; margin-bottom: 10vh;">
 
-      <div style="width: 80vw; margin-left: 5vw;">
-        <table class="tablaUsuarioCliente">
+      <section>
+        <table class="tablaUsuarioCliente" style="width: 80vw; margin-left: 5vw;">
           <thead>
             <tr>
               <th>Cedula</th>
-              <th>Actividad</th>
-              <th>Estado</th>
-              <th>Estado actividad</th>
-              <th>Fecha</th>
-              <th>Hora</th>
-              <th>Turno agenda</th>
-              <th>Cumplimiento agenda</th>
-              <th>Resistencia anaerobica</th>
-              <th>Fuerza muscular</th>
-              <th>Resistencia muscular</th>
-              <th>Flexibilidad</th>
-              <th>Resistencia monotonia</th>
-              <th>Resiliencia</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Direccion</th>
+              <th>Email</th>
+              <th>Fecha de nacimiento</th>
+              <th>Rol</th>
+              <th>Telefono</th>
             </tr>
           </thead>
           <tbody>
-            <!-- <tr>
-                                  <th scope="row">Nombre:</th>
-                                  <td class=""></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Apellido:</th>
-                                  <td id="apellido-PD"></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Email:</th>
-                                  <td id="email-PD"></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">CI:</th>
-                                  <td id="ci-PD"></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Celular:</th>
-                                  <td id="celular-PD"></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Club:</th>
-                                  <td id="club-PD"></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Plan:</th>
-                                  <td id="plan-PD"></td>
-                                  <td><button class="btn-modificar" data-campo="nombre">Modificar</button></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Ultimo Pago:</th>
-                                  <td id="ultimoPago-PD"></td>
-                              </tr>
-                              <tr>
-                                  <th scope="row">Proximo Pago:</th>
-                                  <td id="proximoPago-PD"></td>
-                              </tr>  -->
+
           </tbody>
         </table>
-      </div>
+      </section>
 
+      <section style="display: flex; position: relative; left: 30%; margin-top: 15vh;">
+        <button class="estado_eliminarPD" id="btnEliminarPD" type="button" style="margin-right: 5vw; width: 10vw">Modificar Datos</button>
+        <button style="margin-right: 5vw; width: 10vw;">Desactivar cliente</button>
+        <button style="width: 10vw;">Eliminar cliente</button>
+      </section>
+
+      <section class="sectionEliminar">
+        <form>
+          <label>Cedula</label>
+          <input class="input">
+          <button class="eliminarCliente">Eliminar</button>
+        </form>
+      </section>
+
+      <section class="confirmarEliminar">
+        <h3>Está seguro de eliminar al cliente?</h3>
+        <button class="confirmarEliminarCliente">Confirmar</button>
+        <button class="cancelarEliminarCliente">Cancelar</button>
+      </section>
+
+      <section class="sectionModificar">
+        <form>
+          <label>Cedula</label>
+          <input>
+          <label>Nombre</label>
+          <input>
+          <label>Apellido</label>
+          <input>
+          <label>Direccion</label>
+          <input>
+          <label>Email</label>
+          <input>
+          <label>Fecha de nacimiento</label>
+          <input>
+          <label>Rol</label>
+          <input>
+          <label>Telefono</label>
+          <input>
+        </form>
+      </section>
+
+      <section class="sectionDesactivar">
+        <form>
+
+        </form>
+      </section>
     </main>
 
 
