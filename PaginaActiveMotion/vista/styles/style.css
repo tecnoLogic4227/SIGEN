@@ -1159,10 +1159,10 @@ button {
 /* botones */
 
 button {
+  width: 10vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
   background-color: #0056b3;
   border-radius: 5px;
   color: white;
@@ -1511,9 +1511,9 @@ margin-left: -70vw !important;
       margin: 0;
   }
 
-  input[type=number] {
+  /* input[type=number] {
     -moz-appearance: textfield;
-  }
+  } */
 }
 
 .mensaje_error{
@@ -1558,4 +1558,53 @@ margin-left: -70vw !important;
 
 .botonCrearRutina {
   margin-top: 10vh;
+}
+
+
+
+/* HTML DE DEPORTE, USUARIO AVANZADO */
+
+
+.deportesAvanzadoTabla {
+  display: flex;
+  width: 100vw;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  margin-bottom: 15vh;
+}
+
+.tablaDeporte {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.deportesAvanzadoAgregarModificar, .deportesAvanzadoEliminar, .deportesAvanzadoConfirmarEliminar {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deportesAvanzadoAgregarModificarBotones {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#deportesAvanzadoInput {
+  width: 10vw;
+}
+
+#deportesAvanzadoBoton {
+  margin: 3vw;
+}
+
+.titH4 {
+  margin-bottom: 5vh;
+}
+
+.deportesAvanzadoLabel {
+  margin-bottom: 3vh;
 }
