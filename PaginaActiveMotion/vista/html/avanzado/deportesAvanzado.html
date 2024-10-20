@@ -6,11 +6,13 @@
   <link rel="icon" href="../../img/logoPagina.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ActiveMotion</title>
+  <script src="../../script/jquery-3.7.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="../../styles/media_style.css">
+  <script src="../../script/tablas/deporte.js"></script>
 </head>
 
 <body>
@@ -48,10 +50,10 @@
       </header>
       <br>
       <section class="deportesAvanzadoFormulario">
-        <form>
-          <label>Nombre deporte</label>
-          <input>
-          <button>Buscar</button>
+        <form class="deportesAvanzadoFormulario">
+          <label class="deportesAvanzadoLabel">Nombre deporte</label>
+          <input class="inputBuscarDeporteNombreDeporte">
+          <button type="button" class="deporteBuscar" id="deportesAvanzadoBoton">Buscar</button>
         </form>
       </section>
       <section class="deportesAvanzadoTabla">
@@ -70,31 +72,33 @@
         </table>
       </section>
       <section class="deportesAvanzadoBotones">
-        <button>Crear</button>
-        <button>Modificar</button>
-        <button>Eliminar</button>
+        <button class="deporteCrear" id="deportesAvanzadoBoton">Crear</button>
+        <button class="deporteModificar" id="deportesAvanzadoBoton">Modificar</button>
+        <button class="deporteEliminar" id="deportesAvanzadoBoton">Eliminar</button>
       </section>
 
       <section class="deportesAvanzadoAgregarModificar">
         <h4 class="titH4">Crear y modificar deporte</h4>
         <label class="deportesAvanzadoLabel">Nombre deporte</label>
-        <input id="deportesAvanzadoInput">
+        <input class="inputBuscarDeporteNombreDeporte" id="deportesAvanzadoInput">
         <br>
-        <label class="deportesAvanzadoLabel">Decripcion</label>
-        <input id="deportesAvanzadoInput">
+        <label class="deportesAvanzadoLabel">Descripcion</label>
+        <input class="inputModificarDeporteDescripcion" id="deportesAvanzadoInput">
         <br>
         <div class="deportesAvanzadoAgregarModificarBotones">
           <button id="deportesAvanzadoBoton">Crear</button>
           <button id="deportesAvanzadoBoton">Modificar</button>
+          <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
         </div>
       </section>
 
       <section class="deportesAvanzadoEliminar">
         <h4 class="titH4">Eliminar deporte</h4>
         <label class="deportesAvanzadoLabel">Nombre deporte</label>
-        <input id="deportesAvanzadoInput">
+        <input class="inputBuscarDeporteNombreDeporte" id="deportesAvanzadoInput">
         <div class="deportesAvanzadoAgregarModificarBotones">
-          <button id="deportesAvanzadoBoton">Eliminar</button>
+          <button class="deporteConfirmarEliminar" id="deportesAvanzadoBoton">Eliminar</button>
+          <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
         </div>
       </section>
 
@@ -102,8 +106,8 @@
         <h4 class="titH4">Está seguro que desea eliminar el deporte?</h4>
         <div>
           <div class="deportesAvanzadoAgregarModificarBotones">
-            <button id="deportesAvanzadoBoton">Confirmar</button>
-            <button id="deportesAvanzadoBoton">Cancelar</button>
+            <button class="deporteConfirmarConfirmarEliminar" id="deportesAvanzadoBoton">Confirmar</button>
+            <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
           </div>
         </div>
       </section>

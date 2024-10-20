@@ -3,6 +3,12 @@ $(document).ready(() => {
     const tabla = "deporte";
     datos = "";
 
+    const limpiarPantalla = () => {
+        $(".deportesAvanzadoAgregarModificar").css("display", "none");
+        $(".deportesAvanzadoEliminar").css("display", "none");
+        $(".deportesAvanzadoConfirmarEliminar").css("display", "none");
+    }
+
     const listarDeporte = (datos) => {
         metodo = "GET";
         $.ajax({
@@ -119,23 +125,22 @@ $(document).ready(() => {
 
     const confirmarCrearDeporte = () => {
         limpiarPantalla();
-        $(".confirmarCrearDeporte").css("display", "block");
+        $(".deportesAvanzadoAgregarModificar").css("display", "flex");
     }
 
     const confirmarModificarDeporte = () => {
         limpiarPantalla();
-        $(".confirmarModificarDeporte").css("display", "block");
+        $(".deportesAvanzadoAgregarModificar").css("display", "flex");
     }
 
     const confirmarEliminarDeporte = () => {
         limpiarPantalla();
-        $(".confirmarEliminarDeporte").css("display", "block");
+        $(".deportesAvanzadoEliminar").css("display", "flex");
     }
 
-    const limpiarPantalla = () => {
-        $(".confirmarCrearDeporte").css("display", "none");
-        $(".confirmarModificarDeporte").css("display", "none");
-        $(".confirmarEliminarDeporte").css("display", "none");
+    const confirmarConfirmarEliminarDeporte = () => {
+        limpiarPantalla();
+        $(".deportesAvanzadoConfirmarEliminar").css("display", "flex");
     }
 
     $(".deporteCrear").click(confirmarCrearDeporte);
@@ -144,10 +149,8 @@ $(document).ready(() => {
     $(".deporteModificar").click(confirmarModificarDeporte);
     $(".deporteConfirmarModificar").click(modificarDeporte);
     $(".deporteEliminar").click(confirmarEliminarDeporte);
-    $(".deporteConfirmarEliminar").click(eliminarDeporte);
+    $(".deporteConfirmarEliminar").click(confirmarConfirmarEliminarDeporte);
+    $(".deporteConfirmarConfirmarEliminar").click(eliminarDeporte);
 
-    $(".deporteCancelarCrear").click(limpiarPantalla);
-    $(".deporteCancelarModificar").click(limpiarPantalla);
-    $(".deporteCancelarEliminar").click(limpiarPantalla);
-
+    $(".deporteCancelar").click(limpiarPantalla);
 });

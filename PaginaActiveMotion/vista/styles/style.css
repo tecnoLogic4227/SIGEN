@@ -1817,6 +1817,16 @@ margin-top: 5vh;
 
 /* HTML DE DEPORTE, USUARIO AVANZADO */
 
+.deportesAvanzadoFormulario, .deportesAvanzadoFormulario, .deportesAvanzadoBotones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.deportesAvanzadoBotones {
+  flex-direction: row;
+}
 
 .deportesAvanzadoTabla {
   display: flex;
