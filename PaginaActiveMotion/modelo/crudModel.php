@@ -103,6 +103,8 @@ function modificarBD($sql, $params, $atributos)
 {
     $conexion = conectarBD();
 
+    // var_dump($sql, $params, $atributos);
+
     try {
         $stmt = $conexion->prepare($sql);
         if (is_array($atributos)) {
@@ -131,7 +133,6 @@ function eliminarBD($sql, $params, $atributos, $sqlConsulta)
     // global $conexion;
 
     try {
-
         $stmt = $conexion->prepare($sql);
         if (is_array($atributos)) {
             if (count($atributos) > 1) {

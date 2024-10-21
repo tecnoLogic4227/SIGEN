@@ -57,7 +57,7 @@ switch ($metodo) {
         listar($tabla);
         break;
     case "PUT":
-        crearModificar($tabla);
+        crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeholders);
         break;
     case "DELETE":
         eliminar($tabla);
@@ -341,10 +341,10 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                 verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
                 $sql = "UPDATE deporte SET $atributos WHERE nombre_deporte = ?";
-                $params = "ss";
-                $atributos = [$deporte->descripcion, $deporte->nombreDeporte];
+                $params .= "s";
+                array_push($valores, $deporte->nombreDeporte);
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                echo json_encode(modificarBD($sql, $params, $valores));
             } else {
                 verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
 
@@ -1245,14 +1245,14 @@ function eliminar($tabla)
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             break;
         case "deporte":
-            if (isset($_REQUEST["nombreDeporte"])) {
+            if (isset($_REQUEST["nombreDeporte"]) && !is_null($_REQUEST["nombreDeporte"])) {
                 $deporte = datos($tabla);
 
-                $sql = "DELETE FROM deporte WHERE nombreDeporte = ?";
+                $sql = "DELETE FROM deporte WHERE nombre_deporte = ?";
                 $params = "s";
                 $atributos = [$deporte->nombreDeporte];
 
-                $sqlConsulta = "SELECT * FROM deporte WHERE nombreDeporte = ?";
+                $sqlConsulta = "SELECT * FROM deporte WHERE nombre_deporte = ?";
             } else {
                 echo json_encode(false);
             }

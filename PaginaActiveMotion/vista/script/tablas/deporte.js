@@ -107,8 +107,8 @@ $(document).ready(() => {
 
     const modificarDeporte = (event) => {
         event.preventDefault();
-        nombreDeporte = $(".inputModificarDeporteNombreDeporte").val();
-        descripcion = $(".inputModificarDeporteDescripcion").val();
+        nombreDeporte = $(".inputCrearDeporteNombreDeporte").val();
+        descripcion = $(".inputCrearDeporteDescripcion").val();
         limpiarPantalla();
         manejarSolicitud("PUT", {
             nombreDeporte: nombreDeporte,
