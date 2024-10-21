@@ -4,6 +4,7 @@ $resultado;
 $atributos = "";
 $params = "";
 $valores = [];
+$placeholders = "";
 
 require_once("../modelo/crudModel.php");
 require_once("../modelo/clases/asiste.php");
@@ -50,7 +51,7 @@ if (is_null($metodo) || empty($metodo)) {
 
 switch ($metodo) {
     case "POST":
-        crearModificar($atributos, $params, $valores, $tabla);
+        crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeholders);
         break;
     case "GET":
         listar($tabla);
@@ -92,8 +93,8 @@ function datos($tabla)
             return new Contiene($idEquipo, $nombreDeporte);
             break;
         case "deporte":
-            $nombreDeporte = isset($_REQUEST["datos"]["nombreDeporte"]) ? $_REQUEST["datos"]["nombreDeporte"] : null;
-            $descripcion = isset($_REQUEST["datos"]["descripcion"]) ? $_REQUEST["datos"]["descripcion"] : null;
+            $nombreDeporte = isset($_REQUEST["nombreDeporte"]) ? $_REQUEST["nombreDeporte"] : null;
+            $descripcion = isset($_REQUEST["descripcion"]) ? $_REQUEST["descripcion"] : null;
 
             return new Deporte($nombreDeporte, $descripcion);
             break;
@@ -276,7 +277,7 @@ function datos($tabla)
     }
 }
 
-function crearModificar($atributos, $params, $valores, $tabla)
+function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeholders)
 {
     switch ($tabla) {
         case "asiste":
@@ -334,19 +335,25 @@ function crearModificar($atributos, $params, $valores, $tabla)
             $deporte = datos($tabla);
 
             $sqlConsulta = "SELECT * FROM deporte WHERE nombre_deporte = ?";
-            $paramsConsulta = "i";
+            $paramsConsulta = "s";
             $atributosConsulta = [$deporte->nombreDeporte];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE deporte SET descripcion = ? WHERE nombre_deporte = ?";
+                verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
+                $sql = "UPDATE deporte SET $atributos WHERE nombre_deporte = ?";
                 $params = "ss";
                 $atributos = [$deporte->descripcion, $deporte->nombreDeporte];
 
                 echo json_encode(modificarBD($sql, $params, $atributos));
             } else {
-                echo json_encode(false);
+                verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
+
+                $sql = "INSERT INTO deporte $atributos VALUES $placeholders";
+                
+                echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
             }
             break;
+            
         case "deportista":
             $deportista = datos($tabla);
 
@@ -517,24 +524,6 @@ function crearModificar($atributos, $params, $valores, $tabla)
             }
 
             break;
-           // case "institucionTelefono":
-            //     $institucionTelefono = datos($tabla);
-
-            //     $sqlConsulta = "SELECT * FROM INSTITUCION_TELEFONO WHERE id_institucion = ? AND telefono = ?";
-            //     $paramsConsulta = "is";
-            //     $atributosConsulta = [$institucionTelefono->idInstitucion, $institucionTelefono->telefono];
-
-            //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-            //         $sql = "UPDATE INSTITUCION_TELEFONO SET telefono = ? WHERE id_institucion = ? AND telefono = ?";
-            //         $params = "sis";
-            //         $atributos = [$institucionTelefono->telefonoNuevo, $institucionTelefono->idInstitucion, $institucionTelefono->telefono];
-
-            //         echo json_encode(modificarBD($sql, $params, $atributos));
-            //     } else {
-            //         echo json_encode(verificarExistenciaInstitucionTelefono($institucionTelefono->idInstitucion, $institucionTelefono->telefono));
-            //     }
-
-            //     break;
         case "libre":
             $libre = datos($tabla);
 
@@ -737,24 +726,6 @@ function crearModificar($atributos, $params, $valores, $tabla)
             }
 
             break;
-            // case "usuarioTelefono":
-            //     $usuarioTelefono = datos($tabla);
-
-            //     $sqlConsulta = "SELECT * FROM USUARIO_TELEFONO WHERE ci = ? AND telefono = ?";
-            //     $paramsConsulta = "is";
-            //     $atributosConsulta = [$usuarioTelefono->ci, $usuarioTelefono->telefono];
-
-            //     if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-            //         $sql = "UPDATE USUARIO_TELEFONO SET telefono = ? WHERE ci = ? AND telefono = ?";
-            //         $params = "sis";
-            //         $atributos = [$usuarioTelefono->telefono, $usuarioTelefono->ci, $usuarioTelefono->telefono];
-
-            //         echo json_encode(modificarBD($sql, $params, $atributos));
-            //     } else {
-            //         echo json_encode(verificarExistenciaUsuarioTelefono($usuarioTelefono->ci, $usuarioTelefono->telefono));
-            //     }
-
-            //     break;
         default:
                 echo json_encode(false);
         break;
@@ -823,12 +794,12 @@ function listar($tabla)
             echo json_encode(listarBD($sql, $params, $atributos));
             break;
         case "deporte":
-            $deporte = datos($tabla);
+            $nombreDeporte = isset($_REQUEST["nombreDeporte"]) && !empty($_REQUEST["nombreDeporte"]) ? $_REQUEST["nombreDeporte"] : null;
 
-            if (!is_null($deporte->nombreDeporte) && !empty($deporte->nombreDeporte)) {
-                $sql = "SELECT * FROM deporte WHERE nombreDeporte = ?";
+            if (!is_null($nombreDeporte) && !empty($nombreDeporte)) {
+                $sql = "SELECT * FROM deporte WHERE nombre_deporte = ?";
                 $params = "s";
-                $atributos = $deporte->nombreDeporte;
+                $atributos = $nombreDeporte;
             } else {
                 $sql = "SELECT * FROM deporte";
                 $params = "";
@@ -1026,34 +997,6 @@ function listar($tabla)
 
             echo json_encode(listarBD($sql, $params, $atributos));
             break;
-        case "institucionTelefono":
-            $institucionTelefono = datos($tabla);
-
-            if (!is_null($institucionTelefono->idInstitucion) && !empty($institucionTelefono->idInstitucion) || !is_null($institucionTelefono->telefono) && !empty($institucionTelefono->telefono)) {
-
-                if (!is_null($institucionTelefono->idInstitucion) && !empty($institucionTelefono->idInstitucion) && !is_null($institucionTelefono->telefono) && !empty($institucionTelefono->telefono)) {
-                    $sql = "SELECT * FROM institucion_telefono WHERE id_institucion = ? AND telefono = ?";
-                    $params = "ii";
-                    $atributos = [$institucionTelefono->idInstitucion, $institucionTelefono->telefono];
-                } else {
-                    if (!is_null($institucionTelefono->idInstitucion) && !empty($institucionTelefono->idInstitucion)) {
-                        $sql = "SELECT * FROM institucion_telefono WHERE id_institucion = ?";
-                        $params = "i";
-                        $atributos = [$institucionTelefono->idInstitucion];
-                    } else {
-                        $sql = "SELECT * FROM institucion_telefono WHERE telefono = ?";
-                        $params = "i";
-                        $atributos = [$institucionTelefono->telefono];
-                    }
-                }
-            } else {
-                $sql = "SELECT * FROM institucion_telefono";
-                $params = "";
-                $atributos = "";
-            }
-
-            echo json_encode(listarBD($sql, $params, $atributos));
-            break;
         case "libre":
             $libre = datos($tabla);
 
@@ -1069,21 +1012,21 @@ function listar($tabla)
 
             echo json_encode(listarBD($sql, $params, $atributos));
             break;
-            // case "login":
-            //     $login = datos($tabla);
+            case "login":
+                $login = datos($tabla);
 
-            //     if (!is_null($login->idLogin) && !empty($libre->ci)) {
-            //         $sql = "SELECT * FROM `login` WHERE id_login = ?";
-            //         $params = "i";
-            //         $atributos = $login->idLogin;
-            //     } else {
-            //         $sql = "SELECT * FROM `login`";
-            //         $params = "";
-            //         $atributos = "";
-            //     }
+                if (!is_null($login->idLogin) && !empty($libre->ci)) {
+                    $sql = "SELECT * FROM `login` WHERE id_login = ?";
+                    $params = "i";
+                    $atributos = $login->idLogin;
+                } else {
+                    $sql = "SELECT * FROM `login`";
+                    $params = "";
+                    $atributos = "";
+                }
 
-            //     echo json_encode(listarBD($sql, $params, $atributos));
-            //     break;
+                echo json_encode(listarBD($sql, $params, $atributos));
+                break;
         case "paciente":
             $paciente = datos($tabla);
 
@@ -1679,9 +1622,8 @@ function eliminar($tabla)
     }
 }
 
-function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla)
+function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla, $metodo, &$placeholders)
 {
-
     switch ($tabla) {
         case "asiste":
             if ($objeto->ci != null) {
@@ -1766,22 +1708,68 @@ function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla
             }
             break;
         case "deporte":
-            if ($objeto->nombreDeporte != null) {
-                if ($atributos == "") {
-                    $atributos .= "nombre_deporte = ?";
-                } else {
-                    $atributos .= ", nombre_deporte = ?";
-                }                 $params .= "s";  
-                array_push($valores, $objeto->nombreDeporte);
+            if ($metodo == "PUT") {
+                if ($objeto->nombreDeporte != null) {
+                    if ($atributos == "") {
+                        $atributos .= "nombre_deporte = ?";
+                    } else {
+                        $atributos .= ", nombre_deporte = ?";
+                    }                 $params .= "s";  
+                    array_push($valores, $objeto->nombreDeporte);
+                }
+                if ($objeto->descripcion != null) {
+                    if ($atributos == "") {
+                        $atributos .= "descripcion = ?";
+                    } else {
+                        $atributos .= ", descripcion = ?";
+                    } 
+                    $params .= "s"; 
+                    array_push($valores, $objeto->descripcion);
+                }
+            } else {
+
+                if ($objeto->nombreDeporte != null || $objeto->descripcion != null) {
+                    $placeholders .= "(";
+                    $atributos .= "(";
+                }
+
+                if ($metodo == "POST") {
+                    if ($objeto->nombreDeporte != null) {
+                        if ($atributos == "" || $atributos == "(") {
+                            $atributos .= "nombre_deporte";
+                        } else {
+                            $atributos .= ", nombre_deporte";
+                        }
+                        if ($placeholders == "" || $placeholders == "(") {
+                            $placeholders .= "?";
+                        } else {
+                            $placeholders .= ", ?";
+                        }
+                        $params .= "s";  
+                        array_push($valores, $objeto->nombreDeporte);
+                    }
+                    if ($objeto->descripcion != null) {
+                        if ($atributos == "" || $atributos == "(") {
+                            $atributos .= "descripcion";
+                        } else {
+                            $atributos .= ", descripcion";
+                        }   
+                        if ($placeholders == "" || $placeholders == "(") {
+                            $placeholders .= "?";
+                        } else {
+                            $placeholders .= ", ?";
+                        }
+                        $params .= "s"; 
+                        array_push($valores, $objeto->descripcion);
+                    }
+                }
             }
-            if ($objeto->descripcion != null) {
-                if ($atributos == "") {
-                    $atributos .= "descripcion = ?";
-                } else {
-                    $atributos .= ", descripcion = ?";
-                }                 $params .= "s"; 
-                array_push($valores, $objeto->descripcion);
+
+            if ($atributos != "" && $placeholders != "") {
+                $placeholders .= ")";
+                $atributos .= ")";
             }
+            
             break;
         case "deportista":
             if ($objeto->ci != null) {

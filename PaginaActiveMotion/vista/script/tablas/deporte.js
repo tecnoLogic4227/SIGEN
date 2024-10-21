@@ -12,7 +12,7 @@ $(document).ready(() => {
     const listarDeporte = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -27,13 +27,15 @@ $(document).ready(() => {
                         let tbody = $(".tablaDeporte tbody");
                         deporte.forEach(deporte1 => {
                             let tr = $("<tr></tr>");
-                            tr.append(`<td>${deporte1.nombre_deporte}</td>`);
-                            tr.append(`<td>${deporte1.descripcion}</td>`);
+                            tr.append(`<td class="celda">${deporte1.nombre_deporte}</td>`);
+                            tr.append(`<td class="celda">${deporte1.descripcion}</td>`);
                             tbody.append(tr);
                         });
                     } else {
-                        alert("No se encontraron resultados.");
-                        $(".tablaDeporte tbody").html("");
+                        if (datos) {
+                            alert("No se encontraron resultados.");
+                            $(".tablaDeporte tbody").html("");
+                        }
                     }
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
@@ -47,9 +49,9 @@ $(document).ready(() => {
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
-            type: metodo === "DELETE" ? "DELETE" : "POST", // Ajustar método DELETE
-            data: { 
+            url: "../../../controlador/crudController.php",
+            type: "POST",
+            data: {
                 tabla: tabla,
                 metodo: metodo,
                 ...datos,
@@ -78,7 +80,7 @@ $(document).ready(() => {
         limpiarPantalla();
         manejarSolicitud("POST", {
             nombreDeporte: nombreDeporte,
-            descripcion: descripcion            
+            descripcion: descripcion
         }, "Deporte creado correctamente.", "Error al crear Deporte.");
     };
 
@@ -108,7 +110,7 @@ $(document).ready(() => {
         nombreDeporte = $(".inputModificarDeporteNombreDeporte").val();
         descripcion = $(".inputModificarDeporteDescripcion").val();
         limpiarPantalla();
-        manejarSolicitud("POST", {
+        manejarSolicitud("PUT", {
             nombreDeporte: nombreDeporte,
             descripcion: descripcion,
         }, "Deporte modificado correctamente.", "No se encontraron los datos.");

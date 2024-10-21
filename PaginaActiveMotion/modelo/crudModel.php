@@ -24,6 +24,8 @@ function registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $
     $conexion = conectarBD();
     // global $conexion;
 
+    // var_dump($sql, $params, $atributos);
+
     try {
 
         $stmt = $conexion->prepare($sql);
@@ -48,9 +50,9 @@ function registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $
 function listarBD($sql, $params, $atributos)
 {
 
-    $conexion = conectarBD();
-
     // var_dump($sql, $params, $atributos);
+
+    $conexion = conectarBD();
 
     try {
 

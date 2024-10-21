@@ -1871,3 +1871,7 @@ margin-top: 5vh;
 .deportesAvanzadoLabel {
   margin-bottom: 3vh;
 }
+
+.celda {
+  width: 25vw;
+}
