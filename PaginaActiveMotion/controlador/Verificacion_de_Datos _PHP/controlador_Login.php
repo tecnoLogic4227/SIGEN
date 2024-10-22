@@ -15,57 +15,50 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         die("Error de conexion " . $conexion->connect_error);
     }
     
-    //funcion para registrar fecha del ultimo login
-    function registrar_ultimo_login(){
-        global $conexion, $ci_usu;
 
-        $fecha_login=date("Y-m-d");
-
-        $sql="UPDATE usuario SET ultimo_login=? WHERE usuario.ci=?";
-
-        $stmt=$conexion->prepare($sql);
-        $stmt->bind_param("si", $fecha_login, $ci_usu);
-        $stmt->execute();
-        $stmt->close();
-    }
     //Funcion para verificar login
     function verificar_login(){
         global $conexion, $ci_usu, $contrasenia;
-        $rol_usu="";
-        foreach($_POST["rol-usuario"] as $rol){
+        $rol_usu=$_POST["rol-usuario"];
+        /*foreach($_POST["rol-usuario"] as $rol){
             $rol_usu=$rol;
         }
+        */
 
-        $tabla_rol="";
+        $rol_usuario="";
 
         switch($rol_usu){
             case "administrativo":
-                $tabla_rol="usuario_administrativo";
+                $rol_usuario="administrativo";
             break;
 
             case "avanzado":
-                $tabla_rol="usuario_avanzado";
+                $rol_usuario="avanzado";
             break;
 
             case "seleccionador":
-                $tabla_rol="usuario_seleccionador";
+                $rol_usuario="seleccionador";
             break;
 
             case "entrenador":
-                $tabla_rol="usuario_entrenador";
+                $rol_usuario="entrenador";
             break;
 
+            case "cliente":
+                $rol_usuario= "cliente";
+            break;
+            
             default:
                 $response['status'] = 401;
                 $response['message'] = "Rol de usuario incorrecto!"; 
                 http_response_code(401);
         }
 
-        //$sql="SELECT * FROM usuario JOIN $tabla_rol ON usuario.ci=$tabla_rol" . ".ci WHERE usuario.ci= ? AND usuario.contrasenia = ?;";
-        $sql="SELECT * FROM usuario JOIN $tabla_rol ON usuario.ci = $tabla_rol.ci WHERE usuario.ci= ? AND usuario.contrasenia = ?;";
+        //SELECT * FROM LOGIN JOIN USUARIO.rol WHERE LOGIN.ci=? AND LOGIN.contrasenia = ?;
+        $sql="SELECT * FROM LOGIN JOIN USUARIO ON LOGIN.ci = USUARIO.ci WHERE LOGIN.ci=? AND LOGIN.contrasenia=? AND USUARIO.rol=?;";
 
         $stmt=$conexion->prepare($sql);
-        $stmt->bind_param("ss", $ci_usu, $contrasenia);
+        $stmt->bind_param("sss", $ci_usu, $contrasenia, $rol_usuario);
         
         $stmt->execute();
 
@@ -77,28 +70,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $_SESSION['usuario'] = $ci_usu;
            // $_SESSION['ci'] = $datos['ci'] . " " . $datos['nombre'] . " " . $datos['apellido'] . " " . $datos['direccion'] . " " . $datos['email'];
            $_SESSION['ci'] = $datos['ci'];
-           $_SESSION['rol'] = $tabla_rol;
+           $_SESSION['rol'] = $rol_usuario;
             $response['status'] = 200;
             $response['message'] = "Bienvenido " . $datos['ci'] . " " . $datos['contrasenia'];
             http_response_code(200);
             
-            registrar_ultimo_login();
+            //registrar_ultimo_login();
 
-            switch($rol_usu){
+            switch($rol_usuario){
                 case "administrativo":
                     header("Location: http://localhost/PaginaActiveMotion/vista/html/administrador/indexAdministrativo.html");
                 break;
 
                 case "entrenador":
-                    header("Location: http://localhost/PaginaActiveMotion/vista/html/administrador/inicioEntrenador.html");
+                    header("Location: http://localhost/PaginaActiveMotion/vista/html/entrenador/inicioEntrenador.html");
                 break;
 
                 case "seleccionador":
-                    header("Location: http://localhost/PaginaActiveMotion/vista/html/administrador/indexSeleccionador.html");
+                    header("Location: http://localhost/PaginaActiveMotion/vista/html/seleccionador/indexSeleccionador.html");
                 break;
 
                 case "cliente":
-                    header("Location: http://localhost/PaginaActiveMotion/vista/html/administrador/indexUsuario.html");
+                    header("Location: http://localhost/PaginaActiveMotion/vista/html/cliente/indexUsuario.html");
                 break;
             }
 

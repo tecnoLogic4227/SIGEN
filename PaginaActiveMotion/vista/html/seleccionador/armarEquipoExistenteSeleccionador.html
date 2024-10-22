@@ -44,63 +44,54 @@
             <header> 
                 <h1 class="titulo2Seleccionador">Equipos</h1>
             </header>
-            <div class="container-fluid tablaArmarEquipoSeleccionador">
-                <div class="row">
-                    <div class="col-12">
-                        <table class="table table-bordered table-hover">
-                            <tr class="table-primary">
-                                <td class="text-center info-cell">
-                                    <img class="profile-img" src="../../../vista/img/Perfil.png" alt="Foto de perfil">
-                                </td>
-                                <td class="info-cell">
-                                    <strong>ID:</strong>
-                                    <input class="editable">
-                                </td> 
-                                <td class="info-cell">
-                                    <strong>Nombre:</strong>
-                                    <input class="editable">
-                                </td> 
-                                <td class="info-cell">
-                                    <strong>Deporte:</strong>
-                                    <input class="editable">
-                                </td> 
-                                <td class="info-cell">
-                                    <strong>Cantidad de deportistas:</strong>
-                                    <div id="cantDeportista">0</div>
-                                </td>
-                                <td class="info-cell" style="width: 40%;">
-                                    <strong>Deportistas:</strong>
-                                    <div id="deportistasList"></div>
-                                    <button class="btn-agregar mt-2">
-                                        <i class="fas fa-plus me-2"></i>Ingresar Deportista
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        
-            <form id="form-armarEquiposSeleccionador" style="display: none;">
+                 
+            <form id="form-armarEquiposExistenteSeleccionador" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_armarEquipo_seleccionador.php" method="post" class="formDeportistasSeleccionador">
                 <h5>Deportista</h5>
                 <br>
                 <label for="nombreDeportista" class="nombre">Nombre de usuario:</label>
                 <input type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi" required>
                 <br>
-                <label for="ciDeportista" class="cedula">CI:</label>
-                <input type="text" id="ciDeportista" name="ciDeportista" placeholder="12345678" required>
+                <label for="deporteDeportista" class="deporte">Deporte:</label>
+                <input type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
                 <br>
-                <button type="button" class="ingresarDeportista" id="btnIngresar">
-                    <i class="fas fa-check me-2"></i>Ingresar
-                </button>
-                <button type="button" class="ingresarDeportista" id="btnCancelar">
-                    <i class="fas fa-times me-2"></i>Cancelar
-                </button>
+                <label for="clubDeportista" class="club">Club:</label>
+                <input type="text" id="clubDeportista" name="clubDeportista" placeholder="Nacional" required>
+                <br>
+                <button class="estado ingresarDeportista" id="btnIngresarDeportista" type="button">Ingresar</button>
+                <button class="estado eliminarDeportista" id="btnEliminarDeportista" type="button">Eliminar</button>
+                <span id="mensaje_equipoSeleccionador" hidden></span>
             </form>
-        
-            <button class="save-team">
-                <i class="fas fa-save me-2"></i>Guardar Equipo
-            </button>
+            
+            <div class="container-fluid tablaArmarEquipoExistenteSeleccionador">
+                <div class="row">
+                    <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th colspan="2" class="text-center">
+                                        <img class="img-fluid rounded-circle" src="../../../vista/img/Perfil.png" alt="Foto de perfil" style="max-width: 100px;">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Nombre:</th>
+                                    <td id="nombreClub"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Cantidad  de deportistas:</th>
+                                    <td id="cantDeportista"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Deportistas:</th>
+                                    <td id="deportista"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <button class="estado guardarEquipo" id="btnGuardarEquipo" type="button"><a href="equiposSeleccionador.html">Guardar</a></button>
         </main>
 
         <footer class="social-footer">
@@ -138,5 +129,3 @@
     </div>
 </body>
 </html>
-
-

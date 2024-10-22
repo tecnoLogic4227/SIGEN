@@ -585,6 +585,7 @@ th, td {
 
 .btn_AgregarUsuario{
   margin-left: 30vw;
+  width: 20vw;
 }
 
 .titulo_2_IndexAvanzado{
@@ -601,6 +602,7 @@ th, td {
 
 .btn_AgregarEjercicio{
   margin-left: 30vw;
+  width: 20vw;
 }
 
 .titulo_3_IndexAvanzado{
@@ -618,6 +620,7 @@ th, td {
 
 .btn_AgregarDeporte{
   margin-left: 30vw;
+  width: 20vw;
 }
 
 /*..................................................EJERCICIOS.....................................................*/
@@ -631,9 +634,10 @@ th, td {
 }
 
 /*..................................................USUARIOS.....................................................*/
-.tablaUsuarioAvanzado{
-  margin-left: 0vw;
-  }
+#deportesAvanzadoBoton,  #deportesAvanzadoBoton{
+  width: 20vw;
+}
+
   
 /*..................................................DEPORTES.....................................................*/
 .tablaDeportesAvanzado{
@@ -1032,18 +1036,6 @@ notificaciones
   margin-top: 10vh;
 }
 
-/*.....................................................................CREAR COMBOS......................................................................*/
-
-/*..................................................MODFIICAR COMBO.............................................*/
-
-.label-input-mod-combo{
-    width: 30vw;
-}
-
-.buscar-mod-combo{
-  width: 20vw;
-}
-
 /*.........................................................ELIMINAR PLAN............................................*/
 #nombre-plan, #id-plan, #seccion-plan, .boton-buscar-mod-plan{
   width: 30vw;
@@ -1080,6 +1072,79 @@ notificaciones
   width: 40vw;
 }
 
+
+
+.tit-asignar-entrenamiento {
+  margin-top: 15vh;
+  margin-left: 0vw !important;
+  width: 100vw;
+  text-align: center;
+}
+
+.label-ci{
+  margin-top: 4vh;
+  margin-left: 45vw;
+}
+
+.buscador-ci{
+  margin-top: 3vh;
+  margin-left: 35vw !important;
+  width: 30vw !important;
+}
+
+.label-nombre{
+  margin-top: 4vh;
+  margin-left: 42vw !important;
+}
+
+.buscador-nombre{
+  margin-top: 3vh;
+  margin-left: 35vw !important;
+  width: 30vw !important;
+}
+
+.botonClienteBuscador-asg-rut{
+  margin-left: 40vw !important;
+  width: 20vw;
+}
+
+#form-buscar-rutina{
+  margin-top: 10vh;
+}
+.inputBuscarRutinaIdRutina{
+  width: 30vw;
+}
+.rutinaBuscar{
+  width: 20vw !important;
+}
+
+.table-info{
+  margin-left: 10vw !important;
+}
+
+.guardar-asignar-entrenamiento {
+  margin-top: 5vh;
+  width: 15vw;
+}
+
+#routineTable{
+  margin-left: 2vw !important;
+}
+
+.btn-asignar-entrenamiento{
+  margin-left: 32vw !important;
+  width: 30vw;
+}
+
+#btn-modificar-rutina{
+  margin-left: 40vw;
+  width: 20vw;
+}
+
+#boton-guardar-entrenamiento{
+  margin-left: 36vw;
+  width: 30vw;
+}
 /*.................................................REGISTRAR CALIFICACION................................................................*/
 #ci-cliente, #actividad-clinete,#estado_cliente, #buscar_cliente{
   width: 30vw;

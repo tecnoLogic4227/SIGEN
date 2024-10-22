@@ -22,7 +22,7 @@
             <ul>
                 <li id="inicio" class="op-menu"><a href="indexAvanzado.html">Inicio</a></li>
                 <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html">Usuarios</a></li> 
-                <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html">Ejerecicios</a>
+                <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html">Ejercicios</a>
                 <li id="login" class="op-menu"><a href="deportesAvanzado.html">Deportes</a></li>
                 <li id="login" class="op-menu"><a href="perfilAvanzado.html">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
@@ -37,7 +37,7 @@
               <ul class="menu-oculto">
                 <li class="op-menu-oculto"><a href="indexAvanzado.html">Inicio</a></li>
                 <li class="op-menu-oculto"><a href="usuariosAvanzado.html">Usuarios</a></li> 
-                <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html">Ejerecicios</a>
+                <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html">Ejercicios</a>
                 <li class="op-menu-oculto"><a href="deportesAvanzado.html">Deportes</a></li>
                 <li class="op-menu-oculto"><a href="perfilAvanzado.html">Perfil</a></li>
               </ul>
@@ -47,54 +47,72 @@
     
         <main class="tituloAvanzado">
           <header>
-              <h1 class="titulo2Avanzado">Ejercicios</h1>
+            <h1 class="titulo2Avanzado">Ejercicios</h1>
           </header>
-          <form id="form-ejercicios-avanzado" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_ejercicios_avanzados.php">
-          <article>
-              <div class="container-fluid tablaUsuarioAvanzado">
-                  <div class="row">
-                      <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4 col-sm-4 offset-sm-12">
-                          <table class="table table-bordered table-hover">
-                              <thead class="table-primary">
-                                  <tr>
-                                      <th colspan="2" class="text-center">
-                                         Ejercicio
-                                      </th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <th scope="row">Nombre:</th>
-                                      <td><input type="text" id="nombre-ejercicio" name="nombre-ejercicio" class="form-control"></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">Grupo Muscular:</th>
-                                      <td><input type="text" id="musculo-ejercicio" name="musculo-ejercicio" class="form-control"></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">Series:</th>
-                                      <td><input type="text" id="series-ejercicio" name="series-ejercicio" class="form-control"></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">Repeticiones:</th>
-                                      <td><input type="text" id="rep-ejercicio" name="rep-ejercicio" class="form-control"></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">Descripcion:</th>
-                                      <td><input type="text" id="descripcion-ejercicio" name="descripcion-ejercicio" class="form-control"></td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
+          <br>
+          <section class="deportesAvanzadoFormulario">
+            <form class="deportesAvanzadoFormulario">
+              <label class="deportesAvanzadoLabel">Nombre ejercicio</label>
+              <input class="inputBuscarDeporteNombreDeporte">
+              <button type="button" class="deporteBuscar" id="deportesAvanzadoBoton">Buscar</button>
+            </form>
+          </section>
+          <section class="deportesAvanzadoTabla">
+            <table class="tablaDeporte">
+              <thead>
+                <tr>
+                  <th>Nombre ejercicio</th>
+                  <th>Descripcion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="deportesAvanzadoBotones">
+            <button class="deporteCrear" id="deportesAvanzadoBoton">Crear</button>
+            <button class="deporteModificar" id="deportesAvanzadoBoton">Modificar</button>
+            <button class="deporteEliminar" id="deportesAvanzadoBoton">Eliminar</button>
+          </section>
+    
+          <section class="deportesAvanzadoAgregarModificar">
+            <h4 class="titH4">Crear y modificar ejercicio</h4>
+            <label class="deportesAvanzadoLabel">Nombre ejercicio</label>
+            <input class="inputBuscarDeporteNombreDeporte" id="deportesAvanzadoInput">
+            <br>
+            <label class="deportesAvanzadoLabel">Descripcion</label>
+            <input class="inputModificarDeporteDescripcion" id="deportesAvanzadoInput">
+            <br>
+            <div class="deportesAvanzadoAgregarModificarBotones">
+              <button id="deportesAvanzadoBoton">Crear</button>
+              <button id="deportesAvanzadoBoton">Modificar</button>
+              <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
+            </div>
+          </section>
+    
+          <section class="deportesAvanzadoEliminar">
+            <h4 class="titH4">Eliminar ejercicio</h4>
+            <label class="deportesAvanzadoLabel">Nombre ejercicio</label>
+            <input class="inputBuscarDeporteNombreDeporte" id="deportesAvanzadoInput">
+            <div class="deportesAvanzadoAgregarModificarBotones">
+              <button class="deporteConfirmarEliminar" id="deportesAvanzadoBoton">Eliminar</button>
+              <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
+            </div>
+          </section>
+    
+          <section class="deportesAvanzadoConfirmarEliminar">
+            <h4 class="titH4">Está seguro que desea eliminar el ejercicio?</h4>
+            <div>
+              <div class="deportesAvanzadoAgregarModificarBotones">
+                <button class="deporteConfirmarConfirmarEliminar" id="deportesAvanzadoBoton">Confirmar</button>
+                <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
               </div>
-              <button type="button" id="agregar-ejercicio" class="estado buscar3 agregarEjeAvanzado">Agregar ejercicio</button>
-              <br>
-              <span id="mensaje_ejerciciosAvanzado" hidden></span>
-          </article>
-        </form>
-
-      </main>
+            </div>
+          </section>
+        </main>
 
 
 
@@ -105,7 +123,7 @@
           <ul class="footer-menu">
             <li><a href="indexAvanzado.html">Inicio</a></li>
             <li><a href="usuariosAvanzado.html">Usuarios</a></li>
-            <li><a href="ejerciciosAvanzado.html">Ejerecicios</a></li>
+            <li><a href="ejerciciosAvanzado.html">Ejercicios</a></li>
             <li><a href="deportesAvanzado.html">Deportes</a></li>
             <li><a href="perfilAvanzado.html">Perfil</a></li>
           </ul>

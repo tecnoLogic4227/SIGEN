@@ -36,17 +36,7 @@ h1, h2, h3 {
 
 #art1 {
     margin-top: 29vh;
-    margin-left: -60vw ;
-    display: flex;
-    flex-direction: column;
-    width: 25vw;
-    align-items: center;
-    position: absolute;
-}
-
-#art2 {
-    margin-top: 35vh;
-    margin-left: 0vw ;
+    margin-left: -30vw ;
     display: flex;
     flex-direction: column;
     width: 25vw;
@@ -56,7 +46,7 @@ h1, h2, h3 {
 
 #art3 {
     margin-top: 35vh;
-    margin-left: 70vw ;
+    margin-left: 20vw ;
     display: flex;
     flex-direction: column;
     width: 25vw;
@@ -68,9 +58,6 @@ h1, h2, h3 {
     margin-top: -15vh;
 }
 
-.gestionar-combos{
-    margin-top: -5vh;
-}
 .boton-fisioterapia-deportista-entrenador {
     visibility: hidden;
 }
@@ -81,12 +68,6 @@ h1, h2, h3 {
 
 .btnIngFisio-2{
     margin-top: 4vh;
-}
-
-
-.modificar-plan1{
-    margin-top: -25vh;
-    width: 15vw;
 }
 
 .asignar-plan1{
@@ -215,7 +196,7 @@ textarea {
     cursor: pointer;
 }
 
-.btn-eliminar-ejercicio {
+.btn-eliminar-ejercicio{
     background-color: #ff4444;
     color: white;
     border: none;

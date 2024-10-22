@@ -26,12 +26,12 @@
     <nav>
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
-    </div>
+      </div>
     
       <ul>
         <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a></li>
         <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
         <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
@@ -40,117 +40,132 @@
       <div class="search-container">
         <input type="text" placeholder="Buscar...">
         <button type="submit">🔍</button>
-    </div>
+      </div>
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
-        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+          <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a></li>
+          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
         </ul>
       </div>
     </nav>
     
-  <main>
-    <h1 class="tituloEntrenador titulo2Entrenador" id="tit-cliente">Asignar entrenamiento</h1>
+    <main>
+      <h1 class="tituloEntrenador titulo2Entrenador tit-asignar-entrenamiento" id="tit-cliente">Asignar entrenamiento</h1>
 
-    <article>
-      <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
-        <label>Id rutina</label>
-        <input class="inputBuscarRutinaIdRutina">
-        <button type="button" class="rutinaBuscar">Buscar</button>
+      <form id="form-buscar-cliente">
+        <label class="label-ci">CI</label>
+        <input class="inputClienteBuscador buscador-ci">
+        <label class="label-nombre">Nombre</label>
+        <input class="inputClienteBuscador buscador-nombre">
+        <button type="button" class="botonClienteBuscador-asg-rut">Buscar</button>
+        <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
       </form>
-    </article>
 
-    <!-- <article>
-      <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
-        <label>CI</label>
-        <input class="inputCrearUsuarioClienteCi">
-        <button type="button" class="usuarioClienteBuscar">Buscar</button>
-      </form>
-    </article> -->
-
-    
-     
-    </article>
-    <!-- <form id="form-asignar-entrenamiento" class="form-asignar-entrenamiento-buscar">
-      <table id="routineTable">
-        <thead class="theadRoutine">
-            <tr class="trRoutine">
-                <th class="thRoutine">ID Rutina</th>
-                <th class="thRoutine">Nombre</th>
-                <th class="thRoutine">Descripcion rutina</th>
-                <th class="thRoutine">Ejercicio</th>
-                <th class="thRoutine">Descripcion ejercicio</th>
-            </tr>
+      <table class="table-info">
+        <thead>
+          <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Actividad</th>
+            <th>ID rutina</th>
+          </tr>
         </thead>
-        <tbody class="tbodyRoutine">
-            <tr class="input-row trRoutine">
-                <td data-label="ID Rutina" class="tdRoutine">
-                  <input type="text" id="rutinaId" disabled>
-                  <button class="btn btn-eliminar">Eliminar</button>
-                </td>
-                <td data-label="Nombre" class="tdRoutine"> 
-                    <input type="text" id="nombreRoutine">
-                    <button class="btn btn-modificar">Modificar</button>
-                    <button class="btn btn-eliminar">Eliminar</button>
-                </td>
-                <td data-label="Ejercicios" id="ejerciciosCell" class="tdRoutine">
-                  <input type="text" id="ejercicio">
-                    <button class="btn btn-agregar" id="agregarEjercicio">+</button>
-                    <button class="btn btn-modificar">Modificar</button>
-                    <button class="btn btn-eliminar">Eliminar</button>
-                </td>
-                <td data-label="Descripcion ejercicios" id="descripcionesCell" class="tdRoutine">
-                        <input type="text" id="descripcion">
-                    <button class="btn btn-modificar">Modificar</button>
-                    <button class="btn btn-eliminar">Eliminar</button>
-                </td>
-                <td data-label="Descripcion rutina" class="tdRoutine">
-                    <textarea id="descripcionRutina"></textarea>
-                    <button class="btn btn-modificar">Modificar</button>
-                    <button class="btn btn-eliminar">Eliminar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-        <button id="boton-asignar-entrenamiento" class="guardar-asignar-entrenamiento"><a href="detallesClienteEntrenador.html">Guardar Entrenamiento</a></button>
-      <span id="mensaje_asignarEntrenamiento" hidden></span>
-    </form> -->
-  </main>
+        <tbody></tbody>
+      </table>
 
-  <footer class="social-footer">
-    <div class="footer-content">
-      <ul class="footer-menu">
-        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
-        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
-      </ul>
-      <div class="social-icons">
-        <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
-          <i class="far fa-envelope"></i>
-        </a>
+      <button id="btn-mostrar-asignar-entrenamiento" class="btn-asignar-entrenamiento">Asignar Entrenamiento</button>
+
+      <div id="seccion-asignar-entrenamiento" style="display: none;">
+        <article>
+          <form id="form-buscar-rutina" class="form-buscar-registrar-calificacion">
+            <label>Id rutina</label>
+            <input class="inputBuscarRutinaIdRutina">
+            <button type="button" class="rutinaBuscar">Buscar</button>
+          </form>
+        </article>
+
+        <article>
+          <form id="form-asignar-entrenamiento-detalle" class="form-asignar-entrenamiento-buscar">
+            <table id="routineTable" class="asignEntre">
+              <thead class="theadRoutine">
+                  <tr class="trRoutine">
+                      <th class="thRoutine">ID Rutina</th>
+                      <th class="thRoutine">Nombre</th>
+                      <th class="thRoutine">Ejercicios</th>
+                      <th class="thRoutine">Descripcion ejercicios</th>
+                      <th class="thRoutine">Descripcion rutina</th>
+                  </tr>
+              </thead>
+    
+              <tbody class="tbodyRoutine">
+                  <tr class="input-row trRoutine">
+                      <td data-label="ID Rutina" class="tdRoutine">
+                          <input type="text" id="rutinaIdCliente" disabled>
+                      </td>
+                      <td data-label="Nombre" class="tdRoutine">
+                          <input type="text" id="nombreRoutineCliente" disabled>
+                      </td>
+                      <td data-label="Ejercicios" id="ejerciciosCell" class="tdRoutine">
+                        <div class="exercise-container">
+                            <input type="text" class="ejercicioCliente" disabled>
+                            <button type="button" class="btn btn-eliminar-ejercicio btn-eliminar-ejercicio-cliente" disabled>Eliminar</button>
+                        </div>
+                        <button type="button" class="btn btn-agregar btn-agregar-cliente" id="agregarEjercicio" disabled>+</button>
+                    </td>
+                      <td data-label="Descripcion ejercicios" id="descripcionesCell" class="tdRoutine">
+                          <div class="description-container">
+                              <input type="text" class="descripcionCliente" disabled>
+                          </div>
+                      </td>
+                      <td data-label="Descripcion rutina" class="tdRoutine">
+                          <textarea id="descripcionRutinaCliente" disabled></textarea>
+                      </td>
+                  </tr>
+              </tbody>
+    
+          </table>
+
+            <button type="button" id="btn-modificar-rutina" class="btn-modificar-rut" style="display: none;">Modificar</button>
+            <button type="submit" id="boton-guardar-entrenamiento" class="guardar-asignar-entrenamiento" style="display: none;">Guardar Entrenamiento</button>
+            <span id="mensaje_asignarEntrenamiento" hidden></span>
+          </form>
+        </article>
+
       </div>
-    </div>
-    <div class="copyright-bar">
-      © 2024 ActiveMotion. Todos los derechos reservados.
-    </div>
-  </footer>
-  
+    </main>
+
+    <footer class="social-footer">
+      <div class="footer-content">
+        <ul class="footer-menu">
+          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
+          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
+          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a></li>
+          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
+          <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://twitter.com/tuUsuarioDeTwitter" target="_blank" class="social-icon twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/tuUsuarioDeInstagram" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:tuCorreo@gmail.com" class="social-icon gmail">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="copyright-bar">
+        © 2024 ActiveMotion. Todos los derechos reservados.
+      </div>
+    </footer>
   </div>
 </body>
-
 </html>
