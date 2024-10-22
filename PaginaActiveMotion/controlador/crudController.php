@@ -509,18 +509,35 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
         case "institucion":
             $institucion = datos($tabla);
 
-            $sqlConsulta = "SELECT * FROM INSTITUCION WHERE id_institucion = ?";
-            $paramsConsulta = "i";
-            $atributosConsulta = [$institucion->idInstitucion];
+            if ($institucion->idInstitucion != null) {
+                $sqlConsulta = "SELECT * FROM institucion WHERE id_institucion = ?";
+                $paramsConsulta = "i";
+                $atributosConsulta = [$institucion->idInstitucion];
+            } else {
+                if ($institucion->nombreInstitucion != null);
+                $sqlConsulta = "SELECT * FROM institucion WHERE nombre_institucion = ?";
+                $paramsConsulta = "s";
+                $atributosConsulta = [$institucion->nombreInstitucion];
+            }
+            
+            if ($institucion->idInstitucion == null && $institucion->nombreInstitucion == null && $institucion->direccion == null && $institucion->telefono == null) {
+                echo json_encode(false);
+                break;
+            }
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE INSTITUCION SET nombre_institucion = ?, direccion = ?, telefono = ? WHERE id_institucion = ?";
-                $params = "ssii";
-                $atributos = [$institucion->nombreInstitucion, $institucion->direccion, $institucion->idInstitucion, $institucion->telefono];
+                verificarDatos($atributos, $params, $valores, $institucion, $tabla, $metodo, $placeholders);
+                $sql = "UPDATE INSTITUCION SET $atributos WHERE id_institucion = ?";
+                $params .= "i";
+                array_push($valores, $institucion->nombreInstitucion);
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                echo json_encode(modificarBD($sql, $params, $valores));
             } else {
-                echo json_encode(false);
+                verificarDatos($atributos, $params, $valores, $institucion, $tabla, $metodo, $placeholders);
+
+                $sql = "INSERT INTO institucion $atributos VALUES $placeholders";
+    
+                echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
             }
 
             break;
@@ -2035,42 +2052,115 @@ function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla
             }
             break;
         case "institucion":
-            if ($objeto->idInstitucion != null) {
-                if ($atributos == "") {
-                    $atributos .= "id_institucion = ?";
-                } else {
-                    $atributos .= ", id_institucion = ?";
+            if ($metodo == "PUT") {
+                if ($objeto->idInstitucion != null) {
+                    if ($atributos == "") {
+                        $atributos .= "id_institucion = ?";
+                    } else {
+                        $atributos .= ", id_institucion = ?";
+                    }
+                    $params .= "i";
+                    array_push($valores, $objeto->idInstitucion);
                 }
-                $params .= "i";
-                array_push($valores, $objeto->idInstitucion);
-            }
-            if ($objeto->nombreInstitucion != null) {
-                if ($atributos == "") {
-                    $atributos .= "nombre_institucion = ?";
-                } else {
-                    $atributos .= ", nombre_institucion = ?";
+                if ($objeto->nombreInstitucion != null) {
+                    if ($atributos == "") {
+                        $atributos .= "nombre_institucion = ?";
+                    } else {
+                        $atributos .= ", nombre_institucion = ?";
+                    }
+                    $params .= "s";
+                    array_push($valores, $objeto->nombreInstitucion);
                 }
-                $params .= "s";
-                array_push($valores, $objeto->nombreInstitucion);
-            }
-            if ($objeto->direccion != null) {
-                if ($atributos == "") {
-                    $atributos .= "direccion = ?";
-                } else {
-                    $atributos .= ", direccion = ?";
+                if ($objeto->direccion != null) {
+                    if ($atributos == "") {
+                        $atributos .= "direccion = ?";
+                    } else {
+                        $atributos .= ", direccion = ?";
+                    }
+                    $params .= "s";
+                    array_push($valores, $objeto->direccion);
                 }
-                $params .= "s";
-                array_push($valores, $objeto->direccion);
-            }
-            if ($objeto->telefono != null) {
-                if ($atributos == "") {
-                    $atributos .= "telefono = ?";
-                } else {
-                    $atributos .= ", telefono = ?";
+                if ($objeto->telefono != null) {
+                    if ($atributos == "") {
+                        $atributos .= "telefono = ?";
+                    } else {
+                        $atributos .= ", telefono = ?";
+                    }
+                    $params .= "i";
+                    array_push($valores, $objeto->telefono);
                 }
-                $params .= "i";
-                array_push($valores, $objeto->telefono);
+            } else {
+
+                if ($objeto->idInstitucion != null || $objeto->direccion != null || $objeto->telefono != null) {
+                                $placeholders .= "(";
+                                $atributos .= "(";
+                            }
+
+                if ($metodo == "POST") {
+                    if ($objeto->idInstitucion != null) {
+                        if ($atributos == "" || $atributos == "(") {
+                            $atributos .= "id_institucion";
+                        } else {
+                            $atributos .= ", id_institucion";
+                        }
+                        if ($placeholders == "" || $placeholders == "(") {
+                            $placeholders .= "?";
+                        } else {
+                            $placeholders .= ", ?";
+                        }
+                        $params .= "i";
+                        array_push($valores, $objeto->idInstitucion);
+                    }
+                    if ($objeto->nombreInstitucion != null) {
+                        if ($atributos == "" || $atributos == "(") {
+                            $atributos .= "nombre_institucion";
+                        } else {
+                            $atributos .= ", nombre_institucion";
+                        }
+                        if ($placeholders == "" || $placeholders == "(") {
+                            $placeholders .= "?";
+                        } else {
+                            $placeholders .= ", ?";
+                        }
+                        $params .= "s";
+                        array_push($valores, $objeto->nombreInstitucion);
+                    }
+                    if ($objeto->direccion != null) {
+                        if ($atributos == "" || $atributos == "(") {
+                            $atributos .= "direccion";
+                        } else {
+                            $atributos .= ", direccion";
+                        }
+                        if ($placeholders == "" || $placeholders == "(") {
+                            $placeholders .= "?";
+                        } else {
+                            $placeholders .= ", ?";
+                        }
+                        $params .= "s";
+                        array_push($valores, $objeto->direccion);
+                    }
+                    if ($objeto->telefono != null) {
+                        if ($atributos == "") {
+                            $atributos .= "telefono";
+                        } else {
+                            $atributos .= ", telefono";
+                        }
+                        if ($placeholders == "" || $placeholders == "(") {
+                            $placeholders .= "?";
+                        } else {
+                            $placeholders .= ", ?";
+                        }
+                        $params .= "i";
+                        array_push($valores, $objeto->telefono);
+                    }
+                }
             }
+
+            if ($atributos != "" && $placeholders != "") {
+                $placeholders .= ")";
+                $atributos .= ")";
+            }
+            
             break;
         case "libre":
             if ($objeto->ci != null) {

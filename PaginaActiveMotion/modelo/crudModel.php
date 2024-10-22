@@ -155,6 +155,7 @@ function eliminarBD($sql, $params, $atributos, $sqlConsulta)
 function verificarExistencia($sql, $params, $atributos)
 {
     $conexion = conectarBD();
+    // var_dump($sql, $params, $atributos);
 
     $stmt = $conexion->prepare($sql);
 
