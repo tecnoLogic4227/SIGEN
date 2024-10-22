@@ -87,7 +87,7 @@ body{
 }
 
 html, body {
-  height: 100%;
+  height:100%;
   margin: 0;
   padding: 0;
 }
@@ -95,7 +95,7 @@ html, body {
 
 main {
   flex: 1;
-  margin-bottom: 130px;
+  margin-bottom: 250px;
 }
 
 .inicio::before {
@@ -1211,9 +1211,8 @@ input::placeholder{
 }
 
 .tablaCaliSeleccionador{
-  width: 40vw;
   margin-top: -60vh;
-  margin-left: 50vw;
+  margin-left: 10vw;
 }
 
 /*.................................................Equipos Seleccionador.....................................................*/
@@ -1267,12 +1266,12 @@ input::placeholder{
 }
 
 /*......................................................Armar equipos Seleccionador....................................*/
-.tablaArmarEquipoSeleccionador {
+.tablaArmarEquipoExistenteSeleccionador {
   margin-top: -40vh;
   margin-left: 10vw;
 }
 
-#form-armarEquiposSeleccionador{
+#form-armarEquiposExistenteSeleccionador{
   margin-left: 10vw !important;
 }
 
@@ -1305,8 +1304,113 @@ a {
   color: white;
 }
 
-.ingresarDeportista{
+.ingresarDeportista, .eliminarDeportista{
   margin-left: 0vw;
+}
+
+.guardarEquipo{
+  font-size: small !important;
+  margin-left: 55vw;
+}
+
+/*....................................................ARMAR EQUIPO EXISTENTE SELECCIONADOR....................................................*/
+.tablaArmarEquipoSeleccionador {
+  margin-top: 0vh;
+  margin-left: 0vw;
+  width: 80%;
+}
+
+#form-armarEquiposSeleccionador {
+  width: 15vw;
+  display: none;
+  position: absolute;
+  right: 3vw;
+  top: 45vh;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+button {
+  width: auto;
+  min-width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0056b3;
+  border-radius: 5px;
+  color: white;
+  padding: 1vh;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1DA1F2;
+  transition: all .3s ease;
+}
+
+.ingresarDeportista {
+  margin-left: 0vw;
+}
+
+.editable {
+  padding: 5px;
+  border: 1px solid transparent;
+  min-width: 150px;
+}
+
+.editable:hover {
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  cursor: text;
+}
+
+#deportistasList {
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.save-team {
+  margin: 20px auto;
+  display: block;
+}
+
+.profile-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.deportista-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.btn-eliminar {
+  padding: 2px 8px;
+  min-width: auto;
+  background-color: #dc3545;
+  margin: 0 0 0 10px;
+}
+
+.info-cell {
+  min-width: 200px;
+  padding: 15px;
 }
 /*..................................................PERFIL Administrativo..............................................*/
 #btnModificarAdm{
@@ -1590,7 +1694,7 @@ margin-left: -70vw !important;
 
 .titulo_2_IndexAvanzado{
   display: block;
-  margin-top: -69vh ;
+  margin-top: -60vh ;
   margin-left: 0vw !important;
 }
 
@@ -1610,8 +1714,8 @@ margin-left: -70vw !important;
 
 .titulo_3_IndexAvanzado{
   display: block;
-  margin-top: -70vh;
-  margin-left: 70vw !important;
+  margin-top: -62vh;
+  margin-left: 66vw !important;
 }
 
 .tablaDeportesIndexAvanzado {

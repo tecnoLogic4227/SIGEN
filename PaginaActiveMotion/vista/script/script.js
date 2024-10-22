@@ -383,7 +383,7 @@ if ($myCarousel.length) {
 }
 });
 
-/*...............................................Boton Perfil.........................................................*/
+/*...............................................Boton Perfil cliente.........................................................*/
 $(document).ready(function() {
   $('#btnModificarUsu').on('click', function() {
     window.location.href = 'modificarPerfilUsuario.html';
@@ -471,16 +471,98 @@ $(document).ready(function() {
 });
 
  /*...............................................Tabla Armar Equipos Seleccionador.........................................................*/
-  $(document).ready(function() {
-   $('#btnIngresarDeportista').click(function() {
-     let nombreDeportista = $('#nombreDeportista').val();
-     let deporteDeportista = $('#deporteDeportista').val();
-     let clubDeportista = $('#clubDeportista').val();
+ $(document).ready(function() {
+  $('#btnIngresarDeportista').click(function() {
+      let nombreDeportista = $('#nombreDeportista').val();
+      let deporteDeportista = $('#deporteDeportista').val();
+      let clubDeportista = $('#clubDeportista').val();
 
       $('#nombreClub').text(clubDeportista);
-       $('#deportista').text(nombreDeportista + ' - ' + deporteDeportista);
-   });
- });
+      $('#deportista').append('<div class="deportista-row">' + nombreDeportista + ' - ' + deporteDeportista + '</div>');
+  });
+
+  
+  $('#btnEliminarDeportista').click(function() {
+      let nombreDeportista = $('#nombreDeportista').val();
+      
+    
+      $('#deportista .deportista-row').each(function() {
+          if ($(this).text().includes(nombreDeportista)) {
+              $(this).remove();
+          }
+      });
+  });
+});
+
+
+ /*....................................................TABLA NUEVO EQUIPO SELECCIONADOR.............................................. */
+ $(document).ready(function() {
+  let deportistas = [];
+
+  // Mostrar el formulario para agregar deportistas
+  $('.btn-agregar').click(function() {
+      $('#form-armarEquiposSeleccionador').fadeIn(300);
+  });
+
+  // Ocultar el formulario al cancelar
+  $('#btnCancelar').click(function() {
+      $('#form-armarEquiposSeleccionador').fadeOut(300);
+  });
+
+  // Ingresar deportista
+  $('#btnIngresar').click(function() {
+      const nombre = $('#nombreDeportista').val();
+      const cedula = $('#ciDeportista').val();
+
+      if (nombre && cedula) {
+          deportistas.push({ nombre, cedula });
+          actualizarListaDeportistas();
+          $('#form-armarEquiposSeleccionador')[0].reset();
+          $('#form-armarEquiposSeleccionador').fadeOut(300);
+      }
+  });
+
+  // Actualizar la lista de deportistas
+  function actualizarListaDeportistas() {
+      const listaHtml = deportistas.map(function(d) {
+          return `<div class="deportista-item">
+              ${d.nombre} - ${d.cedula}
+              <button class="btn-eliminar" data-nombre="${d.nombre}">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>`;
+      }).join('');
+      
+      $('#deportistasList').html(listaHtml);
+      $('#cantDeportista').text(deportistas.length);
+  }
+
+  // Eliminar deportista de la lista
+  $(document).on('click', '.btn-eliminar', function() {
+      const nombreDeportista = $(this).data('nombre');
+      deportistas = deportistas.filter(d => d.nombre !== nombreDeportista);
+      actualizarListaDeportistas();
+  });
+
+  // Guardar el equipo
+  $('.save-team').click(function() {
+      const datos = { deportistas: deportistas };
+      console.log('Equipo guardado:', datos);
+      alert('Equipo guardado exitosamente!');
+  });
+
+  // Habilitar el botón "Ingresar" solo si ambos campos están llenos
+  $('#form-armarEquiposSeleccionador input').on('input', function() {
+      const nombre = $('#nombreDeportista').val();
+      const cedula = $('#ciDeportista').val();
+      if (nombre && cedula) {
+          $('#btnIngresar').prop('disabled', false);
+      } else {
+          $('#btnIngresar').prop('disabled', true);
+      }
+  });
+});
+
 
 /*....................................................Boton Index Seleccionador........................................*/
 $(function() {
@@ -1041,6 +1123,24 @@ $(document).ready(function() {
                 // Aquí podrías enviar los datos a tu servidor
             });
         });
+/*......................................................ASIGNAR RUTINA ENTRENADOR............................................... */
+$(document).ready(function() {
+  $('#seccion-asignar-entrenamiento').hide();
+  
+  $('#btn-mostrar-asignar-entrenamiento').click(function() {
+    $('#seccion-asignar-entrenamiento').slideDown();
+    $('#btn-modificar-rutina').show(); 
+  });
+
+  // Inhabilitar para escribir
+  $('#rutinaIdCliente, #nombreRoutineCliente, .ejercicioCliente, .descripcionCliente, #descripcionRutinaCliente, .btn-agregar-cliente, .btn-eliminar-ejercicio-cliente').prop('disabled', true);
+
+  // Habilitar prara escribir
+  $('#btn-modificar-rutina').click(function() {
+    $('#rutinaIdCliente, #nombreRoutineCliente, .ejercicioCliente, .descripcionCliente, #descripcionRutinaCliente, .btn-agregar-cliente, .btn-eliminar-ejercicio-cliente').prop('disabled', false);
+    $('#boton-guardar-entrenamiento').show(); // Mostrar el botón "Guardar"
+  });
+});
 
 /*................................................................PERFIL ENTRENADOR.......................................................*/
 $(function() {
