@@ -46,3 +46,13 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.sectionTabla {
+    display: flex;
+    flex-direction: column;
+}
+
+.tablaInstituciones {
+    display: flex;
+    flex-direction: column;
+}

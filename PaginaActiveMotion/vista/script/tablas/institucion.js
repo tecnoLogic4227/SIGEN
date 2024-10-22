@@ -6,7 +6,7 @@ $(document).ready(() => {
     const listarInstitucion = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -30,7 +30,9 @@ $(document).ready(() => {
                             tbody.append(tr);
                         });
                     } else {
-                        alert("No se encontraron resultados.");
+                        if (ci != "") {
+                            alert("No se encontraron resultados.");
+                        }                        
                         $(".tablaInstitucion tbody").html("");
                     }
                 } catch (e) {
@@ -45,7 +47,7 @@ $(document).ready(() => {
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: { 
                 tabla: tabla,
@@ -55,7 +57,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarInstitucion(datos);
@@ -152,7 +154,7 @@ $(document).ready(() => {
     }
 
     $(".institucionCrear").click(confirmarCrearInstitucion);
-    $(".institucionConfirmarCrear").click(datosCrearInstitucion);
+    $("#institucionConfirmarCrear").click(datosCrearInstitucion);
     $(".institucionBuscar").click(datosBuscarInstitucion);
     $(".institucionModificar").click(confirmarModificarInstitucion);
     $(".institucionConfirmarModificar").click(modificarInstitucion);

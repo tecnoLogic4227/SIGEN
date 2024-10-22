@@ -1,12 +1,13 @@
 $(document).ready(() => {
+
     let ci, nombre, apellido, direccion, email, fechaNac, rol, telefono, metodo;
     const tabla = "usuario";
     datos = "";
 
-    const listarAsiste = (datos) => {
+    const listarUsuario = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -49,7 +50,7 @@ $(document).ready(() => {
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: { 
                 tabla: tabla,
@@ -59,7 +60,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarUsuario(datos);
@@ -98,8 +99,8 @@ $(document).ready(() => {
         direccion = $(".inputModificarUsuarioDireccion").val();
         email = $(".inputModificarUsuarioEmail").val();
         fechaNac = $(".inputModificarUsuarioFechaNac").val();
-        rol = $(".inputModificarUsuarioRol").val();
         telefono = $(".inputModificarUsuarioTelefono").val();
+        rol = "entrenador";
         crearUsuario(ci, nombre, apellido, direccion, email, fechaNac, rol, telefono);
     };
 
@@ -172,7 +173,7 @@ $(document).ready(() => {
     }
 
     $(".usuarioCrear").click(confirmarCrearUsuario);
-    $(".usuarioConfirmarCrear").click(datosCrearUsuario);
+    $("#usuarioConfirmarCrear").click(datosCrearUsuario);
     $(".usuarioBuscar").click(datosBuscarUsuario);
     $(".usuarioModificar").click(confirmarModificarUsuario);
     $(".usuarioConfirmarModificar").click(modificarUsuario);
