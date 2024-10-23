@@ -5,7 +5,7 @@ class Login {
     public $contrasenia;
 
     public function __construct($idLogin, $contrasenia) {
-        $this->ci = $ci;
+        $this->idLogin = $idLogin;
         $this->contrasenia = $contrasenia;
     }
 
