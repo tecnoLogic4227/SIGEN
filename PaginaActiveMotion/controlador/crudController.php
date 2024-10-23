@@ -725,7 +725,7 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
             $atributosConsulta = [$usuarioCliente->ci];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                verificarDatos($atributos, $params, $valores, $usuarioCliente, $tabla);
+                verificarDatos($atributos, $params, $valores, $usuarioCliente, $tabla, $metodo, &$placeholders);
                 $sql = "UPDATE USUARIO_CLIENTE SET $atributos WHERE ci = ?";
                 $params .= "i";
                 array_push($valores, $usuarioCliente->ci);

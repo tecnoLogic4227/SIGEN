@@ -1,20 +1,20 @@
 <?php
 
 class Login {
-    public $ci;
+    public $idLogin;
     public $contrasenia;
 
-    public function __construct($ci, $contrasenia) {
+    public function __construct($idLogin, $contrasenia) {
         $this->ci = $ci;
         $this->contrasenia = $contrasenia;
     }
 
-    public function getCiLogin() {
-        return $this->ci;
+    public function getIdLogin() {
+        return $this->idLogin;
     }
 
-    public function setCiLogin($ci) {
-        $this->ci = $ci;
+    public function setIdLogin($idLogin) {
+        $this->idLogin = $idLogin;
     }
 
     public function getContraseniaLogin() {
