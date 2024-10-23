@@ -2580,8 +2580,6 @@ function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla
                 $atributos .= ")";
             }
 
-
-
             // case "deporte":
             //     if ($metodo == "PUT") {
             //         if ($objeto->nombreDeporte != null) {

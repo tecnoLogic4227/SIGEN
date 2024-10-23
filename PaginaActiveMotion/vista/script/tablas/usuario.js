@@ -130,7 +130,7 @@ $(document).ready(() => {
         rol = $(".inputModificarUsuarioRol").val();
         telefono = $(".inputModificarUsuarioTelefono").val();
         limpiarPantalla();
-        manejarSolicitud("POST", {
+        manejarSolicitud("PUT", {
             ci: ci,
             nombre: nombre,
             apellido: apellido,
@@ -176,7 +176,7 @@ $(document).ready(() => {
     $("#usuarioConfirmarCrear").click(datosCrearUsuario);
     $(".usuarioBuscar").click(datosBuscarUsuario);
     $(".usuarioModificar").click(confirmarModificarUsuario);
-    $(".usuarioConfirmarModificar").click(modificarUsuario);
+    $("#usuarioConfirmarModificar").click(modificarUsuario);
     $(".usuarioEliminar").click(confirmarEliminarUsuario);
     $(".usuarioConfirmarEliminar").click(eliminarUsuario);
 

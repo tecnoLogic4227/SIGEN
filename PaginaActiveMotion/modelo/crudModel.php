@@ -103,7 +103,7 @@ function modificarBD($sql, $params, $atributos)
 {
     $conexion = conectarBD();
 
-    // var_dump($sql, $params, $atributos);
+    var_dump($sql, $params, $atributos);
 
     try {
         $stmt = $conexion->prepare($sql);
