@@ -22,9 +22,9 @@ verificarSesion('usuario_entrenador');
             if(!soloLetras($seccion_plan)){
                 array_push($errores, "El campo de la seccion del plan solo admite letras");
             }
-        }else{
-            echo "Acceso no permitido";
         }
 
+    }else{
+        echo "Acceso no permitido";
     }
 ?>

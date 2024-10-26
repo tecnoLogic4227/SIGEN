@@ -32,8 +32,9 @@ verificarSesion('usuario_avanzado');
                 array_push($errores, "El campo de la descripcion del ejercicio solo admite letras");
             }
 
-        }else{
-            echo "Acceso no permitido";
         }
+        
+    }else{
+        echo "Acceso no permitido";
     }
 ?>
