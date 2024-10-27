@@ -5,24 +5,25 @@
   font-family: Arial, sans-serif;
   font-size: 21px;
 }
+
 /*......................................................GENERAL........................................................*/
 /*........................................................NAV..........................................................*/
 nav {
-  width: 100vw; 
-  height: 10vh; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
-  position: fixed; 
-  top:0; 
+  position: fixed;
+  top: 0;
   left: 0;
   font-family: Arial, sans-serif;
   font-size: 21px;
   z-index: 20000;
   background-color: #ffffff;
   opacity: 0.8;
-  }
+}
 
 /*.....................................................BARRA BUSQUEDA...................................................*/
 .search-container {
@@ -65,29 +66,31 @@ nav {
 }
 
 /*.......................................................BODY..........................................................*/
-.inicio::before, body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.4;
-    z-index: -1;
-    display: flex;
+.inicio::before,
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.4;
+  z-index: -1;
+  display: flex;
   flex-direction: column;
   background-color: rgb(245, 245, 245);
 }
 
-body{
+body {
   overflow-x: hidden;
   background-color: rgb(245, 245, 245);
 }
 
-html, body {
-  height:100%;
+html,
+body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -99,13 +102,13 @@ main {
 }
 
 .inicio::before {
-    left: 0;
-    background-image: url('../img/gym.jpeg');
+  left: 0;
+  background-image: url('../img/gym.jpeg');
 }
 
 .inicio::after {
-    right: 0;
-    background-image: url('../img/fisio.png');
+  right: 0;
+  background-image: url('../img/fisio.png');
 }
 
 #wrapper {
@@ -113,31 +116,39 @@ main {
   flex-direction: column;
   min-height: 100vh;
 }
+
 /*.......................................................CLASES......................................................*/
 .clase1 {
-  width:10vw; 
-  height: 10vh; 
+  width: 10vw;
+  height: 10vh;
   align-items: center;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
   margin-left: 1vw !important;
 }
+
 /*.........................................................MENU............................................................*/
-.menu-barras, .menu-oculto {
-    display: none;
- }
-    
- .menu-adaptable{
- display: none;
- flex-direction: column;
- }
-ul #servis, #fisio,#dep,#pila{
+.menu-barras,
+.menu-oculto {
+  display: none;
+}
+
+.menu-adaptable {
+  display: none;
+  flex-direction: column;
+}
+
+ul #servis,
+#fisio,
+#dep,
+#pila {
   background-color: #ffffff;
   opacity: 1;
 }
- .menu-oculto {
-  list-style-type: none; 
+
+.menu-oculto {
+  list-style-type: none;
   padding: 0;
   margin: 0;
 }
@@ -153,135 +164,169 @@ ul #servis, #fisio,#dep,#pila{
   font-size: 18px;
   display: block;
   padding: 15px 20px;
-  background-color: rgba(0, 0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.menu-oculto li:hover{background-color:#72c8f1;}
+.menu-oculto li:hover {
+  background-color: #72c8f1;
+}
 
-   ul {
-    display: flex;
-     list-style-type:none; 
-     justify-content:space-between; 
-     flex-grow: 1;
-     width: 100%; 
-     margin: 0 auto;
-     margin-right: 0px;
-     
-   }
+ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0 auto;
+  margin-right: 0px;
 
- 
-   ul li {
-     float: left; 
-     position: relative;
-   }
- 
-   ul li#inicio ul { 
-     display:none; 
-     position:absolute; 
-     top:53px;
-     left:0; 
-     width:200px;
-   }
-   ul li#inicio:hover ul { 
-     display:block; 
-   }
-   ul li#nosotros ul { 
-     display:none; 
-     position:absolute; 
-     top:53px;
-     left:0; 
-     width:200px;
-   }
-   ul li#nosotros:hover ul { 
-     display:block; 
-     left:-40px;
-   }
-   ul li#servicios ul { 
-     display:none; 
-     position:absolute; 
-     top:53px;
-     left:0; 
-     width:200px;
-   }
-   ul li#servicios:hover ul { 
-     display:block; 
-     left:-40px;
-   }
-   ul li#locales ul { 
-     display:none; 
-     position:absolute; 
-     top:53px;
-     left:0; 
-     width:200px;
-   }
-   ul li#locales:hover ul { 
-     display:block; 
-     left:-40px;
-   }
-   ul li#planes ul { 
-     display:none; 
-     position:absolute; 
-     top:53px;
-     left:0; 
-     width:200px;
-   }
-   ul li#planes:hover ul { 
-     display:block; 
-     left:-40px;
-   }
-   ul li#login ul { 
-    display:none; 
-    position:absolute; 
-    top:53px;
-    left:0; 
-    width:200px;
-  }
-   ul li#login:hover ul { 
-    display:block; 
-    left:-40px;
-  }
- 
-   ul ul li {
-     float:none; 
-     text-align:left;
-   }
-   ul li a { 
-     text-decoration:none; 
-     font-weight:bold; 
-     font-size: large;
-     display:block; 
-     line-height:2em;
-     color:rgb(0, 0, 0); 
-     padding: 10px 20px;
-   }
-   ul ul li a {
-    font-weight:normal ;
-   }
-   
-   ul li#inicio a:hover {background-color:#72c8f1;}
-   ul li#nosotros a:hover {background-color:#72c8f1;}
-   ul li#servicios a:hover {background-color:#72c8f1;}
-   ul li#locales a:hover {background-color:#72c8f1;}
-   ul li#planes a:hover {background-color:#72c8f1;}
-   ul li#login a:hover {background-color:#72c8f1;}
+}
 
- /*.....................................................HEADER index.............................................................*/
- .clase2 {
+
+ul li {
+  float: left;
+  position: relative;
+}
+
+ul li#inicio ul {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 200px;
+}
+
+ul li#inicio:hover ul {
+  display: block;
+}
+
+ul li#nosotros ul {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 200px;
+}
+
+ul li#nosotros:hover ul {
+  display: block;
+  left: -40px;
+}
+
+ul li#servicios ul {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 200px;
+}
+
+ul li#servicios:hover ul {
+  display: block;
+  left: -40px;
+}
+
+ul li#locales ul {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 200px;
+}
+
+ul li#locales:hover ul {
+  display: block;
+  left: -40px;
+}
+
+ul li#planes ul {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 200px;
+}
+
+ul li#planes:hover ul {
+  display: block;
+  left: -40px;
+}
+
+ul li#login ul {
+  display: none;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 200px;
+}
+
+ul li#login:hover ul {
+  display: block;
+  left: -40px;
+}
+
+ul ul li {
+  float: none;
+  text-align: left;
+}
+
+ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: large;
+  display: block;
+  line-height: 2em;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+}
+
+ul ul li a {
+  font-weight: normal;
+}
+
+ul li#inicio a:hover {
+  background-color: #72c8f1;
+}
+
+ul li#nosotros a:hover {
+  background-color: #72c8f1;
+}
+
+ul li#servicios a:hover {
+  background-color: #72c8f1;
+}
+
+ul li#locales a:hover {
+  background-color: #72c8f1;
+}
+
+ul li#planes a:hover {
+  background-color: #72c8f1;
+}
+
+ul li#login a:hover {
+  background-color: #72c8f1;
+}
+
+/*.....................................................HEADER index.............................................................*/
+.clase2 {
   margin-top: 10vw;
 }
- .clase3{
-  margin-top:-30vh;
-  margin-left: 50vw;;
+
+.clase3 {
+  margin-top: -30vh;
+  margin-left: 50vw;
+  ;
   text-align: center;
   width: 40%;
- }
+}
 
 /*.....................................................HEADER nosotros.............................................................*/
 
 .tituloEquipo {
   margin-top: 15vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
@@ -290,24 +335,29 @@ ul #servis, #fisio,#dep,#pila{
   margin-top: 60px;
   width: 40%;
 }
+
 .descNosotros2 {
   margin-left: 8vw;
   margin-top: -2px;
   width: 40%;
 }
+
 .descNosotros3 {
   margin-left: 8vw;
   margin-top: 35px;
   width: 80%;
 }
-.descNosotros, .descNosotros2, .descNosotros3{
+
+.descNosotros,
+.descNosotros2,
+.descNosotros3 {
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
 
-.comb2{
+.comb2 {
   margin-top: -70vh;
   margin-left: 55vw;
   position: absolute;
@@ -327,7 +377,7 @@ ul #servis, #fisio,#dep,#pila{
 
 .equipo img.prof {
   object-fit: cover;
-  border-radius: 50%; 
+  border-radius: 50%;
 }
 
 .equipo p.nombre {
@@ -350,7 +400,7 @@ ul #servis, #fisio,#dep,#pila{
   color: blue;
 }
 
-.descServicios{
+.descServicios {
   margin-left: -50vw;
   color: black;
   font-size: 22px;
@@ -368,17 +418,17 @@ ul #servis, #fisio,#dep,#pila{
 
 /*.....................................................HEADER fisioterapia.............................................................*/
 
-.tituloFisio{
+.tituloFisio {
   width: 15%;
   margin-left: 5vw;
   color: black;
   font-size: 22px;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-.descFisio{
+.descFisio {
   margin-left: 5vw;
   color: black;
   font-size: 16px;
@@ -397,7 +447,7 @@ ul #servis, #fisio,#dep,#pila{
   font-size: 22px;
   width: 20%;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
@@ -405,8 +455,8 @@ ul #servis, #fisio,#dep,#pila{
   padding-left: 20px;
 }
 
-.servicios-lista > li {
-  margin-bottom: 40px; 
+.servicios-lista>li {
+  margin-bottom: 40px;
 }
 
 .sublista {
@@ -440,7 +490,7 @@ ul #servis, #fisio,#dep,#pila{
 
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 10%;
 }
 
@@ -470,7 +520,7 @@ footer {
   background-color: #f1f1f1;
   padding: 20px 0;
   height: auto;
-  min-height: 20vh; 
+  min-height: 20vh;
 }
 
 .footer-content {
@@ -532,10 +582,21 @@ footer {
   transform: scale(1.2);
 }
 
-.whatsapp { background-color: #25D366; }
-.twitter { background-color: #1DA1F2; }
-.instagram { background-color: #E1306C; }
-.gmail { background-color: #D44638; }
+.whatsapp {
+  background-color: #25D366;
+}
+
+.twitter {
+  background-color: #1DA1F2;
+}
+
+.instagram {
+  background-color: #E1306C;
+}
+
+.gmail {
+  background-color: #D44638;
+}
 
 .copyright-bar {
   background-color: #72c8f1;
@@ -546,28 +607,29 @@ footer {
   font-size: 0.9em;
   padding: 10px 0;
 }
-/*..........................................................Locales........................................................*/
-.tituloGeneral{
-  text-align: center;
- }
 
- .titulo2General{
+/*..........................................................Locales........................................................*/
+.tituloGeneral {
+  text-align: center;
+}
+
+.titulo2General {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
 
 #map {
   margin-left: 2vw;
   margin-top: 20vh;
-  height: 300px; 
-  width: 40%;  
+  height: 300px;
+  width: 40%;
 }
 
 .leaflet-control-attribution {
-  bottom: -96px; 
+  bottom: -96px;
   left: 38px;
 }
 
@@ -578,7 +640,7 @@ footer {
   margin-top: -40vh;
   width: 40%;
   background-color: rgba(205, 236, 255, 0.938);
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
@@ -623,18 +685,18 @@ footer {
 }
 
 /*.....................................................PLANES............................................................*/
-.planes{
+.planes {
   text-align: center;
- }
+}
 
- .tituloPlanes{
+.tituloPlanes {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
- .plan {
+.plan {
   display: inline-block;
   vertical-align: top;
   background-color: rgba(223, 243, 255, 0.938);
@@ -653,35 +715,42 @@ footer {
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
 .plan h2 {
   font-size: 24px;
   margin: 0;
 }
+
 .plan p {
   font-size: 14px;
   color: #555;
 }
+
 .plan ul {
   flex-direction: column;
   list-style: none;
   padding: 0;
   text-align: left;
 }
+
 .plan ul li {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
+
 .plan ul li::before {
   content: '✔';
   color: green;
   margin-right: 10px;
 }
-.plan .precio{
+
+.plan .precio {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0;
 }
+
 .plan .estado {
   background-color: #409dc4;
   color: white;
@@ -696,33 +765,45 @@ footer {
 }
 
 /*....................................................LOGIN.............................................................*/
-.foto{
-  margin-bottom: 30px;
-  margin-top: 10px;
-  border-radius: 100%; 
-  width:10vw;
-  height: 20vh;
+
+.span {
+  cursor: pointer;
 }
 
-h1{
+ .fotoLoginOculto {
+  width: 12vw;
+  height: 30vh;
+  margin-top: -15vh;
+  margin-bottom: 2vh;
+  margin-left: 3vw;
+}
+
+.fotoLoginViendo {
+  width: 20vw;
+  height: 27vh;
+  margin-top: -12vh;
+  margin-bottom: 2vh;
+}
+
+h1 {
   color: rgb(0, 0, 0);
 }
-label{
+
+label {
   color: rgb(0, 0, 0);
   size: medium;
 }
 
-#formLogin{
+#formLogin {
   width: 40vw;
-  height:90vh;
-  margin-top: 10vh;
+  height: auto;
+  margin-top: 20vh;
   margin-left: 30vw;
-  display:flex;
-  align-items:center;
-  flex-direction:column;
-  background:#abdefa;
-  border-radius:10px;
-  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #abdefa;
+  border-radius: 10px;
 }
 
 .login {
@@ -733,71 +814,83 @@ label{
 .registro {
   position: relative;
   display: block;
-  top: 5vh;
+  top: 7vh;
+}
+
+.botonEnviarDatosLogin {
+  margin-bottom: 5vh;
 }
 
 /*.......................................................REGISTRO.......................................................*/
-.registro{
+.registro {
   text-align: center;
- }
+}
 
- .tituloRegistro{
+.tituloRegistro {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
-.foto{
+.foto {
   margin-bottom: 30px;
   margin-top: 10px;
-  border-radius: 100%; 
-  width:10vw;
+  border-radius: 100%;
+  width: 10vw;
   height: 20vh;
 }
 
-h1{
+h1 {
   color: rgb(0, 0, 0);
 }
-label{
+
+label {
   color: rgb(0, 0, 0);
   size: medium;
 }
 
- #formRegistro{
+#formRegistro {
   width: 50vw;
-  height:180vh;
+  height: 180vh;
   margin-top: 10vh;
   margin-left: 30vw;
-  display:flex;
-  align-items:center;
-  flex-direction:column;
-  background:#abdefa;
-  border-radius:10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #abdefa;
+  border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  
+
 }
 
-#nombre, #ci, #clave1, #clave2, #email, #tel,
-#fecha{
-background:rgba(121,121, 121, 0.6);
-width:380px;
-height:30px;
-outline:none;
-border:1px dashed #222;
-color:rgb(0, 0, 0);
+#nombre,
+#ci,
+#clave1,
+#clave2,
+#email,
+#tel,
+#fecha {
+  background: rgba(121, 121, 121, 0.6);
+  width: 380px;
+  height: 30px;
+  outline: none;
+  border: 1px dashed #222;
+  color: rgb(0, 0, 0);
 }
-#comentario{
+
+#comentario {
   outline: none;
   color: #222;
   border: 1px dashed #222;
 }
 
-input::placeholder{
-  color:rgb(0, 0, 0);
+input::placeholder {
+  color: rgb(0, 0, 0);
 }
- .estado {
+
+.estado {
   background-color: #409dc4;
   color: white;
   border: none;
@@ -811,25 +904,25 @@ input::placeholder{
   margin-right: 45vw;
 }
 
-.registrarse{
+.registrarse {
   position: relative;
   display: block;
-  left: -22vw; 
+  left: -22vw;
 }
 
 /*.................................................INDEX USUARIO.........................................................*/
-.indexUsuario{
+.indexUsuario {
   text-align: center;
- }
+}
 
- .tituloIndexUsuario{
+.tituloIndexUsuario {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
-.notificaciones{
+.notificaciones {
   margin-top: 10vh;
   margin-left: 2vw;
   background-color: #e4f4fd;
@@ -846,7 +939,7 @@ input::placeholder{
   height: 60vh;
   margin-top: -65vh !important;
   margin-left: 65vw !important;
-  
+
 }
 
 .carousel-inner img {
@@ -857,7 +950,7 @@ input::placeholder{
 
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 10%;
 }
 
@@ -868,19 +961,19 @@ input::placeholder{
 }
 
 /*......................................................Plan Usuario.....................................................*/
-.planUsuario{
+.planUsuario {
   text-align: center;
- }
+}
 
- .tituloPlanUsuario{
+.tituloPlanUsuario {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
 
- .plan {
+.plan {
   display: inline-block;
   vertical-align: top;
   background-color: rgba(223, 243, 255, 0.938);
@@ -899,31 +992,36 @@ input::placeholder{
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
 .plan h2 {
   font-size: 24px;
   margin: 0;
 }
+
 .plan p {
   font-size: 14px;
   color: #555;
 }
+
 .plan ul {
   flex-direction: column;
   list-style: none;
   padding: 0;
   text-align: left;
 }
+
 .plan ul li {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.plan .precio{
+.plan .precio {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0;
 }
+
 .plan .estado {
   background-color: #409dc4;
   color: white;
@@ -937,56 +1035,63 @@ input::placeholder{
   margin: 10px 0;
 }
 
-.estado{
+.estado {
   margin-left: 45vw;
 }
-/*........................................................Agenda Usuario................................................*/
-.tituloUsuario{
-  text-align: center;
- }
 
- .titulo2Usuario{
+/*........................................................Agenda Usuario................................................*/
+.tituloUsuario {
+  text-align: center;
+}
+
+.titulo2Usuario {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
- 
- .container {
+}
+
+.container {
   width: 400vw;
   margin: 0 auto;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
 
-.year-navigation, .month-navigation {
+.year-navigation,
+.month-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color: #e4f4fd;
 }
+
 .year-navigation {
   border-bottom: 2px solid #e9ecef;
 }
+
 .year {
   font-size: 2.5rem;
   font-weight: bold;
   color: #000;
 }
+
 .month {
   font-size: 1.8rem;
   font-weight: 600;
   color: #000;
 }
+
 .nav-button {
   padding: 10px;
   background: none;
   border: none;
   cursor: pointer;
 }
+
 .chevron {
   width: 24px;
   height: 24px;
@@ -1005,6 +1110,7 @@ input::placeholder{
   background-color: #bde4fa;
   border-bottom: 1px solid #e4f4fd;
 }
+
 .weekday {
   text-align: center;
   font-weight: 600;
@@ -1031,10 +1137,12 @@ input::placeholder{
   background-color: #cce9fa;
   color: #000;
 }
+
 .calendar-day.appointment {
   background-color: #10B981;
   color: white;
 }
+
 .appointment-info {
   margin-top: 10px;
   padding: 8px;
@@ -1044,28 +1152,28 @@ input::placeholder{
 }
 
 /*......................................................Evolucion Usuarios...............................................*/
- .grafica {
+.grafica {
   margin-top: 0vh;
   margin-left: 30vw;
   width: 60%;
   z-index: 0;
 }
-.tablaDeportistasSeleccionador
-.graficaEntrenador {
+
+.tablaDeportistasSeleccionador .graficaEntrenador {
   margin-top: 0vh;
   margin-left: 15vw;
   width: 70%;
   z-index: 0;
 }
 
- .containerEvolucion {
+.containerEvolucion {
   padding: 20px;
   border-radius: 8px;
   margin-left: 5vw;
   margin-top: -40vh;
   width: 20%;
   background-color: rgba(205, 236, 255, 0.938);
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
@@ -1097,45 +1205,46 @@ input::placeholder{
   background-color: #f9f9f9;
 }
 
- /*.................................................Perfil Usuarios.....................................................*/
- .perfil{
+/*.................................................Perfil Usuarios.....................................................*/
+.perfil {
   text-align: center;
   height: 300vh;
- }
+}
 
- .tituloPerfil{
+.tituloPerfil {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
- #btnModificarUsu{
+#btnModificarUsu {
   margin-left: 37vw;
 }
 
-#btnCerrarSesion{
+#btnCerrarSesion {
   margin-top: -8.5vh;
   margin-left: 52vw;
 }
- /*.................................................INDEX Seleccionador.....................................................*/
 
- .ingresar{
+/*.................................................INDEX Seleccionador.....................................................*/
+
+.ingresar {
   position: relative;
-    top: -40vh;
-    margin-left: 60vw;
-    background-color: #409dc4;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-trans: uppercase;
-    font-size: 14px;
-    font-weight: bold;
-  }
- 
- .ingresar2{
+  top: -40vh;
+  margin-left: 60vw;
+  background-color: #409dc4;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-trans: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ingresar2 {
   position: relative;
   top: -20vh;
   margin-left: 60vw;
@@ -1152,23 +1261,24 @@ input::placeholder{
 
 /*.......................................................PERFIL SELECCIONADOR.......................................................*/
 
-#btnModificarSelec{
+#btnModificarSelec {
   margin-left: 37vw;
 }
+
 /*.................................................Deportistas Seleccionador.....................................................*/
-.tituloSeleccionador{
+.tituloSeleccionador {
   text-align: center;
   height: 300vh;
- }
+}
 
- .titulo2Seleccionador{
+.titulo2Seleccionador {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
+}
 
- .formDeportistasSeleccionador {
+.formDeportistasSeleccionador {
   width: 20vw;
   height: auto;
   margin-top: 10vh;
@@ -1180,7 +1290,9 @@ input::placeholder{
   z-index: 1;
 }
 
-#nombreDeportista, #deporteDeportista, #clubDeportista {
+#nombreDeportista,
+#deporteDeportista,
+#clubDeportista {
   background: rgba(121, 121, 121, 0.6);
   width: 20vh;
   height: 30px;
@@ -1191,7 +1303,7 @@ input::placeholder{
 }
 
 .tablaDeportistasSeleccionador {
-  margin-top: 250vh; 
+  margin-top: 250vh;
   margin-left: -10vw;
   z-index: 0;
   display: block;
@@ -1205,19 +1317,19 @@ input::placeholder{
   display: block;
 }
 
-.botonDeportistaBuscador{
+.botonDeportistaBuscador {
   margin-top: 4vh;
   margin-left: 5vw;
 }
 
-.tablaCaliSeleccionador{
+.tablaCaliSeleccionador {
   margin-top: -60vh;
   margin-left: 10vw;
 }
 
 /*.................................................Equipos Seleccionador.....................................................*/
 
- .formEquiposSeleccionador {
+.formEquiposSeleccionador {
   width: 20vw;
   height: 70vh;
   margin-top: 10vh;
@@ -1227,7 +1339,8 @@ input::placeholder{
   flex-direction: column;
 }
 
-#deporteClub, #clubEquipo {
+#deporteClub,
+#clubEquipo {
   background: rgba(121, 121, 121, 0.6);
   width: 20vh;
   height: 30px;
@@ -1236,18 +1349,19 @@ input::placeholder{
   color: rgb(0, 0, 0);
 }
 
-.botonEquipoBuscador{
+.botonEquipoBuscador {
   margin-top: 5vh;
-  margin-left:45vw;
+  margin-left: 45vw;
 }
-  
+
 .armarEquipo {
   margin-top: 10vh;
   margin-left: 45vw;
   width: 30vh;
 }
 
-.btnArmarNuevo, .btnArmarExistente {
+.btnArmarNuevo,
+.btnArmarExistente {
   margin-top: 2vh;
   margin-left: 47vw;
   width: 20vh;
@@ -1271,7 +1385,7 @@ input::placeholder{
   margin-left: 10vw;
 }
 
-#form-armarEquiposExistenteSeleccionador{
+#form-armarEquiposExistenteSeleccionador {
   margin-left: 10vw !important;
 }
 
@@ -1304,11 +1418,12 @@ a {
   color: white;
 }
 
-.ingresarDeportista, .eliminarDeportista{
+.ingresarDeportista,
+.eliminarDeportista {
   margin-left: 0vw;
 }
 
-.guardarEquipo{
+.guardarEquipo {
   font-size: small !important;
   margin-left: 55vw;
 }
@@ -1329,7 +1444,7 @@ a {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -1412,28 +1527,31 @@ button:hover {
   min-width: 200px;
   padding: 15px;
 }
+
 /*..................................................PERFIL Administrativo..............................................*/
-#btnModificarAdm{
+#btnModificarAdm {
   margin-left: 37vw;
 }
 
-#btnCerrarSesion{
+#btnCerrarSesion {
   margin-top: -8.5vh;
   margin-left: 52vw;
 }
+
 /*..................................................Agenda Administrativo..............................................*/
-.agendaAdministrativo{
+.agendaAdministrativo {
   text-align: center;
   height: 300vh;
- }
+}
 
- .tituloAgendaAdministrativo{
+.tituloAgendaAdministrativo {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
- }
- .left-side {
+}
+
+.left-side {
   position: absolute;
   left: 30px;
   top: 30vh;
@@ -1481,7 +1599,8 @@ button:hover {
   overflow: hidden;
 }
 
-.year-navigation-adm, .month-navigation-adm {
+.year-navigation-adm,
+.month-navigation-adm {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1593,7 +1712,7 @@ button:hover {
 .tituloConsultaAdministrativo {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
@@ -1607,7 +1726,8 @@ button:hover {
   flex-direction: column;
 }
 
-#ciPD, #nombre{
+#ciPD,
+#nombre {
   background: rgba(121, 121, 121, 0.6);
   width: 20vw;
   height: 30px;
@@ -1621,17 +1741,19 @@ button:hover {
   margin-left: 0vw;
 }
 
-.buscarPD{
+.buscarPD {
   margin-top: 5vh;
   margin-right: 45vw;
 }
-.eliminarPD{
+
+.eliminarPD {
   margin-top: 5vh;
   margin-right: 45vw;
   width: 10vw;
 }
 
-.sectionEliminar, .confirmarEliminar {
+.sectionEliminar,
+.confirmarEliminar {
   display: none;
   width: 30vw;
   position: absolute;
@@ -1640,7 +1762,9 @@ button:hover {
   transform: translate(-50%, -50%);
 }
 
-.eliminarCliente, .confirmarEliminarCliente, .cancelarEliminarCliente {
+.eliminarCliente,
+.confirmarEliminarCliente,
+.cancelarEliminarCliente {
   margin-top: 5vh;
   width: 50%;
   position: relative;
@@ -1656,23 +1780,24 @@ button:hover {
 .titulo2Avanzado {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-th, td {
+th,
+td {
   padding: 10px;
-  text-align:  center;
+  text-align: center;
 }
 
 th {
   background-color: #f2f2f2;
 }
 
-.titulo_1_IndexAvanzado{
+.titulo_1_IndexAvanzado {
   display: block;
-margin-top: 3vh ;
-margin-left: -70vw !important;
+  margin-top: 3vh;
+  margin-left: -70vw !important;
 }
 
 .tablaUsuariosIndexAvanzado {
@@ -1684,17 +1809,18 @@ margin-left: -70vw !important;
   bottom: 10px;
 }
 
- th, td {
+th,
+td {
   border: 1px solid black;
 }
 
-.btn_AgregarUsuario{
+.btn_AgregarUsuario {
   margin-left: 10vw;
 }
 
-.titulo_2_IndexAvanzado{
+.titulo_2_IndexAvanzado {
   display: block;
-  margin-top: -60vh ;
+  margin-top: -60vh;
   margin-left: 0vw !important;
 }
 
@@ -1707,12 +1833,12 @@ margin-left: -70vw !important;
   margin-top: 3vh;
 }
 
-.btn_AgregarEjercicio{
+.btn_AgregarEjercicio {
   margin-left: 43vw;
   margin-top: 6vh;
 }
 
-.titulo_3_IndexAvanzado{
+.titulo_3_IndexAvanzado {
   display: block;
   margin-top: -62vh;
   margin-left: 66vw !important;
@@ -1726,7 +1852,7 @@ margin-left: -70vw !important;
   margin-left: 75vw;
 }
 
-.btn_AgregarDeporte{
+.btn_AgregarDeporte {
   margin-left: 77vw;
   margin-top: 8.7vh;
 }
@@ -1758,16 +1884,16 @@ margin-left: -70vw !important;
 .titulo2sAvanzado {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-.tablaUsuarioAvanzado{
-margin-left: -15vw;
-margin-top: 5vh;
+.tablaUsuarioAvanzado {
+  margin-left: -15vw;
+  margin-top: 5vh;
 }
 
-.agregarUsuAvanzado{
+.agregarUsuAvanzado {
   margin-top: -60vh !important;
   margin-left: 55vw !important;
 }
@@ -1775,12 +1901,12 @@ margin-top: 5vh;
 
 /*...................................................Ejercicios Avanzado.................................................*/
 
-.tablaUsuarioAvanzado{
+.tablaUsuarioAvanzado {
   margin-left: auto;
   margin-right: auto;
 }
 
-#agregar-ejercicio{
+#agregar-ejercicio {
   bottom: -30vh;
   margin-left: 50vw;
   margin-right: 50vw;
@@ -1797,16 +1923,16 @@ margin-top: 5vh;
 .titulo2Avanzado {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-.buscar3{
+.buscar3 {
   margin-top: 4vh;
-  margin-left: 13vw ; 
+  margin-left: 13vw;
 }
 
-.agregarEjeAvanzado{
+.agregarEjeAvanzado {
   margin-top: -30vh !important;
   margin-left: 55vw !important;
 }
@@ -1822,14 +1948,14 @@ margin-top: 5vh;
 .titulotitulo2Avanzado {
   margin-top: 13vh;
   background-color: #e4f4fd;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
 }
 
-.tablaDeportesAvanzado{
+.tablaDeportesAvanzado {
   display: block;
-margin-left: -15vw;
-margin-top: 5vh;
+  margin-left: -15vw;
+  margin-top: 5vh;
 }
 
 .buscar3 {
@@ -1840,20 +1966,20 @@ margin-top: 5vh;
   cursor: pointer;
 }
 
-.agregarDepAvanzado{
+.agregarDepAvanzado {
   display: block;
-  margin-top: -35vh ;
+  margin-top: -35vh;
   margin-left: 55vw;
 }
 
 /*....................................................................PERFIL AVANZADO............................................................*/
-#btnModificarAvan{
+#btnModificarAvan {
   margin-left: 37vw;
 }
 
 /*.........................................................PERFIL ENTRENADOR........................................................................*/
 
-#btnModificarEntr{
+#btnModificarEntr {
   margin-left: 37vw;
 }
 
@@ -1861,11 +1987,12 @@ margin-top: 5vh;
 /*...................................................Quitar incrementador de inputs numericos de formularios.................................................*/
 
 
-.eliminar_botones_number{
+.eliminar_botones_number {
+
   input[type=number]::-webkit-outer-spin-button,
   input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   /* input[type=number] {
@@ -1873,7 +2000,7 @@ margin-top: 5vh;
   } */
 }
 
-.mensaje_error{
+.mensaje_error {
   background-color: #db3c3c;
   border: solid 3px;
   border-radius: 5px;
@@ -1883,7 +2010,7 @@ margin-top: 5vh;
   color: white;
 }
 
-.mensaje_exito{
+.mensaje_exito {
   background-color: #44c56b;
   border: solid 3px;
   border-radius: 10px;
@@ -1898,7 +2025,7 @@ margin-top: 5vh;
 
 /*-----------------------------------------------Asignar Entrenamiento---------------------------------------*/
 
-.ci_cliente_box{
+.ci_cliente_box {
   top: 80vh;
   background-color: #1acfdc;
   border: solid 4px;
@@ -1921,7 +2048,9 @@ margin-top: 5vh;
 
 /* HTML DE DEPORTE, USUARIO AVANZADO */
 
-.deportesAvanzadoFormulario, .deportesAvanzadoFormulario, .deportesAvanzadoBotones {
+.deportesAvanzadoFormulario,
+.deportesAvanzadoFormulario,
+.deportesAvanzadoBotones {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1948,7 +2077,9 @@ margin-top: 5vh;
 }
 
 
-.deportesAvanzadoAgregarModificar, .deportesAvanzadoEliminar, .deportesAvanzadoConfirmarEliminar {
+.deportesAvanzadoAgregarModificar,
+.deportesAvanzadoEliminar,
+.deportesAvanzadoConfirmarEliminar {
   display: none;
   flex-direction: column;
   align-items: center;

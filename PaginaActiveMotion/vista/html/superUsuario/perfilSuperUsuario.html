@@ -29,9 +29,9 @@
               
             <ul>
                 <li id="inicio" class="op-menu"><a href="inicioSuperUsuario.html">Inicio</a></li>
-                <li id="inicio" class="op-menu"><a href="clubesSuperUsuario.html">Clubes</a></li>
-                <li id="inicio" class="op-menu"><a href="entrenadoresSuperUsuario.html">Entrenadores</a></li>
-                <li id="inicio" class="op-menu"><a href="perfilSuperUsuario.html">Perfil</a></li>
+                <li id="nosotros" class="op-menu"><a href="entrenadoresSuperUsuario.html">Entrenadores</a></li> 
+                <li id="servicios" class="op-menu"><a href="clubesSuperUsuario.html">Instituciones</a>
+                <li id="login" class="op-menu"><a href="perfilSuperUsuario.html">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
             <div class="menu-adaptable">
@@ -44,47 +44,36 @@
             </div>
         </nav>
 
-        <main class="perfilUsuario">
+        <main class="perfil">
             <header>
-                <h1 class="tituloPerfilUsuario">Tu Perfil</h1>
+              <h1 class="tituloPerfil">Tu Perfil</h1>
             </header>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
-                        <table class="table table-bordered">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th><img class="foto" src="../../img/Perfil.png" alt="foto perfil"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Nombre:</td>
-                                </tr>
-                                <tr>
-                                    <td>Apellido:</td>
-                                </tr>
-                                <tr>
-                                    <td>Gmail:</td>
-                                </tr>
-                                <tr>
-                                    <td>CI:</td>
-                                </tr>
-                                <tr>
-                                    <td>Celular:</td>
-                                </tr>
-                                <tr>
-                                    <td>Direccion:</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <button class="estado" id="btnModificar" type="button">Modificar</button>
-
-        </main>
+      
+            <section class="sectionPerfilAdministrativo">
+              <img class="foto" src="../../img/Perfil.png" alt="foto perfil">
+              <table class="tablaUsuario" id="tablaPerfilAdministrativo">
+                <thead>
+                  <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Email</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Rol</th>
+                    <th>Teléfono</th>
+                  </tr>
+                </thead>
+                <tbody>
+      
+                </tbody>
+              </table>
+              <div class="botonesPerfilAdministrativo">
+                <button id="botonPerfilAdministrativo" type="button"><a class="linkModificarPerfilAdministrativo" href="modificarPerfilSuperUsuario.html">Modificar</a></button>
+                <button id="botonPerfilAdministrativo" type="button"><a class="linkModificarPerfilAdministrativo" href=""></a>Cerrar sesion</a></button>
+              </div>
+            </section>
+          </main>
         <footer class="social-footer">
             <div class="footer-content">
                 <ul class="footer-menu">
