@@ -31,12 +31,6 @@
                 <li id="login" class="op-menu"><a href="perfilAdministrativo.html">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
-
-            <div class="search-container">
-              <input type="text" placeholder="Buscar...">
-              <button type="submit">🔍</button>
-          </div>
-      
             <div class="menu-adaptable">
               <ul class="menu-oculto">
                 <li class="op-menu-oculto"><a href="indexAdministrativo.html">Inicio</a></li>
@@ -53,17 +47,24 @@
               <h1 class="tituloAgendaAdministrativo">Agenda</h1>
           </header>
           <section class="left-side">
-              <form id="form-agendaAdmin" class="eliminar_botones_number">
-                <div class="form-group">
-                    <label for="ci">CI</label>
-                    <input class="inputClienteBuscador">
-                    <br>
-                    <label for="nombre">Nombre</label>
-                    <input class="inputClienteBuscador">
-                    <br>
-                    <button class="botonClienteBuscador" id="buscar">Buscar</button>
-                </div>
-                <div class="form-group">
+            <div class="d-flex flex-column">
+              <button id="showFormEntrenador" class="btn btn-primary mb-2">Buscar</button>
+            </div>
+            
+              <form id="formEntrenador" class="formulario form-group" style="display: none;">
+                <label for="ci-entrenador">CI</label>
+                <input id="ci-entrenador" class="inputClienteBuscador">
+                <br>
+                <label for="nombre-entrenador">Rol</label>
+                <select class="inputCrearDeporteNombreDeporte" id="estadoSelect">
+                  <option value="principiante">Cliente</option>
+                  <option value="bajo">Entrenador</option>
+                </select>                
+                <br>
+                <button class="botonClienteBuscador">Buscar</button>
+              </form>
+
+                <form class="form-group">
                     <label for="fecha-agenda" class="fechaAgendaAdmin">Fecha</label>
                     <input type="date" id="fecha-agenda" class="fechaAgendaAdminInput" name="fecha-agenda" placeholder="dd/mm/aaaa">
                     <br>
@@ -75,13 +76,9 @@
                     <button id="ingresar">Ingresar</button>
                     <button id="eliminar">Eliminar</button>
                     <span id="mensaje_agendaAdmin" hidden></span>
-                  </div>
             </form>
-            <p>Cliente:</p>
-            <p class="outputClienteNombre"></p>
-            <p class="outputClienteApellido"></p>
-            
           </section>
+
           <div class="calendar-container-adm">
             <div class="year-navigation-adm">
               <button class="nav-button-adm" id="prevYear-adm">

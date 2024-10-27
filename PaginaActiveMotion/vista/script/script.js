@@ -275,11 +275,7 @@ $(document).ready(function() {
     constructor() {
       this.currentDate = new Date();
       this.selectedDate = null;
-      this.appointments = {
-        '2024-10-10': '14:30',
-        '2024-10-15': '09:00',
-        '2024-10-20': '16:15',
-      };
+      this.appointments = 0;
       
       this.initializeElements();
       this.addEventListeners();
@@ -317,10 +313,9 @@ $(document).ready(function() {
       
       this.calendarElement.empty();
       const firstDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-      const startingDay = firstDayOfMonth.getDay() || 7; // Convertir 0 (domingo) a 7
+      const startingDay = firstDayOfMonth.getDay() || 7;
       const daysInMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
       
-      // Agregar espacios vacíos para los días antes del primer día del mes
       for (let i = 1; i < startingDay; i++) {
         this.calendarElement.append($('<div>'));
       }
@@ -754,101 +749,65 @@ $(document).ready(function() {
   });
 });
 
-/*.....................................................Consultar Administrativo..................................................*/
-//Esperar a que el documento esté completamente cargado
+/*......................................................BOTONES DEE FORM AGENDA.....................................................*/
 $(document).ready(function() {
-    // Asignar funciones a los botones
- $("#btnBuscarPD").click(buscarCliente);
-     $("#btnEliminarPD").click(eliminarCliente);
-     $(".btn-modificar").click(habilitarEdicion);
- });
+  // Mostrar/ocultar formularios sin afectar a los otros formularios
+  $("#showFormEntrenador").click(function() {
+    $("#formEntrenador").toggle();
+  });
+  $("#showFormCliente").click(function() {
+    $("#formCliente").toggle();
+  });
+  $("#showFormActividad").click(function() {
+    $("#formActividad").toggle();
+  });
+});
 
- // Función para buscar un deportista
- function buscarCliente() {
-     // Obtener el valor de la cédula ingresada
-     let cedulaBuscada = $("#ciPD").val();
-    
-     // Simulación de búsqueda en base de datos
-     // En un caso real, aquí se haría una llamada al servidor
-     const clienteBuscado = {
-        nombre: 'Leo',
-        apellido: 'Messi',
-         email: 'leomessi@gmail.com',
-         ci: cedulaBuscada,
-       matricula: 'uwbe2912',
-        celular: '0292831',
-        club: 'Boca',
-        plan: 'Plan Premium',
-        ultimoPago: '02/03/2024',
-        proximoPago: '03/04/2024'
-    };
+/*.....................................................Consultar Administrativo..................................................*/
+$(document).ready(function() {
+  // Ocultar todas las secciones inicialmente
+  $('.sectionModificar, .sectionEliminar, .sectionDesactivar, .confirmarEliminar').hide();
 
-     // Actualizar la tabla con los datos del deportista encontrado
-     actualizarTablaCliente(clienteBuscado);
-    
-     console.log("Buscando cliente con cédula:", cedulaBuscada);
- }
+  // Función para ocultar todas las secciones
+  function ocultarTodas() {
+      $('.sectionModificar, .sectionEliminar, .sectionDesactivar, .confirmarEliminar').hide();
+  }
 
- // Función para actualizar la tabla con los datos del deportista
-function actualizarTablaCliente(cliente) {
-     // Recorrer cada propiedad del objeto deportista
-    for (let campo in cliente) {
-        // Actualizar el texto de cada celda con el valor correspondiente
-         $('#' + campo + '-PD').text(cliente[campo]);
-     }
-     console.log("Tabla actualizada con datos:", cliente);
-}
+  // Click handler para el botón Modificar
+  $('.estado_eliminarPD').click(function() {
+      ocultarTodas();
+      $('.sectionModificar').show();
+  });
 
- // Función para eliminar un deportista (simulada)
-  function eliminarCliente() {
-     let cedulaEliminar = $("#ciPD").val();
-   console.log("Eliminando cliente con cédula:", cedulaEliminar);
-   // Aquí iría la lógica para eliminar el deportista de la base de datos
-     limpiarCampos();
- }
+  // Click handler para el botón Desactivar
+  $('button:contains("Desactivar cliente")').click(function() {
+      ocultarTodas();
+      $('.sectionDesactivar').show();
+  });
 
-// Función para habilitar la edición de un campo
-function habilitarEdicion() {
-    // Obtener el nombre del campo a editar
-    let campo = $(this).data('campo');
-    // Obtener la celda correspondiente
-    let celda = $('#' + campo + '-PD');
-    // Obtener el valor actual del campo
-    let valorActual = celda.text();
-    
-    // Reemplazar el texto de la celda con un campo de entrada
-    celda.html('<input type="text" id="edit-' + campo + '" value="' + valorActual + '">');
-    
-    // Obtener referencia al nuevo campo de entrada
-    let input = $('#edit-' + campo);
-    
-    // Enfocar el campo de entrada
-    input.focus();
+  // Click handler para el botón Eliminar
+  $('button:contains("Eliminar cliente")').click(function() {
+      ocultarTodas();
+      $('.sectionEliminar').show();
+  });
 
-    // Función para guardar el nuevo valor
-    function guardarValor() {
-        let nuevoValor = input.val();
-        celda.text(nuevoValor);
-        console.log("Campo modificado:", campo, "Nuevo valor:", nuevoValor);
-    }
+  // Click handler para el botón de eliminar dentro del formulario
+  $('.eliminarCliente').click(function(e) {
+      e.preventDefault();
+      $('.sectionEliminar').hide();
+      $('.confirmarEliminar').show();
+  });
 
-    // Guardar el valor cuando se pierde el foco del campo de entrada
-    input.on('blur', guardarValor);
+  // Click handlers para los botones de confirmar/cancelar eliminación
+  $('.confirmarEliminarCliente').click(function() {
+      // Aquí puedes agregar la lógica para eliminar el cliente
+      ocultarTodas();
+  });
 
-    // Guardar el valor cuando se presiona Enter
-    input.on('keypress', function(e) {
-        if(e.which == 13) { // 13 es el código de tecla para Enter
-            guardarValor();
-        }
-    });
-}
-
-// Función para limpiar todos los campos de la tabla
-function limpiarCampos() {
-    // Seleccionar todas las celdas y limpiar su contenido
-    $('[id$="-PD"]').text('');
-    console.log("Campos limpiados");
-}
+  $('.cancelarEliminarCliente').click(function() {
+      ocultarTodas();
+  });
+});
 
 /*.................................................... PERFIL Avanzado..................................................... */
 $(function() {
@@ -1043,6 +1002,98 @@ $(document).ready(function() {
       // Aquí puedes implementar la lógica para mostrar los usuarios
       console.log('Lista de deporte:', listaDeporte);
   }
+});
+
+
+/*..................................................AGENDA ENTRENADOR........................................................ */
+$(document).ready(function() {
+  class Agenda {
+    constructor() {
+      this.currentDate = new Date();
+      this.selectedDate = null;
+      this.appointments = {
+        '2024-10-10': '14:30',
+        '2024-10-15': '09:00',
+        '2024-10-20': '16:15',
+      };
+      
+      this.initializeElements();
+      this.addEventListeners();
+      this.updateCalendar();
+    }
+    
+    initializeElements() {
+      this.yearElement = $('#currentYear-entr');
+      this.monthElement = $('#currentMonth-entr');
+      this.calendarElement = $('#calendar-entr');
+    }
+    
+    addEventListeners() {
+      $('#prevYear-entr').on('click', () => this.changeYear(-1));
+      $('#nextYear-entr').on('click', () => this.changeYear(1));
+      $('#prevMonth-entr').on('click', () => this.changeMonth(-1));
+      $('#nextMonth-entr').on('click', () => this.changeMonth(1));
+    }
+    
+    changeYear(increment) {
+      this.currentDate.setFullYear(this.currentDate.getFullYear() + increment);
+      this.selectedDate = null;
+      this.updateCalendar();
+    }
+    
+    changeMonth(increment) {
+      this.currentDate.setMonth(this.currentDate.getMonth() + increment);
+      this.selectedDate = null;
+      this.updateCalendar();
+    }
+    
+    updateCalendar() {
+      this.yearElement.text(this.currentDate.getFullYear());
+      this.monthElement.text(this.currentDate.toLocaleString('es-ES', { month: 'long' }));
+      
+      this.calendarElement.empty();
+      const firstDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+      const startingDay = firstDayOfMonth.getDay() || 7;
+      const daysInMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
+      
+      for (let i = 1; i < startingDay; i++) {
+        this.calendarElement.append($('<div>'));
+      }
+      
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateString = this.formatDate(day);
+        const hasAppointment = this.appointments[dateString];
+        
+        const dayContainer = $('<div>');
+        const dayElement = $('<button>')
+          .addClass(`calendar-day-entr ${hasAppointment ? 'appointment' : ''}`)
+          .text(day)
+          .on('click', () => this.handleDateClick(dateString));
+        
+        dayContainer.append(dayElement);
+        
+        if (this.selectedDate === dateString && hasAppointment) {
+          const appointmentInfo = $('<div>')
+            .addClass('appointment-info')
+            .text(`Hora: ${hasAppointment}`);
+          dayContainer.append(appointmentInfo);
+        }
+        
+        this.calendarElement.append(dayContainer);
+      }
+    }
+    
+    handleDateClick(dateString) {
+      this.selectedDate = this.selectedDate === dateString ? null : dateString;
+      this.updateCalendar();
+    }
+    
+    formatDate(day) {
+      return `${this.currentDate.getFullYear()}-${String(this.currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    }
+  }
+  
+  new Agenda();
 });
 
 /*........................................................funcion para desplegar botones - seccion planes de entrenador....................................................*/

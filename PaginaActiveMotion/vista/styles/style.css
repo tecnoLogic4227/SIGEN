@@ -953,7 +953,7 @@ input::placeholder{
  }
  
  .container {
-  width: 400vw;
+  width: 80vw;
   margin: 0 auto;
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -971,14 +971,9 @@ input::placeholder{
 .year-navigation {
   border-bottom: 2px solid #e9ecef;
 }
-.year {
-  font-size: 2.5rem;
+.year, .month {
+  font-size: 2rem;
   font-weight: bold;
-  color: #000;
-}
-.month {
-  font-size: 1.8rem;
-  font-weight: 600;
   color: #000;
 }
 .nav-button {
@@ -1581,8 +1576,6 @@ button:hover {
   color: white;
 }
 
-
-
 /*................................................. Conulta Administrativo.............................................*/
 
 .consultarPDAdministrativo {
@@ -1616,35 +1609,50 @@ button:hover {
   color: rgb(0, 0, 0);
 }
 
-.tablaPDAdministrador {
-  margin-top: -70vh;
-  margin-left: 0vw;
+.imgPerfil{
+ margin-top: -10vh;
 }
 
-.buscarPD{
-  margin-top: 5vh;
-  margin-right: 45vw;
-}
-.eliminarPD{
-  margin-top: 5vh;
-  margin-right: 45vw;
-  width: 10vw;
+.tablaUsuarioCliente{
+  margin-top: -5vh;
+  margin-left: 10vw !important;
 }
 
-.sectionEliminar, .confirmarEliminar {
-  display: none;
-  width: 30vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.sectionModificar, .sectionDesactivar, .sectionEliminar {
+  width: 20vw;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.eliminarCliente, .confirmarEliminarCliente, .cancelarEliminarCliente {
-  margin-top: 5vh;
+.sectionModificar form, .sectionDesactivar form, .sectionEliminar form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionModificar input, .sectionDesactivar input, .sectionEliminar input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.confirmarEliminar {
   width: 50%;
-  position: relative;
-  left: 25%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.confirmarEliminarCliente, .cancelarEliminarCliente {
+  margin: 10px;
+  padding: 8px 20px;
 }
 
 /*................................................................. AVANZADO................................................................*/
@@ -1857,6 +1865,92 @@ margin-top: 5vh;
   margin-left: 37vw;
 }
 
+/*...................................................AGENDA ENTRENADOR........................................................*/
+.container-entr {
+  width: 80vw;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.year-navigation-entr, .month-navigation-entr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #e4f4fd;
+}
+.year-navigation-entr {
+  border-bottom: 2px solid #e9ecef;
+}
+.year-entr, .month-entr {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+.nav-button-entr {
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.chevron-entr {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.weekdays-entr {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #bde4fa;
+  border-bottom: 1px solid #e4f4fd;
+}
+.weekday-entr {
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+  font-size: 1.1rem;
+}
+
+.calendar-entr {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+.calendar-day-entr {
+  width: 10vw;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1.5rem;
+  border: none;
+  background-color: #cce9fa;
+  color: #000;
+}
+.calendar-day-entr.appointment-entr {
+  background-color: #10B981;
+  color: white;
+}
+.appointment-info-entr {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #DBEAFE;
+  border-radius: 6px;
+  text-align: center;
+}
 
 /*...................................................Quitar incrementador de inputs numericos de formularios.................................................*/
 
@@ -1974,49 +2068,4 @@ margin-top: 5vh;
 
 .deportesAvanzadoLabel {
   margin-bottom: 3vh;
-}
-
-.celda {
-  width: 25vw;
-}
-
-
-/* HTML DE PERFIL DE ADMINISTRATIVO */
-
-.sectionPerfilAdministrativo {
-  display: flex;
-  flex-direction: column;
-  width: 80vw;
-  margin-left: 10vw;
-  margin-top: 10vh;
-  justify-content: center;
-  align-items: center;
-}
-
-#tablaPerfilAdministrativo {
-  width: 80%;
-  margin-top: 7vh;
-}
-
-.botonesPerfilAdministrativo {
-  width: 80vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#botonPerfilAdministrativo {
-  margin: 7vw;
-}
-
-.linkModificarPerfilAdministrativo {
-  width: auto;
-}
-
-.sectionPerfilAdministrativo {
-  display: flex;
-}
-
-.botonModificarPerfil {
-  margin: 5vh;
 }

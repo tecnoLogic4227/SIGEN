@@ -377,32 +377,29 @@ input::placeholder{
 }
 /*.......................................................AGENDA ADMINISTRATRIVO...........................................................*/
 
-.horaAgendaAdmin{
-  margin-left: 60vw;
-  display: block;
-}
-.horaAgendaAdminInput{
-  margin-left: 55vw;
-  margin-top: -27vh;
+#showFormEntrenador{
+  width: 20vw;
 }
 
-.fechaAgendaAdmin{
-  margin-left: 60vw;
-  margin-top: -35vh;
-  display: block;
+#formEntrenador{
+  margin-top: 2vh;
+  margin-left: 0vw;
+  position: absolute;
 }
-.fechaAgendaAdminInput{
-  margin-left: 55vw;
-  margin-top: -27vh;
+
+.form-group{
+  margin-top: -10vh;
+  margin-left: 50vw;
 }
 
 #eliminar{
   margin-top: 5vh;
-  margin-left: 55vw;
+  margin-left: 5vw;
 }
+
 #ingresar{
-  margin-left: 55vw;
-  margin-top: 1vh;
+  margin-left: 5vw;
+  margin-top: 3vh;
 }
 
 .calendar-container-adm {
@@ -508,7 +505,6 @@ input::placeholder{
 
 /*......................................................Consultar P/D....................................................*/
 
-
 .formDPAdminisrador {
   width: 20vw;
   height: 70vh;
@@ -517,18 +513,6 @@ input::placeholder{
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.buscarPD{
-  margin-top: -25vh;
-  margin-right: -120vw;
-  display: block;
-}
-.eliminarPD{
-  display: block;
-  margin-top: 5vh;
-  margin-right: -120vw;
-  width: 30vw;
 }
 
 .tablaPDAdministrador {
@@ -545,6 +529,49 @@ input::placeholder{
   color: rgb(0, 0, 0);
 }
 
+
+.imgPerfil{
+  margin-top: -60vh;
+ }
+ 
+ .tablaUsuarioCliente{
+   margin-top: -20vh;
+   margin-left: 10vw !important;
+ }
+
+ .estado_eliminarPD{
+  width: 20vw !important;
+ }
+
+ .modificar{
+  margin-left: -15vw;
+ }
+
+ .sectionModificar, .sectionDesactivar, .sectionEliminar {
+   width: 50vw;
+   margin: 20px auto;
+   padding: 20px;
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+ }
+
+ .tablaUsuarioCliente thead {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tablaUsuarioCliente thead th {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+ 
 /*....................................................PERFIL ADMINISTRADOR.........................................................*/
 #btnModificarAdm{
   margin-left: 10vw;
@@ -994,7 +1021,7 @@ width: 40vw;
   margin-left: 20vw;
   width: 30vw;
 }
-notificaciones
+
 .modificar-plan1 {
   position: relative;
   top: 45vh;
