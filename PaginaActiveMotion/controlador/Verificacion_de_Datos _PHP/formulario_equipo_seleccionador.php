@@ -20,8 +20,8 @@ verificarSesion('usuario_seleccionador');
             } else {
                 echo "Debe poner solo letras (se permiten tildes, ñ y espacios)";
             }
-        }else{
-        echo "Acceso no permitido";
         }
+    }else{
+        echo "Acceso no permitido";
     }
 ?>

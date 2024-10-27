@@ -15,21 +15,15 @@
                 return preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/u', $texto);
             }
          
-        
-            if (soloLetras($nombre_deporte) && soloLetras($tipo_deporte) && soloLetras($categoria_deporte)) {
-                if(is_numeric($cantidad_personas)){
-                    echo "El nombre del deporte ingresado es $nombre_deporte" . "<br>";
-                    echo "El tipo del deporte ingresado es $tipo_deporte" . "<br>";
-                    echo "La duracion del deporte ingresado es $duracion_deporte" . "<br>";
-                    echo "La categoria del deporte ingresado es $categoria_deporte" . "<br>";
-                    echo "La cantidad de jugadores del deporte ingresado es $cantidad_deporte" . "<br>"
-                }
-            } else {
-                echo "Debe poner solo letras (se permiten tildes, ñ y espacios)";
+            if(soloLetras($nombre_deporte) && soloLetras($tipo_deporte) && soloLetras($categoria_deporte) && is_numeric($cantidad_personas)) {
+                echo "El nombre del deporte ingresado es $nombre_deporte" . "<br>";
+                echo "El tipo del deporte ingresado es $tipo_deporte" . "<br>";
+                echo "La duracion del deporte ingresado es $duracion_deporte" . "<br>";
+                echo "La categoria del deporte ingresado es $categoria_deporte" . "<br>";
+                echo "La cantidad de jugadores del deporte ingresado es $cantidad_deporte" . "<br>";
             }
-
-        }else{
-            echo "Acceso no permitido";
-        }
+    }
+    }else{
+        echo "Acceso no permitido";
     }
 ?>
