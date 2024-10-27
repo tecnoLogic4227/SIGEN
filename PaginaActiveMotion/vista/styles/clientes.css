@@ -137,7 +137,7 @@ tr:hover {
 }
 
 #article2 {
-    margin-top: 60vh;
+    margin-top: 30vh;
 }
 
 #tit-evolucion2{
@@ -148,6 +148,7 @@ tr:hover {
     margin-top: 15vh;
     height: 10vh;
 }
+
 /* asignar rutina */
 
 .tit-asignar-entrenamiento {
@@ -159,7 +160,7 @@ tr:hover {
 
 .label-ci{
     margin-top: 4vh;
-    margin-left: 45vw;
+    margin-left: 49vw;
 }
 
 .buscador-ci{
@@ -169,7 +170,7 @@ tr:hover {
 
 .label-nombre{
     margin-top: 4vh;
-    margin-left: 45vw;
+    margin-left: 48vw;
 }
 
 .buscador-nombre{
@@ -198,7 +199,12 @@ tr:hover {
 }
 .btn-modificar-rut{
     margin-top: 4vh;
-    margin-left: 45vw;
+    margin-left: 35vw;
+}
+
+.btn-cancelar-rut{
+    margin-top: -7vh;
+    margin-left: 55vw;
 }
 
 .guardar-asignar-entrenamiento{

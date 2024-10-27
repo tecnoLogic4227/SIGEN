@@ -53,7 +53,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarLogin(datos);
