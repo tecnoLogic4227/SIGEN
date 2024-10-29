@@ -88,23 +88,148 @@ h1, h2, h3 {
     margin-bottom: 10vh;
 }
 
-.form-fisio {
+.form-fisio{
+    width: 70vw;
     margin-top: -20vh;
-    margin-left: -10vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-left: 15vw;
 }
 
-.form-control{
-    width: 10vw;
+#form-ejerciciosFisioEntrenador {
+    width: 25vw;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-left: 50vw;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.ejercicio-form-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    max-width: 500px;
+}
+
+.ejercicio-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ejercicio-input-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-ingresar, .btn-cancelar {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-ingresar {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.btn-cancelar {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-ingresar:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-cancelar:hover {
+    background-color: #bb2d3b;
+}
+
+.editable {
+    padding: 5px;
+    border: 1px solid transparent;
+    min-width: 150px;
+}
+
+.editable:hover {
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    cursor: text;
+}
+
+#ejerciciolist {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .ingresar-fisio {
-    margin-top: 5vh;
-    margin-left: 10vw !important;
+    margin: 20px auto;
+    display: block;
 }
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.ejercicio-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-eliminar {
+    padding: 2px 8px;
+    min-width: auto;
+    background-color: #dc3545;
+    margin: 0 0 0 10px;
+}
+
+.info-cell {
+    min-width: 200px;
+    padding: 15px;
+}
+
+#form-ejerciciosFisioEntrenador input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 
 /* Modificar plan */
 
@@ -271,9 +396,7 @@ textarea {
 .tablaUsuarioAvanzado{
     margin-left: -15vw;
 }
-
 /*....................................................MODIFICAR PLAN................................................*/
-@media screen and (max-width: 600px) {
     #routineTable {
         display: block;
         width: 95vw;
@@ -371,7 +494,6 @@ textarea {
         order: -1;
         margin-bottom: 10px;
     }
-}
 
 .theadRoutine {
     display: none !important;
@@ -386,11 +508,12 @@ textarea {
     margin-bottom: 20px;
     border-bottom: 2px solid #ddd;
 }
-}
 
 /* */
 
 
 .outputEjercicioRutinaNombre {
     margin-bottom: 5vh;
+}
+
 }
