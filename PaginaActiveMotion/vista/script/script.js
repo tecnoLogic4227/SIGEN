@@ -1071,63 +1071,110 @@ function desplegarBotonesPlanesEntrenador(botonDesplegable) {
 
 /*...........................................................TABLA MODIFICAR/ELIMINAR RUTINA ENTRENADOR.........................................................*/
 $(document).ready(function() {
-            // Función para actualizar el contador de ejercicios
-            function updateExerciseCount() {
-                let count = $('.ejercicio').length;
-                $('#cantidadEjercicios').val(count);
-            }
+  let ejercicios = [];
+  
+  $('#form-ejerciciosFisioEntrenador').hide();
 
-            // Agregar nuevo ejercicio
-            $('#agregarEjercicio').click(function() {
-                let newExerciseHtml = `
-                    <div class="exercise-container">
-                        <input type="text" class="ejercicio">
-                        <button class="btn-eliminar-ejercicio">Eliminar</button>
-                    </div>
-                `;
-                let newDescriptionHtml = `
-                    <div class="description-container">
-                        <input type="text" class="descripcion">
-                    </div>
-                `;
-                
-                $(newExerciseHtml).insertBefore('#ejerciciosCell .btn-agregar');
-                $(newDescriptionHtml).insertBefore('#descripcionesCell .btn-modificar');
-                
-                updateExerciseCount();
-            });
+  $('.btn-agregar').click(function(e) {
+      e.preventDefault();
+      $('#form-ejerciciosFisioEntrenador').slideDown();
+  });
 
-            // Eliminar ejercicio
-            $(document).on('click', '.btn-eliminar-ejercicio', function() {
-                let index = $(this).parent().index();
-                $(this).parent().remove();
-                $('#descripcionesCell .description-container').eq(index).remove();
-                updateExerciseCount();
-            });
+  $('#btnCancelar').click(function() {
+      $('#form-ejerciciosFisioEntrenador').slideUp();
+      limpiarFormulario();
+  });
 
-            // Guardar cambios
-            $('.btn-guardar').click(function() {
-                let rutina = {
-                    id: $('#rutinaId').val(),
-                    nombre: $('#nombre').val(),
-                    cantidadEjercicios: $('#cantidadEjercicios').val(),
-                    ejercicios: [],
-                    descripciones: [],
-                    descripcionRutina: $('#descripcionRutina').val()
-                };
+  $('#btnIngresar').click(function() {
+      const id = $('#idEjercicio').val().trim();
+      const nombre = $('#nombreEjercicio').val().trim();
+      const repe = $('#repEjercicio').val().trim();
+      const serie = $('#seriesEjercicio').val().trim();
+      const grupo = $('#grupoEjercicio').val().trim();
+      const desc = $('#descEjercicio').val().trim();
 
-                $('.ejercicio').each(function() {
-                    rutina.ejercicios.push($(this).val());
-                });
+      if (id && nombre && repe && serie && grupo && desc) {
+          // Convertir el ID a número para asegurar una comparación consistente
+          ejercicios.push({ 
+              id: parseInt(id), 
+              nombre, 
+              repe, 
+              serie, 
+              grupo, 
+              desc 
+          });
+          actualizarListaEjercicios();
+          limpiarFormulario();
+          $('#form-ejerciciosFisioEntrenador').slideUp();
+      }
+  });
 
-                $('.descripcion').each(function() {
-                    rutina.descripciones.push($(this).val());
-                });
+  function limpiarFormulario() {
+      $('#idEjercicio').val('');
+      $('#nombreEjercicio').val('');
+      $('#repEjercicio').val('');
+      $('#seriesEjercicio').val('');
+      $('#grupoEjercicio').val('');
+      $('#descEjercicio').val('');
+  }
 
-                console.log('Rutina guardada:', rutina);
-                // Aquí podrías enviar los datos a tu servidor
-            });
-        });
+  function actualizarListaEjercicios() {
+      const listaHtml = ejercicios.map(function(ejercicio) {
+          return `<div class="ejercicio-item" data-id="${ejercicio.id}">
+              ${ejercicio.id} - ${ejercicio.nombre} - ${ejercicio.repe} rep - ${ejercicio.serie} series - ${ejercicio.grupo} - ${ejercicio.desc}
+              <button class="btn-eliminar btn btn-danger btn-sm" data-id="${ejercicio.id}">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>`;
+      }).join('');
+
+      $('#ejerciciolist').html(listaHtml);
+      $('#cantEjercicios').text(ejercicios.length);
+      
+      // Debug para ver el estado actual de los ejercicios
+      console.log('Ejercicios actuales:', ejercicios);
+  }
+
+  // Manejador mejorado para eliminar ejercicios
+  $(document).on('click', '.btn-eliminar', function() {
+      const idEjercicio = parseInt($(this).data('id')); // Convertir a número
+      console.log('Intentando eliminar ejercicio con ID:', idEjercicio);
+      
+      if (confirm('¿Estás seguro de que deseas eliminar este ejercicio?')) {
+          // Filtrar el ejercicio y actualizar el array
+          ejercicios = ejercicios.filter(ejercicio => ejercicio.id !== idEjercicio);
+          console.log('Ejercicios después de eliminar:', ejercicios);
+          actualizarListaEjercicios();
+          
+          // Actualizar el contador
+          $('#cantEjercicios').text(ejercicios.length);
+      }
+  });
+
+  $('#form-ejerciciosFisioEntrenador input').on('input', function() {
+      const id = $('#idEjercicio').val().trim();
+      const nombre = $('#nombreEjercicio').val().trim();
+      const repe = $('#repEjercicio').val().trim();
+      const serie = $('#seriesEjercicio').val().trim();
+      const grupo = $('#grupoEjercicio').val().trim();
+      const desc = $('#descEjercicio').val().trim();
+
+      $('#btnIngresar').prop('disabled', !(id && nombre && repe && serie && grupo && desc));
+  });
+
+  $('.ingresar-fisio').click(function(e) {
+      e.preventDefault();
+      if (ejercicios.length > 0) {
+          const datos = { ejercicios: ejercicios };
+          console.log('Plan guardado:', datos);
+          alert('Plan guardado exitosamente!');
+      } else {
+          alert('Por favor, ingrese al menos un ejercicio antes de guardar el plan.');
+      }
+  });
+});
+
+
 /*......................................................ASIGNAR RUTINA ENTRENADOR............................................... */
 $(document).ready(function() {
   $('#seccion-asignar-entrenamiento').hide();
