@@ -6,7 +6,7 @@ $(document).ready(() => {
     const listarFisioterapia = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -45,7 +45,7 @@ $(document).ready(() => {
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: {
                 tabla: tabla,
@@ -55,7 +55,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarFisioterapia(datos);
@@ -90,8 +90,6 @@ $(document).ready(() => {
         descripcion = $(".inputCrearFisioterapiaDescripcion").val();
         crearFisioterapia(idFisioterapia, nombreFisioterapia, tipoFisioterapia, descripcion);
     };
-
-    listarFisioterapia(datos);
 
     const buscarFisioterapia = (idFisioterapia) => {
         listarFisioterapia({

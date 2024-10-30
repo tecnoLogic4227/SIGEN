@@ -2,14 +2,14 @@
 
 class UltimoPago {
     public $idUltimoPago;
-    public $hora;
-    public $fecha;
+    public $horaPago;
+    public $fechaPago;
     public $valor;
 
-    public function __construct($idUltimoPago, $hora, $fecha, $valor) {
+    public function __construct($idUltimoPago, $horaPago, $fechaPago, $valor) {
         $this->idUltimoPago = $idUltimoPago;
-        $this->hora = $hora;
-        $this->fecha = $fecha;
+        $this->horaPago = $horaPago;
+        $this->fechaPago = $fechaPago;
         $this->valor = $valor;
     }
 
@@ -21,20 +21,20 @@ class UltimoPago {
         $this->idUltimoPago = $idUltimoPago;
     }
 
-    public function getHora() {
-        return $this->hora;
+    public function getHoraPago() {
+        return $this->horaPago;
     }
 
-    public function setHora($hora) {
-        $this->hora = $hora;
+    public function setHoraPago($horaPago) {
+        $this->horaPago = $horaPago;
     }
 
-    public function getFecha() {
-        return $this->fecha;
+    public function getFechaPago() {
+        return $this->fechaPago;
     }
 
-    public function setFecha($fecha) {
-        $this->fecha = $fecha;
+    public function setFechaPago($fechaPago) {
+        $this->fechaPago = $fechaPago;
     }
 
     public function getValor() {

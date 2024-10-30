@@ -6,6 +6,8 @@
   <link rel="icon" href="../../img/logoPagina.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ActiveMotion</title>
+  <script src="../../script/jquery-3.7.1.min.js"></script>
+    <script src="../../script/tablas/agendaCliente.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../styles/style.css">
@@ -47,38 +49,38 @@
 
     </header>
 
-    <div class="container-entr">
-      <div class="year-navigation-entr">
-        <button class="nav-button-entr" id="prevYear-entr">
-          <svg class="chevron-entr" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    <div class="container">
+      <div class="year-navigation">
+        <button class="nav-button" id="prevYear">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <span class="year-entr" id="currentYear-entr"></span>
-        <button class="nav-button-entr" id="nextYear-entr">
-          <svg class="chevron-entr" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span class="year" id="currentYear"></span>
+        <button class="nav-button" id="nextYear">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
       
-      <div class="month-navigation-entr">
-        <button class="nav-button-entr" id="prevMonth-entr">
-          <svg class="chevron-entr" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <div class="month-navigation">
+        <button class="nav-button" id="prevMonth">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <span class="month-entr" id="currentMonth-entr"></span>
-        <button class="nav-button-entr" id="nextMonth-entr">
-          <svg class="chevron-entr" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span class="month" id="currentMonth"></span>
+        <button class="nav-button" id="nextMonth">
+          <svg class="chevron" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>
 
-      <div class="weekdays-entr" id="weekdays-entr">
-        <div class="weekday-entr">Lun</div>
-        <div class="weekday-entr">Mar</div>
-        <div class="weekday-entr">Mié</div>
-        <div class="weekday-entr">Jue</div>
-        <div class="weekday-entr">Vie</div>
-        <div class="weekday-entr">Sáb</div>
-        <div class="weekday-entr">Dom</div>
+      <div class="weekdays" id="weekdays">
+        <div class="weekday">Lun</div>
+        <div class="weekday">Mar</div>
+        <div class="weekday">Mié</div>
+        <div class="weekday">Jue</div>
+        <div class="weekday">Vie</div>
+        <div class="weekday">Sáb</div>
+        <div class="weekday">Dom</div>
       </div>
       
-      <div class="calendar-entr" id="calendar-entr"></div>
+      <div class="calendar" id="calendar"></div>
     </div>
   </main>
   

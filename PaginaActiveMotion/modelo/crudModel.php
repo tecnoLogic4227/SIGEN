@@ -131,6 +131,8 @@ function eliminarBD($sql, $params, $atributos, $sqlConsulta)
     $conexion = conectarBD();
     // global $conexion;
 
+    // var_dump($sql, $params, $atributos, $sqlConsulta);
+
     try {
         $stmt = $conexion->prepare($sql);
         if (is_array($atributos)) {

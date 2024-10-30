@@ -263,7 +263,7 @@ $(function() {
 $(function(){
   $("#btnCerrarSesion").click(function(){
     var respuesta = confirm("¿Desea cerrar sesión?");
-    if (respuesta == true) {
+    if (respuesta) {
       window.location.href = "../general/index.html";
       }
       });
@@ -625,42 +625,42 @@ $(document).ready(function() {
   }
   
   // Manejador para el botón "Ingresar"
-  $('#ingresar').click(function(e) {
-    e.preventDefault();
+  // $('#ingresar').click(function(e) {
+  //   e.preventDefault();
     
-    const fecha = $('#fecha-agenda').val();
-    const hora = $('#hora').val();
+  //   const fecha = $('#fecha-agenda').val();
+  //   const hora = $('#hora').val();
     
-    if (fecha && hora) {
-      if (appointments[fecha]) {
-        alert('Esta fecha ya está ocupada');
-        return;
-      }
+  //   if (fecha && hora) {
+  //     if (appointments[fecha]) {
+  //       alert('Esta fecha ya está ocupada');
+  //       return;
+  //     }
       
-      appointments[fecha] = hora;
-      updateDayColor(new Date(fecha));
-    } else {
-      alert('Por favor, seleccione fecha y hora');
-    }
-  });
+  //     appointments[fecha] = hora;
+  //     updateDayColor(new Date(fecha));
+  //   } else {
+  //     alert('Por favor, seleccione fecha y hora');
+  //   }
+  // });
   
   // Manejador para el botón "Eliminar"
-  $('#eliminar').click(function(e) {
-    e.preventDefault();
+  // $('#eliminar').click(function(e) {
+  //   e.preventDefault();
     
-    const fecha = $('#fecha-agenda').val();
+  //   const fecha = $('#fecha-agenda').val();
     
-    if (fecha) {
-      if (appointments[fecha]) {
-        delete appointments[fecha];
-        updateDayColor(new Date(fecha));
-      } else {
-        alert('No hay cita para esta fecha');
-      }
-    } else {
-      alert('Por favor, seleccione una fecha');
-    }
-  });
+  //   if (fecha) {
+  //     if (appointments[fecha]) {
+  //       delete appointments[fecha];
+  //       updateDayColor(new Date(fecha));
+  //     } else {
+  //       alert('No hay cita para esta fecha');
+  //     }
+  //   } else {
+  //     alert('Por favor, seleccione una fecha');
+  //   }
+  // });
   
   // Función para generar el calendario
   function generateCalendar(year, month) {
@@ -760,52 +760,6 @@ $(document).ready(function() {
   });
   $("#showFormActividad").click(function() {
     $("#formActividad").toggle();
-  });
-});
-
-/*.....................................................Consultar Administrativo..................................................*/
-$(document).ready(function() {
-  // Ocultar todas las secciones inicialmente
-  $('.sectionModificar, .sectionEliminar, .sectionDesactivar, .confirmarEliminar').hide();
-
-  // Función para ocultar todas las secciones
-  function ocultarTodas() {
-      $('.sectionModificar, .sectionEliminar, .sectionDesactivar, .confirmarEliminar').hide();
-  }
-
-  // Click handler para el botón Modificar
-  $('.estado_eliminarPD').click(function() {
-      ocultarTodas();
-      $('.sectionModificar').show();
-  });
-
-  // Click handler para el botón Desactivar
-  $('button:contains("Desactivar cliente")').click(function() {
-      ocultarTodas();
-      $('.sectionDesactivar').show();
-  });
-
-  // Click handler para el botón Eliminar
-  $('button:contains("Eliminar cliente")').click(function() {
-      ocultarTodas();
-      $('.sectionEliminar').show();
-  });
-
-  // Click handler para el botón de eliminar dentro del formulario
-  $('.eliminarCliente').click(function(e) {
-      e.preventDefault();
-      $('.sectionEliminar').hide();
-      $('.confirmarEliminar').show();
-  });
-
-  // Click handlers para los botones de confirmar/cancelar eliminación
-  $('.confirmarEliminarCliente').click(function() {
-      // Aquí puedes agregar la lógica para eliminar el cliente
-      ocultarTodas();
-  });
-
-  $('.cancelarEliminarCliente').click(function() {
-      ocultarTodas();
   });
 });
 

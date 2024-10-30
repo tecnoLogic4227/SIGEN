@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="../../styles/media_style.css">
-  <script src="../../script/tablas/deporte.js"></script>
+  <script src="../../script/tablas/ejercicio.js"></script>
 </head>
 
 <body>
@@ -52,15 +52,19 @@
       <section class="deportesAvanzadoFormulario">
         <form class="deportesAvanzadoFormulario">
           <label class="deportesAvanzadoLabel">Nombre ejercicio</label>
-          <input class="inputBuscarDeporteNombreDeporte">
-          <button type="button" class="deporteBuscar" id="deportesAvanzadoBoton">Buscar</button>
+          <input class="inputBuscarEjercicioIdEjercicio">
+          <button type="button" class="ejercicioBuscar" id="deportesAvanzadoBoton">Buscar</button>
         </form>
       </section>
       <section class="deportesAvanzadoTabla">
-        <table class="tablaDeporte">
+        <table class="tablaEjercicio">
           <thead>
             <tr>
-              <th class="celda">Nombre ejercicio</th>
+              <th class="celda">ID</th>
+              <th class="celda">Nombre</th>
+              <th class="celda">Nro. de repeticiones</th>
+              <th class="celda">Nro. de series</th>
+              <th class="celda">Grupo muscular</th>
               <th class="celda">Descripcion</th>
             </tr>
           </thead>
@@ -75,19 +79,25 @@
         <button class="deporteEliminar" id="deportesAvanzadoBoton">Eliminar</button>
       </section>
 
-      <section class="deportesAvanzadoAgregarModificar">
+      <section class="deportesAvanzadoAgregarModificar" style="display: none;">
         <h4 class="titH4">Crear y modificar ejercicio</h4>
         <label class="deportesAvanzadoLabel">ID </label>
-        <input type="number" class="inputCrearDeporteNombreDeporte" id="deportesAvanzadoInput">
+        <input class="inputCrearEjercicioIdEjercicio" id="deportesAvanzadoInput">
         <br>
         <label class="deportesAvanzadoLabel">Nombre </label>
-        <input class="inputCrearDeporteNombreDeporte" id="deportesAvanzadoInput">
+        <input class="inputCrearEjercicioNombreEjercicio" id="deportesAvanzadoInput">
+        <br>
+        <label class="deportesAvanzadoLabel">Nro. de repeticiones</label>
+        <input class="inputCrearEjercicioNroRep" id="deportesAvanzadoInput">
+        <br>
+        <label class="deportesAvanzadoLabel">nro. de series </label>
+        <input class="inputCrearEjercicioNroSeries" id="deportesAvanzadoInput">
         <br>
         <label class="deportesAvanzadoLabel">Grupo muscular</label>
-        <input class="inputCrearDeporteNombreDeporte" id="deportesAvanzadoInput">
+        <input class="inputCrearEjercicioGrupoMuscular" id="deportesAvanzadoInput">
         <br>
         <label class="deportesAvanzadoLabel">Descripcion</label>
-        <input type="text" class="inputCrearDeporteDescripcion" id="deportesAvanzadoInput">
+        <input class="inputCrearEjercicioDescripcion" id="deportesAvanzadoInput">
         <br>
         <div class="deportesAvanzadoAgregarModificarBotones">
           <button type="button" class="deporteConfirmarCrear" id="deportesAvanzadoBoton">Crear</button>
@@ -99,7 +109,7 @@
       <section class="deportesAvanzadoEliminar">
         <h4 class="titH4">Eliminar ejercicio</h4>
         <label class="deportesAvanzadoLabel">ID ejercicio</label>
-        <input class="inputEliminarDeporteNombreDeporte" id="deportesAvanzadoInput">
+        <input class="inputEliminarEjercicioIdEjercicio" id="deportesAvanzadoInput">
         <div class="deportesAvanzadoAgregarModificarBotones">
           <button class="deporteConfirmarEliminar" id="deportesAvanzadoBoton">Eliminar</button>
           <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>

@@ -27,8 +27,8 @@ $(document).ready(() => {
                         let tbody = $(".tablaDeporte tbody");
                         deporte.forEach(deporte1 => {
                             let tr = $("<tr></tr>");
-                            tr.append(`<td class="celda">${deporte1.nombre_deporte}</td>`);
-                            tr.append(`<td class="celda">${deporte1.descripcion}</td>`);
+                            tr.append(`<td class="celda1">${deporte1.nombre_deporte}</td>`);
+                            tr.append(`<td class="celda2">${deporte1.descripcion}</td>`);
                             tbody.append(tr);
                         });
                     } else {
