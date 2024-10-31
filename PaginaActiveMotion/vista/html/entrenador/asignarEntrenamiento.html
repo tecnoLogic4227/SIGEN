@@ -51,88 +51,61 @@
     <main>
       <h1 class="tituloEntrenador titulo2Entrenador tit-asignar-entrenamiento" id="tit-cliente">Asignar entrenamiento</h1>
 
-      <form id="form-buscar-cliente">
-        <label class="label-ci">CI</label>
-        <input class="inputClienteBuscador buscador-ci">
-        <label class="label-nombre">Nombre</label>
-        <input class="inputClienteBuscador buscador-nombre">
-        <button type="button" class="botonClienteBuscador-asg-rut">Buscar</button>
-        <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
-      </form>
-
-      <table class="table-info">
-        <thead>
-          <tr>
-            <th>Cedula</th>
-            <th>Nombre</th>
-            <th>Actividad</th>
-            <th>ID rutina</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-
-      <button id="btn-mostrar-asignar-entrenamiento" class="btn-asignar-entrenamiento">Asignar Entrenamiento</button>
-
-      <div id="seccion-asignar-entrenamiento" style="display: none;">
-        <article>
-          <form id="form-buscar-rutina" class="form-buscar-registrar-calificacion">
-            <label>Id rutina</label>
-            <input class="inputBuscarRutinaIdRutina">
-            <button type="button" class="rutinaBuscar">Buscar</button>
-          </form>
-        </article>
-
-        <article>
-          <form id="form-asignar-entrenamiento-detalle" class="form-asignar-entrenamiento-buscar">
-            <table id="routineTable" class="asignEntre">
-              <thead class="theadRoutine">
-                  <tr class="trRoutine">
-                      <th class="thRoutine">ID Rutina</th>
-                      <th class="thRoutine">Nombre</th>
-                      <th class="thRoutine">Ejercicios</th>
-                      <th class="thRoutine">Descripcion ejercicios</th>
-                      <th class="thRoutine">Descripcion rutina</th>
-                  </tr>
-              </thead>
+      <section id="buscar-rutinas">
+        <form>
+          <label class="buscarRutina">Buscar Rutina:</label>
+          <input type="text" class="inputRutina" id="buscar-rutina-id" placeholder="ID de rutina">
+          <button type="button" class="btnRutina" id="btn-buscar-rutina">Buscar</button>
+        </form>
+      </section>
     
-              <tbody class="tbodyRoutine">
-                  <tr class="input-row trRoutine">
-                      <td data-label="ID Rutina" class="tdRoutine">
-                          <input type="text" id="rutinaIdCliente" disabled>
-                      </td>
-                      <td data-label="Nombre" class="tdRoutine">
-                          <input type="text" id="nombreRoutineCliente" disabled>
-                      </td>
-                      <td data-label="Ejercicios" id="ejerciciosCell" class="tdRoutine">
-                        <div class="exercise-container">
-                            <input type="text" class="ejercicioCliente" disabled>
-                            <button type="button" class="btn btn-eliminar-ejercicio btn-eliminar-ejercicio-cliente" disabled>Eliminar</button>
-                        </div>
-                        <button type="button" class="btn btn-agregar btn-agregar-cliente" id="agregarEjercicio" disabled>+</button>
-                    </td>
-                      <td data-label="Descripcion ejercicios" id="descripcionesCell" class="tdRoutine">
-                          <div class="description-container">
-                              <input type="text" class="descripcionCliente" disabled>
-                          </div>
-                      </td>
-                      <td data-label="Descripcion rutina" class="tdRoutine">
-                          <textarea id="descripcionRutinaCliente" disabled></textarea>
-                      </td>
-                  </tr>
-              </tbody>
+      <section id="rutinas">
+        <table id="tablaRutina">
+          <thead>
+            <tr>
+              <th>ID Rutina</th>
+              <th>Nombre</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button type="button" id="btn-crear-rutina">Crear Rutina</button>
+      </section>
     
-          </table>
-
-            <button type="button" id="btn-modificar-rutina" class="btn-modificar-rut">Modificar</button>
-            <button type="button" id="btn-modificar-rutina" class="btn-cancelar-rut">Cancelar</button>
-            <button type="submit" id="boton-guardar-entrenamiento" class="guardar-asignar-entrenamiento" style="display: none;">Guardar Entrenamiento</button>
-            <span id="mensaje_asignarEntrenamiento" hidden></span>
-          </form>
-        </article>
-
-      </div>
+      <section id="ejercicios">
+        <table id="tablaEjercicio">
+          <thead>
+            <tr>
+              <th>ID Ejercicio</th>
+              <th>Nombre</th>
+              <th>Repeticiones</th>
+              <th>Series</th>
+              <th>Grupo Muscular</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button type="button" id="btn-crear-ejercicio">Crear Ejercicio</button>
+      </section>
+    
+      <section id="asignaciones">
+        <table id="tablaPosee">
+          <thead>
+            <tr>
+              <th>ID Rutina</th>
+              <th>ID Ejercicio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button type="button" id="btn-crear-posee">Asignar Ejercicio a Rutina</button>
+      </section>
     </main>
+    
 
     <footer class="social-footer">
       <div class="footer-content">

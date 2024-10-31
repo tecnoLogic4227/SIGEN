@@ -12,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="../../styles/media_style.css">
+  <link rel="stylesheet" href="../superUsuario/superUsuario.css">
   <script src="../../script/tablas/deporte.js"></script>
 </head>
 
@@ -44,97 +45,100 @@
 
     </nav>
 
-    <main class="tituloAvanzado">
-      <header>
-        <h1 class="titulo2Avanzado">Usuarios</h1>
-      </header>
-      <br>
-      <section class="deportesAvanzadoFormulario">
-        <form class="deportesAvanzadoFormulario">
-          <label class="deportesAvanzadoLabel">Nombre usuario</label>
-          <input class="inputBuscarDeporteNombreDeporte">
-          <button type="button" class="deporteBuscar" id="deportesAvanzadoBoton">Buscar</button>
-        </form>
-      </section>
-      <section class="deportesAvanzadoTabla">
-        <table class="tablaDeporte">
-          <thead>
-            <tr>
-              <th class="celda">Nombre usuario</th>
-              <th class="celda">Actividad</th>
-            </tr>
-          </thead>
-          <tbody>
-    
-          </tbody>
-        </table>
-      </section>
-      <section class="deportesAvanzadoBotones">
-        <button class="deporteCrear" id="deportesAvanzadoBoton">Crear</button>
-        <button class="deporteModificar" id="deportesAvanzadoBoton">Modificar</button>
-        <button class="deporteEliminar" id="deportesAvanzadoBoton">Eliminar</button>
-      </section>
-
-      <section class="deportesAvanzadoAgregarModificar">
-        <h4 class="titH4">Crear y modificar usuario</h4>
-        <label class="deportesAvanzadoLabel">Cedula </label>
-        <input type="number" class="inputCrearDeporteNombreDeporte" id="deportesAvanzadoInput">
-        <br>
-        <label class="deportesAvanzadoLabel">Nombre </label>
-        <input class="inputCrearDeporteNombreDeporte" id="deportesAvanzadoInput">
-        <br>
-        <label class="deportesAvanzadoLabel">Actividad </label>
-        <input class="inputCrearDeporteNombreDeporte" id="deportesAvanzadoInput">
-        <br>
-        <label class="deportesAvanzadoLabel">Estado </label>
-        <select class="inputCrearDeporteNombreDeporte" id="estadoSelect">
-          <option value="principiante">Principiante</option>
-          <option value="bajo">Bajo</option>
-          <option value="medio">Medio</option>
-          <option value="alto">Alto</option>
-          <option value="para_seleccionar">Para seleccionar</option>
-          <option value="inicio">Inicio</option>
-          <option value="sin_evolucion">Sin evolución</option>
-          <option value="en_evolucion">En evolución</option>
-          <option value="satisfactorio">Satisfactorio</option>
-        </select>
-        <br>
-        <label class="deportesAvanzadoLabel">Estado en actividad</label>
-        <select class="inputCrearDeporteNombreDeporte" id="estadoActividadSelect">
-          <option value="activo">Activo</option>
-          <option value="inactivo">Inactivo</option>
-        </select>
-        <br>
-        <label class="deportesAvanzadoLabel">Tipo de plan</label>
-        <input class="inputCrearDeporteDescripcion" id="deportesAvanzadoInput">
-        <br>
-        <div class="deportesAvanzadoAgregarModificarBotones">
-          <button type="button" class="deporteConfirmarCrear" id="deportesAvanzadoBoton">Crear</button>
-          <button type="button" class="deporteConfirmarModificar" id="deportesAvanzadoBoton">Modificar</button>
-          <button type="button" class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
-        </div>
-      </section>
-
-      <section class="deportesAvanzadoEliminar">
-        <h4 class="titH4">Eliminar usuario</h4>
-        <label class="deportesAvanzadoLabel">Cedula usuario</label>
-        <input class="inputEliminarDeporteNombreDeporte" id="deportesAvanzadoInput">
-        <div class="deportesAvanzadoAgregarModificarBotones">
-          <button class="deporteConfirmarEliminar" id="deportesAvanzadoBoton">Eliminar</button>
-          <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
-        </div>
-      </section>
-
-      <section class="deportesAvanzadoConfirmarEliminar">
-        <h4 class="titH4">¿Está seguro que desea eliminar el usuario?</h4>
-        <div>
-          <div class="deportesAvanzadoAgregarModificarBotones">
-            <button class="deporteConfirmarConfirmarEliminar" id="deportesAvanzadoBoton">Confirmar</button>
-            <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
-          </div>
-        </div>
-      </section>
-    </main>
+    <main class="main-entrenadores">
+      <h2 class="tit-entrenadores">Usuarios</h2>
+      <form class="form-entrenadores">
+          <table class="table-entrenadores">
+              <tr>
+                  <th>Cedula</th>
+                  <td><input type="number" class="inputModificarUsuarioCi"></td>
+              </tr>
+              <tr>
+                  <th>Nombre</th>
+                  <td><input type="text" class="inputModificarUsuarioNombre"></td>
+              </tr>
+              <tr>
+                  <th>Apellido</th>
+                  <td><input type="text" class="inputModificarUsuarioApellido"></td>
+              </tr>
+              <tr>
+                  <th>Direccion</th>
+                  <td><input type="text" class="inputModificarUsuarioDireccion"></td>
+              </tr>
+              <tr>
+                  <th>Email</th>
+                  <td><input type="email" class="inputModificarUsuarioEmail"></td>
+              </tr>
+              <tr>
+                  <th>Fecha de nacimiento</th>
+                  <td><input type="date" class="inputModificarUsuarioFechaNac"></td>
+              </tr>
+              <tr>
+                  <th>Telefono</th>
+                  <td><input type="number" class="inputModificarUsuarioTelefono"></td>
+              </tr>
+              <tr>
+                  <th>Rol</th>
+                  <td>
+                      <select id="selectRol" class="inputModificarUsuarioRol">
+                          <option value="" disabled selected>Seleccione un rol...</option>
+                          <option value="AdminTI">AdminTI</option>
+                          <option value="Avanzado">Avanzado</option>
+                          <option value="Administrativo">Administrativo</option>
+                          <option value="Entrenador">Entrenador</option>
+                          <option value="Seleccionador">Seleccionador</option>
+                          <option value="Cliente">Cliente</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr class="fila-cliente" style="display: none;">
+                  <th>Actividad</th>
+                  <td><input type="text" class="inputActividad" maxlength="255"></td>
+              </tr>
+              <tr class="fila-cliente" style="display: none;">
+                  <th>Estado</th>
+                  <td>
+                      <select class="inputEstado">
+                          <option value="" disabled selected>Seleccione estado...</option>
+                          <option value="principiante">Principiante</option>
+                          <option value="bajo">Bajo</option>
+                          <option value="medio">Medio</option>
+                          <option value="alto">Alto</option>
+                          <option value="para seleccionar">Para seleccionar</option>
+                          <option value="inicio">Inicio</option>
+                          <option value="sin evolucion">Sin evolucion</option>
+                          <option value="en evolucion">En evolucion</option>
+                          <option value="satisfactorio">Satisfactorio</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr class="fila-cliente" style="display: none;">
+                  <th>Estado Actividad</th>
+                  <td>
+                      <select class="inputEstadoActividad">
+                          <option value="1">Activo</option>
+                          <option value="0">Inactivo</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr class="fila-cliente" style="display: none;">
+                  <th>Tipo de Plan</th>
+                  <td>
+                      <select class="inputTipoPlan">
+                          <option value="" disabled selected>Seleccione tipo de plan...</option>
+                          <option value="Basico">Básico</option>
+                          <option value="Premium">Premium</option>
+                          <option value="Pack Verano">Pack Verano</option>
+                          <option value="Avanzado">Avanzado</option>
+                          <option value="Elite">Elite</option>
+                          <option value="Verano">Verano</option>
+                      </select>
+                  </td>
+              </tr>
+          </table>
+          <button type="button" class="button-entrenadores" id="usuarioConfirmarCrear">Agregar Usuario</button>
+      </form>
+  </main>
 
     
     <footer class="social-footer">

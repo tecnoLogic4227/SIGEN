@@ -9,25 +9,6 @@ $(function(){
   });
 });
 
-
-/*....................................................BARRA BUSQUEDA..............................................*/
-$(document).ready(function() {
-  // Controlar el comportamiento en pantallas pequeñas
-  var viewportWidth = $(window).width();
-  if (viewportWidth <= 600) {
-      $('.barra-busqueda form').hover(
-          function() {
-              // Al pasar por encima del formulario, mostrar el input de búsqueda
-              $(this).find('input[type="text"]').css('opacity', '1');
-          },
-          function() {
-              // Al salir, ocultar el input de búsqueda
-              $(this).find('input[type="text"]').css('opacity', '0');
-          }
-      );
-  }
-});
-
 /*.....................................................BOTON CAMBIAR IDIOMA.....................................................*/
 $(document).ready(function() {
   const translations = {
@@ -1223,20 +1204,88 @@ $(document).ready(function() {
 
 /*......................................................ASIGNAR RUTINA ENTRENADOR............................................... */
 $(document).ready(function() {
-  $('#seccion-asignar-entrenamiento').hide();
-  
-  $('#btn-mostrar-asignar-entrenamiento').click(function() {
-    $('#seccion-asignar-entrenamiento').slideDown();
-    $('#btn-modificar-rutina').show(); 
+  // Agregar y buscar en Rutina
+  $("#btn-crear-rutina").click(function() {
+    $("#tablaRutina tbody").append(`
+      <tr>
+        <td contenteditable="true">Nuevo</td>
+        <td contenteditable="true">Nombre de Rutina</td>
+        <td>
+          <button class="btn-modificar-rutina">Modificar</button>
+          <button class="btn-eliminar-rutina">Eliminar</button>
+        </td>
+      </tr>
+    `);
   });
 
-  // Inhabilitar para escribir
-  $('#rutinaIdCliente, #nombreRoutineCliente, .ejercicioCliente, .descripcionCliente, #descripcionRutinaCliente, .btn-agregar-cliente, .btn-eliminar-ejercicio-cliente').prop('disabled', true);
+  $("#tablaRutina").on("click", ".btn-modificar-rutina", function() {
+    $(this).closest("tr").find("td").attr("contenteditable", "true");
+  });
 
-  // Habilitar prara escribir
-  $('#btn-modificar-rutina').click(function() {
-    $('#rutinaIdCliente, #nombreRoutineCliente, .ejercicioCliente, .descripcionCliente, #descripcionRutinaCliente, .btn-agregar-cliente, .btn-eliminar-ejercicio-cliente').prop('disabled', false);
-    $('#boton-guardar-entrenamiento').show(); // Mostrar el botón "Guardar"
+  $("#tablaRutina").on("click", ".btn-eliminar-rutina", function() {
+    $(this).closest("tr").remove();
+  });
+
+  $("#btn-crear-ejercicio").click(function() {
+    $("#tablaEjercicio tbody").append(`
+      <tr>
+        <td contenteditable="true">Nuevo</td>
+        <td contenteditable="true">Nombre de Ejercicio</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">Grupo Muscular</td>
+        <td contenteditable="true">Descripción</td>
+        <td>
+          <button class="btn-modificar-ejercicio">Modificar</button>
+          <button class="btn-eliminar-ejercicio">Eliminar</button>
+        </td>
+      </tr>
+    `);
+  });
+
+  $("#tablaEjercicio").on("click", ".btn-modificar-ejercicio", function() {
+    $(this).closest("tr").find("td").attr("contenteditable", "true");
+  });
+
+  $("#tablaEjercicio").on("click", ".btn-eliminar-ejercicio", function() {
+    $(this).closest("tr").remove();
+  });
+
+  $("#btn-crear-posee").click(function() {
+    const idRutina = prompt("Ingrese el ID de la Rutina:");
+    const idEjercicio = prompt("Ingrese el ID del Ejercicio:");
+    if (idRutina && idEjercicio) {
+      $("#tablaPosee tbody").append(`
+        <tr>
+          <td>${idRutina}</td>
+          <td>${idEjercicio}</td>
+          <td>
+            <button class="btn-eliminar-posee">Eliminar</button>
+          </td>
+        </tr>
+      `);
+    }
+  });
+
+  $("#tablaPosee").on("click", ".btn-eliminar-posee", function() {
+    $(this).closest("tr").remove();
+  });
+});
+
+
+
+/*....................................................CALIFICACION ENTRENADOR...........................................*/
+$(document).ready(function() {
+  $('#usuarioClienteModificar').click(function(event) {
+      event.preventDefault(); // Evita la redirección inmediata
+
+      // Muestra el mensaje de éxito
+      $('#mensaje_registroCalificacion').text('Guardado exitoso').show();
+
+      // Redirige después de un breve retraso
+      setTimeout(function() {
+          window.location.href = 'detallesClienteEntrenador.html';
+      }); // Espera 1.5 segundos antes de redirigir
   });
 });
 
@@ -1250,6 +1299,105 @@ $(function() {
     window.location.href = 'perfilEntrenador.html'; 
   });
 });
+
+/*...................................................REGISTRO ADMINTI..................................................... */
+$(document).ready(function() {
+  let usuarios = [];
+
+  // Muestra o esconde las filas adicionales según el rol seleccionado
+  $('#selectRol').change(function() {
+      if ($(this).val() === 'Cliente') {
+          $('.fila-cliente').show();
+      } else {
+          $('.fila-cliente').hide();
+      }
+  });
+
+  // Función para verificar si todos los campos están completos
+  function camposEstanCompletos() {
+      const cedula = $('.inputModificarUsuarioCi').val().trim();
+      const nombre = $('.inputModificarUsuarioNombre').val().trim();
+      const apellido = $('.inputModificarUsuarioApellido').val().trim();
+      const direccion = $('.inputModificarUsuarioDireccion').val().trim();
+      const email = $('.inputModificarUsuarioEmail').val().trim();
+      const fechaNac = $('.inputModificarUsuarioFechaNac').val().trim();
+      const telefono = $('.inputModificarUsuarioTelefono').val().trim();
+      const rol = $('.inputModificarUsuarioRol').val();
+
+      // Verificar campos básicos
+      if (!cedula || !nombre || !apellido || !direccion || !email || !fechaNac || !telefono || !rol) {
+          return false;
+      }
+
+      // Si el rol es "Cliente", verificar campos adicionales
+      if (rol === 'Cliente') {
+          const actividad = $('.inputActividad').val().trim();
+          const estado = $('.inputEstado').val();
+          const estadoActividad = $('.inputEstadoActividad').val();
+          const tipoPlan = $('.inputTipoPlan').val();
+
+          if (!actividad || !estado || !estadoActividad || !tipoPlan) {
+              return false;
+          }
+      }
+
+      return true;
+  }
+
+  // Al hacer clic en el botón de guardar
+  $('.button-entrenadores').click(function(e) {
+      e.preventDefault(); // Prevenir el envío del formulario
+
+      // Verificar si todos los campos están completos
+      if (!camposEstanCompletos()) {
+          alert('Por favor, complete todos los campos requeridos.');
+          return;
+      }
+
+      // Si todos los campos están completos, proceder con el guardado
+      const nuevoUsuario = {
+          cedula: $('.inputModificarUsuarioCi').val().trim(),
+          nombre: $('.inputModificarUsuarioNombre').val().trim(),
+          apellido: $('.inputModificarUsuarioApellido').val().trim(),
+          direccion: $('.inputModificarUsuarioDireccion').val().trim(),
+          email: $('.inputModificarUsuarioEmail').val().trim(),
+          fechaNacimiento: $('.inputModificarUsuarioFechaNac').val().trim(),
+          telefono: $('.inputModificarUsuarioTelefono').val().trim(),
+          rol: $('.inputModificarUsuarioRol').val()
+      };
+
+      // Si es cliente, agregar los campos adicionales
+      if (nuevoUsuario.rol === 'Cliente') {
+          nuevoUsuario.actividad = $('.inputActividad').val().trim();
+          nuevoUsuario.estado = $('.inputEstado').val();
+          nuevoUsuario.estadoActividad = $('.inputEstadoActividad').val();
+          nuevoUsuario.tipoPlan = $('.inputTipoPlan').val();
+      }
+
+      // Agregar el nuevo usuario al array
+      usuarios.push(nuevoUsuario);
+
+      // Mostrar mensaje de éxito y registrar en consola
+      const datos = { usuarios: usuarios };
+      console.log('Usuario guardado:', datos);
+      alert('Usuario guardado exitosamente!');
+
+      // Limpiar el formulario
+      $('.form-entrenadores')[0].reset();
+      $('.fila-cliente').hide();
+  });
+
+  // Agregar validación en tiempo real para todos los campos
+  $('input, select').on('change keyup', function() {
+      if (camposEstanCompletos()) {
+          $('.button-entrenadores').prop('disabled', false);
+      } else {
+          $('.button-entrenadores').prop('disabled', true);
+      }
+  });
+});
+
+
 
 /*.................................................Elimina numeros en campos numericos....................................................*/
 /*Problemillas: En el html le puse onclick al llamar a esta funcion ya que si lo cambio a

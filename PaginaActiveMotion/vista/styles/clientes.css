@@ -158,64 +158,65 @@ tr:hover {
     text-align: center;
 }
 
-.label-ci{
-    margin-top: 4vh;
-    margin-left: 49vw;
+section {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+.buscarRutina{
+    margin-left: 6vw;
+    position: absolute;
 }
 
-.buscador-ci{
-    margin-top: 3vh;
-    margin-left: 45vw;
+.inputRutina{
+    margin-top: 8vh;
+    margin-left: 5vw;
+    position: absolute;
 }
 
-.label-nombre{
-    margin-top: 4vh;
-    margin-left: 48vw;
+.btnRutina{
+    margin-left: 5vw;
+    margin-top: 15vh;
+    position: absolute;
+}
+  
+#tablaRutina{
+    margin-left: 20vw;
+    margin-top: 30vh;
 }
 
-.buscador-nombre{
-    margin-top: 3vh;
-    margin-left: 45vw;
+#btn-crear-rutina{
+    margin-left: 20vw;
 }
 
-.botonClienteBuscador-asg-rut{
-    margin-left: 45vw;
+#tablaEjercicio, #tablaPosee{
+    margin-left: 20vw;
 }
 
-.table-info{
-    margin-left: 10vw !important;
+#btn-crear-ejercicio, #btn-crear-posee{
+    margin-left: 20vw;
 }
-.guardar-asignar-entrenamiento {
-    margin-top: 5vh;
-    width: 15vw;
-}
-
-.asignEntre{
-    margin-left: 10vw !important;
-}
-
-#form-buscar-rutina{
-    margin-top: 10vh;
-}
-.btn-modificar-rut{
-    margin-top: 4vh;
-    margin-left: 35vw;
-}
-
-.btn-cancelar-rut{
-    margin-top: -7vh;
-    margin-left: 55vw;
-}
-
-.guardar-asignar-entrenamiento{
-    margin-top: 4vh;
-    margin-left: 45vw;
-}
-
-.btn-asignar-entrenamiento{
-    margin-top: 4vh;
-    margin-left: 45vw;
-}
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
 
 /* registrar calificacion */
 
@@ -229,19 +230,16 @@ tr:hover {
     flex-direction: column;
     align-items: center;
     margin-bottom: 15vh;
-}
-
-.form-registrar-calificacion {
+    }
+    .form-registrar-calificacion {
     margin-bottom: 0;
-}
-
-.button-registrar-calificacion {
+    }
+    .button-registrar-calificacion {
     width: 20vw;
     margin-top: 5vh;
-}
-
-.tit-tabla-registrar-calificacion {
+    }
+    .tit-tabla-registrar-calificacion {
     margin-top: 10vh;
     margin-bottom: 5vh;
-}
+    }
 

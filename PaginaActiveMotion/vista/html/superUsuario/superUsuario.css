@@ -14,6 +14,18 @@ body {
     margin-left: 5vw;
 }
 
+.ingresarClub{
+    margin-top: -70vh;
+    margin-left: 60vw;
+    position: absolute;
+}
+
+.ingresarUsuario{
+    margin-top: -50vh;
+    margin-left: 60vw;
+    position: absolute;
+}
+
 .section-botones-inicio {
     display: flex;
     justify-content: center;
@@ -55,4 +67,33 @@ body {
 .tablaInstituciones {
     display: flex;
     flex-direction: column;
+}
+
+
+@media screen and (max-width:600px) {
+
+    .boton-inicio{
+        width: 20vw;
+    }
+
+.ingresarClub{
+    margin-top: 5vh;
+    margin-left: -40vw;
+}
+
+.ingresarUsuario{
+    margin-top: 5vh;
+}
+
+.form-clubes{
+    margin-left: 10vw;
+    width: 80vw;
+}
+
+.form-entrenadores{
+    width: 90vw;
+}
+
+
+
 }
