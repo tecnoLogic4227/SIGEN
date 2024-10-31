@@ -69,7 +69,6 @@ body {
     flex-direction: column;
 }
 
-
 @media screen and (max-width:600px) {
 
     .boton-inicio{
@@ -93,6 +92,7 @@ body {
 .form-entrenadores{
     width: 90vw;
 }
+
 
 
 

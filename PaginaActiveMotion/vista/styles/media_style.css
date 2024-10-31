@@ -160,10 +160,6 @@ html, body {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
   display: block;
 }
-.tablaEquipoSeleccionador
-.accordion {
-  width: 100%;
-}
 
 /*.........................................................LOGIN.................................................................*/
 #formLogin{
@@ -832,20 +828,40 @@ th, td {
 }
 
 .graficaSeleccionador {
-  margin-top: 30vh;
+  margin-top: 10vh;
   margin-left: 0vw;
   width: 100%;
   z-index: 0;
+  position: absolute;
 }
 
+.tablaCaliSeleccionador thead {
+  display: grid;
+  margin-top: -15vh ;
+  grid-template-columns: 1fr;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tablaCaliSeleccionador thead th {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.cedula, .nombre{
+  margin-left: 0vw;
+}
 
 
 /*.........................................................................EQUIPOS...............................................................*/
 .formEquiposSeleccionador {
   width: 20vw;
   height: 70vh;
-  margin-top: 10vh;
-  margin-left: 4vw;
+  margin-top: 20vh;
+  margin-left: 40vw;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -861,8 +877,9 @@ th, td {
 }
 
 .clubEquipo{
-margin-top: -22vh;
-margin-left: 100vw;
+margin-top: -6vh;
+margin-left: -0vw;
+position: absolute;
 }
 
 #clubEquipo{
@@ -874,26 +891,79 @@ margin-left: 2vw;
 }
 
 .armarEquipo{
-margin-top:-9vh;
-margin-left: 85vw;
+margin-top:-0vh;
+margin-left:0vw;
 width: 30vh;
 }
+
+.btnArmarNuevo, .btnArmarExistente{
+  margin-left: 7vw;
+}
+
 .tablaEquipoSeleccionador {
   margin-top: -20vh;
-  margin-left: -1vw;
+  margin-left: 0vw;
 }
 
 /*.........................................................ARMAR EQUIPOS..........................................................*/
 .tablaArmarEquipoSeleccionador {
-  margin-top: 10vh;
+  margin-top: 0vh;
+}
+
+.tablaArmarEquipoSeleccionador table,
+.tablaArmarEquipoSeleccionador tr,
+.tablaArmarEquipoSeleccionador td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 16vh;
+}
+
+.tablaArmarEquipoSeleccionador tr {
+    margin-bottom: 15px;
+}
+
+.ingresar-fisio{
+  margin-top: 80vh !important;
+  width: 20vw !important;
+}
+
+.tablaArmarEquipoSeleccionador td.info-cell strong {
+    display: block;
+    width: 80%;
+    margin-bottom: 5px;
 }
 
 .ingresarDeportista{
-  margin-top: -12vh;
-  margin-left: 55vw;
+  margin-top: 6vh;
+  margin-left: 2vw;
 }
 
-/*..............................................................ENTRENADOR..................................................*/
+.cancelarDeportista{
+  margin-top: -8vh;
+  margin-left: 25vw;
+}
+
+#form-armarEquiposSeleccionador{
+  margin-top: 78vh !important;
+  margin-left: -60vw;
+  width: 60vw;
+  height: 50vh;
+}
+
+.ingresarDeportista{
+  margin-top: 1vh;
+}
+.tablaArmarEquipoExistenteSeleccionador {
+  margin-top: 30vh;
+  margin-left: 10vw;
+}
+
+#form-armarEquiposExistenteSeleccionador {
+  margin-left: 40vw !important;
+}
+
+
 
 /*...............................................................BUSCAR ClIENTE.....................................................*/
 .cliente-label{

@@ -470,6 +470,23 @@ $(document).ready(function() {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("form-armarEquiposSeleccionador");
+  const btnAbrirForm = document.querySelector(".btnarmarEquipo");
+  const btnCancelar = document.getElementById("btnCancelar");
+
+  btnAbrirForm.addEventListener("click", function() {
+      form.style.display = "block";
+      document.body.classList.add("form-active"); // Añade clase para mover el footer
+  });
+
+  btnCancelar.addEventListener("click", function() {
+      form.style.display = "none";
+      document.body.classList.remove("form-active"); // Quita clase para volver el footer a su lugar
+  });
+});
+
+
 
  /*....................................................TABLA NUEVO EQUIPO SELECCIONADOR.............................................. */
  $(document).ready(function() {
@@ -1271,6 +1288,7 @@ $(document).ready(function() {
     $(this).closest("tr").remove();
   });
 });
+
 
 
 
