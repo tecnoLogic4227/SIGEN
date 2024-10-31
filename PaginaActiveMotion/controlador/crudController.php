@@ -421,19 +421,41 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
         case "equipo":
             $equipo = datos($tabla);
 
-            $sqlConsulta = "SELECT * FROM equipo WHERE id_equipo";
+            $sqlConsulta = "SELECT * FROM equipo WHERE id_equipo = ?";
             $paramsConsulta = "i";
             $atributosConsulta = [$equipo->idEquipo];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE equipo SET nombre_equipo = ?, cantidad = ? WHERE id_equipo = ?";
-                $params = "sii";
-                $atributos = [$equipo->nombreEquipo, $equipo->cantidad, $equipo->idEquipo];
+                verificarDatos($atributos, $params, $valores, $equipo, "usuario", $metodo, $placeholders);
+                $sql = "UPDATE usuario SET $atributos WHERE ci = ? AND rol = 'cliente'";
+                $params .= "i";
+                array_push($valores, $equipo->idEquipo);
 
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                echo json_encode(modificarBD($sql, $params, $valores));
             } else {
                 echo json_encode(false);
             }
+
+            // $usuario = datos($tabla);
+
+            // $sqlConsulta = "SELECT * FROM USUARIO WHERE ci = ? AND rol = 'cliente'";
+            // $paramsConsulta = "i";
+            // $atributosConsulta = [$usuario->ci];
+
+            // if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+            //     verificarDatos($atributos, $params, $valores, $usuario, "usuario", $metodo, $placeholders);
+            //     $sql = "UPDATE usuario SET $atributos WHERE ci = ? AND rol = 'cliente'";
+            //     $params .= "i";
+            //     array_push($valores, $usuario->ci);
+
+            //     echo json_encode(modificarBD($sql, $params, $valores));
+            // } else {
+            //     verificarDatos($atributos, $params, $valores, $usuario, "usuario", $metodo, $placeholders);
+
+            //     $sql = "INSERT INTO usuario $atributos VALUES $placeholders";
+
+            //     echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+            // }
             break;
         case "esta":
             $esta = datos($tabla);
@@ -974,19 +996,82 @@ function listar($tabla)
             break;
         case "equipo":
             $equipo = datos($tabla);
+            $resultado = [
+                'equipos' => [],
+                'jugadores' => []
+            ];
 
             if (!is_null($equipo->idEquipo) && !empty($equipo->idEquipo)) {
                 $sql = "SELECT * FROM equipo WHERE id_equipo = ?";
                 $params = "i";
                 $atributos = $equipo->idEquipo;
+
+                $equipoData = listarBD($sql, $params, $atributos);
+                array_push($resultado['equipos'], $equipoData);
+
+                $sql = "SELECT ci FROM esta WHERE id_equipo = ?";
+                $cedulas = listarBD($sql, $params, $atributos);
+
+                foreach ($cedulas as $fila) {
+                    $ci = $fila['ci'];
+
+                    $sql = "SELECT u.ci, u.nombre, u.apellido, d.posicion, e.nombre_equipo FROM usuario AS u 
+                                INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci 
+                                INNER JOIN deportista AS d ON uc.ci = d.ci 
+                                INNER JOIN esta AS es ON es.ci = d.ci 
+                                INNER JOIN equipo AS e ON es.id_equipo = e.id_equipo 
+                                WHERE u.ci = ?";
+                    $params = "s";
+                    $jugadorData = listarBD($sql, $params, $ci);
+
+                    if (!empty($jugadorData)) {
+                        foreach ($jugadorData as $jugador) {
+                            $resultado['jugadores'][] = [
+                                'ci' => !empty($jugador['ci']) ? $jugador['ci'] : '-',
+                                'nombre' => $jugador['nombre'],
+                                'apellido' => $jugador['apellido'],
+                                'posicion' => $jugador['posicion'],
+                                'nombre_equipo' => $jugador['nombre_equipo']
+                            ];
+                        }
+                    }
+                }
+
             } else {
                 $sql = "SELECT * FROM equipo";
                 $params = "";
                 $atributos = "";
+                $equipos = listarBD($sql, $params, $atributos);
+
+                foreach ($equipos as $equipo) {
+                    $resultado['equipos'][] = [
+                        'id_equipo' => $equipo['id_equipo'],
+                        'nombre_equipo' => $equipo['nombre_equipo']
+                    ];
+
+                    $sql = "SELECT u.ci, u.nombre, u.apellido, d.posicion FROM usuario AS u 
+                                INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci
+                                INNER JOIN deportista AS d ON uc.ci = d.ci
+                                INNER JOIN esta AS es ON es.ci = d.ci 
+                                WHERE es.id_equipo = ?";
+                    $params = "i";
+                    $jugadoresEquipo = listarBD($sql, $params, $equipo['id_equipo']);
+
+                    foreach ($jugadoresEquipo as $jugador) {
+                        $resultado['jugadores'][] = [
+                            'ci' => !empty($jugador['ci']) ? $jugador['ci'] : 'sin ci',
+                            'nombre' => $jugador['nombre'],
+                            'apellido' => $jugador['apellido'],
+                            'posicion' => $jugador['posicion'],
+                            'id_equipo' => $equipo['id_equipo']
+                        ];
+                    }
+                }
             }
 
-            echo json_encode(listarBD($sql, $params, $atributos));
+            echo json_encode($resultado);
             break;
+
         case "esta":
             $esta = datos($tabla);
 
