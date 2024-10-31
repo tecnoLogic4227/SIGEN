@@ -4,10 +4,11 @@ $(document).ready(() => {
     datos = "";
 
     const listarEquipo = (datos) => {
+        let tr;
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
-            type: "GET",
+            url: "../../../controlador/crudController.php",
+            type: "POST",
             data: {
                 tabla: tabla,
                 metodo: metodo,
@@ -15,22 +16,29 @@ $(document).ready(() => {
             },
             success: (response) => {
                 try {
-                    let equipo = JSON.parse(response);
-                    if (equipo.length > 0) {
-                        $(".tablaEquipo tbody").html("");
-                        let tbody = $(".tablaEquipo tbody");
-                        equipo.forEach(equipo1 => {
-                            let tr = $("<tr></tr>");
-                            tr.append(`<td>${equipo1.id_equipo}</td>`);
-                            tr.append(`<td>${equipo1.nombre_equipo}</td>`);
-                            tr.append(`<td>${equipo1.cantidad}</td>`);
-                            // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
-                            // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
-                            tbody.append(tr);
-                        });
-                    } else {
-                        alert("No se encontraron resultados.");
-                        $(".tablaEquipo tbody").html("");
+                    let respuesta = JSON.parse(response);
+                    $(".tablaEquipo tbody").html("");
+                    $(".tablaJugadores tbody").html("");
+
+                    const equipos = respuesta.equipos; 
+                    const jugadores = respuesta.jugadores; 
+
+                    for (let i = 0; i < equipos.length; i++) {
+                        let trEquipo = $("<tr></tr>");
+                        trEquipo.append(`<td>${equipos[i].id_equipo}</td>`);
+                        trEquipo.append(`<td>${equipos[i].nombre_equipo}</td>`);
+                        $(".tablaEquipo tbody").append(trEquipo);
+                    }
+
+                    // Mostrar jugadores
+                    for (let j = 0; j < jugadores.length; j++) {
+                        let trJugador = $("<tr></tr>");
+                        trJugador.append(`<td>${jugadores[j].ci}</td>`); // Asegúrate de que 'ci' esté en la respuesta JSON
+                        trJugador.append(`<td>${jugadores[j].nombre}</td>`);
+                        trJugador.append(`<td>${jugadores[j].apellido}</td>`);
+                        trJugador.append(`<td>${jugadores[j].posicion}</td>`);
+                        trJugador.append(`<td>${jugadores[j].id_equipo}</td>`); // Cambiado a 'id_equipo'
+                        $(".tablaJugadores tbody").append(trJugador);
                     }
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
@@ -42,9 +50,11 @@ $(document).ready(() => {
         });
     };
 
+    listarEquipo(datos);
+
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: {
                 tabla: tabla,
@@ -54,7 +64,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarEquipo(datos);
@@ -87,8 +97,6 @@ $(document).ready(() => {
         cantidad = $(".inputCrearEquipoCantidad").val();
         crearEquipo(idEquipo, nombreEquipo, cantidad);
     };
-
-    listarEquipo(datos);
 
     const buscarEquipo = (idEquipo) => {
         listarEquipo({
@@ -157,5 +165,4 @@ $(document).ready(() => {
     $(".equipoCancelarCrear").click(limpiarPantalla);
     $(".equipoCancelarModificar").click(limpiarPantalla);
     $(".equipoCancelarEliminar").click(limpiarPantalla);
-
 });
