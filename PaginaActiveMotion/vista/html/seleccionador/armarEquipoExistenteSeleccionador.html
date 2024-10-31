@@ -44,14 +44,11 @@
             <form id="form-armarEquiposExistenteSeleccionador" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_armarEquipo_seleccionador.php" method="post" class="formDeportistasSeleccionador">
                 <h5>Deportista</h5>
                 <br>
-                <label for="nombreDeportista" class="nombre">Nombre de usuario:</label>
+                <label for="nombreDeportista" class="nombre">Cedula del usuario:</label>
                 <input type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi" required>
                 <br>
-                <label for="deporteDeportista" class="deporte">Deporte:</label>
+                <label for="deporteDeportista" class="deporte">ID del equipo:</label>
                 <input type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
-                <br>
-                <label for="clubDeportista" class="club">Club:</label>
-                <input type="text" id="clubDeportista" name="clubDeportista" placeholder="Nacional" required>
                 <br>
                 <button class="estado ingresarDeportista" id="btnIngresarDeportista" type="button">Ingresar</button>
                 <button class="estado eliminarDeportista" id="btnEliminarDeportista" type="button">Eliminar</button>
@@ -64,24 +61,19 @@
                         <table class="table table-bordered table-hover">
                             <thead class="table-primary">
                                 <tr>
-                                    <th colspan="2" class="text-center">
+                                    <th class="text-center">
                                         <img class="img-fluid rounded-circle" src="../../../vista/img/Perfil.png" alt="Foto de perfil" style="max-width: 100px;">
                                     </th>
+                                    <th scope="row">Nombre:</th>
+                                    <th scope="row">Cantidad  de deportistas:</th>
+                                    <th scope="row">Deportistas:</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">Nombre:</th>
                                     <td id="nombreClub"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Cantidad  de deportistas:</th>
                                     <td id="cantDeportista"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Deportistas:</th>
                                     <td id="deportista"></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

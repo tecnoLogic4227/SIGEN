@@ -772,27 +772,16 @@ th, td {
 
 /*................................................................INICIO.........................................................*/
 .ingresar{
-  margin-top: 50vh;
-  margin-left: 6vw;
+  margin-top: 50vh !important;
+  margin-left: 20vw !important;
 }
 
 .ingresar2{
-  margin-top: -28vh;
-  margin-left: 60vw;
+  margin-top: -30vh !important;
+  margin-left: 60vw !important;
 }
 
 /*......................................................................DEPORTISTAS........................................................*/
-.formDeportistasSeleccionador {
-  width: 30vw;
-  height: auto;
-  margin-top: 10vh;
-  margin-left: 5vw;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  position: relative;
-  z-index: 1;
-}
 
 #nombreDeportista, #deporteDeportista, #clubDeportista {
   background: rgba(121, 121, 121, 0.6);
@@ -804,8 +793,17 @@ th, td {
 }
 
 .nombre{
-  margin-top: -6vh;
+  margin-top: 0vh;
 }
+
+.inputDeportistaBuscador{
+  margin-left: -15vw;
+}
+
+.botonDeportistaBuscador{
+  margin-left: 0vw;
+}
+
 #nombreDeportista{
   margin-top: 5vh;
 }
@@ -839,6 +837,8 @@ th, td {
   width: 100%;
   z-index: 0;
 }
+
+
 
 /*.........................................................................EQUIPOS...............................................................*/
 .formEquiposSeleccionador {
