@@ -996,10 +996,7 @@ function listar($tabla)
             break;
         case "equipo":
             $equipo = datos($tabla);
-            $resultado = [
-                'equipos' => [],
-                'jugadores' => []
-            ];
+            $resultado = ["equipos" => [], "jugadores" => []];
 
             if (!is_null($equipo->idEquipo) && !empty($equipo->idEquipo)) {
                 $sql = "SELECT * FROM equipo WHERE id_equipo = ?";
@@ -1007,36 +1004,34 @@ function listar($tabla)
                 $atributos = $equipo->idEquipo;
 
                 $equipoData = listarBD($sql, $params, $atributos);
-                array_push($resultado['equipos'], $equipoData);
+                array_push($resultado["equipos"], ...$equipoData);
 
                 $sql = "SELECT ci FROM esta WHERE id_equipo = ?";
                 $cedulas = listarBD($sql, $params, $atributos);
 
                 foreach ($cedulas as $fila) {
                     $ci = $fila['ci'];
-
-                    $sql = "SELECT u.ci, u.nombre, u.apellido, d.posicion, e.nombre_equipo FROM usuario AS u 
+                    $sql = "SELECT u.ci, u.nombre, u.apellido, d.posicion, e.nombre_equipo 
+                                FROM usuario AS u 
                                 INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci 
                                 INNER JOIN deportista AS d ON uc.ci = d.ci 
                                 INNER JOIN esta AS es ON es.ci = d.ci 
                                 INNER JOIN equipo AS e ON es.id_equipo = e.id_equipo 
                                 WHERE u.ci = ?";
+
                     $params = "s";
                     $jugadorData = listarBD($sql, $params, $ci);
 
-                    if (!empty($jugadorData)) {
-                        foreach ($jugadorData as $jugador) {
-                            $resultado['jugadores'][] = [
-                                'ci' => !empty($jugador['ci']) ? $jugador['ci'] : '-',
-                                'nombre' => $jugador['nombre'],
-                                'apellido' => $jugador['apellido'],
-                                'posicion' => $jugador['posicion'],
-                                'nombre_equipo' => $jugador['nombre_equipo']
-                            ];
-                        }
+                    foreach ($jugadorData as $jugador) {
+                        $resultado["jugadores"][] = [
+                            'ci' => $jugador['ci'],
+                            'nombre' => $jugador['nombre'],
+                            'apellido' => $jugador['apellido'],
+                            'posicion' => $jugador['posicion'],
+                            'nombre_equipo' => $jugador['nombre_equipo']
+                        ];
                     }
                 }
-
             } else {
                 $sql = "SELECT * FROM equipo";
                 $params = "";
@@ -1044,22 +1039,23 @@ function listar($tabla)
                 $equipos = listarBD($sql, $params, $atributos);
 
                 foreach ($equipos as $equipo) {
-                    $resultado['equipos'][] = [
+                    array_push($resultado["equipos"], [
                         'id_equipo' => $equipo['id_equipo'],
                         'nombre_equipo' => $equipo['nombre_equipo']
-                    ];
+                    ]);
 
-                    $sql = "SELECT u.ci, u.nombre, u.apellido, d.posicion FROM usuario AS u 
-                                INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci
-                                INNER JOIN deportista AS d ON uc.ci = d.ci
+                    $sql = "SELECT u.ci, u.nombre, u.apellido, d.posicion 
+                                FROM usuario AS u 
+                                INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci 
+                                INNER JOIN deportista AS d ON uc.ci = d.ci 
                                 INNER JOIN esta AS es ON es.ci = d.ci 
                                 WHERE es.id_equipo = ?";
                     $params = "i";
                     $jugadoresEquipo = listarBD($sql, $params, $equipo['id_equipo']);
 
                     foreach ($jugadoresEquipo as $jugador) {
-                        $resultado['jugadores'][] = [
-                            'ci' => !empty($jugador['ci']) ? $jugador['ci'] : 'sin ci',
+                        $resultado["jugadores"][] = [
+                            'ci' => $jugador['ci'],
                             'nombre' => $jugador['nombre'],
                             'apellido' => $jugador['apellido'],
                             'posicion' => $jugador['posicion'],
