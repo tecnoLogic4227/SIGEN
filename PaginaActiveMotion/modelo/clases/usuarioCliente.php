@@ -8,9 +8,6 @@ class Cliente extends Usuario
     public $actividad;
     public $estado;
     public $estadoActividad;
-    public $fecha;
-    public $hora;
-    public $turnoAgenda;
     public $cumplimientoAgenda;
     public $resistenciaAnaerobica;
     public $fuerzaMuscular;
@@ -19,15 +16,12 @@ class Cliente extends Usuario
     public $resistenciaMonotonia;
     public $resiliencia;
 
-    public function __construct($ci, $actividad, $estado, $estadoActividad, $fecha, $hora, $turnoAgenda, $cumplimientoAgenda, $resistenciaAnaerobica, $fuerzaMuscular, $resistenciaMuscular, $flexibilidad, $resistenciaMonotonia, $resiliencia)
+    public function __construct($ci, $actividad, $estado, $estadoActividad, $cumplimientoAgenda, $resistenciaAnaerobica, $fuerzaMuscular, $resistenciaMuscular, $flexibilidad, $resistenciaMonotonia, $resiliencia)
     {
         $this->ci = $ci;
         $this->actividad = $actividad;
         $this->estado = $estado;
         $this->estadoActividad = $estadoActividad;
-        $this->fecha = $fecha;
-        $this->hora = $hora;
-        $this->turnoAgenda = $turnoAgenda;
         $this->cumplimientoAgenda = $cumplimientoAgenda;
         $this->resistenciaAnaerobica = $resistenciaAnaerobica;
         $this->fuerzaMuscular = $fuerzaMuscular;
@@ -54,18 +48,6 @@ public function getEstadoActividad() {
 return $this->estadoActividad;
 }
 
-public function getFecha() {
-return $this->fecha;
-}
-
-public function getHora() {
-return $this->hora;
-}
-
-public function getTurnoAgenda() {
-return $this->turnoAgenda;
-}
-
 public function setActividad($actividad) {
 $this->actividad = $actividad;
 }
@@ -76,18 +58,6 @@ $this->estado = $estado;
 
 public function setEstadoActividad($estadoActividad) {
 $this->estadoActividad = $estadoActividad;
-}
-
-public function setFecha($fecha) {
-$this->fecha = $fecha;
-}
-
-public function setHora($hora) {
-$this->hora = $hora;
-}
-
-public function setTurnoAgenda($turnoAgenda) {
-$this->turnoAgenda = $turnoAgenda;
 }
 
 public function getCumplimientoAgenda() {

@@ -3,10 +3,16 @@ $(document).ready(() => {
     const tabla = "ejercicio";
     datos = "";
 
+    const limpiarPantalla = () => {
+        $(".deportesAvanzadoAgregarModificar").css("display", "none");
+        $(".deportesAvanzadoEliminar").css("display", "none");
+        $(".deportesAvanzadoConfirmarEliminar").css("display", "none");
+    }
+
     const listarEjercicio = (datos) => {
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "GET",
             data: {
                 tabla: tabla,
@@ -47,7 +53,7 @@ $(document).ready(() => {
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: { 
                 tabla: tabla,
@@ -57,7 +63,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarEjercicio(datos);
@@ -83,7 +89,7 @@ $(document).ready(() => {
             nroSeries: nroSeries,
             grupoMuscular: grupoMuscular,
             descripcion: descripcion
-        }, "Ejercicio creado correctamente.", "Error al crear Ejercicio.");
+        }, "Ejercicio creado correctamente.", "Error al crear ejercicio.");
     };
 
     const datosCrearEjercicio = (event) => {
@@ -121,56 +127,48 @@ $(document).ready(() => {
         grupoMuscular = $(".inputCrearEjercicioGrupoMuscular").val();
         descripcion = $(".inputCrearEjercicioDescripcion").val();
         limpiarPantalla();
-        manejarSolicitud("POST", {
+        manejarSolicitud("PUT", {
             idEjercicio: idEjercicio,
             nombreEjercicio: nombreEjercicio,
             nroRep: nroRep,
             nroSeries: nroSeries,
             grupoMuscular: grupoMuscular,
             descripcion: descripcion
-        }, "Ejercicio creado correctamente.", "Error al crear Ejercicio.");
+        }, "Ejercicio modificado correctamente.", "Error al modificar ejercicio.");
     };
 
     const eliminarEjercicio = (event) => {
         event.preventDefault();
-        idEjercicio = $(".inputBuscarEjercicioIdEjercicio").val();
+        idEjercicio = $(".inputEliminarEjercicioIdEjercicio").val();
         limpiarPantalla();
         manejarSolicitud("DELETE", {
             idEjercicio: idEjercicio
         }, "Ejercicio eliminado correctamente.", "Error al eliminar Ejercicio.");
     };
 
-    const confirmarCrearEjercicio = () => {
+    const confirmarModificarDeporte = () => {
         limpiarPantalla();
-        $(".confirmarCrearEjercicio").css("display", "block");
+        $(".deportesAvanzadoAgregarModificar").css("display", "flex");
     }
 
-    const confirmarModificarEjercicio = () => {
+    const confirmarEliminarDeporte = () => {
         limpiarPantalla();
-        $(".confirmarModificarEjercicio").css("display", "block");
+        $(".deportesAvanzadoEliminar").css("display", "flex");
     }
 
-    const confirmarEliminarEjercicio = () => {
+    const confirmarConfirmarEliminarDeporte = () => {
         limpiarPantalla();
-        $(".confirmarEliminarEjercicio").css("display", "block");
+        $(".deportesAvanzadoConfirmarEliminar").css("display", "flex");
     }
 
-    const limpiarPantalla = () => {
-        $(".confirmarCrearEjercicio").css("display", "none");
-        $(".confirmarModificarEjercicio").css("display", "none");
-        $(".confirmarEliminarEjercicio").css("display", "none");
-    }
-
-    $(".ejercicioCrear").click(confirmarCrearEjercicio);
-    $(".ejercicioConfirmarCrear").click(datosCrearEjercicio);
+    $(".deporteCrear").click(confirmarModificarDeporte);
+    $(".deporteConfirmarCrear").click(datosCrearEjercicio);
     $(".ejercicioBuscar").click(datosBuscarEjercicio);
-    $(".ejercicioModificar").click(confirmarModificarEjercicio);
-    $(".ejercicioConfirmarModificar").click(modificarEjercicio);
-    $(".ejercicioEliminar").click(confirmarEliminarEjercicio);
-    $(".ejercicioConfirmarEliminar").click(eliminarEjercicio);
+    $(".deporteModificar").click(confirmarModificarDeporte);
+    $(".deporteConfirmarModificar").click(modificarEjercicio);
+    $(".deporteEliminar").click(confirmarEliminarDeporte);
+    $(".deporteConfirmarEliminar").click(confirmarConfirmarEliminarDeporte);
+    $(".deporteConfirmarConfirmarEliminar").click(eliminarEjercicio);
 
-    $(".ejercicioCancelarCrear").click(limpiarPantalla);
-    $(".ejercicioCancelarModificar").click(limpiarPantalla);
-    $(".ejercicioCancelarEliminar").click(limpiarPantalla);
-
+    $(".deporteCancelar").click(limpiarPantalla);
 });

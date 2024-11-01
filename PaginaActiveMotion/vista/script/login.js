@@ -2,7 +2,7 @@ $(document).ready(() => {
     let ci, contrasenia;
     datos = "";
 
-    const consultarLogin = (datos, errorMensaje) => {
+    const consultarLogin = (datos, errorMensaje, name, content) => {
         $.ajax({
             url: "../../../controlador/loginController.php",
             type: "POST",
@@ -14,7 +14,20 @@ $(document).ready(() => {
                     let respuesta = JSON.parse(response);
                     if (respuesta) {
                         if (respuesta.redirect) {
-                            window.location.href = respuesta.redirect;                        
+                            if (typeof(Storage) != "undefined") {
+                                let name = "ci";
+                                let content = ci;
+                                sessionStorage.setItem(name, content);
+
+                                name = "rol";
+                                content = respuesta.rol[0]["rol"];
+                                alert(content);
+                                sessionStorage.setItem(name, content);
+
+                                window.location.href = respuesta.redirect;                  
+                            } else {
+                                alert(errorMensaje);
+                            }
                         } else {
                             alert(respuesta);
                         }
@@ -33,7 +46,8 @@ $(document).ready(() => {
 
     const verificarDatosLogin = (ci, contrasenia) => {
         if (filtroCedula(ci) && filtroContrasenia(contrasenia.valido)) {
-            consultarLogin({ ci: ci, contrasenia: contrasenia }, "Error al loguearse.");
+            let name, content;
+            consultarLogin({ ci: ci, contrasenia: contrasenia }, "Error al loguearse.", name, content);
         } else {
             alert("datos inválidos.");
         }

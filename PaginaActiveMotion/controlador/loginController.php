@@ -75,8 +75,10 @@ function redireccionarUsuario($resultadoRol)
             $url = "../superUsuario/inicioSuperUsuario.html";
             break;
     }
+
+    $respuesta = ["redirect" => $url, "rol" => $resultadoRol];
     
-    echo json_encode(["redirect" => $url]);
+    echo json_encode($respuesta);
     exit();
 }
 

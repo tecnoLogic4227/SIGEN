@@ -1,13 +1,15 @@
 $(document).ready(() => {
-    let idEquipo, nombreEquipo, cantidad, metodo;
+    let idEquipo, nombreEquipo, cantidad, ci, metodo;
     const tabla = "equipo";
     datos = "";
+    var jugadores = [];
 
     const listarEquipo = (datos) => {
+        let tr;
         metodo = "GET";
         $.ajax({
-            url: "../../controlador/crud/crudController.php",
-            type: "GET",
+            url: "../../../controlador/crudController.php",
+            type: "POST",
             data: {
                 tabla: tabla,
                 metodo: metodo,
@@ -15,23 +17,34 @@ $(document).ready(() => {
             },
             success: (response) => {
                 try {
-                    let equipo = JSON.parse(response);
-                    if (equipo.length > 0) {
-                        $(".tablaEquipo tbody").html("");
-                        let tbody = $(".tablaEquipo tbody");
-                        equipo.forEach(equipo1 => {
-                            let tr = $("<tr></tr>");
-                            tr.append(`<td>${equipo1.id_equipo}</td>`);
-                            tr.append(`<td>${equipo1.nombre_equipo}</td>`);
-                            tr.append(`<td>${equipo1.cantidad}</td>`);
-                            // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
-                            // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
-                            tbody.append(tr);
-                        });
+                    let respuesta = JSON.parse(response);
+                    $(".tablaEquipo tbody").html("");
+                    $(".tablaJugadores tbody").html("");
+
+                    if ((respuesta.equipos && respuesta.equipos.length > 0) || (respuesta.jugadores && respuesta.jugadores.length > 0)) {
+                        const equipos = respuesta.equipos;
+                        const jugadores = respuesta.jugadores;
+
+                        for (let i = 0; i < equipos.length; i++) {
+                            let trEquipo = $("<tr></tr>");
+                            trEquipo.append(`<td>${equipos[i].id_equipo}</td>`);
+                            trEquipo.append(`<td>${equipos[i].nombre_equipo}</td>`);
+                            $(".tablaEquipo tbody").append(trEquipo);
+                        }
+
+                        for (let j = 0; j < jugadores.length; j++) {
+                            let trJugador = $("<tr></tr>");
+                            trJugador.append(`<td>${jugadores[j].ci}</td>`);
+                            trJugador.append(`<td>${jugadores[j].nombre}</td>`);
+                            trJugador.append(`<td>${jugadores[j].apellido}</td>`);
+                            trJugador.append(`<td>${jugadores[j].posicion}</td>`);
+                            trJugador.append(`<td>${jugadores[j].id_equipo}</td>`);
+                            $(".tablaJugadores tbody").append(trJugador);
+                        }
                     } else {
                         alert("No se encontraron resultados.");
-                        $(".tablaEquipo tbody").html("");
                     }
+
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
                 }
@@ -42,9 +55,11 @@ $(document).ready(() => {
         });
     };
 
+    listarEquipo(datos);
+
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
-            url: "../../../controlador/crud/crudController.php",
+            url: "../../../controlador/crudController.php",
             type: "POST",
             data: {
                 tabla: tabla,
@@ -54,7 +69,7 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta == true) {
+                    if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
                         listarEquipo(datos);
@@ -71,12 +86,12 @@ $(document).ready(() => {
         });
     };
 
-    const crearEquipo = (idEquipo, nombreEquipo, cantidad) => {
+    const crearEquipo = (idEquipo, nombreEquipo, deporte, deportistas) => {
         limpiarPantalla();
         manejarSolicitud("POST", {
             idEquipo: idEquipo,
             nombreEquipo: nombreEquipo,
-            cantidad: cantidad
+            deporte: deporte
         }, "Equipo creado correctamente.", "Error al crear Equipo.");
     };
 
@@ -88,7 +103,44 @@ $(document).ready(() => {
         crearEquipo(idEquipo, nombreEquipo, cantidad);
     };
 
-    listarEquipo(datos);
+    const verificarExistenciaJugadores = (jugador, jugadores) => {
+        if (!jugadores.includes(jugador)) {
+            jugadores.push(ci);
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    const mostrarJugadores = () => {
+        $(".tablaOutputDeportistas tbody").html("");
+        jugadores.forEach((jugador, index) => {
+            let trJugador = $("<tr></tr>");
+            trJugador.append(`<td>${jugador}</td>`);
+            trJugador.append(`<td><button class="botonEliminarJugador" data-index="${index}">Eliminar</button></td>`);
+            $(".tablaOutputDeportistas tbody").append(trJugador);
+        });
+        alert(jugadores);
+    };
+
+    const eliminarJugador = function () {
+        const index = $(this).data("index");
+        jugadores.splice(index, 1); 
+        mostrarJugadores();
+    };
+
+    const datosDeportistas = (event) => {
+        event.preventDefault();
+        ci = $(".inputArmarEquipoCi").val();
+        
+        if (verificarExistenciaJugadores(ci, jugadores)) {
+            mostrarJugadores();
+        } else {
+            alert("Jugador ya existente.");
+        }
+        
+        $(".inputArmarEquipoCi").val("");
+    };
 
     const buscarEquipo = (idEquipo) => {
         listarEquipo({
@@ -128,34 +180,36 @@ $(document).ready(() => {
     const confirmarCrearEquipo = () => {
         limpiarPantalla();
         $(".confirmarCrearEquipo").css("display", "block");
-    }
+    };
 
     const confirmarModificarEquipo = () => {
         limpiarPantalla();
         $(".confirmarModificarEquipo").css("display", "block");
-    }
+    };
 
     const confirmarEliminarEquipo = () => {
         limpiarPantalla();
         $(".confirmarEliminarEquipo").css("display", "block");
-    }
+    };
 
     const limpiarPantalla = () => {
         $(".confirmarCrearEquipo").css("display", "none");
         $(".confirmarModificarEquipo").css("display", "none");
         $(".confirmarEliminarEquipo").css("display", "none");
-    }
+    };
 
     $(".equipoCrear").click(confirmarCrearEquipo);
     $(".equipoConfirmarCrear").click(datosCrearEquipo);
+
+    $(".botonEquipoAgregarJugador").click(datosDeportistas);
+
+    $(document).on("click", ".botonEliminarJugador", eliminarJugador);
+
     $(".equipoBuscar").click(datosBuscarEquipo);
+
     $(".equipoModificar").click(confirmarModificarEquipo);
     $(".equipoConfirmarModificar").click(modificarEquipo);
+
     $(".equipoEliminar").click(confirmarEliminarEquipo);
     $(".equipoConfirmarEliminar").click(eliminarEquipo);
-
-    $(".equipoCancelarCrear").click(limpiarPantalla);
-    $(".equipoCancelarModificar").click(limpiarPantalla);
-    $(".equipoCancelarEliminar").click(limpiarPantalla);
-
 });

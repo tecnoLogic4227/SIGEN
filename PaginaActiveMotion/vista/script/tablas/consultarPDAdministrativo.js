@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     let ci, nombre, apellido, direccion, email, fechaNac, rol, telefono, metodo;
-    const tabla = "usuario";
+    const tabla = "consultarPDAdministrativo";
     datos = "";
 
     const limpiarPantalla = () => {
@@ -55,14 +55,6 @@ $(document).ready(() => {
             }
         });
     };
-
-    ci = sessionStorage.getItem("ci");
-    rol = sessionStorage.getItem("rol");
-    $(".labelCedula").html(ci);
-    $(".labelRol").html(rol);
-    listarUsuario({
-        ci: ci
-    });
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
@@ -120,22 +112,23 @@ $(document).ready(() => {
         crearUsuario(ci, nombre, apellido, direccion, email, fechaNac, rol, telefono);
     };
 
+    listarUsuario(datos);
+
     const buscarUsuario = (ci) => {
         listarUsuario({
             ci: ci,
-            idRutina: idRutina
         });
     };
 
     const datosBuscarUsuario = (event) => {
         event.preventDefault();
-        ci = sessionStorage.getItem("ci");
+        ci = $(".inputBuscarUsuarioCi").val();
         buscarUsuario(ci);
     };
 
     const modificarUsuario = (event) => {
         event.preventDefault();
-        ci = sessionStorage.getItem("ci");
+        ci = $(".inputModificarUsuarioCi").val();
         nombre = $(".inputModificarUsuarioNombre").val();
         apellido = $(".inputModificarUsuarioApellido").val();
         direccion = $(".inputModificarUsuarioDireccion").val();
@@ -158,12 +151,21 @@ $(document).ready(() => {
 
     const eliminarUsuario = (event) => {
         event.preventDefault();
-        ci = $(".inputBuscarUsuarioCi").val();
+        ci = $(".inputEliminarUsuarioCi").val();
         limpiarPantalla();
         manejarSolicitud("DELETE", {
             ci: ci,
         }, "Usuario eliminado correctamente.", "Error al eliminar Usuario.");
     };
+
+    const desactivar = (event) => {
+        event.preventDefault();
+        ci = $(".inputDesactivarUsuarioCi").val();
+        limpiarPantalla();
+        manejarSolicitud("desactivar", {
+            ci: ci,
+        }, "Usuario eliminado correctamente.", "Error al eliminar Usuario.");
+    }
 
     const confirmarConfirmarEliminarUsuario = () => {
         limpiarPantalla();
@@ -190,11 +192,6 @@ $(document).ready(() => {
         $(".sectionDesactivar").css("display", "block");
     }
 
-    const confirmarActivar = () => {
-        limpiarPantalla();
-        $(".sectionActivar").css("display", "block");
-    }
-
     $(".usuarioCrear").click(confirmarCrearUsuario);
     $("#usuarioConfirmarCrear").click(datosCrearUsuario);
 
@@ -209,9 +206,6 @@ $(document).ready(() => {
 
     $(".usuarioDesactivar").click(confirmarDesactivar);
     $(".usuarioConfirmarDesactivar").click(desactivar);
-
-    $(".usuarioActivar").click(confirmarActivar);
-    $(".usuarioConfirmarActivar").click(activar);
 
     $(".usuarioCancelar").click(limpiarPantalla);
 });

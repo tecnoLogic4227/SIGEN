@@ -1,15 +1,13 @@
 $(document).ready(() => {
 
     let ci, nombre, apellido, direccion, email, fechaNac, rol, telefono, metodo;
-    const tabla = "usuario";
+    const tabla = "usuarioAvanzado";
     datos = "";
 
     const limpiarPantalla = () => {
-        $(".sectionDesactivar").css("display", "none");
-        $(".sectionActivar").css("display", "none");
-        $(".sectionModificar").css("display", "none");
-        $(".sectionConfirmarEliminar").css("display", "none");
+        $(".crearModificar").css("display", "none");
         $(".sectionEliminar").css("display", "none");
+        $(".sectionConfirmarEliminar").css("display", "none");
     }
 
     const listarUsuario = (datos) => {
@@ -26,25 +24,21 @@ $(document).ready(() => {
                 try {
                     let usuario = JSON.parse(response);
                     if (usuario.length > 0) {
-                        $(".tablaUsuario tbody").html("");
-                        let tbody = $(".tablaUsuario tbody");
+                        $(".deportesAvanzadoTabla tbody").html("");
+                        let tbody = $(".deportesAvanzadoTabla tbody");
                         usuario.forEach(usuario1 => {
                             let tr = $("<tr></tr>");
-                            tr.append(`<td>${usuario1.ci}</td>`);
-                            tr.append(`<td>${usuario1.nombre}</td>`);
-                            tr.append(`<td>${usuario1.apellido}</td>`);
-                            tr.append(`<td>${usuario1.direccion}</td>`);
-                            tr.append(`<td>${usuario1.email}</td>`);
-                            tr.append(`<td>${usuario1.fecha_nac}</td>`);
-                            tr.append(`<td>${usuario1.rol}</td>`)
-                            tr.append(`<td>${usuario1.telefono}</td>`);
+                            tr.append(`<td class="celda">${usuario1.ci}</td>`);
+                            tr.append(`<td class="celda">${usuario1.nombre}</td>`);
+                            tr.append(`<td class="celda">${usuario1.apellido}</td>`);
+                            tr.append(`<td class="celda">${usuario1.actividad}</td>`);
                             // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
                             // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
                             tbody.append(tr);
                         });
                     } else {
                         alert("No se encontraron resultados.");
-                        $(".tablaUsuario tbody").html("");
+                        $(".deportesAvanzadoTabla tbody").html("");
                     }
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
@@ -55,14 +49,6 @@ $(document).ready(() => {
             }
         });
     };
-
-    ci = sessionStorage.getItem("ci");
-    rol = sessionStorage.getItem("rol");
-    $(".labelCedula").html(ci);
-    $(".labelRol").html(rol);
-    listarUsuario({
-        ci: ci
-    });
 
     const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
@@ -120,6 +106,8 @@ $(document).ready(() => {
         crearUsuario(ci, nombre, apellido, direccion, email, fechaNac, rol, telefono);
     };
 
+    listarUsuario(datos);
+
     const buscarUsuario = (ci) => {
         listarUsuario({
             ci: ci,
@@ -129,13 +117,13 @@ $(document).ready(() => {
 
     const datosBuscarUsuario = (event) => {
         event.preventDefault();
-        ci = sessionStorage.getItem("ci");
+        ci = $(".inputBuscarUsuarioCi").val();
         buscarUsuario(ci);
     };
 
     const modificarUsuario = (event) => {
         event.preventDefault();
-        ci = sessionStorage.getItem("ci");
+        ci = $(".inputModificarUsuarioCi").val();
         nombre = $(".inputModificarUsuarioNombre").val();
         apellido = $(".inputModificarUsuarioApellido").val();
         direccion = $(".inputModificarUsuarioDireccion").val();
@@ -172,12 +160,12 @@ $(document).ready(() => {
 
     const confirmarCrearUsuario = () => {
         limpiarPantalla();
-        $(".confirmarCrearUsuario").css("display", "block");
+        $(".crearModificar").css("display", "block");        
     }
 
     const confirmarModificarUsuario = () => {
         limpiarPantalla();
-        $(".sectionModificar").css("display", "block");
+        $(".crearModificar").css("display", "block");
     }
 
     const confirmarEliminarUsuario = () => {
@@ -185,33 +173,17 @@ $(document).ready(() => {
         $(".sectionEliminar").css("display", "block");
     }
 
-    const confirmarDesactivar = () => {
-        limpiarPantalla();
-        $(".sectionDesactivar").css("display", "block");
-    }
-
-    const confirmarActivar = () => {
-        limpiarPantalla();
-        $(".sectionActivar").css("display", "block");
-    }
-
     $(".usuarioCrear").click(confirmarCrearUsuario);
-    $("#usuarioConfirmarCrear").click(datosCrearUsuario);
+    $(".usuarioConfirmarCrear").click(datosCrearUsuario);
 
     $(".usuarioBuscar").click(datosBuscarUsuario);
 
     $(".usuarioModificar").click(confirmarModificarUsuario);
-    $("#usuarioConfirmarModificar").click(modificarUsuario);
+    $(".usuarioConfirmarModificar").click(modificarUsuario);
 
     $(".usuarioEliminar").click(confirmarEliminarUsuario);
     $(".usuarioConfirmarEliminar").click(confirmarConfirmarEliminarUsuario);
     $(".usuarioConfirmarConfirmarEliminar").click(eliminarUsuario);
-
-    $(".usuarioDesactivar").click(confirmarDesactivar);
-    $(".usuarioConfirmarDesactivar").click(desactivar);
-
-    $(".usuarioActivar").click(confirmarActivar);
-    $(".usuarioConfirmarActivar").click(activar);
 
     $(".usuarioCancelar").click(limpiarPantalla);
 });
