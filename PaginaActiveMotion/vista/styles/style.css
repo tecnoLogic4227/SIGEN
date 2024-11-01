@@ -1210,7 +1210,6 @@ input::placeholder {
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
-  text-trans: uppercase;
   font-size: 14px;
   font-weight: bold;
 }
@@ -1287,6 +1286,7 @@ margin-left: 8vw;
   margin-left: -10vw;
   z-index: 0;
   display: block;
+}
 }
 
 .graficaSeleccionador {
@@ -2210,5 +2210,5 @@ td {
   
 .tit-tabla-registrar-calificacion {     
   margin-top: 10vh;    
-   margin-bottom: 5vh; 
+   margin-bottom: 5vh;
 }

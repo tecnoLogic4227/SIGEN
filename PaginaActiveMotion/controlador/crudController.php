@@ -1437,11 +1437,11 @@ function listar($tabla)
             $usuario = datos($tabla);
 
             if (!is_null($usuario->ci) && !empty($usuario->ci)) {
-                $sql = "SELECT * FROM usuario WHERE ci = ? AND rol = 'cliente'";
+                $sql = "SELECT u.*, uc.estado_actividad FROM usuario AS u INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci WHERE u.ci = ? AND u.rol = 'cliente'";
                 $params = "i";
                 $atributos = $usuario->ci;
             } else {
-                $sql = "SELECT * FROM usuario WHERE rol = 'cliente'";
+                $sql = "SELECT u.*, uc.estado_actividad FROM usuario AS u INNER JOIN usuario_cliente AS uc ON u.ci = uc.ci WHERE rol = 'cliente'";
                 $params = "";
                 $atributos = "";
             }
@@ -1915,17 +1915,40 @@ function eliminar($tabla)
         case "consultarPDAdministrativo":
             if (isset($_REQUEST["ci"])) {
                 $usuario = datos($tabla);
-
-                $sql = "DELETE FROM usuario WHERE ci = ? AND rol = 'cliente'";
+            
+                $sqlConsulta = "SELECT * FROM deportista WHERE ci = ?";
                 $params = "i";
                 $atributos = [$usuario->ci];
-
+            
+                if (verificarExistencia($sqlConsulta, $params, $atributos)) {
+                    $sql = "DELETE FROM deportista WHERE ci = ?";
+                    eliminarBD($sql, $params, $atributos, $sqlConsulta);
+                } else {
+                    $sqlConsulta = "SELECT * FROM libre WHERE ci = ?";
+                    if (verificarExistencia($sqlConsulta, $params, $atributos)) {
+                        $sql = "DELETE FROM libre WHERE ci = ?";
+                        eliminarBD($sql, $params, $atributos, $sqlConsulta);
+                    } else {
+                        $sqlConsulta = "SELECT * FROM paciente WHERE ci = ?";
+                        if (verificarExistencia($sqlConsulta, $params, $atributos)) {
+                            $sql = "DELETE FROM paciente WHERE ci = ?";
+                            eliminarBD($sql, $params, $atributos, $sqlConsulta);
+                        }
+                    }
+                }
+            
+                $sql = "DELETE FROM usuario_cliente WHERE ci = ?";
+                $sqlConsulta = "SELECT * FROM usuario_cliente WHERE ci = ?";
+                
+                eliminarBD($sql, $params, $atributos, $sqlConsulta);
+            
+                $sql = "DELETE FROM usuario WHERE ci = ? AND rol = 'cliente'";
                 $sqlConsulta = "SELECT * FROM usuario WHERE ci = ? AND rol = 'cliente'";
                 echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             } else {
                 echo json_encode(false);
             }
-
+            
             break;
         case "usuario":
             if (isset($_REQUEST["ci"])) {
