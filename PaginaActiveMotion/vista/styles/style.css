@@ -1125,13 +1125,13 @@ input::placeholder {
 /*......................................................Evolucion Usuarios...............................................*/
 .grafica {
   margin-top: 0vh;
-  margin-left: 30vw;
+  margin-left:20vw;
   width: 60%;
   z-index: 0;
 }
 
 .tablaDeportistasSeleccionador .graficaEntrenador {
-  margin-top: 0vh;
+  margin-top: 10vh;
   margin-left: 40vw ;
   width: 70%;
   z-index: 0;
@@ -1141,7 +1141,7 @@ input::placeholder {
   padding: 20px;
   border-radius: 8px;
   margin-left: 5vw;
-  margin-top: -40vh;
+  margin-top: 10vh;
   width: 20%;
   background-color: rgba(205, 236, 255, 0.938);
   border-radius: 15px;
@@ -1282,15 +1282,24 @@ margin-left: 8vw;
 }
 
 .tablaDeportistasSelec {
-  margin-top: -10vh;
+  margin-top: -10vh !important;
 }
 
 .graficaSeleccionador {
-  margin-top: 5vh;
-  margin-left: 20vw;
-  width: 60%;
+  margin-top: -40vh;
+  margin-left: 15vw ;
+  width: 70%;
   z-index: 0;
-  display: block;
+}
+
+#flechaIzquierda{
+  margin-top: 40vh;
+  margin-left: 3vw;
+}
+
+#flechaDerecha{
+  margin-top: -45vh;
+  margin-left: 87vw;
   position: absolute;
 }
 
@@ -1300,7 +1309,7 @@ margin-left: 8vw;
 }
 
 .tablaCaliSeleccionador {
-  margin-top: 90vh;
+  margin-top: 20vh;
   margin-left: 10vw;
 }
 

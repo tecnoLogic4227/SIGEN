@@ -695,11 +695,22 @@ th, td {
   z-index: 0;
 }
 
+#flechaIzquierda{
+  margin-top: 3vh;
+  margin-left: 15vw;
+}
+
+#flechaDerecha{
+  margin-top: -8vh;
+  margin-left: 75vw;
+  position: absolute;
+}
+
  .containerEvolucion {
   padding: 20px;
   border-radius: 8px;
   margin-left: 5vw;
-  margin-top: 10vh;
+  margin-top: 60vh;
   width: 50%;
   background-color: rgba(205, 236, 255, 0.938);
   border-radius: 15px; 

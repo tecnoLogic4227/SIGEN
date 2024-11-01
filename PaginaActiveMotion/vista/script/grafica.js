@@ -1,79 +1,98 @@
-const labels = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4']
+$(document).ready(function() {
+    let semanaActual = 0;
+    const semanasData = [];
 
-const cumplimientoAgenda = {
-    label: "Cumplimiento con la agenda",
-    data: [25, 68, 54, 77],
-    borderColor: 'rgba(248, 37, 37, 0.8)',
-    fill: false,
-    tension: 0.1
-};
+    // Configura el evento de clic en el botón de guardar
+    $("#usuarioClienteModificar").on("click", function(event) {
+        event.preventDefault();
 
-const resistenciaAnaeróbica = {
-    label: "Resistencia anaeróbica",
-    data: [32, 91, 86, 110],
-    borderColor: 'rgba(69, 248, 84, 0.8)',
-    fill: false,
-    tension: 0.1
-};
+        // Captura los valores ingresados usando jQuery y asigna un valor 0 por defecto si están vacíos
+        const cumplimientoAgenda = parseInt($("#cumplimientoAgenda").val()) || 0;
+        const resistenciaAnaerobica = parseInt($("#resistenciaAnaerobica").val()) || 0;
+        const fuerzaMuscular = parseInt($("#fuerzaMuscular").val()) || 0;
+        const resistenciaMuscular = parseInt($("#resistenciaMuscular").val()) || 0;
+        const flexibilidad = parseInt($("#flexibilidad").val()) || 0;
+        const resistenciaMonotonia = parseInt($("#resistenciaMonotonia").val()) || 0;
+        const resiliencia = parseInt($("#resiliencia").val()) || 0;
 
-const fuerzaMuscular = {
-    label: "Fuerza muscular",
-    data: [47, 103, 92, 129],
-    borderColor: 'rgba(69, 140, 248, 0.8)',
-    fill: false,
-    tension: 0.1
-};
+        // Añade los datos de la semana actual a semanasData
+        semanasData.push({
+            label: `Semana ${semanasData.length + 1}`,
+            data: {
+                cumplimientoAgenda,
+                resistenciaAnaerobica,
+                fuerzaMuscular,
+                resistenciaMuscular,
+                flexibilidad,
+                resistenciaMonotonia,
+                resiliencia
+            }
+        });
 
-const flexibilidad = {
-    label: "Flexibilidad",
-    data: [38, 85, 73, 102],
-    borderColor: 'rgba(251, 255, 0, 0.8)',
-    fill: false,
-    tension: 0.1
-};
+        // Muestra la última semana ingresada
+        semanaActual = semanasData.length - 1;
+        mostrarSemana(semanaActual);
+    });
 
-const resistenciaMonotonía = {
-    label: "Resistencia a la monotonía",
-    data: [29, 71, 66, 94],
-    borderColor: 'rgba(9, 255, 0, 0.8)',
-    fill: false,
-    tension: 0.1
-};
+    // Configuración inicial de la gráfica
+    const ctx = $("#graficaEntrenador")[0].getContext("2d");
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                { label: "Cumplimiento con la agenda", data: [], borderColor: 'rgba(248, 37, 37, 0.8)', fill: false },
+                { label: "Resistencia anaeróbica", data: [], borderColor: 'rgba(69, 248, 84, 0.8)', fill: false },
+                { label: "Fuerza muscular", data: [], borderColor: 'rgba(69, 140, 248, 0.8)', fill: false },
+                { label: "Resistencia muscular", data: [], borderColor: 'rgba(255, 136, 0)', fill: false },
+                { label: "Flexibilidad", data: [], borderColor: 'rgba(251, 255, 0, 0.8)', fill: false },
+                { label: "Resistencia a la monotonía", data: [], borderColor: 'rgba(9, 255, 0, 0.8)', fill: false },
+                { label: "Resiliencia", data: [], borderColor: 'rgba(245, 40, 145, 0.8)', fill: false }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Semana' } },
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 20,
+                    title: { display: true, text: 'Valor' }
+                }
+            }
+        }
+    });
 
-const resiliencia = {
-    label: "Resiliencia",
-    data: [43, 108, 95, 121],
-    borderColor: 'rgba(245, 40, 145, 0.8)',
-    fill: false,
-    tension: 0.1
-};
+    // Función para mostrar datos de una semana específica en la gráfica
+    function mostrarSemana(semanaIndex) {
+        const semana = semanasData[semanaIndex];
 
-const $graphEvolucion = $("#graficaEvolucion");
-const $graphSeleccionador = $("#graficaSeleccionador");
-const $graphEntrenador = $("#graficaEntrenador");
+        chart.data.labels = [semana.label];
+        chart.data.datasets[0].data = [semana.data.cumplimientoAgenda];
+        chart.data.datasets[1].data = [semana.data.resistenciaAnaerobica];
+        chart.data.datasets[2].data = [semana.data.fuerzaMuscular];
+        chart.data.datasets[3].data = [semana.data.resistenciaMuscular];
+        chart.data.datasets[4].data = [semana.data.flexibilidad];
+        chart.data.datasets[5].data = [semana.data.resistenciaMonotonia];
+        chart.data.datasets[6].data = [semana.data.resiliencia];
 
-const data = {
-    labels: labels,
-    datasets: [cumplimientoAgenda, resistenciaAnaeróbica, fuerzaMuscular, flexibilidad, resistenciaMonotonía, resiliencia]
-};
+        chart.update();
+    }
 
-const config = {
-    type: 'line',
-    data: data,
-};
+    // Manejo de eventos para las flechas de navegación
+    $("#flechaIzquierda").on("click", function() {
+        if (semanaActual > 0) {
+            semanaActual--;
+            mostrarSemana(semanaActual);
+        }
+    });
 
-if ($graphEvolucion.length) {
-    new Chart($graphEvolucion[0], config);
-}
+    $("#flechaDerecha").on("click", function() {
+        if (semanaActual < semanasData.length - 1) {
+            semanaActual++;
+            mostrarSemana(semanaActual);
+        }
+    });
+});
 
-if ($graphSeleccionador.length) {
-    new Chart($graphSeleccionador[0], config);
-}
-
-if ($graphEntrenador.length) {
-    new Chart($graphEntrenador[0], config);
-}
-
-if (!$graphEvolucion.length && !$graphSeleccionador.length && !$graphEntrenador) {
-    console.error('Elemento del gráfico no encontrado');
-}
