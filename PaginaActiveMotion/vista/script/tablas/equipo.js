@@ -57,7 +57,7 @@ $(document).ready(() => {
 
     listarEquipo(datos);
 
-    const manejarSolicitud = (metodo, datos, exitoMensaje, errorMensaje) => {
+    const manejarSolicitud = (metodo, datos, exitoMensaje) => {
         $.ajax({
             url: "../../../controlador/crudController.php",
             type: "POST",
@@ -69,12 +69,12 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta) {
+                    if (respuesta === true) {
                         alert(exitoMensaje);
                         datos = "";
                         listarEquipo(datos);
                     } else {
-                        alert(errorMensaje);
+                        alert(respuesta);
                     }
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
@@ -86,59 +86,60 @@ $(document).ready(() => {
         });
     };
 
-    const crearEquipo = (idEquipo, nombreEquipo, deporte, deportistas) => {
-        limpiarPantalla();
+    const crearEquipo = (idEquipo, nombreEquipo, deporte) => {
         manejarSolicitud("POST", {
+            jugadores: JSON.stringify(jugadores),
             idEquipo: idEquipo,
             nombreEquipo: nombreEquipo,
             deporte: deporte
-        }, "Equipo creado correctamente.", "Error al crear Equipo.");
+        }, "Equipo creado correctamente.");
     };
 
     const datosCrearEquipo = (event) => {
         event.preventDefault();
         idEquipo = $(".inputCrearEquipoIdEquipo").val();
         nombreEquipo = $(".inputCrearEquipoNombreEquipo").val();
-        cantidad = $(".inputCrearEquipoCantidad").val();
-        crearEquipo(idEquipo, nombreEquipo, cantidad);
+        deporte = $(".inputCrearEquipoDeporte").val();
+        crearEquipo(idEquipo, nombreEquipo, deporte);
     };
 
-    const verificarExistenciaJugadores = (jugador, jugadores) => {
-        if (!jugadores.includes(jugador)) {
-            jugadores.push(ci);
-            return true;
+    const verificarExistenciaJugadores = (ci, posicion, jugadores) => {
+        if (!jugadores.some(jugador => jugador.ci == ci)) {
+            if (filtroCedula(ci)) {
+                jugadores.push({ "ci": ci, "posicion": posicion });
+                mostrarJugadores();
+            } else {
+                alert("Por favor ingrese una cédula válida.");
+            }
         } else {
-            return false;
+            alert("Jugador ya existente.");
         }
     };
+
 
     const mostrarJugadores = () => {
         $(".tablaOutputDeportistas tbody").html("");
         jugadores.forEach((jugador, index) => {
             let trJugador = $("<tr></tr>");
-            trJugador.append(`<td>${jugador}</td>`);
+            trJugador.append(`<td>${jugador["ci"]}</td>`);
             trJugador.append(`<td><button class="botonEliminarJugador" data-index="${index}">Eliminar</button></td>`);
             $(".tablaOutputDeportistas tbody").append(trJugador);
         });
-        alert(jugadores);
     };
 
     const eliminarJugador = function () {
         const index = $(this).data("index");
-        jugadores.splice(index, 1); 
+        jugadores.splice(index, 1);
         mostrarJugadores();
     };
 
     const datosDeportistas = (event) => {
         event.preventDefault();
         ci = $(".inputArmarEquipoCi").val();
-        
-        if (verificarExistenciaJugadores(ci, jugadores)) {
-            mostrarJugadores();
-        } else {
-            alert("Jugador ya existente.");
-        }
-        
+        posicion = $(".inputArmarEquipoPosicion").val();
+
+        verificarExistenciaJugadores(ci, posicion, jugadores);
+
         $(".inputArmarEquipoCi").val("");
     };
 

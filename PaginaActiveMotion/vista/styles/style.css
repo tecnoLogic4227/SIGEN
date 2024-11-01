@@ -1274,7 +1274,6 @@ input::placeholder {
 }
 
 .tablaDeportistasSeleccionador {
-  margin-top: 250vh;
   margin-left: -10vw;
   z-index: 0;
   display: block;
