@@ -1238,11 +1238,11 @@ input::placeholder {
 /*.................................................Deportistas Seleccionador.....................................................*/
 .tituloSeleccionador {
   text-align: center;
-  height: 300vh;
+  margin-top: 5vh;
 }
 
 .titulo2Seleccionador {
-  margin-top: 13vh;
+  margin-top: 5vh;
   background-color: #e4f4fd;
   border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.438);
@@ -1273,6 +1273,16 @@ input::placeholder {
   margin-bottom: 10px;
 }
 
+.cedula, .nombre{
+margin-left: 8vw;
+}
+
+.inputDeportistaBuscador{
+  margin-left: 2vw;
+}
+
+.tablaDeportistasSelec {
+  margin-top: -10vh;
 .tablaDeportistasSeleccionador {
   margin-left: -10vw;
   z-index: 0;
@@ -1280,11 +1290,12 @@ input::placeholder {
 }
 
 .graficaSeleccionador {
-  margin-top: 15vh;
-  margin-left: 5vw;
-  width: 40%;
+  margin-top: 5vh;
+  margin-left: 20vw;
+  width: 60%;
   z-index: 0;
   display: block;
+  position: absolute;
 }
 
 .botonDeportistaBuscador {
@@ -1293,14 +1304,14 @@ input::placeholder {
 }
 
 .tablaCaliSeleccionador {
-  margin-top: -60vh;
+  margin-top: 90vh;
   margin-left: 10vw;
 }
 
 /*.................................................Equipos Seleccionador.....................................................*/
 
 .formEquiposSeleccionador {
-  width: 20vw;
+  width: 50vw;
   height: 70vh;
   margin-top: 10vh;
   margin-left: 0vw;
@@ -1406,17 +1417,19 @@ a {
 }
 
 #form-armarEquiposSeleccionador {
-  width: 15vw;
+  width: 25vw;
   display: none;
-  position: absolute;
-  right: 3vw;
-  top: 53vh;
+  position: relative;
+  right: -70vw;
+  top: 3vh;
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  height: 35vh;
 }
+
 
 button {
   width: auto;
@@ -1440,6 +1453,11 @@ button:hover {
 
 .ingresarDeportista {
   margin-left: 0vw;
+}
+
+.cancelarDeportista{
+  margin-top: -3.5vw;
+  margin-left: 12vw;
 }
 
 .editable {
@@ -1751,12 +1769,13 @@ button:hover {
 }
 
 /*................................................................. AVANZADO................................................................*/
-.tituloAvanzado {
+.tituloAvanzado, .tituloEquiposAvanzado {
   text-align: center;
-  height: 300vh;
+  font-size: 3rem;
+  height:10vh;
 }
 
-.titulo2Avanzado {
+.titulo2Avanzado, .tituloEquiposAvanzado {
   margin-top: 13vh;
   background-color: #e4f4fd;
   border-radius: 15px;
@@ -2192,4 +2211,4 @@ td {
 .tit-tabla-registrar-calificacion {     
   margin-top: 10vh;    
    margin-bottom: 5vh; 
-  };
+}
