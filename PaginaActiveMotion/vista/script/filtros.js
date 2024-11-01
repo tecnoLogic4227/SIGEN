@@ -230,6 +230,23 @@ const validarContrasenia = (contrasena) => {
     return { valido: true };
 };
 
+const filtroBoolean = dato => {
+    if (dato !== true && dato !== false) {
+        return false
+    }
+    return true;
+}
+
+const filtroPlan = dato => {
+
+    if (dato.length < 1) {
+        return false;
+    }
+
+    const turnosPermitidos = ["Basico", "Premium", "Pack Verano", "Avanzado", "Elite", "Verano"];
+    return turnosPermitidos.includes(dato);
+}
+
 // const filtro = dato => {
 
 

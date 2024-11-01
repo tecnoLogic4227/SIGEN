@@ -1256,7 +1256,7 @@ $(document).ready(function() {
 
   // Muestra o esconde las filas adicionales según el rol seleccionado
   $('#selectRol').change(function() {
-      if ($(this).val() === 'Cliente') {
+      if ($(this).val() === 'cliente') {
           $('.fila-cliente').show();
       } else {
           $('.fila-cliente').hide();

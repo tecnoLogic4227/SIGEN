@@ -1,95 +1,106 @@
 <?php
 
-var_dump($_REQUEST);
 
-// require_once("../modelo/crudModel.php");
-// global $conexion;
+require_once("../modelo/crudModel.php");
+require_once("../modelo/clases/usuario.php");
+require_once("../modelo/clases/usuarioCliente.php");
+global $conexion;
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     datos();
-// } else {
-//     //405 Method Not Allowed, o sea solo permitimos cierto metodo (post)
-//     http_response_code(405);
-//     echo json_encode(["Error" => "Metodo incorrecto."]);
-//     exit();
-// }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    datos();
+} else {
+    //405 Method Not Allowed, o sea solo permitimos cierto metodo (post)
+    http_response_code(405);
+    echo json_encode(["Error" => "Metodo incorrecto."]);
+    exit();
+}
 
-// datos();
+function datos()
+{
+    $retorno = [];
+    $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+    $nombre = isset($_REQUEST["nombre"]) ? $_REQUEST["nombre"] : null;
+    $apellido = isset($_REQUEST["apellido"]) ? $_REQUEST["apellido"] : null;
+    $direccion = isset($_REQUEST["direccion"]) ? $_REQUEST["direccion"] : null;
+    $email = isset($_REQUEST["email"]) ? $_REQUEST["email"] : null;
+    $fecha = isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : null;
+    $telefono = isset($_REQUEST["telefono"]) ? $_REQUEST["telefono"] : null;
+    $rol = isset($_REQUEST["rol"]) ? $_REQUEST["rol"] : null;
+    $actividad = isset($_REQUEST["actividad"]) ? $_REQUEST["actividad"] : null;
+    $estado = isset($_REQUEST["estado"]) ? $_REQUEST["estado"] : null;
+    $estadoActividad = isset($_REQUEST["estadoActividad"]) ? $_REQUEST["estadoActividad"] : null;
+    $tipoPlan = isset($_REQUEST["plan"]) ? $_REQUEST["plan"] : null;
 
-// function datos()
-// {
-//     $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
-//     $nombre = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
-//     $apellido = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
-//     $direccion = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
-//     $email = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
-//     $fecha = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
-//     $telefono = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
-//     $rol = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
+    // var_dump($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan);
 
+    if ($rol == "cliente") {
+        if ($ci != null && $nombre != null && $apellido != null && $direccion != null && $email != null && $fecha != null && $telefono != null && $rol != null && $actividad != null && $estado != null && $estadoActividad != null && $tipoPlan != null) {
+            array_push($retorno, new Usuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol));
+            array_push($retorno, new Cliente($ci, $estado, $estadoActividad, $tipoPlan));
+            registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan);
+        } else {
+            echo json_encode("Ningun campo puede quedar vacio.");
+            exit();
+        }
+    } else {
+        if ($ci != null && $nombre != null && $apellido != null && $direccion != null && $email != null && $fecha != null && $telefono != null && $rol != null) {
+            array_push($retorno, new Usuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol));
+            registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan);
+        } else {
+            echo json_encode("Ningun campo puede quedar vacio.");
+            exit();
+        }
+    }
 
-//     if ($ci != null && $contrasenia != null) {
-//         verificarLogin($ci, $contrasenia);
-//     } else {
-//         echo json_encode("Ningun campo puede quedar vacio.");
-//         exit();
-//     }
-// }
-
-// function verificarLogin($ci, $contrasenia)
-// {
-//     $sql = "SELECT * FROM `login` WHERE ci = ?";
-//     $params = "i";
-//     $atributos = $ci;
-
-//     $resultadoLogin = listarBD($sql, $params, $atributos);
-
-//     $sql = "SELECT rol FROM usuario WHERE ci = ?";
-
-//     $resultadoRol = listarBD($sql, $params, $atributos);
-
-//     if ($resultadoLogin) {
-//         if ($resultadoLogin[0]["ci"] == $ci && $resultadoLogin[0]["contrasenia"] == $contrasenia && $resultadoRol) {
-//             redireccionarUsuario($resultadoRol);
-//         } else {
-//             echo json_encode("Contraseña no válida.");
-//             exit();
-//         }
-//     } else {
-//         echo json_encode("Usuario no encontrado.");
-//         exit();
-//     }
-// }
-
-// function redireccionarUsuario($resultadoRol)
-// {
-//     $url = '';
-//     switch ($resultadoRol[0]["rol"]) {
-//         case "cliente":
-//             $url = "../cliente/indexUsuario.html";
-//             break;
-//         case "entrenador":
-//             $url = "../entrenador/inicioEntrenador.html";
-//             break;
-//         case "administrativo":
-//             $url = "../administrador/indexAdministrativo.html";
-//             break;
-//         case "seleccionador":
-//             $url = "../seleccionador/indexSeleccionador.html";
-//             break;
-//         case "avanzado":
-//             $url = "../avanzado/indexAvanzado.html";
-//             break;
-//         case "administradorti":
-//             $url = "../superUsuario/inicioSuperUsuario.html";
-//             break;
-//     }
-
-//     $respuesta = ["redirect" => $url, "rol" => $resultadoRol];
     
-//     echo json_encode($respuesta);
-//     exit();
-// }
+}
 
+function registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $plan)
+{
+    $resultado = true;
+    
+    $sqlConsulta = "SELECT * FROM usuario WHERE ci = ?";
+    $paramsConsulta = "i";
+    $atributosConsulta = $ci;
 
+    if (listarBD($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+        echo json_encode("Usuario ya existente.");
+    } else {
+        $sql = "INSERT INTO usuario (ci, nombre, apellido, direccion, email, fecha_nac, rol, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        $params = "issssssi";
+        $atributos = [$ci, $nombre, $apellido, $direccion, $email, $fecha, $rol, $telefono];
+
+        $resultado = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
+
+        if ($resultado) {
+            if ($rol == "cliente") {
+                $sql = "INSERT INTO usuario_cliente (ci, actividad, estado, estado_actividad, tipo_plan) VALUES (?, ?, ?, ?, ?)";
+                $params = "issis";
+                $atributos = [$ci, $actividad, $estado, $estadoActividad, $plan];
+    
+                $sqlConsulta = "SELECT * FROM usuario_cliente WHERE ci = ?";
+                $paramsConsulta = "i";
+                $atributosConsulta = $ci;
+        
+                echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+            } else {
+                if ($rol == "entrenador") {
+                $sql = "INSERT INTO usuario_entrenador (ci) VALUES (?)";
+                $params = "i";
+                $atributos = [$ci];
+    
+                $sqlConsulta = "SELECT * FROM usuario_entrenador WHERE ci = ?";
+                $paramsConsulta = "i";
+                $atributosConsulta = $ci;
+        
+                echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                } else {
+                    echo json_encode($resultado);
+                }
+            }
+        } else {
+            echo json_encode($resultado);
+        }        
+    }
+}
 ?>
