@@ -1,6 +1,5 @@
 <?php
 
-
 require_once("../modelo/crudModel.php");
 require_once("../modelo/clases/usuario.php");
 require_once("../modelo/clases/usuarioCliente.php");
@@ -82,7 +81,48 @@ function registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $
                 $paramsConsulta = "i";
                 $atributosConsulta = $ci;
         
-                echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                if (registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                    switch ($actividad) {
+                        case "deportista":
+                            $sql = "INSERT INTO deportista (ci) VALUES (?)";
+                            $params = "i";
+                            $atributos = $ci;
+                
+                            $sqlConsulta = "SELECT * FROM deportista WHERE ci = ?";
+                            $paramsConsulta = "i";
+                            $atributosConsulta = $ci;
+
+                            echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                            break;
+                        case "paciente":
+                            $sql = "INSERT INTO paciente (ci) VALUES (?)";
+                            $params = "i";
+                            $atributos = $ci;
+                
+                            $sqlConsulta = "SELECT * FROM paciente WHERE ci = ?";
+                            $paramsConsulta = "i";
+                            $atributosConsulta = $ci;
+
+                            echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                            break;
+                        case "libre":
+                            $sql = "INSERT INTO libre (ci) VALUES (?)";
+                            $params = "i";
+                            $atributos = $ci;
+                
+                            $sqlConsulta = "SELECT * FROM libre WHERE ci = ?";
+                            $paramsConsulta = "i";
+                            $atributosConsulta = $ci;
+
+                            echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                            break;
+                        default:
+                        echo json_encode("Tipo de cliente incorrecto.");
+                            break;
+                    }
+                } else {
+                    echo json_encode("Error al registar al usuario.");
+                }
             } else {
                 if ($rol == "entrenador") {
                 $sql = "INSERT INTO usuario_entrenador (ci) VALUES (?)";

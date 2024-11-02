@@ -1,5 +1,7 @@
 <?php
 
+var_dump($_REQUEST);
+
 $resultado;
 $atributos = "";
 $params = "";
@@ -695,19 +697,40 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
             break;
         case "rutina":
             $rutina = datos($tabla);
+            $guardado = false;
 
             $sqlConsulta = "SELECT * FROM RUTINA WHERE id_rutina = ?";
             $paramsConsulta = "i";
             $atributosConsulta = [$rutina->idRutina];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                $sql = "UPDATE RUTINA SET nombre_rutina = ? WHERE id_rutina = ?";
-                $params = "si";
-                $atributos = [$rutina->nombreRutina, $rutina->idRutina];
-
-                echo json_encode(modificarBD($sql, $params, $atributos));
+                echo json_encode("Error: ya existe una rutina con ese ID.");
             } else {
-                echo json_encode(false);
+                $sql = "INSERT INTO rutina (id_rutina, nombre_rutina, tipo_rutina) VALUES (?, ?, ?);";
+                $params = "iss";
+                $atributos = [$rutina->idRutina, $rutina->nombreRutina, $rutina->tipoRutina];
+
+                if (registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                    if ($rutina->tipoRutina == "deporte") {
+                        $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
+                        $params = "i";
+                        $atributos = [$rutina->idRutina];
+
+                        echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                    } else {
+                        if ($rutina->tipoRutina == "fisioterapia") {
+                            $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
+                        $params = "i";
+                        $atributos = [$rutina->idRutina];
+    
+                            echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                        } else {
+                            echo json_encode("Error: tipo de rutina no valido.");
+                        }
+                    }
+                } else {
+                    echo json_encode("Error al crear rutina.");
+                }
             }
 
             break;

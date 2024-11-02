@@ -30,7 +30,11 @@ CREATE TABLE USUARIO_AGENDA (
 
 CREATE TABLE USUARIO_CLIENTE (
     ci INT,
-    actividad VARCHAR(255),
+    actividad ENUM(
+        "deportista",
+        "libre",
+        "paciente",
+    ),
     estado ENUM(
         'principiante',
         'bajo',
@@ -99,6 +103,10 @@ CREATE TABLE ULTIMO_PAGO (
 CREATE TABLE RUTINA (
     id_rutina INT AUTO_INCREMENT,
     nombre_rutina VARCHAR(100),
+    tipo_rutina ENUM(
+        "fisioterapia",
+        "deporte",
+    ),
     PRIMARY KEY (id_rutina)
 );
 
