@@ -8,7 +8,6 @@
   <title>ActiveMotion</title>
   <script src="../../script/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../script/validacion_datos.js"></script>
   <script src="../../script/script.js"></script>
   <script src="../../script/calendar.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -50,31 +49,36 @@
       <h1 class="tituloEntrenador titulo2Entrenador tit-asignar-entrenamiento" id="tit-cliente">Asignar entrenamiento
       </h1>
 
-      <form id="form-buscar-cliente">
-        <label class="label-ci">CI</label>
-        <input class="inputClienteBuscador buscador-ci">
-        <label class="label-nombre">Nombre</label>
-        <input class="inputClienteBuscador buscador-nombre">
-        <button type="button" class="botonClienteBuscador-asg-rut">Buscar</button>
-        <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
-      </form>
+      <section class="sectionBuscarCliente">
+        <form id="form-buscar-cliente">
+          <label class="label-ci">CI</label>
+          <input class="inputClienteBuscador buscador-ci">
+          <label class="label-nombre">Nombre</label>
+          <input class="inputClienteBuscador buscador-nombre">
+          <button type="button" class="botonClienteBuscador-asg-rut">Buscar</button>
+          <span class="mensaje_error" id="mensaje_ci_asignarEntrenamiento" hidden></span>
+        </form>
+      </section>
 
-      <table class="table-info tablaRutinas">
-        <thead>
-          <tr>
-            <th>Cedula</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Actividad</th>
-            <th>ID rutina</th>
-          </tr>
-        </thead>
-        <tbody>
+      <section class="sectionTablaRutinas">
+        <table class="table-info tablaRutinas">
+          <thead>
+            <tr>
+              <th>Cedula</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Actividad</th>
+              <th>ID rutina</th>
+            </tr>
+          </thead>
+          <tbody>
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </section>
 
-      <button id="btn-mostrar-asignar-entrenamiento" class="btn-asignar-entrenamiento">Asignar Entrenamiento</button>
+      <section class="sectionBotonAsignarEntrenamiento"><button id="btn-mostrar-asignar-entrenamiento" class="btn-asignar-entrenamiento">Asignar Entrenamiento</button></section>
+      
 
       <div id="seccion-asignar-entrenamiento" style="display: none;">
         <article>
@@ -166,7 +170,7 @@
 
       </div>
     </main>
-    
+
 
     <footer class="social-footer">
       <div class="footer-content">

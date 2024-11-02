@@ -8,6 +8,7 @@
     <title>ActiveMotion</title>
     <script src="../../script/jquery-3.7.1.min.js"></script>
     <script src="../../script/tablas/equipo.js"></script>
+    <script src="../../script/filtros.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../styles/style.css">
@@ -39,54 +40,10 @@
             </div>
         </nav>
 
-<<<<<<< HEAD
-        
-    
-=======
->>>>>>> ba49fb1d5c7a4c9e2489f0cfaf3f8cf87b91001c
         <main class="tituloSeleccionador">
             <header>
                 <h1 class="titulo2Seleccionador">Ingresar equipo</h1>
             </header>
-<<<<<<< HEAD
-            <div class="container-fluid tablaArmarEquipoSeleccionador">
-                <div class="row">
-                    <div class="col-12">
-                        <table class="table table-bordered table-hover">
-                            <tr class="table-primary">
-                                <td class="text-center info-cell">
-                                    <img class="profile-img" src="../../../vista/img/Perfil.png" alt="Foto de perfil">
-                                </td>
-                                <td class="info-cell">
-                                    <strong>ID:</strong>
-                                    <input class="editable">
-                                </td> 
-                                <td class="info-cell">
-                                    <strong>Nombre:</strong>
-                                    <input class="editable">
-                                </td> 
-                                <td class="info-cell">
-                                    <strong>Deporte:</strong>
-                                    <input class="editable">
-                                </td> 
-                                <td class="info-cell">
-                                    <strong>Cantidad de deportistas:</strong>
-                                    <div id="cantDeportista">0</div>
-                                </td>
-                                <td class="info-cell" style="width: 60vw; ">
-                                    <strong>Deportistas:</strong>
-                                    <div id="deportistasList"></div>
-                                    <button class="btn-agregar mt-2 btnarmarEquipo">
-                                        <i class="fas fa-plus me-2"></i>Ingresar Deportista
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        
-=======
 
             <table style="width: 70vw; margin-top: 10vh; margin-bottom: 10vh; margin-left: 15vw;">
                 <thead>
@@ -99,9 +56,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input></td>
-                        <td><input></td>
-                        <td><input></td>
+                        <td><input class="inputCrearEquipoIdEquipo"></td>
+                        <td><input class="inputCrearEquipoNombreEquipo"></td>
+                        <td><input class="inputCrearEquipoDeporte"></td>
                         <td><button class="btn-agregar mt-2">
                             <i class="fas fa-plus me-2"></i>Ingresar Deportista
                         </button></td>
@@ -122,28 +79,31 @@
                 </tbody>
             </table>
 
->>>>>>> ba49fb1d5c7a4c9e2489f0cfaf3f8cf87b91001c
             <form id="form-armarEquiposSeleccionador" style="display: none;">
                 <h5>Deportista</h5>
                 <label for="ciDeportista" class="cedula">Cédula</label>
                 <br>
                 <input class="inputArmarEquipoCi" type="text" id="ciDeportista" name="ciDeportista">
                 <br>
-<<<<<<< HEAD
+                <label for="ciDeportista" class="cedula">Posición</label>
+                <br>
+                <input class="inputArmarEquipoPosicion" type="text" id="ciDeportista" name="ciDeportista">
+                <br>
+                <button type="button" class="botonEquipoAgregarJugador">Ingresar</button>
+                <button type="button" class="ingresarDeportista" id="btnCancelar">Cerrar</button>
                 <input type="text" id="ciDeportista" name="ciDeportista" placeholder="12345678" required>
                 <br>
                 <button type="button" class="ingresarDeportista" id="btnIngresar">
                     <i class="fas fa-check me-2"></i>Ingresar
                 </button>
                 <button type="button" class="cancelarDeportista" id="btnCancelar">
-=======
                 <button type="button" class="botonEquipoAgregarJugador">Ingresar</button>
                 <button type="button" class="ingresarDeportista" id="btnCancelar">
->>>>>>> ba49fb1d5c7a4c9e2489f0cfaf3f8cf87b91001c
                     <i class="fas fa-times me-2"></i>Cancelar
                 </button>
             </form>
-            <button class="save-team"><a href="equiposSeleccionador.html">Ingresar</a></button>
+            <button class="save-team equipoConfirmarCrear">Guardar</button>
+            <button class="save-team"><a href="equiposSeleccionador.html">Salir</a></button>
         </main>
 
         <footer class="social-footer">

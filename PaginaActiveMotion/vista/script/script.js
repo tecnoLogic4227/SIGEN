@@ -489,8 +489,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
  /*....................................................TABLA NUEVO EQUIPO SELECCIONADOR.............................................. */
- $(document).ready(function() {
-  let deportistas = [];
 
   // Mostrar el formulario para agregar deportistas
   $('.btn-agregar').click(function() {
@@ -503,59 +501,39 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // Ingresar deportista
-  $('#btnIngresar').click(function() {
-      const nombre = $('#nombreDeportista').val();
-      const cedula = $('#ciDeportista').val();
+  // $('#btnIngresar').click(function() {
+  //     const nombre = $('#nombreDeportista').val();
+  //     const cedula = $('#ciDeportista').val();
 
-      if (nombre && cedula) {
-          deportistas.push({ nombre, cedula });
-          actualizarListaDeportistas();
-          $('#form-armarEquiposSeleccionador')[0].reset();
-          $('#form-armarEquiposSeleccionador').fadeOut(300);
-      }
-  });
+  //     if (nombre && cedula) {
+  //         deportistas.push({ nombre, cedula });
+  //         actualizarListaDeportistas();
+  //         $('#form-armarEquiposSeleccionador')[0].reset();
+  //         $('#form-armarEquiposSeleccionador').fadeOut(300);
+  //     }
+  // });
 
   // Actualizar la lista de deportistas
-  function actualizarListaDeportistas() {
-      const listaHtml = deportistas.map(function(d) {
-          return `<div class="deportista-item">
-              ${d.nombre} - ${d.cedula}
-              <button class="btn-eliminar" data-nombre="${d.nombre}">
-                  <i class="fas fa-times"></i>
-              </button>
-          </div>`;
-      }).join('');
+  // function actualizarListaDeportistas() {
+  //     const listaHtml = deportistas.map(function(d) {
+  //         return `<div class="deportista-item">
+  //             ${d.nombre} - ${d.cedula}
+  //             <button class="btn-eliminar" data-nombre="${d.nombre}">
+  //                 <i class="fas fa-times"></i>
+  //             </button>
+  //         </div>`;
+  //     }).join('');
       
-      $('#deportistasList').html(listaHtml);
-      $('#cantDeportista').text(deportistas.length);
-  }
+  //     $('#deportistasList').html(listaHtml);
+  //     $('#cantDeportista').text(deportistas.length);
+  // }
 
-  // Eliminar deportista de la lista
-  $(document).on('click', '.btn-eliminar', function() {
-      const nombreDeportista = $(this).data('nombre');
-      deportistas = deportistas.filter(d => d.nombre !== nombreDeportista);
-      actualizarListaDeportistas();
-  });
-
-  // Guardar el equipo
-  $('.save-team').click(function() {
-      const datos = { deportistas: deportistas };
-      console.log('Equipo guardado:', datos);
-      alert('Equipo guardado exitosamente!');
-  });
-
-  // Habilitar el botón "Ingresar" solo si ambos campos están llenos
-  $('#form-armarEquiposSeleccionador input').on('input', function() {
-      const nombre = $('#nombreDeportista').val();
-      const cedula = $('#ciDeportista').val();
-      if (nombre && cedula) {
-          $('#btnIngresar').prop('disabled', false);
-      } else {
-          $('#btnIngresar').prop('disabled', true);
-      }
-  });
-});
-
+  // // Eliminar deportista de la lista
+  // $(document).on('click', '.btn-eliminar', function() {
+  //     const nombreDeportista = $(this).data('nombre');
+  //     deportistas = deportistas.filter(d => d.nombre !== nombreDeportista);
+  //     actualizarListaDeportistas();
+  // });
 
 /*....................................................Boton Index Seleccionador........................................*/
 $(function() {
@@ -1278,7 +1256,7 @@ $(document).ready(function() {
 
   // Muestra o esconde las filas adicionales según el rol seleccionado
   $('#selectRol').change(function() {
-      if ($(this).val() === 'Cliente') {
+      if ($(this).val() === 'cliente') {
           $('.fila-cliente').show();
       } else {
           $('.fila-cliente').hide();

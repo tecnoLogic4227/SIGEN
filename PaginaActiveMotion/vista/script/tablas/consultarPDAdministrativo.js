@@ -38,8 +38,11 @@ $(document).ready(() => {
                             tr.append(`<td>${usuario1.fecha_nac}</td>`);
                             tr.append(`<td>${usuario1.rol}</td>`)
                             tr.append(`<td>${usuario1.telefono}</td>`);
-                            // tr.append(`<td><button class="asisteModificar">Modificar</button></td>`);
-                            // tr.append(`<td><button class="asisteEliminar">Eliminar</button></td>`);
+                            if (usuario1.estado_actividad) {
+                                tr.append(`<td>Activo</td>`);
+                            } else {
+                                tr.append(`<td>Inactivo</td>`);
+                            }
                             tbody.append(tr);
                         });
                     } else {
@@ -71,7 +74,7 @@ $(document).ready(() => {
                     if (respuesta) {
                         alert(exitoMensaje);
                         datos = "";
-                        listarUsuario(datos);
+                        listarUsuario();
                     } else {
                         alert(errorMensaje);
                     }
@@ -112,7 +115,7 @@ $(document).ready(() => {
         crearUsuario(ci, nombre, apellido, direccion, email, fechaNac, rol, telefono);
     };
 
-    listarUsuario(datos);
+    listarUsuario();
 
     const buscarUsuario = (ci) => {
         listarUsuario({
@@ -164,7 +167,7 @@ $(document).ready(() => {
         limpiarPantalla();
         manejarSolicitud("desactivar", {
             ci: ci,
-        }, "Usuario eliminado correctamente.", "Error al eliminar Usuario.");
+        }, "Usuario desactivado correctamente.", "Error al desactivar Usuario.");
     }
 
     const confirmarConfirmarEliminarUsuario = () => {
