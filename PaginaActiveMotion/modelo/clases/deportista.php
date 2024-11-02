@@ -1,12 +1,17 @@
 <?php
 require_once ("usuarioCliente.php");
 
-class Deportista extends Cliente {
+class Deportista {
+    public $ci;
     public $posicion;
 
     public function __construct($ci, $posicion) {
-        parent::__construct($ci, '', '', '', '', '', '', '');
+        $this->ci = $ci;
         $this->posicion = $posicion;
+    }
+
+    public function getCi() {
+        return $this->ci;
     }
 
     public function getPosicion() {

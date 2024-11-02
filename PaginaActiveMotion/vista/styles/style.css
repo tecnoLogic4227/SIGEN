@@ -1210,7 +1210,6 @@ input::placeholder {
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
-  text-trans: uppercase;
   font-size: 14px;
   font-weight: bold;
 }
@@ -1283,6 +1282,11 @@ margin-left: 8vw;
 
 .tablaDeportistasSelec {
   margin-top: -10vh;
+.tablaDeportistasSeleccionador {
+  margin-left: -10vw;
+  z-index: 0;
+  display: block;
+}
 }
 
 .graficaSeleccionador {
@@ -2206,5 +2210,21 @@ td {
   
 .tit-tabla-registrar-calificacion {     
   margin-top: 10vh;    
-   margin-bottom: 5vh; 
-  };
+   margin-bottom: 5vh;
+}
+
+/*.............................................................ASIGNAR ENTRENAMIENTO.......................................................................*/
+
+.sectionBuscarCliente, .sectionTablaRutinas, .sectionBotonAsignarEntrenamiento {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#form-buscar-cliente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
