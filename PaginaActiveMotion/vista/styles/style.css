@@ -1123,25 +1123,37 @@ input::placeholder {
 }
 
 /*......................................................Evolucion Usuarios...............................................*/
-.grafica {
-  margin-top: 0vh;
-  margin-left: 30vw;
+
+.graficaUsuario{
+  margin-top: -55vh;
+  margin-left: 17vw;
   width: 60%;
   z-index: 0;
+  display: block;
 }
 
-.tablaDeportistasSeleccionador .graficaEntrenador {
+.tablaDeportistasSeleccionador {
   margin-top: 0vh;
   margin-left: 40vw ;
   width: 70%;
   z-index: 0;
 }
 
+.flechaIzquierda{
+  margin-top: -20vh !important;
+  margin-left: 7vw;
+}
+
+.flechaDerecha{
+  margin-top: -40vh !important;
+  margin-left: 80vw;
+}
+
 .containerEvolucion {
   padding: 20px;
   border-radius: 8px;
   margin-left: 5vw;
-  margin-top: -40vh;
+  margin-top: 30vh;
   width: 20%;
   background-color: rgba(205, 236, 255, 0.938);
   border-radius: 15px;
@@ -1280,22 +1292,20 @@ margin-left: 8vw;
   margin-left: 2vw;
 }
 
-.tablaDeportistasSelec {
-  margin-top: -10vh;
 .tablaDeportistasSeleccionador {
-  margin-left: -10vw;
+  margin-top: 8vh;
+  margin-left: 30vw;
   z-index: 0;
   display: block;
-}
+
 }
 
 .graficaSeleccionador {
-  margin-top: 5vh;
-  margin-left: 20vw;
+  margin-top: -40vh;
+  margin-left: 17vw;
   width: 60%;
   z-index: 0;
   display: block;
-  position: absolute;
 }
 
 .botonDeportistaBuscador {
@@ -1303,11 +1313,15 @@ margin-left: 8vw;
   margin-left: 5vw;
 }
 
-.tablaCaliSeleccionador {
-  margin-top: 90vh;
-  margin-left: 10vw;
+#flechaIzquierda{
+  margin-top: 60vh !important;
+  margin-left: 7vw;
 }
 
+#flechaDerecha{
+  margin-top: -40vh !important;
+  margin-left: 80vw;
+}
 /*.................................................Equipos Seleccionador.....................................................*/
 
 .formEquiposSeleccionador {
