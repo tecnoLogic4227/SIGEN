@@ -49,12 +49,12 @@
       <h1 class="tituloEntrenador titulo2Entrenador tit-asignar-entrenamiento" id="tit-cliente">Asignar entrenamiento
       </h1>
 
-    
-      <section id="buscar-rutinas">
+      <section id="buscar">
+        <h5>Buscar rutina</h5>
         <form>
-          <label class="buscarRutina">Buscar Rutina:</label>
-          <input class="inputRutina" type="text" id="buscar-rutina-id" placeholder="ID de rutina">
-          <button class="btnRutina" type="button" id="btn-buscar-rutina">Buscar</button>
+          <label class="buscarRutina">Id Rutina:</label>
+          <input class="inputIdRutina" type="text" id="buscar-rutina-id">
+          <button class="botonBuscarRutina" type="button" id="btn-buscar-rutina">Buscar</button>
         </form>
       </section>
     
@@ -70,6 +70,14 @@
           <tbody></tbody>
         </table>
         <button type="button" id="btn-crear-rutina">Crear Rutina</button>
+      </section>
+
+      <section id="buscar">
+        <h5>Buscar ejercicio</h5>
+        <form>
+          <label class="buscarRutina">Id ejercicio:</label>
+          <input class="inputIdEjercicio" type="text" id="buscar-rutina-id">
+          <button class="botonBuscarEjercicio" type="button" id="btn-buscar-rutina">Buscar</button>
       </section>
     
       <section id="ejercicios">
@@ -89,7 +97,15 @@
         </table>
         <button type="button" id="btn-crear-ejercicio">Crear Ejercicio</button>
       </section>
-    
+
+      <section id="buscar">
+        <h5>Asignar ejercicio a rutina</h5>
+        <form>
+          <label class="buscarRutina">Id Rutina:</label>
+          <input class="inputIdRutina" type="text" id="buscar-rutina-id">
+          <button class="botonBuscarRutina" type="button" id="btn-buscar-rutina">Buscar</button>
+      </section>
+
       <section id="asignaciones">
         <table id="tablaPosee">
           <thead>
@@ -104,6 +120,29 @@
         <button type="button" id="btn-crear-posee">Asignar Ejercicio a Rutina</button>
       </section>
     </main>
+
+    <section id="buscar">
+      <h5>Asignar ejercicio a rutina</h5>
+      <form>
+        <label class="buscarRutina">Id Rutina:</label>
+        <input class="inputIdRutina" type="text" id="buscar-rutina-id">
+        <button class="botonBuscarRutina" type="button" id="btn-buscar-rutina">Buscar</button>
+    </section>
+
+    <section id="asignaciones">
+      <table id="tablaPosee">
+        <thead>
+          <tr>
+            <th>ID Rutina</th>
+            <th>ID Ejercicio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button type="button" id="btn-crear-posee">Asignar Ejercicio a Rutina</button>
+    </section>
+  </main>
 
 
     <footer class="social-footer">
@@ -135,6 +174,23 @@
       </div>
     </footer>
   </div>
+
+  <style>
+    #buscar {
+      width: 100vw;
+      margin-top: 10vh;
+      margin-bottom: 10vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      width: 20%;
+    }
+  </style>
+
 </body>
 
 </html>
