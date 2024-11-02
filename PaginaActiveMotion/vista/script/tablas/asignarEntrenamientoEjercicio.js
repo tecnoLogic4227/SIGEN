@@ -1,8 +1,6 @@
 $(document).ready(() => {
-    let idRutina, nombreRutina, idEjercicio, nombreEjercicio, repeticiones, series, grupoMuscular, descripcion;
+    let idEjercicio, nombreEjercicio, repeticiones, series, grupoMuscular, descripcion;
     let ejercicios = [];
-    let rutinas = [];
-    let posee = [];
 
     const listar = (tabla, datos) => {
         $.ajax({
@@ -59,11 +57,11 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta) {
+                    if (respuesta === true) {
                         alert(exitoMensaje);
                         listar(tabla, {});
                     } else {
-                        alert(errorMensaje);
+                        alert(respuesta);
                     }
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
@@ -84,11 +82,11 @@ $(document).ready(() => {
             case "POST":
                 idRutina = $(".inputCrearIdRutina").val();
                 nombreRutina = $(".inputCrearNombreRutina").val();
-                tipoRutina = $(".inputCrearIdRutina").val();
-                inputCrearTipoRutina
+                tipoRutina = $(".inputCrearTipoRutina").val();
                 manejarSolicitud("rutina", metodo, {
                     idRutina: idRutina,
                     nombreRutina: nombreRutina,
+                    tipoRutina: tipoRutina,
                 }, "Rutina creada correctamente.", "Error al crear rutina.");
                 break;
             case "DELETE":
@@ -128,72 +126,3 @@ $(document).ready(() => {
     $(document).on('click', '.botonEliminarRutina', eliminarRutina);
     $(document).on("click", ".botonCrearRutina", () => datosRutina("POST"));
 });
-
-
-
-// const datosEjercicio = (metodo, posicion, event) => {
-    //     event.preventDefault();
-    //     idEjercicio = $(".").val();
-    //     nombreEjercicio = $(".").val();
-    //     repeticiones = $(".").val();
-    //     series = $(".").val();
-    //     grupoMuscular = $(".").val();
-    //     descripcion = $(".").val();
-    //     switch (metodo) {
-    //         case "GET":
-    //             listar("ejercicio", { idEjercicio: idEjercicio });
-    //             break;
-    //         case "POST":
-    //             manejarSolicitud(metodo, {
-    //                 idRutina: idRutina,
-    //                 nombreRutina: nombreRutina,
-    //                 repeticiones: repeticiones,
-    //                 series: series,
-    //                 grupoMuscular: grupoMuscular,
-    //                 descripcion: descripcion
-    //             }, "Ejercicio creado correctamente.", "Error al crear ejercicio.");
-    //             break;
-    //         case "DELETE":
-    //             manejarSolicitud(metodo, {
-    //                 idRutina: idRutina,
-    //                 nombreRutina: nombreRutina,
-    //                 repeticiones: repeticiones,
-    //                 series: series,
-    //                 grupoMuscular: grupoMuscular,
-    //                 descripcion: descripcion
-    //             }, "Ejercicio eliminado correctamente.", "Error al eliminar ejercicio.");
-    //             break;
-    //         default:
-    //             alert("Error, método no válido.");
-    //             break;
-    //     }
-    // }
-
-    // const datosPosee = (metodo, posicion, event) => {
-    //     event.preventDefault();
-    //     idRutina = $(".").val();
-    //     nombreRutina = $(".").val();
-    //     switch (metodo) {
-    //         case "GET":
-    //             listar("posee", {
-    //                 idRutina: idRutina,
-    //                 idEjercicio: idEjercicio
-    //             });
-    //             break;
-    //         case "POST":
-    //             manejarSolicitud(metodo, {
-    //                 idRutina: idRutina,
-    //                 idEjercicio: idEjercicio
-    //             }, "Rutina creada correctamente.", "Error al crear rutina.");
-    //             break;
-    //         case "DELETE":
-    //             manejarSolicitud(metodo, {
-    //                 idRutina: idRutina,
-    //                 idEjercicio: idEjercicio
-    //             }, "Rutina eliminada correctamente.", "Error al eliminar rutina.");
-    //             break;
-    //         default:
-    //             alert("Error, metodo no válido.");
-    //             break;
-    //     }
-    // }

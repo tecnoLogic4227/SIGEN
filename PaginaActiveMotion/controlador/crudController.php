@@ -1,7 +1,5 @@
 <?php
 
-var_dump($_REQUEST);
-
 $resultado;
 $atributos = "";
 $params = "";
@@ -186,10 +184,11 @@ function datos($tabla)
 
             return new Realiza($ci, $idRutina, $nivel, $fechaInicio, $fechaTermino);
         case "rutina":
-            $idRutina = isset($_REQUEST["datos"]["idRutina"]) ? $_REQUEST["datos"]["idRutina"] : null;
-            $nombreRutina = isset($_REQUEST["datos"]["nombreRutina"]) ? $_REQUEST["datos"]["nombreRutina"] : null;
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $nombreRutina = isset($_REQUEST["nombreRutina"]) ? $_REQUEST["nombreRutina"] : null;
+            $tipoRutina = isset($_REQUEST["tipoRutina"]) ? $_REQUEST["tipoRutina"] : null;
 
-            return new Rutina($idRutina, $nombreRutina);
+            return new Rutina($idRutina, $nombreRutina, $tipoRutina);
         case "rutDeporte":
             $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
 
@@ -420,6 +419,47 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
                 }
             }
             break;
+            case "ejercicioRutina":
+                $ejercicio = datos($tabla);
+
+                if ($rutina->idRutina && $rutina->nombreRutina && $rutina->tipoRutina) {
+                    $sqlConsulta = "SELECT * FROM RUTINA WHERE id_rutina = ?";
+                    $paramsConsulta = "i";
+                    $atributosConsulta = [$rutina->idRutina];
+        
+                    if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                        echo json_encode("Error: ya existe una rutina con ese ID.");
+                    } else {
+                        $sql = "INSERT INTO rutina (id_rutina, nombre_rutina, tipo_rutina) VALUES (?, ?, ?);";
+                        $params = "iss";
+                        $atributos = [$rutina->idRutina, $rutina->nombreRutina, $rutina->tipoRutina];
+        
+                        if (registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                            if ($rutina->tipoRutina == "deporte") {
+                                $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
+                                $params = "i";
+                                $atributos = [$rutina->idRutina];
+        
+                                echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                            } else {
+                                if ($rutina->tipoRutina == "fisioterapia") {
+                                    $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
+                                $params = "i";
+                                $atributos = [$rutina->idRutina];
+            
+                                    echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                                } else {
+                                    echo json_encode("Error: tipo de rutina no valido.");
+                                }
+                            }
+                        } else {
+                            echo json_encode("Error al crear rutina.");
+                        }
+                    }
+                } else {
+                    echo json_encode("Error: ningun campo puede quedar vacío.");
+                }
+                break;
             case "equipo":
                 $ci = [];
                 $posicion = [];
@@ -697,41 +737,44 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
             break;
         case "rutina":
             $rutina = datos($tabla);
-            $guardado = false;
 
-            $sqlConsulta = "SELECT * FROM RUTINA WHERE id_rutina = ?";
-            $paramsConsulta = "i";
-            $atributosConsulta = [$rutina->idRutina];
-
-            if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                echo json_encode("Error: ya existe una rutina con ese ID.");
-            } else {
-                $sql = "INSERT INTO rutina (id_rutina, nombre_rutina, tipo_rutina) VALUES (?, ?, ?);";
-                $params = "iss";
-                $atributos = [$rutina->idRutina, $rutina->nombreRutina, $rutina->tipoRutina];
-
-                if (registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                    if ($rutina->tipoRutina == "deporte") {
-                        $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
-                        $params = "i";
-                        $atributos = [$rutina->idRutina];
-
-                        echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
-                    } else {
-                        if ($rutina->tipoRutina == "fisioterapia") {
-                            $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
-                        $params = "i";
-                        $atributos = [$rutina->idRutina];
+            if ($rutina->idRutina && $rutina->nombreRutina && $rutina->tipoRutina) {
+                $sqlConsulta = "SELECT * FROM RUTINA WHERE id_rutina = ?";
+                $paramsConsulta = "i";
+                $atributosConsulta = [$rutina->idRutina];
     
-                            echo json_encode(registrarBD($sql, $params, $valores, $sqlConsulta, $paramsConsulta, $atributosConsulta));
-                        } else {
-                            echo json_encode("Error: tipo de rutina no valido.");
-                        }
-                    }
+                if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                    echo json_encode("Error: ya existe una rutina con ese ID.");
                 } else {
-                    echo json_encode("Error al crear rutina.");
+                    $sql = "INSERT INTO rutina (id_rutina, nombre_rutina, tipo_rutina) VALUES (?, ?, ?);";
+                    $params = "iss";
+                    $atributos = [$rutina->idRutina, $rutina->nombreRutina, $rutina->tipoRutina];
+    
+                    if (registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                        if ($rutina->tipoRutina == "deporte") {
+                            $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
+                            $params = "i";
+                            $atributos = [$rutina->idRutina];
+    
+                            echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                        } else {
+                            if ($rutina->tipoRutina == "fisioterapia") {
+                                $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
+                            $params = "i";
+                            $atributos = [$rutina->idRutina];
+        
+                                echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                            } else {
+                                echo json_encode("Error: tipo de rutina no valido.");
+                            }
+                        }
+                    } else {
+                        echo json_encode("Error al crear rutina.");
+                    }
                 }
-            }
+            } else {
+                echo json_encode("Error: ningun campo puede quedar vacío.");
+            }            
 
             break;
         case "rutDeporte":
