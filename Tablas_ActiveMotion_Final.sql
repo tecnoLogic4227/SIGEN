@@ -16,17 +16,17 @@ CREATE TABLE USUARIO (
         'avanzado',
         'administradorti'
     ),
-    telefono INT,
+    telefono INT
 );
 
-CREATE TABLE USUARIO_AGENDA {
+CREATE TABLE USUARIO_AGENDA ( 
     ci INT,
     fecha DATE,
     hora TIME,
     turno_agenda ENUM('matutino', 'vespertino'),
     PRIMARY KEY (ci),
     FOREIGN KEY (ci) REFERENCES USUARIO(ci)
-}
+);
 
 CREATE TABLE USUARIO_CLIENTE (
     ci INT,
@@ -264,11 +264,6 @@ CREATE VIEW vista_usuario_cliente_evolucion AS
 SELECT estado FROM USUARIO_CLIENTE;
 GRANT SELECT ON vista_usuario_cliente_evolucion TO Usuario_cliente;
 
-/* Vista y permisos para agenda de usuario cliente */
-CREATE VIEW vista_usuario_cliente_agenda AS 
-SELECT fecha, hora, turno_agenda FROM USUARIO_CLIENTE;
-GRANT SELECT ON vista_usuario_cliente_agenda TO Usuario_cliente, Entrenador;
-
 /* Permisos de Entrenador */
 GRANT SELECT ON vista_usuario_cliente_evolucion TO Entrenador;
 GRANT SELECT ON DEPORTISTA_DEPORTE TO Entrenador;
@@ -300,7 +295,6 @@ GRANT INSERT ON EQUIPO TO Seleccionador;
 /* Permisos de Administrador TI */
 GRANT SELECT ON USUARIO_CLIENTE TO Administrador_TI;
 GRANT INSERT ON INSTITUCION TO Administrador_TI;
-GRANT INSERT ON INSTITUCION_TELEFONO TO Administrador_TI;
 
 DELIMITER //
 
@@ -321,6 +315,7 @@ DELIMITER ;
 
 
 GRANT EXECUTE ON PROCEDURE InsertarEntrenador TO Administrador_TI;
+
 
 /*CONSUTLATS*/
 /*1- MOSTRAR TODOS LOS EJERCICIOS ASIGNADOS A UNA RUTINA DADA*/

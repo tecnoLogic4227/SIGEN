@@ -114,13 +114,13 @@ tr:hover {
 .boton-asignar-rutina2 {
     width: 20vw;
     margin-top: 5vh;
-    margin-left: -30vw;
+    margin-left: -15vw;
 }
 
 .boton-registrar-calificacion{
     width: 20vw;
     margin-top: -7vh;
-    margin-left: 30vw;
+    margin-left: 50vw;
 }
 
 .tabla2-1 {
@@ -230,6 +230,7 @@ section {
     align-items: center;
     margin-bottom: 15vh;
     }
+
     .form-registrar-calificacion {
     margin-bottom: 0;
     }
@@ -242,3 +243,7 @@ section {
     margin-bottom: 5vh;
     }
 
+.table-registrar-calificacion{
+    margin-top: 5vh;
+    margin-left: 20vw;
+}
