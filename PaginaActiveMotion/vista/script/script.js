@@ -252,12 +252,11 @@ $(function(){
 });
 /*......................................................AGENDA USUARIO.................................................................*/
 $(document).ready(function() {
-  class Agenda {
+  class AgendaCliente {
     constructor() {
       this.currentDate = new Date();
       this.selectedDate = null;
-      this.appointments = 0;
-      
+      this.appointments = {}; // Almacena las citas
       this.initializeElements();
       this.addEventListeners();
       this.updateCalendar();
@@ -329,13 +328,19 @@ $(document).ready(function() {
       this.updateCalendar();
     }
     
+    addAppointment(dateString, time) {
+      this.appointments[dateString] = time; // Almacena la cita
+      this.updateCalendar(); // Actualiza la vista
+    }
+    
     formatDate(day) {
       return `${this.currentDate.getFullYear()}-${String(this.currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     }
   }
   
-  new Agenda();
+  const clientAgenda = new AgendaCliente(); // Crear instancia de AgendaCliente
 });
+
 
 /*...............................................Carrusel Usuario......................................................*/
 $(function() {
@@ -581,149 +586,108 @@ $(function() {
 
 /*...........................................................AGENDA ADMINISTRATIVO.................................................*/
 $(document).ready(function() {
-  // Objeto para almacenar las citas
-  let appointments = {};
-  
-  // Variables para tracking del mes y año actual
-  let currentYear = new Date().getFullYear();
-  let currentMonth = new Date().getMonth();
-  
-  // Función para actualizar el color del día
-  function updateDayColor(date) {
-    const dateStr = date.toISOString().split('T')[0];
-    const dayElement = $(`.calendar-day-adm[data-date="${dateStr}"]`);
-    
-    if (appointments[dateStr]) {
-      dayElement.removeClass('available-adm').addClass('occupied-adm');
-    } else {
-      dayElement.removeClass('occupied-adm').addClass('available-adm');
-    }
-  }
-  
-  // Manejador para el botón "Ingresar"
-  // $('#ingresar').click(function(e) {
-  //   e.preventDefault();
-    
-  //   const fecha = $('#fecha-agenda').val();
-  //   const hora = $('#hora').val();
-    
-  //   if (fecha && hora) {
-  //     if (appointments[fecha]) {
-  //       alert('Esta fecha ya está ocupada');
-  //       return;
-  //     }
-      
-  //     appointments[fecha] = hora;
-  //     updateDayColor(new Date(fecha));
-  //   } else {
-  //     alert('Por favor, seleccione fecha y hora');
-  //   }
-  // });
-  
-  // Manejador para el botón "Eliminar"
-  // $('#eliminar').click(function(e) {
-  //   e.preventDefault();
-    
-  //   const fecha = $('#fecha-agenda').val();
-    
-  //   if (fecha) {
-  //     if (appointments[fecha]) {
-  //       delete appointments[fecha];
-  //       updateDayColor(new Date(fecha));
-  //     } else {
-  //       alert('No hay cita para esta fecha');
-  //     }
-  //   } else {
-  //     alert('Por favor, seleccione una fecha');
-  //   }
-  // });
-  
-  // Función para generar el calendario
-  function generateCalendar(year, month) {
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const calendar = $('#calendar-adm');
-    
-    calendar.empty();
-    
-    // Añadir días vacíos al principio
-    const firstDayOfWeek = firstDay.getDay() || 7; // Convertir 0 (domingo) a 7
-    for (let i = 1; i < firstDayOfWeek; i++) {
-      calendar.append($('<div>').addClass('calendar-day-adm').css('visibility', 'hidden'));
+  class AgendaAdministrativa {
+    constructor() {
+      this.currentDate = new Date();
+      this.selectedDate = null;
+      this.appointments = {}; // Almacenar las citas
+      this.initializeElements();
+      this.addEventListeners();
+      this.updateCalendar();
     }
     
-    for (let day = 1; day <= lastDay.getDate(); day++) {
-      const date = new Date(year, month, day);
-      const dateStr = date.toISOString().split('T')[0];
+    initializeElements() {
+      this.yearElement = $('#currentYear');
+      this.monthElement = $('#currentMonth');
+      this.calendarElement = $('#calendar');
+    }
+    
+    addEventListeners() {
+      $('#prevYear').on('click', () => this.changeYear(-1));
+      $('#nextYear').on('click', () => this.changeYear(1));
+      $('#prevMonth').on('click', () => this.changeMonth(-1));
+      $('#nextMonth').on('click', () => this.changeMonth(1));
+    }
+    
+    changeYear(increment) {
+      this.currentDate.setFullYear(this.currentDate.getFullYear() + increment);
+      this.selectedDate = null;
+      this.updateCalendar();
+    }
+    
+    changeMonth(increment) {
+      this.currentDate.setMonth(this.currentDate.getMonth() + increment);
+      this.selectedDate = null;
+      this.updateCalendar();
+    }
+    
+    updateCalendar() {
+      this.yearElement.text(this.currentDate.getFullYear());
+      this.monthElement.text(this.currentDate.toLocaleString('es-ES', { month: 'long' }));
       
-      const dayElement = $('<div>')
-        .addClass('calendar-day-adm')
-        .attr('data-date', dateStr)
-        .text(day);
+      this.calendarElement.empty();
+      const firstDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+      const startingDay = firstDayOfMonth.getDay() || 7;
+      const daysInMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
       
-      if (appointments[dateStr]) {
-        dayElement.addClass('occupied-adm');
-      } else {
-        dayElement.addClass('available-adm');
+      for (let i = 1; i < startingDay; i++) {
+        this.calendarElement.append($('<div>'));
       }
       
-      calendar.append(dayElement);
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateString = this.formatDate(day);
+        const hasAppointment = this.appointments[dateString];
+        
+        const dayContainer = $('<div>');
+        const dayElement = $('<button>')
+          .addClass(`calendar-day ${hasAppointment ? 'appointment' : ''}`)
+          .text(day)
+          .on('click', () => this.handleDateClick(dateString));
+        
+        dayContainer.append(dayElement);
+        
+        if (this.selectedDate === dateString && hasAppointment) {
+          const appointmentInfo = $('<div>')
+            .addClass('appointment-info')
+            .text(`Hora: ${hasAppointment}`);
+          dayContainer.append(appointmentInfo);
+        }
+        
+        this.calendarElement.append(dayContainer);
+      }
+    }
+    
+    handleDateClick(dateString) {
+      const time = prompt("Ingresa la hora para la cita (ejemplo: 14:30):");
+      if (time) {
+        this.bookAppointment(dateString, time);
+      }
+    }
+    
+    bookAppointment(dateString, time) {
+      if (!this.appointments[dateString]) {
+        this.appointments[dateString] = time;
+        this.updateClientAndTrainerAgendas(dateString, time);
+      }
+      this.updateCalendar(); // Para actualizar la vista del calendario
+    }
+    
+    updateClientAndTrainerAgendas(dateString, time) {
+      // Aquí llamas a las funciones de las agendas del cliente y entrenador
+      clientAgenda.addAppointment(dateString, time);
+      trainerAgenda.addAppointment(dateString, time);
+    }
+    
+    formatDate(day) {
+      return `${this.currentDate.getFullYear()}-${String(this.currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     }
   }
   
-  // Función para actualizar el mes y año mostrados
-  function updateMonthYearDisplay() {
-    $('#currentYear-adm').text(currentYear);
-    const monthDate = new Date(currentYear, currentMonth);
-    $('#currentMonth-adm').text(new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(monthDate));
-  }
-  
-  // Navegación de mes
-  $('#nextMonth-adm').click(function() {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
-    }
-    generateCalendar(currentYear, currentMonth);
-    updateMonthYearDisplay();
-  });
-  
-  $('#prevMonth-adm').click(function() {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
-    }
-    generateCalendar(currentYear, currentMonth);
-    updateMonthYearDisplay();
-  });
-  
-  // Navegación de año
-  $('#nextYear-adm').click(function() {
-    currentYear++;
-    generateCalendar(currentYear, currentMonth);
-    updateMonthYearDisplay();
-  });
-  
-  $('#prevYear-adm').click(function() {
-    currentYear--;
-    generateCalendar(currentYear, currentMonth);
-    updateMonthYearDisplay();
-  });
-  
-  // Inicializar el calendario
-  generateCalendar(currentYear, currentMonth);
-  updateMonthYearDisplay();
-  
-  // Click en los días del calendario
-  $(document).on('click', '.calendar-day-adm', function() {
-    const dateStr = $(this).attr('data-date');
-    if (dateStr) {
-      $('#fecha-agenda').val(dateStr);
-    }
-  });
+  const clientAgenda = new AgendaCliente(); // Crear instancia de AgendaCliente
+  const trainerAgenda = new AgendaEntrenador(); // Crear instancia de AgendaEntrenador
+  const adminAgenda = new AgendaAdministrativa(); // Crear instancia de AgendaAdministrativa
 });
+
 
 /*......................................................BOTONES DEE FORM AGENDA.....................................................*/
 $(document).ready(function() {
@@ -937,32 +901,27 @@ $(document).ready(function() {
 
 /*..................................................AGENDA ENTRENADOR........................................................ */
 $(document).ready(function() {
-  class Agenda {
+  class AgendaEntrenador {
     constructor() {
       this.currentDate = new Date();
       this.selectedDate = null;
-      this.appointments = {
-        '2024-10-10': '14:30',
-        '2024-10-15': '09:00',
-        '2024-10-20': '16:15',
-      };
-      
+      this.appointments = {}; // Almacena las citas
       this.initializeElements();
       this.addEventListeners();
       this.updateCalendar();
     }
     
     initializeElements() {
-      this.yearElement = $('#currentYear-entr');
-      this.monthElement = $('#currentMonth-entr');
-      this.calendarElement = $('#calendar-entr');
+      this.yearElement = $('#currentYear');
+      this.monthElement = $('#currentMonth');
+      this.calendarElement = $('#calendar');
     }
     
     addEventListeners() {
-      $('#prevYear-entr').on('click', () => this.changeYear(-1));
-      $('#nextYear-entr').on('click', () => this.changeYear(1));
-      $('#prevMonth-entr').on('click', () => this.changeMonth(-1));
-      $('#nextMonth-entr').on('click', () => this.changeMonth(1));
+      $('#prevYear').on('click', () => this.changeYear(-1));
+      $('#nextYear').on('click', () => this.changeYear(1));
+      $('#prevMonth').on('click', () => this.changeMonth(-1));
+      $('#nextMonth').on('click', () => this.changeMonth(1));
     }
     
     changeYear(increment) {
@@ -996,7 +955,7 @@ $(document).ready(function() {
         
         const dayContainer = $('<div>');
         const dayElement = $('<button>')
-          .addClass(`calendar-day-entr ${hasAppointment ? 'appointment' : ''}`)
+          .addClass(`calendar-day ${hasAppointment ? 'appointment' : ''}`)
           .text(day)
           .on('click', () => this.handleDateClick(dateString));
         
@@ -1018,13 +977,19 @@ $(document).ready(function() {
       this.updateCalendar();
     }
     
+    addAppointment(dateString, time) {
+      this.appointments[dateString] = time; // Almacena la cita
+      this.updateCalendar(); // Actualiza la vista
+    }
+    
     formatDate(day) {
       return `${this.currentDate.getFullYear()}-${String(this.currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     }
   }
   
-  new Agenda();
+  const trainerAgenda = new AgendaEntrenador(); // Crear instancia de AgendaEntrenador
 });
+
 
 /*........................................................funcion para desplegar botones - seccion planes de entrenador....................................................*/
 $(".ingresar-plan-entrenador").click(ingresoDatosPlanesEntrenador);
