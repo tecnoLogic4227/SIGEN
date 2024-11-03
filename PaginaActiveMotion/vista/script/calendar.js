@@ -7,20 +7,10 @@ $(function() {
     const $monthDisplay = $('#month-display');
     const $calendarBody = $('#calendar-body');
 
-    // Inicialización de días ocupados y libres
-    const busyDays = {
-        2024: {
-            5: [3, 5, 7, 18, 20, 21], // Junio: días ocupados inicialmente en verde
-        }
-    };
+    // Inicialización de días ocupados y libres con horas
+    const busyDays = {};
+    const freeDays = {};
 
-    const freeDays = {
-        2024: {
-            5: [4, 6, 10, 12, 14, 17, 19], // Junio: días libres inicialmente en verde
-        }
-    };
-
-    // Función para renderizar el calendario
     function renderCalendar() {
         $yearDisplay.text(currentYear);
         $monthDisplay.text(monthNames[currentMonth]);
@@ -43,15 +33,17 @@ $(function() {
                     break;
                 } else {
                     $cell.text(date);
-
-                    // Verificar y asignar clase según esté ocupado o libre
-                    if (busyDays[currentYear] && busyDays[currentYear][currentMonth] && busyDays[currentYear][currentMonth].includes(date)) {
+                    
+                    const dayBusy = busyDays[currentYear]?.[currentMonth]?.[date] || [];
+                    const dayFree = freeDays[currentYear]?.[currentMonth]?.[date] || [];
+                    
+                    if (dayBusy.length > 0) {
                         $cell.addClass('busy');
-                    } else if (freeDays[currentYear] && freeDays[currentYear][currentMonth] && freeDays[currentYear][currentMonth].includes(date)) {
+                    } else if (dayFree.length > 0) {
                         $cell.addClass('free');
                     }
 
-                    $row.append($cell);
+                    $cell.appendTo($row);
                     date++;
                 }
             }
@@ -60,7 +52,6 @@ $(function() {
         }
     }
 
-    // Función para cambiar de mes
     function changeMonth(offset) {
         currentMonth += offset;
         if (currentMonth < 0) {
@@ -73,66 +64,61 @@ $(function() {
         renderCalendar();
     }
 
-    // Función para cambiar de año
     function changeYear(offset) {
         currentYear += offset;
         renderCalendar();
     }
 
-    // Evento click para botón "Año Anterior"
     $('#prev-year').on('click', function() {
         changeYear(-1);
     });
 
-    // Evento click para botón "Año Siguiente"
     $('#next-year').on('click', function() {
         changeYear(1);
     });
 
-    // Evento click para botón "Mes Anterior"
     $('#prev-month').on('click', function() {
         changeMonth(-1);
     });
 
-    // Evento click para botón "Mes Siguiente"
     $('#next-month').on('click', function() {
         changeMonth(1);
     });
 
-    // Evento click para botón "Ingresar"
-    $('#ingresar').on('click', function() {
+    $('#ingresar').on('click', function(event) {
+        event.preventDefault();
         const fecha = $('#fecha-agenda').val();
-        const [day, month, year] = fecha.split('/').map(Number);
-        if (year === currentYear && month - 1 === currentMonth) {
-            // Si el día está en días libres, marcar como ocupado y eliminar de libres
-            if (freeDays[currentYear] && freeDays[currentYear][currentMonth] && freeDays[currentYear][currentMonth].includes(day)) {
-                freeDays[currentYear][currentMonth] = freeDays[currentYear][currentMonth].filter(d => d !== day);
-                busyDays[currentYear][currentMonth] = busyDays[currentYear][currentMonth] || [];
-                busyDays[currentYear][currentMonth].push(day);
-            } else {
-                // Si el día no está en días ocupados, marcar como ocupado
-                busyDays[currentYear] = busyDays[currentYear] || {};
-                busyDays[currentYear][currentMonth] = busyDays[currentYear][currentMonth] || [];
-                busyDays[currentYear][currentMonth].push(day);
-            }
-            renderCalendar();
+        const hora = $('#hora').val();
+        const [year, month, day] = fecha.split('-').map(Number);
+
+        if (!busyDays[year]) busyDays[year] = {};
+        if (!busyDays[year][month - 1]) busyDays[year][month - 1] = {};
+        if (!busyDays[year][month - 1][day]) busyDays[year][month - 1][day] = [];
+        
+        // Agregar la hora si no está ya presente
+        if (!busyDays[year][month - 1][day].includes(hora)) {
+            busyDays[year][month - 1][day].push(hora);
         }
+
+        renderCalendar();
     });
 
-    // Evento click para botón "Eliminar"
-    $('#eliminar').on('click', function() {
+    $('#eliminar').on('click', function(event) {
+        event.preventDefault();
         const fecha = $('#fecha-agenda').val();
-        const [day, month, year] = fecha.split('/').map(Number);
-        if (year === currentYear && month - 1 === currentMonth) {
-            // Si el día está en días ocupados, marcar como libre y eliminar de ocupados
-            if (busyDays[currentYear] && busyDays[currentYear][currentMonth] && busyDays[currentYear][currentMonth].includes(day)) {
-                busyDays[currentYear][currentMonth] = busyDays[currentYear][currentMonth].filter(d => d !== day);
-                freeDays[currentYear][currentMonth] = freeDays[currentYear][currentMonth] || [];
-                freeDays[currentYear][currentMonth].push(day);
-                renderCalendar();
+        const hora = $('#hora').val();
+        const [year, month, day] = fecha.split('-').map(Number);
+
+        const dayBusy = busyDays[year]?.[month - 1]?.[day];
+        if (dayBusy) {
+            busyDays[year][month - 1][day] = dayBusy.filter(h => h !== hora);
+            if (busyDays[year][month - 1][day].length === 0) {
+                delete busyDays[year][month - 1][day];
             }
         }
+
+        renderCalendar();
     });
 
-    renderCalendar(); // Llamar a renderCalendar() al inicio para mostrar el calendario inicial
+    renderCalendar();
 });
