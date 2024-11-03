@@ -21,7 +21,7 @@ $(document).ready(function() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 20
+                    max: 10
                 }
             }
         }
@@ -69,6 +69,8 @@ $(document).ready(function() {
     }
 
     // Botones de navegación entre semanas
-    $('<button id="flechaIzquierda" class="flecha">&#9664;</button>').appendTo('.graficaEntrenador').click(() => cambiarSemana(-1));
-    $('<button id="flechaDerecha" class="flecha">&#9654;</button> ').appendTo('.graficaEntrenador').click(() => cambiarSemana(1));
+    $('<button class="btn-semana-anterior">Semana Anterior</button>').appendTo('.graficaEntrenador').click(() => cambiarSemana(-1));
+    $('<button class="btn-semana-siguiente">Semana Siguiente</button>').appendTo('.graficaEntrenador').click(() => cambiarSemana(1));
 });
+
+

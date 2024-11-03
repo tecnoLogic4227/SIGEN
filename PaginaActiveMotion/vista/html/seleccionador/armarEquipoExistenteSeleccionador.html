@@ -5,6 +5,8 @@
     <link rel="icon" href="../../img/logoPagina.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ActiveMotion</title>
+    <script src="../../script/jquery-3.7.1.min.js"></script>
+    <script src="../../script/tablas/armarEquipoExistente.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../styles/style.css">
@@ -45,41 +47,16 @@
                 <h5>Deportista</h5>
                 <br>
                 <label for="nombreDeportista" class="nombre">Cedula del usuario:</label>
-                <input type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi" required>
+                <input class="inputCi" type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi" required>
                 <br>
                 <label for="deporteDeportista" class="deporte">ID del equipo:</label>
-                <input type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
+                <input class="inputId" type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
                 <br>
-                <button class="estado ingresarDeportista" id="btnIngresarDeportista" type="button">Ingresar</button>
-                <button class="estado eliminarDeportista" id="btnEliminarDeportista" type="button">Eliminar</button>
+                <button class="estado ingresarDeportista botonIngresarDeportista" id="btnIngresarDeportista" type="button">Ingresar</button>
+                <button class="estado eliminarDeportista botonEliminarDeportista" id="btnEliminarDeportista" type="button">Eliminar</button>
                 <span id="mensaje_equipoSeleccionador" hidden></span>
             </form>
             
-            <div class="container-fluid tablaArmarEquipoExistenteSeleccionador">
-                <div class="row">
-                    <div class="col-md-10 col-lg-4 offset-md-1 offset-lg-4">
-                        <table class="table table-bordered table-hover">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th class="text-center">
-                                        <img class="img-fluid rounded-circle" src="../../../vista/img/Perfil.png" alt="Foto de perfil" style="max-width: 100px;">
-                                    </th>
-                                    <th scope="row">Nombre:</th>
-                                    <th scope="row">Cantidad  de deportistas:</th>
-                                    <th scope="row">Deportistas:</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <td id="nombreClub"></td>
-                                    <td id="cantDeportista"></td>
-                                    <td id="deportista"></td>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <button class="estado guardarEquipo" id="btnGuardarEquipo" type="button"><a href="equiposSeleccionador.html">Guardar</a></button>
         </main>
 
         <footer class="social-footer">

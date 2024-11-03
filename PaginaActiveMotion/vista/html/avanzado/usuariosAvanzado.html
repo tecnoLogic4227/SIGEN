@@ -48,98 +48,104 @@
     <main class="main-entrenadores">
       <h2 class="tit-entrenadores">Usuarios</h2>
       <form class="form-entrenadores">
-          <table class="table-entrenadores">
-              <tr>
-                  <th>Cedula</th>
-                  <td><input type="number" class="inputRegistroCi"></td>
-              </tr>
-              <tr>
-                  <th>Nombre</th>
-                  <td><input type="text" class="inputRegistroNombre"></td>
-              </tr>
-              <tr>
-                  <th>Apellido</th>
-                  <td><input type="text" class="inputRegistroApellido"></td>
-              </tr>
-              <tr>
-                  <th>Direccion</th>
-                  <td><input type="text" class="inputRegistroDireccion"></td>
-              </tr>
-              <tr>
-                  <th>Email</th>
-                  <td><input type="email" class="inputRegistroEmail"></td>
-              </tr>
-              <tr>
-                  <th>Fecha de nacimiento</th>
-                  <td><input type="date" class="inputRegistroFecha"></td>
-              </tr>
-              <tr>
-                  <th>Telefono</th>
-                  <td><input type="number" class="inputRegistroTelefono"></td>
-              </tr>
-              <tr>
-                  <th>Rol</th>
-                  <td>
-                      <select id="selectRol" class="inputRegistroRol">
-                          <option value="" disabled selected>Seleccione un rol...</option>
-                          <option value ="avanzado">Avanzado</option>
-                          <option value="administrativo">Administrativo</option>
-                          <option value="entrenador">Entrenador</option>
-                          <option value="seleccionador">Seleccionador</option>
-                          <option value="cliente">Cliente</option>
-                      </select>
-                  </td>
-              </tr>
-              <tr class="fila-cliente" style="display: none;">
-                  <th>Actividad</th>
-                  <td><input type="text" class="inputRegistroActividad" maxlength="255"></td>
-              </tr>
-              <tr class="fila-cliente" style="display: none;">
-                  <th>Estado</th>
-                  <td>
-                      <select class="inputRegistroEstado">
-                          <option value="" disabled selected>Seleccione estado...</option>
-                          <option value="principiante">Principiante</option>
-                          <option value="bajo">Bajo</option>
-                          <option value="medio">Medio</option>
-                          <option value="alto">Alto</option>
-                          <option value="para seleccionar">Para seleccionar</option>
-                          <option value="inicio">Inicio</option>
-                          <option value="sin evolucion">Sin evolucion</option>
-                          <option value="en evolucion">En evolucion</option>
-                          <option value="satisfactorio">Satisfactorio</option>
-                      </select>
-                  </td>
-              </tr>
-              <tr class="fila-cliente" style="display: none;">
-                  <th>Estado Actividad</th>
-                  <td>
-                      <select class="inputRegistroEstadoActividad">
-                          <option value="1">Activo</option>
-                          <option value="0">Inactivo</option>
-                      </select>
-                  </td>
-              </tr>
-              <tr class="fila-cliente" style="display: none;">
-                  <th>Tipo de Plan</th>
-                  <td>
-                      <select class="inputRegistroPlan">
-                          <option value="" disabled selected>Seleccione tipo de plan...</option>
-                          <option value="Basico">Básico</option>
-                          <option value="Premium">Premium</option>
-                          <option value="Pack Verano">Pack Verano</option>
-                          <option value="Avanzado">Avanzado</option>
-                          <option value="Elite">Elite</option>
-                          <option value="Verano">Verano</option>
-                      </select>
-                  </td>
-              </tr>
-          </table>
-          <button type="button" class="button-entrenadores botonRegistrarUsuario" id="usuarioConfirmarCrear">Agregar Usuario</button>
-      </form>
-  </main>
+        <table class="table-entrenadores">
+          <tr>
+            <th>Cedula</th>
+            <td><input type="number" class="inputRegistroCi"></td>
+          </tr>
+          <tr>
+            <th>Nombre</th>
+            <td><input type="text" class="inputRegistroNombre"></td>
+          </tr>
+          <tr>
+            <th>Apellido</th>
+            <td><input type="text" class="inputRegistroApellido"></td>
+          </tr>
+          <tr>
+            <th>Direccion</th>
+            <td><input type="text" class="inputRegistroDireccion"></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><input type="email" class="inputRegistroEmail"></td>
+          </tr>
+          <tr>
+            <th>Fecha de nacimiento</th>
+            <td><input type="date" class="inputRegistroFecha"></td>
+          </tr>
+          <tr>
+            <th>Telefono</th>
+            <td><input type="number" class="inputRegistroTelefono"></td>
+          </tr>
+          <tr>
+            <th>Rol</th>
+            <td>
+              <select id="selectRol" class="inputRegistroRol">
+                <option value="" disabled selected>Seleccione un rol...</option>
+                <option value="avanzado">Avanzado</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="entrenador">Entrenador</option>
+                <option value="seleccionador">Seleccionador</option>
+                <option value="cliente">Cliente</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="fila-cliente" style="display: none;">
+            <th>Actividad</th>
+            <td><select id="selectRol" class="inputRegistroTipoCliente">
+              <option value="deportista">Deportista</option>
+              <option value="paciente">Paciente</option>
+              <option value="libre">Libre</option>
+          </select></td>
+          </tr>
+          <tr class="fila-cliente" style="display: none;">
+            <th>Estado</th>
+            <td>
+              <select class="inputRegistroEstado">
+                <option value="" disabled selected>Seleccione estado...</option>
+                <option value="principiante">Principiante</option>
+                <option value="bajo">Bajo</option>
+                <option value="medio">Medio</option>
+                <option value="alto">Alto</option>
+                <option value="para seleccionar">Para seleccionar</option>
+                <option value="inicio">Inicio</option>
+                <option value="sin evolucion">Sin evolucion</option>
+                <option value="en evolucion">En evolucion</option>
+                <option value="satisfactorio">Satisfactorio</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="fila-cliente" style="display: none;">
+            <th>Estado Actividad</th>
+            <td>
+              <select class="inputRegistroEstadoActividad">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="fila-cliente" style="display: none;">
+            <th>Tipo de Plan</th>
+            <td>
+              <select class="inputRegistroPlan">
+                <option value="" disabled selected>Seleccione tipo de plan...</option>
+                <option value="Basico">Básico</option>
+                <option value="Premium">Premium</option>
+                <option value="Pack Verano">Pack Verano</option>
+                <option value="Avanzado">Avanzado</option>
+                <option value="Elite">Elite</option>
+                <option value="Verano">Verano</option>
+              </select>
+            </td>
+          </tr>
 
-    
+        </table>
+        <button type="button" class="button-entrenadores botonRegistrarUsuario" id="usuarioConfirmarCrear">Agregar
+          Usuario</button>
+      </form>
+    </main>
+
+
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
@@ -174,7 +180,7 @@
         width: 10vw;
       }
 
-      .main-entrenadores{
+      .main-entrenadores {
         margin-top: 20vh;
         margin-bottom: 15vh;
         display: flex;

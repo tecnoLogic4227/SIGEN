@@ -14,6 +14,7 @@ $(document).ready(() => {
         $(".inputRegistroEstado").val("");
         $(".inputRegistroEstadoActividad").val("");
         $(".inputRegistroPlan").val("");
+        $(".inputRegistroTipoCliente").val("");
     }
 
     const registrarUsuario = (data) => {
@@ -26,10 +27,10 @@ $(document).ready(() => {
                     let respuesta = JSON.parse(response);
                     if (respuesta === true) {
                         alert("Usuario registrado correctamente.");
+                        limpiarCampos();
                     } else {
                         alert(respuesta);
                     }
-                    limpiarCampos();
                 } catch (e) {
                     console.log("Error al parsear el JSON: " + e);
                 }
@@ -85,7 +86,7 @@ $(document).ready(() => {
         }
 
         if (rol === "cliente") {
-            actividad = $(".inputRegistroActividad").val();
+            actividad = $(".inputRegistroTipoCliente").val();
             estado = $(".inputRegistroEstado").val();
             estadoActividad = $(".inputRegistroEstadoActividad").val() === "1";
             plan = $(".inputRegistroPlan").val();

@@ -21,7 +21,6 @@ $(document).ready(() => {
 
                                 name = "rol";
                                 content = respuesta.rol[0]["rol"];
-                                alert(content);
                                 sessionStorage.setItem(name, content);
 
                                 window.location.href = respuesta.redirect;                  
