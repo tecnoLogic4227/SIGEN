@@ -51,16 +51,16 @@
 
     <main class="consultarPDAdministrativo">
       <header>
-        <h1 class="tituloConsultaAdministrativo" data-translate="perfil">Consultar clientes</h1>
+        <h1 class="tituloConsultaAdministrativo" data-translate="consultarClientes">Consultar clientes</h1>
       </header>
 
       <form style="margin-left: 40%;" id="form-consultar-PDA-administrativo" class="formDPAdminisrador">
         <br>
-        <label for="ciPD" data-translate="perfil">Cedula:</label>
+        <label for="ciPD" data-translate="cedula">Cedula:</label>
         <br>
         <input class="inputBuscarUsuarioCi">
         <br>
-        <button class="usuarioBuscar" id="btnBuscarPD" type="button" data-translate="perfil">Buscar</button>
+        <button class="usuarioBuscar" id="btnBuscarPD" type="button" data-translate="buscar">Buscar</button>
         <br>
       </form>
 
@@ -70,15 +70,15 @@
         <table class="tablaUsuario" style="width: 80vw; margin-left: 5vw;">
           <thead>
             <tr>
-              <th data-label="Cedula" data-translate="perfil">Cedula</th>
-              <th data-label="Nombre" data-translate="perfil">Nombre</th>
-              <th data-label="Apellido" data-translate="perfil">Apellido</th>
-              <th data-label="Direccion" data-translate="perfil">Direccion</th>
-              <th data-label="Email" data-translate="perfil">Email</th>
-              <th data-label="Fecha de nacimiento" data-translate="perfil">Fecha de nacimiento</th>
-              <th data-label="Rol" data-translate="perfil">Rol</th>
-              <th data-label="Telefono" data-translate="perfil">Telefono</th>
-              <th data-label="Estado" data-translate="perfil">Estado</th>
+              <th data-label="Cedula" data-translate="cedula">Cedula</th>
+              <th data-label="Nombre" data-translate="nombre">Nombre</th>
+              <th data-label="Apellido" data-translate="apellido">Apellido</th>
+              <th data-label="Direccion" data-translate="direccion">Direccion</th>
+              <th data-label="Email" data-translate="email">Email</th>
+              <th data-label="Fecha de nacimiento" data-translate="fechaNac">Fecha de nacimiento</th>
+              <th data-label="Rol" data-translate="rol">Rol</th>
+              <th data-label="Telefono" data-translate="telefono">Telefono</th>
+              <th data-label="Estado" data-translate="estado">Estado</th>
             </tr>
           </thead>
           <tbody>
@@ -88,61 +88,61 @@
       </section>
 
       <section style="display: flex; position: relative; left: 20%; margin-top: 15vh;">
-        <button class="usuarioModificar" type="button" style="margin: 5vw; width: 10vw" data-translate="perfil">Modificar cliente</button>
-        <button class="usuarioDesactivar" type="button" style="margin: 5vw; width: 10vw;" data-translate="perfil">Desactivar cliente</button>
-        <button class="usuarioEliminar" type="button" style="margin: 5vw; width: 10vw;" data-translate="perfil">Eliminar cliente</button>
+        <button class="usuarioModificar" type="button" style="margin: 5vw; width: 10vw" data-translate="modificarCliente">Modificar cliente</button>
+        <button class="usuarioDesactivar" type="button" style="margin: 5vw; width: 10vw;" data-translate="desactivarCliente">Desactivar cliente</button>
+        <button class="usuarioEliminar" type="button" style="margin: 5vw; width: 10vw;" data-translate="eliminarCliente">Eliminar cliente</button>
       </section>
 
       <section class="sectionEliminar" style="display: none;">
         <form>
-          <label data-translate="perfil">Cédula</label>
+          <label data-translate="cedula">Cédula</label>
           <input class="inputEliminarUsuarioCi">
-          <button class="usuarioConfirmarEliminar" type="button" data-translate="perfil">Eliminar</button>
-          <button class="usuarioCancelar" type="button" data-translate="perfil">Cancelar</button>
+          <button class="usuarioConfirmarEliminar" type="button" data-translate="eliminar">Eliminar</button>
+          <button class="usuarioCancelar" type="button" data-translate="cancelar">Cancelar</button>
         </form>
       </section>
 
       <section class="sectionConfirmarEliminar" style="display: none;">
-        <h3 data-translate="perfil">Seguro que desea eliminar al cliente?</h3>
-        <button class="usuarioConfirmarConfirmarEliminar" type="button" data-translate="perfil">Eliminar</button>
-        <button class="usuarioCancelar" type="button" data-translate="perfil">Cancelar</button>
+        <h3 data-translate="seguridad">Seguro que desea eliminar al cliente?</h3>
+        <button class="usuarioConfirmarConfirmarEliminar" type="button" data-translate="eliminar">Eliminar</button>
+        <button class="usuarioCancelar" type="button" data-translate="cancelar">Cancelar</button>
       </section>
 
       <section class="sectionModificar" style="display: none;">
         <form>
-          <label data-translate="perfil">Cedula</label>
+          <label data-translate="cedula">Cedula</label>
           <input class="inputModificarUsuarioCi">
-          <label data-translate="perfil">Nombre</label>
+          <label data-translate="nombre">Nombre</label>
           <input class="inputModificarUsuarioNombre">
-          <label data-translate="perfil">Apellido</label>
+          <label data-translate="apellido">Apellido</label>
           <input class="inputModificarUsuarioApellido">
-          <label data-translate="perfil">Direccion</label>
+          <label data-translate="direccion">Direccion</label>
           <input class="inputModificarUsuarioDireccion">
-          <label data-translate="perfil">Email</label>
+          <label data-translate="email">Email</label>
           <input class="inputModificarUsuarioEmail">
-          <label data-translate="perfil">Fecha de nacimiento</label>
+          <label data-translate="fechaNac">Fecha de nacimiento</label>
           <input class="inputModificarUsuarioFechaNac" type="date">
-          <label data-translate="perfil">Rol</label>
+          <label data-translate="rol">Rol</label>
           <select name="inputModificarUsuarioRol">
-            <option value="cliente" data-translate="perfil">Cliente</option>
-            <option value="entrenador" data-translate="perfil">Entrenador</option>
-            <option value="avanzado"  data-translate="perfil">Avanzado</option>
-            <option value="seleccionador"  data-translate="perfil">Seleccionador</option>
-            <option value="administradorti" data-translate="perfil">Administrador TI</option>
+            <option value="cliente" data-translate="cliente">Cliente</option>
+            <option value="entrenador" data-translate="entrenador">Entrenador</option>
+            <option value="avanzado"  data-translate="avanzado">Avanzado</option>
+            <option value="seleccionador"  data-translate="seleccionador">Seleccionador</option>
+            <option value="administradorti" data-translate="adminTI">Administrador TI</option>
           </select>
-          <label data-translate="perfil">Telefono</label>
+          <label data-translate="telefono">Telefono</label>
           <input class="inputModificarUsuarioTelefono">
-          <button type="button" id="usuarioConfirmarModificar" type="button" data-translate="perfil">Modificar</button>
-          <button class="usuarioCancelar" type="button" data-translate="perfil">Cancelar</button>
+          <button type="button" id="usuarioConfirmarModificar" type="button" data-translate="modificar">Modificar</button>
+          <button class="usuarioCancelar" type="button" data-translate="cancelar">Cancelar</button>
         </form>
       </section>
 
       <section class="sectionDesactivar" style="display: none;">
         <form>
-          <label data-translate="perfil">Cedula</label>
+          <label data-translate="cedula">Cedula</label>
           <input class="inputDesactivarUsuarioCi">
-          <button class="usuarioConfirmarDesactivar" type="button" data-translate="perfil">Desactivar</button>
-          <button class="usuarioCancelar" type="button" data-translate="perfil"> Cancelar</button>
+          <button class="usuarioConfirmarDesactivar" type="button" data-translate="descativar">Desactivar</button>
+          <button class="usuarioCancelar" type="button" data-translate="cancelar"> Cancelar</button>
         </form> 
       </section>
     </main>

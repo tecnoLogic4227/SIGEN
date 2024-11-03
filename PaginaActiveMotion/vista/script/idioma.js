@@ -177,7 +177,82 @@ $(document).ready(function() {
         "contrasenia": "Password:",
         "mostrar": "Show",
         "entrar": "Enter",
-      },
+
+         //AGENDA ADMINISTRADOR
+         "agenda": "Schedule",
+         "consultarCliente": "Search Client",
+         "perfil": "Profile",
+         "ingresarCi": "Enter ID",
+         "fecha": "Date",
+         "hora": "Time",
+         "ingresar": "Submit",
+         "eliminar": "Delete",
+         "dia1": "Mon",
+         "dia2": "Tue",
+         "dia3": "Wed",
+         "dia4": "Thu",
+         "dia5": "Fri",
+         "dia6": "Sat",
+         "dia7": "Sun",
+
+         //INDEX ADMINISTRADOR
+        "notificaciones": "Notifications",
+        "noti1": "● Remember your physiotherapy appointment tomorrow at 10 AM. We look forward to seeing you!",
+        "noti2": "● Don't miss our special pilates class this Saturday! Book your spot now.",
+        "noti3": "● We have updated our gym class schedules for next week. Check the changes here.",
+        "noti4": "● Please note that we will be closed next Monday due to the holiday. See you on Tuesday.",
+        "noti5": "● Today only! Get a 20% discount on your annual gym membership. Take advantage of this exclusive offer.",
+        "noti6": "● Discover how to improve your posture in our latest article on spinal health. Read more here.",
+        "noti7": "● Help us improve. How was your last physiotherapy session? Complete our brief satisfaction survey.",
+     
+     //CONSULTAR CLIENTE ADMINISTRADOR
+     "consultarClientes": "Search Clients",
+     "cedula": "ID Number",
+     "buscar": "Search",
+     "nombre": "Name",
+     "apellido": "Last Name",
+     "direccion": "Address",
+     "email": "Email",
+     "fechaNac": "Date of Birth",
+     "rol": "Role",
+     "telefono": "Phone",
+     "estado": "Status",
+     "modificarCliente": "Modify Client",
+     "desactivarCliente": "Deactivate Client",
+     "eliminarCliente": "Delete Client",
+     "eliminar": "Delete",
+     "cancelar": "Cancel",
+     "seguridad": "Are you sure you want to delete this client?",
+     "modificar": "Modify",
+     "descativar": "Deactivate",
+     "cliente": "Client",
+     "entrenador": "Trainer",
+     "avanzado": "Advanced",
+     "seleccionador": "Selector",
+     "adminTI": "IT Administrator",
+
+     //PERFIL ADMINISTRADOR
+     "suPerfil": "Your Profile",
+     "cedula": "ID Number",
+     "nombre": "Name",
+     "apellido": "Last Name",
+     "direccion": "Address",
+     "email": "Email",
+     "fechaNac": "Date of Birth",
+     "rol": "Role",
+     "telefono": "Phone",
+     "modificar": "Modify",
+     "cerrarSesion": "Log Out",
+
+     //MODIFICAR PERFIL ADMINISTRADOR
+     "suPerfil": "Your Profile",
+     "guardar": "Save",
+     "regresar": "Return",
+    
+    
+    
+    
+    },
       es: {
         //INDEX GENERAL
         "slogan": "Tu Mejor Versión Comienza Aquí",
@@ -354,7 +429,82 @@ $(document).ready(function() {
         "contrasenia": "Contraseña:",
         "mostrar": "Mostrar",
         "entrar": "Entrar",
-      }
+
+        //AGENDA ADMINISTRADOR
+        "agenda": "Agenda",
+        "consultarCliente": "Consultar cliente",
+        "perfil": "Perfil",
+        "ingresarCi": "Ingresar Cédula",
+        "fecha": "Fecha",
+        "hora": "Hora",
+        "ingresar": "Ingresar",
+        "eliminar": "Eliminar",
+        "dia1": "Lun",
+        "dia2": "Mar",
+        "dia3": "Mié",
+        "dia4": "Jue",
+        "dia5": "Vie",
+        "dia6": "Sáb",
+        "dia7": "Dom",
+
+        //INDEX ADMINISTRADOR
+        "notificaciones": "Notificaciones",
+        "noti1": "● Recuerda tu cita de fisioterapia mañana a las 10 AM. ¡Esperamos verte!",
+        "noti2": "● ¡No te pierdas nuestra clase especial de pilates este sábado! Reserva tu lugar ahora.",
+        "noti3": "● Hemos actualizado nuestros horarios de clases de gym para la próxima semana. Revisa los cambios aquí.",
+        "noti4": "● Por favor, ten en cuenta que estaremos cerrados el próximo lunes por festivo. Nos vemos el martes.",
+        "noti5": "● ¡Solo por hoy! Obtén un descuento del 20% en tu membresía anual de gym. Aprovecha esta oferta exclusiva.",
+        "noti6": "● Descubre cómo mejorar tu postura en nuestro último artículo sobre salud vertebral. Lee más aquí.",
+        "noti7": "● Ayúdanos a mejorar. ¿Cómo fue tu última sesión de fisioterapia? Completa nuestra breve encuesta de satisfacción.",
+      
+    //CONSULTAR CLIENTE ADMINISTRADOR
+    "consultarClientes": "Consultar clientes",
+    "cedula": "Cédula",
+    "buscar": "Buscar",
+    "nombre": "Nombre",
+    "apellido": "Apellido",
+    "direccion": "Dirección",
+    "email": "Email",
+    "fechaNac": "Fecha de nacimiento",
+    "rol": "Rol",
+    "telefono": "Teléfono",
+    "estado": "Estado",
+    "modificarCliente": "Modificar cliente",
+    "desactivarCliente": "Desactivar cliente",
+    "eliminarCliente": "Eliminar cliente",
+    "eliminar": "Eliminar",
+    "cancelar": "Cancelar",
+    "seguridad": "¿Seguro que desea eliminar al cliente?",
+    "modificar": "Modificar",
+    "descativar": "Desactivar",
+    "cliente": "Cliente",
+    "entrenador": "Entrenador",
+    "avanzado": "Avanzado",
+    "seleccionador": "Seleccionador",
+    "adminTI": "Administrador TI",
+
+     //PERFIL ADMINISTRADOR
+     "suPerfil": "Tu Perfil",
+     "cedula": "Cédula",
+     "nombre": "Nombre",
+     "apellido": "Apellido",
+     "direccion": "Dirección",
+     "email": "Email",
+     "fechaNac": "Fecha de nacimiento",
+     "rol": "Rol",
+     "telefono": "Teléfono",
+     "modificar": "Modificar",
+     "cerrarSesion": "Cerrar sesión",
+
+     //MODIFICAR PERFIL ADMINISTRADOR
+     "suPerfil": "Tu Perfil",
+     "guardar": "Guardar",
+     "regresar": "Regresar",
+
+    
+    
+    
+    }
     };
   
     function changeLanguage(lang) {
