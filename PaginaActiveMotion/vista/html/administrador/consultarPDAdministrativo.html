@@ -20,24 +20,29 @@
 <body>
   <div id="wrapper">
     <nav>
+
       <div class="clase1">
         <img src="../../img/logoPagina.png" width="300" height="60" alt="imagen del logo AI" title="logo AI">
       </div>
 
       <ul>
-        <li id="inicio" class="op-menu"><a href="indexAdministrativo.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="agendaAdministrativo.html">Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="consultarPDAdministrativo.html">Consultar cliente</a>
-        <li id="login" class="op-menu"><a href="perfilAdministrativo.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
+        <li id="servicios" class="op-menu"><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a>
+        <li id="login" class="op-menu"><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
 
+      <div class="language-toggle">
+        <button id="langToggle">EN</button>
+      </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="indexAdministrativo.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaAdministrativo.html">Agenda</a></li>
-          <li class="op-menu-oculto"><a href="consultarPDAdministrativo.html">Consultar cliente</a>
-          <li class="op-menu-oculto"><a href="perfilAdministrativo.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
+          <li class="op-menu-oculto"><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
+          <li class="op-menu-oculto"><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a>
+          <li class="op-menu-oculto"><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
 
@@ -45,16 +50,16 @@
 
     <main class="consultarPDAdministrativo">
       <header>
-        <h1 class="tituloConsultaAdministrativo">Consultar clientes</h1>
+        <h1 class="tituloConsultaAdministrativo" data-translate="perfil">Consultar clientes</h1>
       </header>
 
       <form style="margin-left: 40%;" id="form-consultar-PDA-administrativo" class="formDPAdminisrador">
         <br>
-        <label for="ciPD">Cedula:</label>
+        <label for="ciPD" data-translate="perfil">Cedula:</label>
         <br>
         <input class="inputBuscarUsuarioCi">
         <br>
-        <button class="usuarioBuscar" id="btnBuscarPD" type="button">Buscar</button>
+        <button class="usuarioBuscar" id="btnBuscarPD" type="button" data-translate="perfil">Buscar</button>
         <br>
       </form>
 
@@ -64,15 +69,15 @@
         <table class="tablaUsuario" style="width: 80vw; margin-left: 5vw;">
           <thead>
             <tr>
-              <th data-label="Cedula">Cedula</th>
-              <th data-label="Nombre">Nombre</th>
-              <th data-label="Apellido">Apellido</th>
-              <th data-label="Direccion">Direccion</th>
-              <th data-label="Email">Email</th>
-              <th data-label="Fecha de nacimiento">Fecha de nacimiento</th>
-              <th data-label="Rol">Rol</th>
-              <th data-label="Telefono">Telefono</th>
-              <th data-label="Estado">Estado</th>
+              <th data-label="Cedula" data-translate="perfil">Cedula</th>
+              <th data-label="Nombre" data-translate="perfil">Nombre</th>
+              <th data-label="Apellido" data-translate="perfil">Apellido</th>
+              <th data-label="Direccion" data-translate="perfil">Direccion</th>
+              <th data-label="Email" data-translate="perfil">Email</th>
+              <th data-label="Fecha de nacimiento" data-translate="perfil">Fecha de nacimiento</th>
+              <th data-label="Rol" data-translate="perfil">Rol</th>
+              <th data-label="Telefono" data-translate="perfil">Telefono</th>
+              <th data-label="Estado" data-translate="perfil">Estado</th>
             </tr>
           </thead>
           <tbody>
@@ -82,62 +87,62 @@
       </section>
 
       <section style="display: flex; position: relative; left: 20%; margin-top: 15vh;">
-        <button class="usuarioModificar" type="button" style="margin: 5vw; width: 10vw">Modificar cliente</button>
-        <button class="usuarioDesactivar" type="button" style="margin: 5vw; width: 10vw;">Desactivar cliente</button>
-        <button class="usuarioEliminar" type="button" style="margin: 5vw; width: 10vw;">Eliminar cliente</button>
+        <button class="usuarioModificar" type="button" style="margin: 5vw; width: 10vw" data-translate="perfil">Modificar cliente</button>
+        <button class="usuarioDesactivar" type="button" style="margin: 5vw; width: 10vw;" data-translate="perfil">Desactivar cliente</button>
+        <button class="usuarioEliminar" type="button" style="margin: 5vw; width: 10vw;" data-translate="perfil">Eliminar cliente</button>
       </section>
 
       <section class="sectionEliminar" style="display: none;">
         <form>
-          <label>Cédula</label>
+          <label data-translate="perfil">Cédula</label>
           <input class="inputEliminarUsuarioCi">
-          <button class="usuarioConfirmarEliminar" type="button">Eliminar</button>
-          <button class="usuarioCancelar" type="button">Cancelar</button>
+          <button class="usuarioConfirmarEliminar" type="button" data-translate="perfil">Eliminar</button>
+          <button class="usuarioCancelar" type="button" data-translate="perfil">Cancelar</button>
         </form>
       </section>
 
       <section class="sectionConfirmarEliminar" style="display: none;">
-        <h3>Seguro que desea eliminar al cliente?</h3>
-        <button class="usuarioConfirmarConfirmarEliminar" type="button">Eliminar</button>
-        <button class="usuarioCancelar" type="button">Cancelar</button>
+        <h3 data-translate="perfil">Seguro que desea eliminar al cliente?</h3>
+        <button class="usuarioConfirmarConfirmarEliminar" type="button" data-translate="perfil">Eliminar</button>
+        <button class="usuarioCancelar" type="button" data-translate="perfil">Cancelar</button>
       </section>
 
       <section class="sectionModificar" style="display: none;">
         <form>
-          <label>Cedula</label>
+          <label data-translate="perfil">Cedula</label>
           <input class="inputModificarUsuarioCi">
-          <label>Nombre</label>
+          <label data-translate="perfil">Nombre</label>
           <input class="inputModificarUsuarioNombre">
-          <label>Apellido</label>
+          <label data-translate="perfil">Apellido</label>
           <input class="inputModificarUsuarioApellido">
-          <label>Direccion</label>
+          <label data-translate="perfil">Direccion</label>
           <input class="inputModificarUsuarioDireccion">
-          <label>Email</label>
+          <label data-translate="perfil">Email</label>
           <input class="inputModificarUsuarioEmail">
-          <label>Fecha de nacimiento</label>
+          <label data-translate="perfil">Fecha de nacimiento</label>
           <input class="inputModificarUsuarioFechaNac" type="date">
-          <label>Rol</label>
+          <label data-translate="perfil">Rol</label>
           <select name="inputModificarUsuarioRol">
-            <option value="cliente">Cliente</option>
-            <option value="entrenador">Entrenador</option>
-            <option value="avanzado">Avanzado</option>
-            <option value="seleccionador">Seleccionador</option>
-            <option value="administradorti">Administrador TI</option>
+            <option value="cliente" data-translate="perfil">Cliente</option>
+            <option value="entrenador" data-translate="perfil">Entrenador</option>
+            <option value="avanzado"  data-translate="perfil">Avanzado</option>
+            <option value="seleccionador"  data-translate="perfil">Seleccionador</option>
+            <option value="administradorti" data-translate="perfil">Administrador TI</option>
           </select>
-          <label>Telefono</label>
+          <label data-translate="perfil">Telefono</label>
           <input class="inputModificarUsuarioTelefono">
-          <button type="button" id="usuarioConfirmarModificar" type="button">Modificar</button>
-          <button class="usuarioCancelar" type="button">Cancelar</button>
+          <button type="button" id="usuarioConfirmarModificar" type="button" data-translate="perfil">Modificar</button>
+          <button class="usuarioCancelar" type="button" data-translate="perfil">Cancelar</button>
         </form>
       </section>
 
       <section class="sectionDesactivar" style="display: none;">
         <form>
-          <label>Cedula</label>
+          <label data-translate="perfil">Cedula</label>
           <input class="inputDesactivarUsuarioCi">
-          <button class="usuarioConfirmarDesactivar" type="button">Desactivar</button>
-          <button class="usuarioCancelar" type="button">Cancelar</button>
-        </form>
+          <button class="usuarioConfirmarDesactivar" type="button" data-translate="perfil">Desactivar</button>
+          <button class="usuarioCancelar" type="button" data-translate="perfil"> Cancelar</button>
+        </form> 
       </section>
     </main>
 
@@ -145,10 +150,10 @@
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="indexAdministrativo.html">Inicio</a></li>
-          <li><a href="agendaAdministrativo.html">Agenda</a></li>
-          <li><a href="consultarPDAdministrativo.html">Consultar cliente</a></li>
-          <li><a href="perfilAdministrativo.html">Perfil</a></li>
+          <li><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="agendaAdministrativo.html"  data-translate="agenda">Agenda</a></li>
+          <li><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a></li>
+          <li><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
