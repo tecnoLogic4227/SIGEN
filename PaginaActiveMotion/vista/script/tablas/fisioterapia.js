@@ -88,6 +88,10 @@ $(document).ready(() => {
         nombreFisioterapia = $(".inputCrearFisioterapiaNombreFisioterapia").val();
         tipoFisioterapia = $(".inputCrearFisioterapiaTipoFisioterapia").val();
         descripcion = $(".inputCrearFisioterapiaDescripcion").val();
+        if (!filtroId(idFisioterapia)) {
+            alert("ID no válido.");
+            return;
+        }
         crearFisioterapia(idFisioterapia, nombreFisioterapia, tipoFisioterapia, descripcion);
     };
 

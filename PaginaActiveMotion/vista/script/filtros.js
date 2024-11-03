@@ -202,7 +202,6 @@ const filtroCantidad = dato => {
 }
 
 const filtroDireccion = dato => {
-
     if (dato.length < 1 || dato.length > 199) {
         return false;
     }

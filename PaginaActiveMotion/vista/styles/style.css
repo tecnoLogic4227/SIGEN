@@ -2248,3 +2248,25 @@ td {
   justify-content: center;
 }
 
+
+
+
+
+
+
+.sectionIndexAvanzado {
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.tituloAvanzado {
+  margin: 0;
+}
+
+.botonIndexAvanzado {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
