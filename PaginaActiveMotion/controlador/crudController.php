@@ -419,140 +419,278 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
                 }
             }
             break;
-            case "ejercicioRutina":
-                $ejercicio = datos($tabla);
+        case "ejercicioRutina":
+            $ejercicio = datos("ejercicio");
 
-                if ($rutina->idRutina && $rutina->nombreRutina && $rutina->tipoRutina) {
-                    $sqlConsulta = "SELECT * FROM RUTINA WHERE id_rutina = ?";
-                    $paramsConsulta = "i";
-                    $atributosConsulta = [$rutina->idRutina];
-        
-                    if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                        echo json_encode("Error: ya existe una rutina con ese ID.");
-                    } else {
-                        $sql = "INSERT INTO rutina (id_rutina, nombre_rutina, tipo_rutina) VALUES (?, ?, ?);";
-                        $params = "iss";
-                        $atributos = [$rutina->idRutina, $rutina->nombreRutina, $rutina->tipoRutina];
-        
-                        if (registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                            if ($rutina->tipoRutina == "deporte") {
-                                $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
-                                $params = "i";
-                                $atributos = [$rutina->idRutina];
-        
-                                echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
-                            } else {
-                                if ($rutina->tipoRutina == "fisioterapia") {
-                                    $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
-                                $params = "i";
-                                $atributos = [$rutina->idRutina];
-            
-                                    echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
-                                } else {
-                                    echo json_encode("Error: tipo de rutina no valido.");
-                                }
-                            }
-                        } else {
-                            echo json_encode("Error al crear rutina.");
-                        }
-                    }
-                } else {
-                    echo json_encode("Error: ningun campo puede quedar vacío.");
-                }
-                break;
-            case "equipo":
-                $ci = [];
-                $posicion = [];
-                $deportistas = [];
-                $estan = [];
-                $contador = 0;
-            
-                $equipo = datos($tabla);
-                $jugadores = json_decode($_REQUEST['jugadores'], true);
-                $deporte = $equipo->deporte;
-            
-                $sqlConsultaDeporte = "SELECT * FROM DEPORTE WHERE nombre_deporte = ?";
-                $paramsConsultaDeporte = "s";
-                $atributosConsultaDeporte = [$deporte];
-                if (!verificarExistencia($sqlConsultaDeporte, $paramsConsultaDeporte, $atributosConsultaDeporte)) {
-                    echo json_encode("El deporte no existe.");
-                    break;
-                }
-            
-                foreach ($jugadores as $elemento) {
-                    $contador++;
-                    isset($elemento["ci"]) ? array_push($ci, $elemento["ci"]) : null;
-                    isset($elemento["posicion"]) ? array_push($posicion, $elemento["posicion"]) : null;
-                }
-            
-                foreach ($ci as $ciJugador) {
-                    $sqlConsultaJugador = "SELECT * FROM esta WHERE ci = ?";
-                    $paramsConsultaJugador = "s";
-                    $atributosConsultaJugador = [$ciJugador];
-                    if (verificarExistencia($sqlConsultaJugador, $paramsConsultaJugador, $atributosConsultaJugador)) {
-                        echo json_encode("El deportista con CI $ciJugador ya está en otro equipo.");
-                        break 2; 
-                    }
-                }
-            
-                for ($i = 0; $i < $contador; $i++) {
-                    if ($ci[$i] && $posicion[$i]) {
-                        array_push($deportistas, new Deportista($ci[$i], $posicion[$i]));
-                    }
-                    if ($ci[$i] && $equipo->idEquipo) {
-                        array_push($estan, new Esta($ci[$i], $equipo->idEquipo));
-                    }               
-                }
-            
-                $sqlConsulta = "SELECT * FROM equipo WHERE id_equipo = ?";
+            if ($ejercicio->idEjercicio && $ejercicio->nombreEjercicio && $ejercicio->nroRep && $ejercicio->nroSeries && $ejercicio->grupoMuscular && $ejercicio->descripcion) {
+                $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
                 $paramsConsulta = "i";
-                $atributosConsulta = [$equipo->idEquipo];
-            
-                if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                    verificarDatos($atributos, $params, $valores, $equipo, $tabla, $metodo, $placeholders);
-                    $sql = "UPDATE usuario SET $atributos WHERE ci = ? AND rol = 'cliente'";
-                    $params .= "i";
-                    array_push($valores, $equipo->idEquipo);
-            
-                    echo json_encode(modificarBD($sql, $params, $valores));
+                $atributosConsulta = $ejercicio->idEjercicio;
+
+                if (!verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                    $sql = "INSERT INTO ejercicio (id_ejercicio, nombre_ejercicio, nro_rep, nro_series, grupo_muscular, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
+                    $params = "isiiss";
+                    $atributos = [$ejercicio->idEjercicio, $ejercicio->nombreEjercicio, $ejercicio->nroRep, $ejercicio->nroSeries, $ejercicio->grupoMuscular, $ejercicio->descripcion];
+
+                    echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
                 } else {
-                    if ($equipo->idEquipo && $equipo->nombreEquipo) {
-                        $resultadoDeportista = [];
-                        $resultadoEsta = [];
-            
-                        $sql = "INSERT INTO equipo (id_equipo, nombre_equipo) VALUES (?, ?);";
-                        $params = "is";
-                        $atributos = [$equipo->idEquipo, $equipo->nombreEquipo];
-            
-                        $resultadoEquipo = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
-            
-                        foreach ($deportistas as $elemento) {
-                            $sql = "INSERT INTO deportista (ci, posicion) VALUES (?, ?);";
-                            $params = "is";
-                            $atributos = [$elemento->ci, $elemento->posicion];
-            
-                            $resultadoDeportista = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
-            
-                            $sql = "INSERT INTO esta (id_rutina, ci) VALUES (?, ?);";
-                            $params = "ii";
-                            $atributos = [$equipo->idEquipo, $elemento->ci];
-            
-                            $resultadoEsta = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
-                        }
-            
-                        $sqlAsociarDeporte = "INSERT INTO CONTIENE (id_equipo, nombre_deporte) VALUES (?, ?);";
-                        $paramsAsociarDeporte = "is";
-                        $atributosAsociarDeporte = [$equipo->idEquipo, $deporte];
-                        registrarBD($sqlAsociarDeporte, $paramsAsociarDeporte, $atributosAsociarDeporte, null, null, null);
-            
-                        echo json_encode($resultadoEquipo && $resultadoDeportista && $resultadoEsta);
-                    } else {
-                        echo json_encode("No puede dejar campos vacios.");
-                    }
+                    echo json_encode("Error: ya existe un ejercicio con ese ID.");
                 }
-            
+            } else {
+                echo json_encode("Error: ningun campo puede quedar vacío.");
+            }
+
+            break;
+        case "asisteRealiza":
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
+
+            if ($idRutina && $idEjercicio) {
+                $sqlConsulta = "SELECT * FROM posee WHERE id_ejercicio = ? AND id_rutina = ?";
+                $paramsConsulta = "ii";
+                $atributosConsulta = [$idEjercicio, $idRutina];
+
+                if (!verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                    $sql = "INSERT INTO posee (id_rutina, id_ejercicio) VALUES (?, ?)";
+                    $params = "ii";
+                    $atributos = [$idRutina, $idEjercicio];
+
+                    echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                } else {
+                    echo json_encode("Error: ya existe un ejercicio asignado a una rutina con esos IDs.");
+                }
+            } else {
+                echo json_encode("Error: ningun campo puede quedar vacío.");
+            }
+            break;
+        case "clienteRutina":
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+
+            if ($idRutina && $ci) {
+
+                $sqlConsulta = "SELECT actividad FROM usuario_cliente WHERE ci = ?";
+                $params = "i";
+                $atributos = $ci;
+
+                if (verificarExistencia($sqlConsulta, $params, $atributos)) {
+                    $actividad = listarBD($sqlConsulta, $params, $atributos);
+
+                    switch ($actividad[0]["actividad"]) {
+                        case "deportista":
+                            $sqlConsulta = "SELECT * FROM realiza WHERE id_rutina = ? AND ci = ?";
+                            $params = "ii";
+                            $atributos = [$idRutina, $ci];
+
+                            if (!verificarExistencia($sqlConsulta, $params, $atributos)) {
+
+                                $sqlConsulta = "SELECT * FROM rut_deporte WHERE id_rutina = ?";
+                                $params = "i";
+                                $atributos = $idRutina;
+
+                                if (!verificarExistencia($sqlConsulta, $params, $atributos)) {
+                                    $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
+
+                                    if (registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos)) {
+                                        $sql = "INSERT INTO realiza (ci, id_rutina) VALUES (?, ?);";
+                                        $params = "ii";
+                                        $atributos = [$ci, $idRutina];
+
+                                        $sqlConsulta = "SELECT * FROM realiza WHERE ci = ? AND id_rutina = ?;";
+
+                                        echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos));
+                                    } else {
+                                        echo json_encode("Error: rutina no encontrada");
+                                    }
+                                } else {
+                                    $sql = "INSERT INTO realiza (ci, id_rutina) VALUES (?, ?);";
+                                    $params = "ii";
+                                    $atributos = [$ci, $idRutina];
+
+                                    $sqlConsulta = "SELECT * FROM realiza WHERE ci = ? AND id_rutina = ?;";
+
+                                    echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos));
+                                }
+                            } else {
+                                echo json_encode("Error: rutina ya asignada a ese cliente.");
+                            }
+                            break;
+                        case "paciente":
+                            $sqlConsulta = "SELECT * FROM asiste WHERE id_rutina = ? AND ci = ?";
+                            $params = "ii";
+                            $atributos = [$idRutina, $ci];
+
+                            if (!verificarExistencia($sqlConsulta, $params, $atributos)) {
+
+                                $sqlConsulta = "SELECT * FROM rut_fisioterapia WHERE id_rutina = ?";
+                                $params = "i";
+                                $atributos = $idRutina;
+
+                                if (!verificarExistencia($sqlConsulta, $params, $atributos)) {
+                                    $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
+
+                                    if (registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos)) {
+                                        $sql = "INSERT INTO asiste (ci, id_rutina) VALUES (?, ?);";
+                                        $params = "ii";
+                                        $atributos = [$ci, $idRutina];
+
+                                        $sqlConsulta = "SELECT * FROM asiste WHERE ci = ? AND id_rutina = ?;";
+
+                                        echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos));
+                                    } else {
+                                        echo json_encode("Error: rutina no encontrada");
+                                    }
+                                } else {
+                                    $sql = "INSERT INTO asiste (ci, id_rutina) VALUES (?, ?);";
+                                    $params = "ii";
+                                    $atributos = [$ci, $idRutina];
+
+                                    $sqlConsulta = "SELECT * FROM asiste WHERE ci = ? AND id_rutina = ?;";
+
+                                    echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos));
+                                }
+                            } else {
+                                echo json_encode("Error: rutina ya asignada a ese cliente.");
+                            }
+                            break;
+                        default:
+                            echo json_encode("Error: actividad del cliente no válida.");
+                            break;
+                    }
+                } else {
+                    echo json_encode("Error: cliente no encontrado.");
+                }
+            } else {
+                echo json_encode("Error: ningun campo puede quedar vacío.");
+            }
+
+            break;
+        case "armarEquipo":
+            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+            $idEquipo = isset($_REQUEST["id"]) ? $_REQUEST["id"] : null;
+
+            $sqlConsulta = "SELECT * FROM esta WHERE ci = ?;";
+            $params = "i";
+            $atributos = $ci;
+
+            if (!verificarExistencia($sqlConsulta, $params, $atributos)) {
+                $sqlConsulta = "SELECT * FROM deportista WHERE ci = ?;";
+                if (verificarExistencia($sqlConsulta, $params, $atributos)) {
+                    $sqlConsulta = "SELECT * FROM equipo WHERE id_equipo = ?;";
+                    $atributos = $idEquipo;
+                    if (verificarExistencia($sqlConsulta, $params, $atributos)) {
+                        $sql = "INSERT INTO esta (ci, id_equipo) VALUES (?, ?);";
+                        $params = "ii";
+                        $atributos = [$ci, $idEquipo];
+
+                        $sqlConsulta = "SELECT * FROM esta WHERE ci = ?;";
+                        $paramsConsulta = "i";
+                        $atributosConsulta = $ci;
+
+                        echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
+                    } else {
+                        echo json_encode("Error: equipo no encontrado.");
+                    }
+                } else {
+                    echo json_encode("Error: deportista no encontrado.");
+                }
+            } else {
+                echo json_encode("Error: deportista ya ingresado en un equipo.");
+            }
+            break;
+        case "equipo":
+            $ci = [];
+            $posicion = [];
+            $deportistas = [];
+            $estan = [];
+            $contador = 0;
+
+            $equipo = datos($tabla);
+            $jugadores = json_decode($_REQUEST['jugadores'], true);
+            $deporte = $equipo->deporte;
+
+            $sqlConsultaDeporte = "SELECT * FROM DEPORTE WHERE nombre_deporte = ?";
+            $paramsConsultaDeporte = "s";
+            $atributosConsultaDeporte = [$deporte];
+            if (!verificarExistencia($sqlConsultaDeporte, $paramsConsultaDeporte, $atributosConsultaDeporte)) {
+                echo json_encode("El deporte no existe.");
                 break;
-                       
+            }
+
+            foreach ($jugadores as $elemento) {
+                $contador++;
+                isset($elemento["ci"]) ? array_push($ci, $elemento["ci"]) : null;
+                isset($elemento["posicion"]) ? array_push($posicion, $elemento["posicion"]) : null;
+            }
+
+            foreach ($ci as $ciJugador) {
+                $sqlConsultaJugador = "SELECT * FROM esta WHERE ci = ?";
+                $paramsConsultaJugador = "s";
+                $atributosConsultaJugador = [$ciJugador];
+                if (verificarExistencia($sqlConsultaJugador, $paramsConsultaJugador, $atributosConsultaJugador)) {
+                    echo json_encode("El deportista con CI $ciJugador ya está en otro equipo.");
+                    break 2;
+                }
+            }
+
+            for ($i = 0; $i < $contador; $i++) {
+                if ($ci[$i] && $posicion[$i]) {
+                    array_push($deportistas, new Deportista($ci[$i], $posicion[$i]));
+                }
+                if ($ci[$i] && $equipo->idEquipo) {
+                    array_push($estan, new Esta($ci[$i], $equipo->idEquipo));
+                }
+            }
+
+            $sqlConsulta = "SELECT * FROM equipo WHERE id_equipo = ?";
+            $paramsConsulta = "i";
+            $atributosConsulta = [$equipo->idEquipo];
+
+            if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                verificarDatos($atributos, $params, $valores, $equipo, $tabla, $metodo, $placeholders);
+                $sql = "UPDATE usuario SET $atributos WHERE ci = ? AND rol = 'cliente'";
+                $params .= "i";
+                array_push($valores, $equipo->idEquipo);
+
+                echo json_encode(modificarBD($sql, $params, $valores));
+            } else {
+                if ($equipo->idEquipo && $equipo->nombreEquipo) {
+                    $resultadoDeportista = [];
+                    $resultadoEsta = [];
+
+                    $sql = "INSERT INTO equipo (id_equipo, nombre_equipo) VALUES (?, ?);";
+                    $params = "is";
+                    $atributos = [$equipo->idEquipo, $equipo->nombreEquipo];
+
+                    $resultadoEquipo = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
+
+                    foreach ($deportistas as $elemento) {
+                        $sql = "INSERT INTO deportista (ci, posicion) VALUES (?, ?);";
+                        $params = "is";
+                        $atributos = [$elemento->ci, $elemento->posicion];
+
+                        $resultadoDeportista = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
+
+                        $sql = "INSERT INTO esta (id_rutina, ci) VALUES (?, ?);";
+                        $params = "ii";
+                        $atributos = [$equipo->idEquipo, $elemento->ci];
+
+                        $resultadoEsta = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
+                    }
+
+                    $sqlAsociarDeporte = "INSERT INTO CONTIENE (id_equipo, nombre_deporte) VALUES (?, ?);";
+                    $paramsAsociarDeporte = "is";
+                    $atributosAsociarDeporte = [$equipo->idEquipo, $deporte];
+                    registrarBD($sqlAsociarDeporte, $paramsAsociarDeporte, $atributosAsociarDeporte, null, null, null);
+
+                    echo json_encode($resultadoEquipo && $resultadoDeportista && $resultadoEsta);
+                } else {
+                    echo json_encode("No puede dejar campos vacios.");
+                }
+            }
+
+            break;
+
         case "esta":
             $esta = datos($tabla);
 
@@ -742,27 +880,27 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
                 $sqlConsulta = "SELECT * FROM RUTINA WHERE id_rutina = ?";
                 $paramsConsulta = "i";
                 $atributosConsulta = [$rutina->idRutina];
-    
+
                 if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                     echo json_encode("Error: ya existe una rutina con ese ID.");
                 } else {
                     $sql = "INSERT INTO rutina (id_rutina, nombre_rutina, tipo_rutina) VALUES (?, ?, ?);";
                     $params = "iss";
                     $atributos = [$rutina->idRutina, $rutina->nombreRutina, $rutina->tipoRutina];
-    
+
                     if (registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta)) {
                         if ($rutina->tipoRutina == "deporte") {
                             $sql = "INSERT INTO rut_deporte (id_rutina) VALUES (?);";
                             $params = "i";
                             $atributos = [$rutina->idRutina];
-    
+
                             echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
                         } else {
                             if ($rutina->tipoRutina == "fisioterapia") {
                                 $sql = "INSERT INTO rut_fisioterapia (id_rutina) VALUES (?);";
-                            $params = "i";
-                            $atributos = [$rutina->idRutina];
-        
+                                $params = "i";
+                                $atributos = [$rutina->idRutina];
+
                                 echo json_encode(registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta));
                             } else {
                                 echo json_encode("Error: tipo de rutina no valido.");
@@ -774,7 +912,7 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
                 }
             } else {
                 echo json_encode("Error: ningun campo puede quedar vacío.");
-            }            
+            }
 
             break;
         case "rutDeporte":
@@ -1124,6 +1262,87 @@ function listar($tabla)
                 $sql = "SELECT * FROM ejercicio";
                 $params = "";
                 $atributos = "";
+            }
+
+            echo json_encode(listarBD($sql, $params, $atributos));
+            break;
+        case "ejercicioRutina":
+            $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
+
+            if (!is_null($idEjercicio) && !empty($idEjercicio)) {
+                $sql = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
+                $params = "i";
+                $atributos = $idEjercicio;
+            } else {
+                $sql = "SELECT * FROM ejercicio";
+                $params = "";
+                $atributos = "";
+            }
+
+            echo json_encode(listarBD($sql, $params, $atributos));
+            break;
+        case "asisteRealiza":
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
+
+            if (!is_null($idEjercicio) && !empty($idEjercicio) && !is_null($idRutina) && !empty($idRutina)) {
+                $sql = "SELECT * FROM posee WHERE id_ejercicio = ? AND id_rutina = ?";
+                $params = "ii";
+                $atributos = [$idEjercicio, $idRutina];
+            } else {
+                $sql = "SELECT * FROM posee";
+                $params = "";
+                $atributos = "";
+            }
+
+            echo json_encode(listarBD($sql, $params, $atributos));
+            break;
+        case "clienteRutina":
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+
+            if (!is_null($ci) && !empty($ci) && !is_null($idRutina) && !empty($idRutina)) {
+                $sql = "SELECT ci, id_rutina 
+                                FROM realiza 
+                                WHERE ci = ? AND id_rutina = ?  
+                                UNION ALL
+                                SELECT ci, id_rutina 
+                                FROM asiste 
+                                WHERE ci = ? AND id_rutina = ?;";
+
+                $atributos = [$ci, $idRutina, $ci, $idRutina];
+                $params = "iiii";
+            } elseif (!is_null($ci) && !empty($ci)) {
+                $sql = "SELECT ci, id_rutina 
+                                FROM realiza 
+                                WHERE ci = ?
+                                UNION ALL
+                                SELECT ci, id_rutina 
+                                FROM asiste 
+                                WHERE ci = ?;";
+
+                $atributos = [$ci, $ci];
+                $params = "ii";
+            } elseif (!is_null($idRutina) && !empty($idRutina)) {
+                $sql = "SELECT ci, id_rutina 
+                                FROM realiza 
+                                WHERE id_rutina = ?
+                                UNION ALL
+                                SELECT ci, id_rutina 
+                                FROM asiste 
+                                WHERE id_rutina = ?;";
+
+                $atributos = [$idRutina, $idRutina];
+                $params = "ii";
+            } else {
+                $sql = "SELECT ci, id_rutina 
+                                FROM realiza 
+                                UNION ALL
+                                SELECT ci, id_rutina 
+                                FROM asiste;";
+
+                $atributos = [];
+                $params = "";
             }
 
             echo json_encode(listarBD($sql, $params, $atributos));
@@ -1740,28 +1959,127 @@ function eliminar($tabla)
             break;
         case "ejercicio":
             if (isset($_REQUEST["idEjercicio"])) {
-                $ejercicio = datos($tabla);
+                $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
 
                 $sql = "DELETE FROM ejercicio WHERE id_ejercicio = ?";
                 $params = "i";
-                $atributos = [$ejercicio->idEjercicio];
+                $atributos = [$idEjercicio];
 
                 $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
+                echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             } else {
-                echo json_encode(false);
+                echo json_encode("Error: ID no valido.");
+            }
+            break;
+        case "ejercicioRutina":
+            if (isset($_REQUEST["idEjercicio"])) {
+                $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
+
+                $sql = "DELETE FROM ejercicio WHERE id_ejercicio = ?";
+                $params = "i";
+                $atributos = $idEjercicio;
+
+                $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
+
+                echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+            } else {
+                echo json_encode("Debe ingresar un ID para eliminar el ejercicio.");
+            }
+            break;
+        case "asisteRealiza":
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
+
+            if ($idRutina && $idEjercicio) {
+                $sql = "DELETE FROM posee WHERE id_rutina = ? AND id_ejercicio = ?";
+                $params = "ii";
+                $atributos = [$idRutina, $idEjercicio];
+
+                $sqlConsulta = "SELECT * FROM posee WHERE id_rutina = ? AND id_ejercicio = ?";
+            } else {
+                echo json_encode("Error: ningun campo puede quedar vacío.");
             }
 
             echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+            break;
+        case "clienteRutina":
+            $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
+            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+
+            $sqlConsulta = "SELECT actividad FROM usuario_cliente WHERE ci = ?";
+            $params = "i";
+            $atributos = $ci;
+
+            $actividad = listarBD($sqlConsulta, $params, $atributos);
+
+            switch ($actividad[0]["actividad"]) {
+                case "deportista":
+                    if ($idRutina && $ci) {
+                        $sql = "DELETE FROM realiza WHERE id_rutina = ? AND ci = ?";
+                        $params = "ii";
+                        $atributos = [$idRutina, $ci];
+
+                        $sqlConsulta = "SELECT * FROM realiza WHERE id_rutina = ? AND ci = ?";
+                        echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                    } else {
+                        echo json_encode("Error: ningun campo puede quedar vacío.");
+                    }
+                    break;
+                case "paciente":
+                    if ($idRutina && $ci) {
+                        $sql = "DELETE FROM asiste WHERE id_rutina = ? AND ci = ?";
+                        $params = "ii";
+                        $atributos = [$idRutina, $ci];
+
+                        $sqlConsulta = "SELECT * FROM asiste WHERE id_rutina = ? AND ci = ?";
+                        echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                    } else {
+                        echo json_encode("Error: ningun campo puede quedar vacío.");
+                    }
+                    break;
+                default:
+                    echo json_encode("Error: actividad no válida.");
+                    break;
+            }
+            break;
+        case "armarEquipo":
+            $ci = isset($_REQUEST["ci"]) ? $_REQUEST["ci"] : null;
+            $idEquipo = isset($_REQUEST["id"]) ? $_REQUEST["id"] : null;
+
+            $sqlConsulta = "SELECT * FROM esta WHERE ci = ?;";
+            $paramsConsulta = "i";
+            $atributosConsulta = $ci;
+
+            if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                $sqlConsulta = "SELECT * FROM esta WHERE id_equipo = ?;";
+                $paramsConsulta = "i";
+                $atributosConsulta = $idEquipo;
+
+                if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
+                    $sql = "DELETE FROM esta WHERE ci = ? AND id_equipo = ?;";
+                    $params = "ii";
+                    $atributos = [$ci, $idEquipo];
+
+                    $sqlConsulta = "SELECT * FROM esta WHERE ci = ? AND id_equipo = ?;";
+
+                    echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                } else {
+                    echo json_encode("Error: ese equipo no contiene ningun deportista.");
+                }
+            } else {
+                echo json_encode("Error: ese deportista no se encuentra en ningun equipo.");
+            }
+
             break;
         case "equipo":
             if (isset($_REQUEST["idEquipo"])) {
                 $equipo = datos($tabla);
 
-                $sql = "DELETE FROM equipo WHERE idEquipo = ?";
+                $sql = "DELETE FROM equipo WHERE id_equipo = ?";
                 $params = "i";
                 $atributos = [$equipo->idEquipo];
 
-                $sqlConsulta = "SELECT * FROM equipo WHERE idEquipo = ?";
+                $sqlConsulta = "SELECT * FROM equipo WHERE id_Equipo = ?";
             } else {
                 echo json_encode(false);
             }
@@ -1920,18 +2238,56 @@ function eliminar($tabla)
             break;
         case "rutina":
             if (isset($_REQUEST["idRutina"])) {
-                $rutina = datos($tabla);
+                $idRutina = isset($_REQUEST["idRutina"]) ? $_REQUEST["idRutina"] : null;
 
-                $sql = "DELETE FROM rutina WHERE id_rutina = ?";
+                // $sql = "DELETE FROM rutina WHERE id_rutina = ?";
+                // $params = "i";
+                // $atributos = [$rutina->idRutina];
+
+                $sqlConsulta = "SELECT tipo_rutina FROM rutina WHERE id_rutina = ?";
                 $params = "i";
-                $atributos = [$rutina->idRutina];
+                $atributos = $idRutina;
 
-                $sqlConsulta = "SELECT * FROM rutina WHERE id_rutina = ?";
+                $tipoRutina = listarBD($sqlConsulta, $params, $atributos);
+
+                switch ($tipoRutina[0]["tipo_rutina"]) {
+                    case "deporte":
+                        $sql = "DELETE FROM realiza WHERE id_rutina = ?";
+                        $sqlConsulta = "SELECT * FROM realiza WHERE id_rutina = ?";
+                        if (eliminarBD($sql, $params, $atributos, $sqlConsulta)) {
+                            $sql = "DELETE FROM rut_deporte WHERE id_rutina = ?";
+                            $sqlConsulta = "SELECT * FROM rut_deporte WHERE id_rutina = ?";
+                            if (eliminarBD($sql, $params, $atributos, $sqlConsulta)) {
+                                $sql = "DELETE FROM rutina WHERE id_rutina = ?";
+                                $sqlConsulta = "SELECT * FROM rutina WHERE id_rutina = ?";
+                                echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                            }
+                        } else {
+                            echo json_encode(false);
+                        }
+                        break;
+                    case "fisioterapia":
+                        $sql = "DELETE FROM asiste WHERE id_rutina = ?";
+                        $sqlConsulta = "SELECT * FROM asiste WHERE id_rutina = ?";
+                        if (eliminarBD($sql, $params, $atributos, $sqlConsulta)) {
+                            $sql = "DELETE FROM rut_fisioterapia WHERE id_rutina = ?";
+                            $sqlConsulta = "SELECT * FROM rut_fisioterapia WHERE id_rutina = ?";
+                            if (eliminarBD($sql, $params, $atributos, $sqlConsulta)) {
+                                $sql = "DELETE FROM rutina WHERE id_rutina = ?";
+                                $sqlConsulta = "SELECT * FROM rutina WHERE id_rutina = ?";
+                                echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                            }
+                        }
+                        break;
+                    default:
+                        if ($tipoRutina === null) {
+
+                        }
+                        break;
+                }
             } else {
                 echo json_encode(false);
             }
-
-            echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             break;
         case "rutDeporte":
             if (isset($_REQUEST["idRutina"])) {
@@ -1981,11 +2337,11 @@ function eliminar($tabla)
         case "consultarPDAdministrativo":
             if (isset($_REQUEST["ci"])) {
                 $usuario = datos($tabla);
-            
+
                 $sqlConsulta = "SELECT * FROM deportista WHERE ci = ?";
                 $params = "i";
                 $atributos = [$usuario->ci];
-            
+
                 if (verificarExistencia($sqlConsulta, $params, $atributos)) {
                     $sql = "DELETE FROM deportista WHERE ci = ?";
                     eliminarBD($sql, $params, $atributos, $sqlConsulta);
@@ -2002,19 +2358,19 @@ function eliminar($tabla)
                         }
                     }
                 }
-            
+
                 $sql = "DELETE FROM usuario_cliente WHERE ci = ?";
                 $sqlConsulta = "SELECT * FROM usuario_cliente WHERE ci = ?";
-                
+
                 eliminarBD($sql, $params, $atributos, $sqlConsulta);
-            
+
                 $sql = "DELETE FROM usuario WHERE ci = ? AND rol = 'cliente'";
                 $sqlConsulta = "SELECT * FROM usuario WHERE ci = ? AND rol = 'cliente'";
                 echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
             } else {
                 echo json_encode(false);
             }
-            
+
             break;
         case "usuario":
             if (isset($_REQUEST["ci"])) {

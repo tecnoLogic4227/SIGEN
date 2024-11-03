@@ -8,6 +8,9 @@
   <title>ActiveMotion</title>
   <script src="../../script/jquery-3.7.1.min.js"></script>
   <script src="../../script/tablas/asignarEntrenamientoRutina.js"></script>
+  <script src="../../script/tablas/asignarEntrenamientoClienteRutina.js"></script>
+  <script src="../../script/tablas/asignarEntrenamientoEjercicio.js"></script>
+  <script src="../../script/tablas/asignarEntrenamientoPosee.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../script/script.js"></script>
   <script src="../../script/calendar.js"></script>
@@ -47,14 +50,14 @@
     </nav>
 
     <main>
-      <h3>Asignar entrenamiento
-      </h3>
+      <h2>Asignar entrenamiento
+      </h2>
 
       <section id="buscar">
         <h5>Buscar rutina</h5>
         <form>
           <label>Id Rutina:</label>
-          <input class="inputIdRutina" type="text" id="buscar-rutina-id">
+          <input class="inputBuscarIdRutina" type="text" id="buscar-rutina-id">
           <button class="botonBuscarRutina" type="button">Buscar</button>
         </form>
       </section>
@@ -78,7 +81,6 @@
                   <option value="deporte">Deporte</option>
                   <option value="fisioterapia">Fisioterapia</option>
                 </select>
-
               </td>
               <td><button type="button" class="botonCrearRutina">Crear Rutina</button></td>
             </tr>
@@ -89,10 +91,8 @@
       <section id="buscar">
         <h5>Buscar ejercicio</h5>
         <form>
-          <label>Id rutina:</label>
-          <input class="inputIdRutina" type="text" id="buscar-rutina-id">
           <label>Id ejercicio:</label>
-          <input class="inputIdEjercicio" type="text" id="buscar-rutina-id">
+          <input class="inputBuscarIdEjercicio" type="text" id="buscar-rutina-id">
           <button class="botonBuscarEjercicio" type="button">Buscar</button>
       </section>
 
@@ -111,13 +111,13 @@
           </thead>
           <tbody>
             <tr>
-              <td><input class="inputEntrenamientoIdEjercicio"></td>
-              <td><input class="inputEntrenamientoNombreEjercicio"></td>
-              <td><input class="inputEntrenamientoRepeticiones"></td>
-              <td><input class="inputEntrenamientoSeries"></td>
-              <td><input class="inputEntrenamientoGrupoMuscular"></td>
-              <td><input class="inputEntrenamientoDescripcion"></td>
-              <td><button type="button" class="botonCrearRutina">Crear Rutina</button></td>
+              <td><input class="inputCrearIdEjercicio"></td>
+              <td><input class="inputCrearNombreEjercicio"></td>
+              <td><input class="inputCrearRepeticiones"></td>
+              <td><input class="inputCrearSeries"></td>
+              <td><input class="inputCrearGrupoMuscular"></td>
+              <td><input class="inputCrearDescripcion"></td>
+              <td><button type="button" class="botonCrearEjercicio">Crear ejercicio</button></td>
             </tr>
           </tbody>
         </table>
@@ -127,14 +127,14 @@
         <h5>Asignar ejercicio a rutina</h5>
         <form>
           <label>Id rutina:</label>
-          <input class="inputIdRutina" type="text" id="buscar-rutina-id">
+          <input class="inputBuscarAsisteRealizaIdRutina" type="text" id="buscar-ejercicio-id">
           <label>Id ejercicio:</label>
-          <input class="inputIdEjercicio" type="text" id="buscar-rutina-id">
-          <button class="botonBuscarRutina" type="button">Buscar</button>
+          <input class="inputBuscarAsisteRealizaIdEjercicio" type="text" id="buscar-ejercicio-id">
+          <button class="botonAsisteRealizaBuscar" type="button">Buscar</button>
       </section>
 
       <section id="rutinas">
-        <table id="tablaPosee">
+        <table id="tablaAsisteRealiza">
           <thead>
             <tr>
               <th>ID Rutina</th>
@@ -142,28 +142,42 @@
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <tr>
+              <td><input class="inputCrearAsisteRealizaIdRutina"></td>
+              <td><input class="inputCrearAsisteRealizaIdRutina"></td>
+              <td><button type="button" class="botonAsisteRealizaCrear">Asignar ejercicio</button></td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
       <section id="buscar">
         <h5>Asignar rutina a cliente</h5>
         <form>
+          <label>Cédula:</label>
+          <input class="inputBuscarClienteRutinaCi" type="text" id="buscar-rutina-id">
           <label>Id Rutina:</label>
-          <input class="inputIdRutina" type="text" id="buscar-rutina-id">
-          <button class="botonBuscarRutina" type="button">Buscar</button>
+          <input class="inputBuscarClienteRutinaId" type="text" id="buscar-rutina-id">
+          <button class="botonClienteRutinaBuscar" type="button">Buscar</button>
       </section>
 
       <section id="rutinas">
         <table id="tablaAsignarRutina">
           <thead>
             <tr>
-              <th>ID Rutina</th>
-              <th>ID Ejercicio</th>
+              <th>Cédula</th>
+              <th>ID rutina</th>
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <tr>
+              <td><input class="inputCrearClienteRutinaCi"></td>
+              <td><input class="inputCrearClienteRutinaId"></td>
+              <td><button type="button" class="botonClienteRutinaCrear">Asignar rutina</button></td>
+            </tr>
+          </tbody>
         </table>
       </section>
     </main>
@@ -259,9 +273,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2rem 0;
       width: 100%;
-      background-color: #f7f7f7;
     }
 
     form {
@@ -275,6 +287,8 @@
 
     /* Tablas */
     section#rutinas {
+      margin-top: 5vh;
+      margin-bottom: 5vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -285,20 +299,11 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: #fff;
     }
 
     th,
     td {
       padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #007bff;
-      color: white;
-      font-weight: bold;
     }
 
     td input,
@@ -314,15 +319,30 @@
     #tablaEjercicio,
     #tablaPosee,
     #tablaAsignarRutina {
-      max-height: 300px;
+      height: auto;
+      max-height: 40vh;
       overflow-y: auto;
-      margin-bottom: 2rem;
+      margin-bottom: 5vh;
+      margin-top: 70vh;
       width: 100%;
     }
 
-    h1 {
-      width: 100%;
+    h2 {
+      margin-top: 15vh;
+      margin-bottom: 5vh;
+      width: 70vw;
     }
+
+    #tablaRutinas thead th, 
+#tablaEjercicio thead th, 
+#tablaAsisteRealiza thead th, 
+#tablaAsignarRutina thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Color de fondo para que se vea bien */
+    z-index: 1;
+    border-bottom: 1px solid #ddd;
+}
   </style>
 
 </body>

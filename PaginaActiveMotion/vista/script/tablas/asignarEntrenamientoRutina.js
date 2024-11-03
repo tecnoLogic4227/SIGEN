@@ -14,12 +14,13 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta) {
-                        rutinas = respuesta;
+                    rutinas = respuesta;
+                    if (respuesta != "") {
                         mostrarRutinas();
                     } else {
                         if (datos) {
                             alert("No se encontraron datos.");
+                            mostrarRutinas();
                         }
                     }
                 } catch (e) {
@@ -65,7 +66,7 @@ $(document).ready(() => {
     const datosRutina = (metodo) => {
         switch (metodo) {
             case "GET":
-                idRutina = $(".inputIdRutina").val();
+                idRutina = $(".inputBuscarIdRutina").val();
                 listar("rutina", { idRutina: idRutina });
                 break;
             case "POST":
@@ -93,8 +94,12 @@ $(document).ready(() => {
     const mostrarRutinas = () => {
         $("#tablaRutinas tbody").html("");
         let tr = $("<tr></tr>");
-        tr.append(`<td><input class="inputIdRutina"></td>`);
-        tr.append(`<td><input class="inputNombreRutina"></td>`);
+        tr.append(`<td><input class="inputCrearIdRutina"></td>`);
+        tr.append(`<td><input class="inputCrearNombreRutina"></td>`);
+        tr.append(`<td><select class="inputCrearTipoRutina">
+                  <option value="deporte">Deporte</option>
+                  <option value="fisioterapia">Fisioterapia</option>
+                </select></td>`);
         tr.append(`<td><button type="button" class="botonCrearRutina">Crear Rutina</button></td>`);
         $("#tablaRutinas tbody").append(tr);
         rutinas.forEach((elemento, index) => {
@@ -107,13 +112,18 @@ $(document).ready(() => {
         });
     };
 
-    const eliminarRutina = () => {
+    const eliminarRutina = function () {
         const index = $(this).data("index");
-        rutinas.splice(index, 1);
-        mostrarRutinas();
-        alert("Rutina eliminada correctamente.");
+        const idRutina = rutinas[index]?.id_rutina;
+
+        if (idRutina) {
+            manejarSolicitud("rutina", "DELETE", { idRutina: idRutina }, "Rutina eliminada correctamente.", "Error al eliminar rutina.");
+        } else {
+            alert("ID de rutina no encontrado.");
+        }
     };
 
     $(document).on('click', '.botonEliminarRutina', eliminarRutina);
     $(document).on("click", ".botonCrearRutina", () => datosRutina("POST"));
+    $(document).on("click", ".botonBuscarRutina", () => datosRutina("GET"));
 });

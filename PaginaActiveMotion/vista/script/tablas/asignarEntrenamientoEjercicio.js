@@ -14,23 +14,13 @@ $(document).ready(() => {
             success: (response) => {
                 try {
                     let respuesta = JSON.parse(response);
-                    if (respuesta) {
-                        switch (tabla) {
-                            case "ejercicio":
-                                break;
-                            case "rutina":
-                                rutinas = respuesta;
-                                mostrarRutinas(); 
-                                break;
-                            case "posee":
-                                break;
-                            default:
-                                alert("Error al mostrar los datos.");
-                                break;
-                        }
+                    ejercicios = respuesta;
+                    if (respuesta != "") {
+                        mostrarEjercicios();
                     } else {
                         if (datos) {
                             alert("No se encontraron datos.");
+                            mostrarEjercicios();
                         }
                     }
                 } catch (e) {
@@ -43,7 +33,7 @@ $(document).ready(() => {
         });
     };
 
-    listar("rutina");
+    listar("ejercicioRutina", {});
 
     const manejarSolicitud = (tabla, metodo, datos, exitoMensaje, errorMensaje) => {
         $.ajax({
@@ -73,56 +63,76 @@ $(document).ready(() => {
         });
     };
 
-    const datosRutina = (metodo) => {
+    const datosEjercicio = (metodo) => {
         switch (metodo) {
             case "GET":
-                idRutina = $(".inputIdRutina").val();
-                listar("rutina", { idRutina: idRutina });
+                idEjercicio = $(".inputBuscarIdEjercicio").val();
+                listar("ejercicioRutina", { idEjercicio: idEjercicio });
                 break;
             case "POST":
-                idRutina = $(".inputCrearIdRutina").val();
-                nombreRutina = $(".inputCrearNombreRutina").val();
-                tipoRutina = $(".inputCrearTipoRutina").val();
-                manejarSolicitud("rutina", metodo, {
-                    idRutina: idRutina,
-                    nombreRutina: nombreRutina,
-                    tipoRutina: tipoRutina,
-                }, "Rutina creada correctamente.", "Error al crear rutina.");
+                idEjercicio = $(".inputCrearIdEjercicio").val();
+                nombreEjercicio = $(".inputCrearNombreEjercicio").val();
+                repeticiones = $(".inputCrearRepeticiones").val();
+                series = $(".inputCrearSeries").val();
+                grupoMuscular = $(".inputCrearGrupoMuscular").val();
+                descripcion = $(".inputCrearDescripcion").val();
+                manejarSolicitud("ejercicioRutina", metodo, {
+                    idEjercicio: idEjercicio,
+                    nombreEjercicio: nombreEjercicio,
+                    nroRep: repeticiones,
+                    nroSeries: series,
+                    grupoMuscular: grupoMuscular,
+                    descripcion: descripcion,
+                }, "Ejercicio creada correctamente.", "Error al crear ejercicio.");
                 break;
-            case "DELETE":
-                idRutina = $(".inputIdRutina").val();
-                manejarSolicitud("rutina", metodo, {
-                    idRutina: idRutina,
-                }, "Rutina eliminada correctamente.", "Error al eliminar rutina.");
-                break;
+            // case "DELETE":
+            //     idEjercicio = $(".inputIdEjercicio").val();
+            //     manejarSolicitud("ejercicioRutina", metodo, {
+            //         idEjercicio: idEjercicio,
+            //     }, "Ejercicio eliminado correctamente.", "Error al eliminar ejercicio.");
+            //     break;
             default:
                 alert("Error, método no válido.");
                 break;
         }
     }
 
-    const mostrarRutinas = () => {
-        $(".tablaRutinas tbody").html("");
+    const mostrarEjercicios = () => {
+        $("#tablaEjercicio tbody").html("");
         let tr = $("<tr></tr>");
-        tr.append(`<td><input class="inputIdRutina"></td>`);
-        tr.append(`<td><input class="inputNombreRutina"></td>`);
-        tr.append(`<td><button type="button" class="botonCrearRutina">Crear Rutina</button></td>`);
-        $(".tablaRutinas tbody").append(tr);
-        rutinas.forEach((elemento, index) => {
+        tr.append(`<td><input class="inputCrearIdEjercicio"></td>`);
+        tr.append(`<td><input class="inputCrearNombreEjercicio"></td>`);
+        tr.append(`<td><input class="inputCrearRepeticiones"></td>`);
+        tr.append(`<td><input class="inputCrearSeries"></td>`);
+        tr.append(`<td><input class="inputCrearGrupoMuscular"></td>`);
+        tr.append(`<td><input class="inputCrearDescripcion"></td>`);
+        tr.append(`<td><button type="button" class="botonCrearEjercicio">Crear Ejercicio</button></td>`);
+        $("#tablaEjercicio tbody").append(tr);
+        ejercicios.forEach((elemento, index) => {
             tr = $("<tr></tr>");
-            tr.append(`<td>${elemento["idRutina"]}</td>`);
-            tr.append(`<td><button class="botonEliminarRutina" data-index="${index}">Eliminar</button></td>`);
-            $(".tablaRutinas tbody").append(tr);
+            tr.append(`<td>${elemento["id_ejercicio"]}</td>`);
+            tr.append(`<td>${elemento["nombre_ejercicio"]}</td>`);
+            tr.append(`<td>${elemento["nro_rep"]}</td>`);
+            tr.append(`<td>${elemento["nro_series"]}</td>`);
+            tr.append(`<td>${elemento["grupo_muscular"]}</td>`);
+            tr.append(`<td>${elemento["descripcion"]}</td>`);
+            tr.append(`<td><button class="botonEliminarEjercicio" data-index="${index}">Eliminar</button></td>`);
+            $("#tablaEjercicio tbody").append(tr);
         });
     };
 
-    const eliminarRutina = () => {
-        const index = $(this).data("index"); 
-        rutinas.splice(index, 1);
-        mostrarRutinas();
-        alert("Rutina eliminada correctamente.");
+    const eliminarEjercicio = function () {
+        const index = $(this).data("index");
+        const idEjercicio = ejercicios[index]?.id_ejercicio;
+
+        if (idEjercicio) {
+            manejarSolicitud("ejercicioRutina", "DELETE", { idEjercicio: idEjercicio }, "Ejercicio eliminado correctamente.", "Error al eliminar ejercicio.");
+        } else {
+            alert("ID de ejercicio no encontrado.");
+        }
     };
 
-    $(document).on('click', '.botonEliminarRutina', eliminarRutina);
-    $(document).on("click", ".botonCrearRutina", () => datosRutina("POST"));
+    $(document).on('click', '.botonEliminarEjercicio', eliminarEjercicio);
+    $(document).on("click", ".botonCrearEjercicio", () => datosEjercicio("POST"));
+    $(document).on("click", ".botonBuscarEjercicio", () => datosEjercicio("GET"));
 });

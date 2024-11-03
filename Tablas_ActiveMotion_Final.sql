@@ -1,4 +1,4 @@
-CREATE database activemotion;
+CREATE DATABASE activemotion;
 USE activemotion;
 
 CREATE TABLE USUARIO (
@@ -25,7 +25,7 @@ CREATE TABLE USUARIO_AGENDA (
     hora TIME,
     turno_agenda ENUM('matutino', 'vespertino'),
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO(ci)
+    FOREIGN KEY (ci) REFERENCES USUARIO(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE USUARIO_CLIENTE (
@@ -33,7 +33,7 @@ CREATE TABLE USUARIO_CLIENTE (
     actividad ENUM(
         "deportista",
         "libre",
-        "paciente",
+        "paciente"
     ),
     estado ENUM(
         'principiante',
@@ -50,25 +50,26 @@ CREATE TABLE USUARIO_CLIENTE (
     resistencia_anaeróbica INT,
     fuerza_muscular INT,
     resistencia_muscular INT,
-	flexibilidad INT,
-	resistencia_monotonía INT,
-	resiliencia INT,
+    flexibilidad INT,
+    resistencia_monotonía INT,
+    resiliencia INT,
     estado_actividad BIT(1),
     tipo_plan ENUM('Basico','Premium','Pack Verano','Avanzado','Elite','Verano'),
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO(ci)
+    FOREIGN KEY (ci) REFERENCES USUARIO(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE USUARIO_ENTRENADOR (
     ci INT,
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO(ci)
+    FOREIGN KEY (ci) REFERENCES USUARIO(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE `LOGIN` (
     ci INT,
     contrasenia VARCHAR(255) NOT NULL,
-    PRIMARY KEY (ci)
+    PRIMARY KEY (ci),
+    FOREIGN KEY (ci) REFERENCES USUARIO(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE PACIENTE (
@@ -76,20 +77,20 @@ CREATE TABLE PACIENTE (
     motivo VARCHAR(255),
     lesion VARCHAR(255),
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci)
+    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE DEPORTISTA (
     ci INT,
     posicion VARCHAR(255),
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci)
+    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE LIBRE (
     ci INT,
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci)
+    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE ULTIMO_PAGO (
@@ -103,10 +104,7 @@ CREATE TABLE ULTIMO_PAGO (
 CREATE TABLE RUTINA (
     id_rutina INT AUTO_INCREMENT,
     nombre_rutina VARCHAR(100),
-    tipo_rutina ENUM(
-        "fisioterapia",
-        "deporte",
-    ),
+    tipo_rutina ENUM("fisioterapia", "deporte"),
     PRIMARY KEY (id_rutina)
 );
 
@@ -114,14 +112,14 @@ CREATE TABLE RUT_FISIOTERAPIA (
     id_rutina INT,
     nombre_rutina VARCHAR(100),
     PRIMARY KEY (id_rutina),
-    FOREIGN KEY (id_rutina) REFERENCES RUTINA(id_rutina)
+    FOREIGN KEY (id_rutina) REFERENCES RUTINA(id_rutina) ON DELETE CASCADE
 );
 
 CREATE TABLE RUT_DEPORTE (
     id_rutina INT,
     nombre_rutina VARCHAR(100),
     PRIMARY KEY (id_rutina),
-    FOREIGN KEY (id_rutina) REFERENCES RUTINA(id_rutina)
+    FOREIGN KEY (id_rutina) REFERENCES RUTINA(id_rutina) ON DELETE CASCADE
 );
 
 CREATE TABLE EJERCICIO (
@@ -152,7 +150,7 @@ CREATE TABLE DEPORTISTA_DEPORTE(
     ci INT,
     nombre_deporte VARCHAR(255),
     PRIMARY KEY (ci, nombre_deporte),
-    FOREIGN KEY (ci) REFERENCES DEPORTISTA(ci),
+    FOREIGN KEY (ci) REFERENCES DEPORTISTA(ci) ON DELETE CASCADE,
     FOREIGN KEY (nombre_deporte) REFERENCES DEPORTE(nombre_deporte)
 );
 
@@ -175,7 +173,7 @@ CREATE TABLE CONCURRE (
     ci INT,
     id_institucion INT,
     PRIMARY KEY (ci, id_institucion),
-    FOREIGN KEY (ci) REFERENCES USUARIO(ci),
+    FOREIGN KEY (ci) REFERENCES USUARIO(ci) ON DELETE CASCADE,
     FOREIGN KEY (id_institucion) REFERENCES INSTITUCION(id_institucion)
 );
 
@@ -186,24 +184,24 @@ CREATE TABLE ASISTE (
     fecha_inicio DATE,
     fecha_termino DATE,
     PRIMARY KEY (ci, id_rutina),
-    FOREIGN KEY (ci) REFERENCES PACIENTE(ci),
-    FOREIGN KEY (id_rutina) REFERENCES RUT_FISIOTERAPIA(id_rutina)
+    FOREIGN KEY (ci) REFERENCES PACIENTE(ci) ON DELETE CASCADE,
+    FOREIGN KEY (id_rutina) REFERENCES RUT_FISIOTERAPIA(id_rutina) ON DELETE CASCADE
 );
 
-CREATE TABLE HACE(
+CREATE TABLE HACE (
     ci INT,
     id_ejercicio INT,
     PRIMARY KEY (ci, id_ejercicio),
-    FOREIGN KEY (ci) REFERENCES LIBRE(ci),
-    FOREIGN KEY (id_ejercicio) REFERENCES EJERCICIO(id_ejercicio)
+    FOREIGN KEY (ci) REFERENCES LIBRE(ci) ON DELETE CASCADE,
+    FOREIGN KEY (id_ejercicio) REFERENCES EJERCICIO(id_ejercicio) ON DELETE CASCADE
 );
 
 CREATE TABLE EFECTUA (
     ci INT,
     id_ultimo_pago INT,
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci),
-    FOREIGN KEY (id_ultimo_pago) REFERENCES ULTIMO_PAGO(id_ultimo_pago)
+    FOREIGN KEY (ci) REFERENCES USUARIO_CLIENTE(ci) ON DELETE CASCADE,
+    FOREIGN KEY (id_ultimo_pago) REFERENCES ULTIMO_PAGO(id_ultimo_pago) ON DELETE CASCADE
 );
 
 CREATE TABLE REALIZA (
@@ -213,24 +211,24 @@ CREATE TABLE REALIZA (
     fecha_inicio DATE,
     fecha_termino DATE,
     PRIMARY KEY (id_rutina),
-    FOREIGN KEY (id_rutina) REFERENCES RUT_DEPORTE(id_rutina),
-    FOREIGN KEY (ci) REFERENCES DEPORTISTA(ci)
+    FOREIGN KEY (id_rutina) REFERENCES RUT_DEPORTE(id_rutina) ON DELETE CASCADE,
+    FOREIGN KEY (ci) REFERENCES DEPORTISTA(ci) ON DELETE CASCADE
 );
 
 CREATE TABLE ESTA (
     ci INT,
     id_equipo INT,
     PRIMARY KEY (ci),
-    FOREIGN KEY (ci) REFERENCES DEPORTISTA(CI),
-    FOREIGN KEY (id_equipo) REFERENCES EQUIPO(id_equipo)
+    FOREIGN KEY (ci) REFERENCES DEPORTISTA(ci) ON DELETE CASCADE,
+    FOREIGN KEY (id_equipo) REFERENCES EQUIPO(id_equipo) ON DELETE CASCADE
 );
 
 CREATE TABLE CONTIENE (
     id_equipo INT,
     nombre_deporte VARCHAR(255),
     PRIMARY KEY (id_equipo),
-    FOREIGN KEY (id_equipo) REFERENCES EQUIPO(id_equipo),
-    FOREIGN KEY (nombre_deporte) REFERENCES DEPORTE(nombre_deporte)
+    FOREIGN KEY (id_equipo) REFERENCES EQUIPO(id_equipo) ON DELETE CASCADE,
+    FOREIGN KEY (nombre_deporte) REFERENCES DEPORTE(nombre_deporte) ON DELETE CASCADE
 );
 
 CREATE TABLE INCLUYE (
@@ -238,18 +236,19 @@ CREATE TABLE INCLUYE (
     id_rutina INT,
     id_fisioterapia INT,
     PRIMARY KEY (ci, id_rutina),
-    FOREIGN KEY (ci) REFERENCES PACIENTE(ci),
-    FOREIGN KEY (id_fisioterapia) REFERENCES FISIOTERAPIA(id_fisioterapia),
-    FOREIGN KEY (id_rutina) REFERENCES RUT_FISIOTERAPIA(id_rutina)
+    FOREIGN KEY (ci) REFERENCES PACIENTE(ci) ON DELETE CASCADE,
+    FOREIGN KEY (id_fisioterapia) REFERENCES FISIOTERAPIA(id_fisioterapia) ON DELETE CASCADE,
+    FOREIGN KEY (id_rutina) REFERENCES RUT_FISIOTERAPIA(id_rutina) ON DELETE CASCADE
 );
 
 CREATE TABLE POSEE (
     id_rutina INT,
     id_ejercicio INT,
     PRIMARY KEY (id_rutina, id_ejercicio),
-    FOREIGN KEY (id_rutina) REFERENCES RUTINA(id_rutina),
-    FOREIGN KEY (id_ejercicio) REFERENCES EJERCICIO(id_ejercicio)
+    FOREIGN KEY (id_rutina) REFERENCES RUTINA(id_rutina) ON DELETE CASCADE,
+    FOREIGN KEY (id_ejercicio) REFERENCES EJERCICIO(id_ejercicio) ON DELETE CASCADE
 );
+
 
 /* Creacion de los usuarios */
 CREATE USER IF NOT EXISTS 'Usuario'@'localhost' IDENTIFIED BY 'User3456';
@@ -329,8 +328,9 @@ GRANT EXECUTE ON PROCEDURE InsertarEntrenador TO Administrador_TI;
 /*1- MOSTRAR TODOS LOS EJERCICIOS ASIGNADOS A UNA RUTINA DADA*/
 SELECT e.*
 FROM EJERCICIO e
-JOIN POSEE p ON e.id_ejercicio = p.id_ejercicio
-WHERE p.id_rutina = r.id_rutina;
+JOIN POSEE p ON e.id_ejercicio = p.id_ejercicio 
+JOIN RUTINA r ON r.id_rutina = p.id_rutina
+WHERE r.id_rutina = ?;
 
 /*2- REALIZAR UN RANKING DE LAS RUTINAS MAS ASIGNADAS*/
 SELECT r.id_rutina, COUNT(*) as veces_asignada
@@ -341,10 +341,10 @@ GROUP BY r.id_rutina
 ORDER BY veces_asignada DESC;
 
 /*3-DADO UN DEPORTISTAS MOSTRAR TODAS LAS RUTINAS ASIGNADAS*/
-SELECT r.*
+SELECT r.*, d.ci
 FROM RUTINA r
-JOIN REALIZA re ON r.id_rutina = re.id_rutina
-WHERE re.ci = deportista.ci;
+JOIN REALIZA re ON r.id_rutina = re.id_rutina JOIN deportista d ON re.ci = d.ci
+WHERE d.ci = ?;
 
 /*4-DADO UN GRUPO MUSCULAR, MOSTRAR TODAS LAS RUTINAS QUE LO
 AFECTAN*/
@@ -357,46 +357,52 @@ WHERE e.grupo_muscular = ?;
 /*5-DADO UN DEPORTE, MOSTRAR TODAS LAS RUTINAS ASOCIADAS A ESA
 DISCIPLINA*/
 SELECT r.*, de.nombre_deporte
-FROM RUTINA r, DEPORTE de
+FROM RUTINA r
 JOIN RUT_DEPORTE rd ON r.id_rutina = rd.id_rutina
 JOIN REALIZA re ON r.id_rutina = re.id_rutina
 JOIN DEPORTISTA d ON re.ci = d.ci
 JOIN DEPORTISTA_DEPORTE dd ON d.ci = dd.ci
-WHERE dd.nombre_deporte = de.nombre_deporte;
+JOIN DEPORTE de ON dd.nombre_deporte = de.nombre_deporte
+WHERE de.nombre_deporte = ?;
+
 
 /*6-MOSTRAR NOMBRE Y EDAD DE LOS USUARIOS DE FISIOTERAPIA*/
 SELECT u.nombre, u.apellido, TIMESTAMPDIFF(YEAR, u.fecha_nac, CURDATE()) as edad
 FROM USUARIO u
-JOIN CLIENTE u ON u.ci = c.ci
+JOIN USUARIO_CLIENTE c ON u.ci = c.ci
 JOIN PACIENTE p ON c.ci = p.ci
 JOIN ASISTE a ON p.ci = a.ci;
 
 /*7-DADO UN DEPORTE, MOSTRAR TODOS LOS DEPORTISTAS QUE LO ENTRENAN*/
 SELECT u.ci, u.nombre, u.apellido, de.nombre_deporte
-FROM USUARIO u, DEPORTE de
-JOIN CLIENTE c ON u.ci = c.ci
+FROM USUARIO u
+JOIN USUARIO_CLIENTE c ON u.ci = c.ci
 JOIN DEPORTISTA d ON c.ci = d.ci
 JOIN DEPORTISTA_DEPORTE dd ON d.ci = dd.ci
-WHERE dd.nombre_deporte = de.nombre_deporte;
+JOIN DEPORTE de ON dd.nombre_deporte = de.nombre_deporte
+WHERE de.nombre_deporte = ?;
 
 /*8-DADO UN DEPORTISTA MOSTRAR LOS EJERCICIOS ASIGNADOS, LA RUTINA A LA
 QUE PERTENECEN Y SU FECHA DE REALIZACIÓN*/
-SELECT e.*, r.id_rutina, re.fecha_inicio, re.fecha_termino
+SELECT e.id_ejercicio, r.id_rutina, re.fecha_inicio, re.fecha_termino
 FROM EJERCICIO e
 JOIN POSEE p ON e.id_ejercicio = p.id_ejercicio
 JOIN RUTINA r ON p.id_rutina = r.id_rutina
-JOIN RUT_DEPORTE rd ON r.id_rutina = ed.id_rutina
-JOIN REALIZA re ON rd.id_rutina = re.id_rutina
-WHERE re.ci = deportista.ci;
+JOIN RUT_DEPORTE rd ON r.id_rutina = rd.id_rutina
+JOIN REALIZA re ON rd.id_rutina = re.id_rutina 
+JOIN DEPORTISTA de ON re.ci = de.ci
+WHERE de.ci = ?;
 
 /*9-MOSTRAR UN RANKING DE LOS EJERCICIOS ASOCIADOS A LA
 CATEGORÍA “LIBRE”*/
-SELECT e.*, r.id_rutina, COUNT(*) as veces_asignado
+SELECT e.id_ejercicio, e.nombre_ejercicio, COUNT(h.ci) AS veces_realizado
 FROM EJERCICIO e
 JOIN HACE h ON e.id_ejercicio = h.id_ejercicio
 JOIN LIBRE l ON h.ci = l.ci
-GROUP BY e.id_ejercicio
-ORDER BY veces_asignado DESC;
+GROUP BY e.id_ejercicio, e.nombre_ejercicio
+ORDER BY veces_realizado DESC;
+
+
 
 /*10-DADO UN PACIENTE, MOSTRAR TODOS LOS EJECICIOS DESTINADOS A LA
 RECUPERACIÓN DE LESIONES.*/
@@ -407,4 +413,4 @@ JOIN RUTINA r ON p.id_rutina = r.id_rutina
 JOIN RUT_FISIOTERAPIA rf ON r.id_rutina = rf.id_rutina
 JOIN ASISTE a ON rf.id_rutina = a.id_rutina
 JOIN PACIENTE pa ON a.ci = pa.ci
-WHERE p.ci= ?;
+WHERE pa.ci= ?;
