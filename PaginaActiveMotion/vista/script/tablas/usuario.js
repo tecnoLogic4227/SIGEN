@@ -141,7 +141,7 @@ $(document).ready(() => {
         direccion = $(".inputModificarUsuarioDireccion").val();
         email = $(".inputModificarUsuarioEmail").val();
         fechaNac = $(".inputModificarUsuarioFechaNac").val();
-        rol = $(".inputModificarUsuarioRol").val();
+        rol = $(".labelRol").text();
         telefono = $(".inputModificarUsuarioTelefono").val();
         limpiarPantalla();
         manejarSolicitud("PUT", {

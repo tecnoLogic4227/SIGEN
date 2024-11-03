@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    let ci, nombre, apellido, direccion, email, fecha, telefono, rol, actividad, estado, estadoActividad, plan;
+    let ci, nombre, apellido, direccion, email, fecha, telefono, contrasenia, rol, actividad, estado, estadoActividad, plan;
 
     const limpiarCampos = () => {
         $(".inputRegistroCi").val("");
@@ -9,6 +9,7 @@ $(document).ready(() => {
         $(".inputRegistroEmail").val("");
         $(".inputRegistroFecha").val("");
         $(".inputRegistroTelefono").val("");
+        $(".inputRegistroContrasenia").val("");
         $(".inputRegistroRol").val("");
         $(".inputRegistroActividad").val("");
         $(".inputRegistroEstado").val("");
@@ -50,6 +51,7 @@ $(document).ready(() => {
         email = $(".inputRegistroEmail").val();
         fecha = $(".inputRegistroFecha").val();
         telefono = $(".inputRegistroTelefono").val();
+        contrasenia = $(".inputRegistroContrasenia").val();
         rol = $(".inputRegistroRol").val();
 
         if (!filtroCedula(ci)) {
@@ -117,6 +119,7 @@ $(document).ready(() => {
             email: email,
             fecha: fecha,
             telefono: telefono,
+            contrasenia: contrasenia,
             rol: rol,
             actividad: actividad,
             estado: estado,
@@ -125,5 +128,14 @@ $(document).ready(() => {
         });
     }
 
+    const cambiarContraseña = () => {
+        if ($(".inputRegistroContrasenia").attr("type") === "password") {
+            $(".inputRegistroContrasenia").attr("type", "text");
+        } else {
+            $(".inputRegistroContrasenia").attr("type", "password");
+        }
+    }
+    
+    $(".span").click(cambiarContraseña);
     $(".botonRegistrarUsuario").click(datos);
 });

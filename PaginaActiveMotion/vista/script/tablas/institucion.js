@@ -86,10 +86,21 @@ $(document).ready(() => {
 
     const datosCrearInstitucion = (event) => {
         event.preventDefault();
-        idInstitucion = $(".inputCrearInstitucionIdInstitucion").val();
         nombreInstitucion = $(".inputCrearInstitucionNombreInstitucion").val();
         direccion = $(".inputCrearInstitucionDireccion").val();
         telefono = $(".inputCrearInstitucionTelefono").val();
+        if (!filtroPalabra(nombreInstitucion)) {
+            alert("Nombre no válido.");
+            return;
+        }
+        if (!filtroDireccion(direccion)) {
+            alert("Dirección no válida.");
+            return;
+        }
+        if (!filtroTelefono(telefono)) {
+            alert("Teléfono no válido.");
+            return;
+        }
         crearInstitucion(idInstitucion, nombreInstitucion, direccion, telefono);
     };
 

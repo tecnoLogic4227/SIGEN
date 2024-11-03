@@ -10,7 +10,7 @@ class Usuario {
     public $rol;
     public $telefono;
 
-    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fechaNac, $telefono, $rol)
+    public function __construct($ci, $nombre, $apellido, $direccion, $email, $fechaNac,  $rol, $telefono)
     {
         $this->ci = $ci;
         $this->nombre = $nombre;

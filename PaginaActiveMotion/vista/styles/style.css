@@ -343,7 +343,7 @@ ul li#login a:hover {
 
 
 .comb2 {
-  margin-top: -70vh;
+  margin-top: -45vh;
   margin-left: 55vw;
   position: absolute;
 }
@@ -2254,3 +2254,25 @@ td {
   justify-content: center;
 }
 
+
+
+
+
+
+
+.sectionIndexAvanzado {
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.tituloAvanzado {
+  margin: 0;
+}
+
+.botonIndexAvanzado {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}

@@ -57,7 +57,13 @@ $(document).ready(() => {
         event.preventDefault();
         ci = $(".inputLoginCi").val();
         contrasenia = $(".inputLoginContrasenia").val();
-        consultarLogin({ ci: ci, contrasenia: contrasenia }, "Error al loguearse.");
+        
+        if (filtroCedula(ci)) {
+            consultarLogin({ ci: ci, contrasenia: contrasenia }, "Error al loguearse.");
+        } else {
+            alert("Cédula no válida.");
+        }
+
     }
 
     const cambiarContraseña = () => {

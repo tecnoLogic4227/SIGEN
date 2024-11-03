@@ -30,13 +30,15 @@ function datos()
     $estadoActividad = isset($_REQUEST["estadoActividad"]) ? $_REQUEST["estadoActividad"] : null;
     $tipoPlan = isset($_REQUEST["plan"]) ? $_REQUEST["plan"] : null;
 
+    $contrasenia = isset($_REQUEST["contrasenia"]) ? $_REQUEST["contrasenia"] : null;
+
     // var_dump($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan);
 
     if ($rol == "cliente") {
         if ($ci != null && $nombre != null && $apellido != null && $direccion != null && $email != null && $fecha != null && $telefono != null && $rol != null && $actividad != null && $estado != null && $estadoActividad != null && $tipoPlan != null) {
             array_push($retorno, new Usuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol));
             array_push($retorno, new Cliente($ci, $estado, $estadoActividad, $tipoPlan));
-            registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan);
+            registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan, $contrasenia);
         } else {
             echo json_encode("Ningun campo puede quedar vacio.");
             exit();
@@ -44,7 +46,7 @@ function datos()
     } else {
         if ($ci != null && $nombre != null && $apellido != null && $direccion != null && $email != null && $fecha != null && $telefono != null && $rol != null) {
             array_push($retorno, new Usuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol));
-            registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan);
+            registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $tipoPlan, $contrasenia);
         } else {
             echo json_encode("Ningun campo puede quedar vacio.");
             exit();
@@ -54,7 +56,7 @@ function datos()
     
 }
 
-function registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $plan)
+function registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $telefono, $rol, $actividad, $estado, $estadoActividad, $plan, $contrasenia)
 {
     $resultado = true;
     
@@ -70,6 +72,14 @@ function registrarUsuario($ci, $nombre, $apellido, $direccion, $email, $fecha, $
         $atributos = [$ci, $nombre, $apellido, $direccion, $email, $fecha, $rol, $telefono];
 
         $resultado = registrarBD($sql, $params, $atributos, $sqlConsulta, $paramsConsulta, $atributosConsulta);
+
+        $sql = "INSERT INTO `login` (ci, contrasenia) VALUES (?, ?);";
+        $params = "is";
+        $atributos = [$ci, $contrasenia];
+
+        $sqlConsulta = "SELECT * FROM `login` WHERE ci = ? AND contrasenia = ?;";
+
+        registrarBD($sql, $params, $atributos, $sqlConsulta, $params, $atributos);
 
         if ($resultado) {
             if ($rol == "cliente") {

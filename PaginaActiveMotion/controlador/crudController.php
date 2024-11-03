@@ -320,17 +320,16 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
             $atributosConsulta = [$deporte->nombreDeporte];
 
             if (verificarExistencia($sqlConsulta, $paramsConsulta, $atributosConsulta)) {
-                // verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
-                // $sql = "UPDATE deporte SET $atributos WHERE nombre_deporte = ?";
-                // $params .= "s";
-                // array_push($valores, $deporte->nombreDeporte);
+                verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
+                $sql = "UPDATE deporte SET $atributos WHERE nombre_deporte = ?";
+                $params .= "s";
+                array_push($valores, $deporte->nombreDeporte);
 
-                // if ($atributos != "" && $atributos != "()") {
-                //     echo json_encode(modificarBD($sql, $params, $valores));
-                // } else {
-                //     echo json_encode(false);
-                // }
-                echo json_encode(false);
+                if ($atributos != "" && $atributos != "()") {
+                    echo json_encode(modificarBD($sql, $params, $valores));
+                } else {
+                    echo json_encode(false);
+                }
             } else {
                 verificarDatos($atributos, $params, $valores, $deporte, $tabla, $metodo, $placeholders);
 
