@@ -3,28 +3,8 @@ $(document).ready(() => {
     let metodo = "GET";
     let ci = sessionStorage.getItem("ci");
 
-    let contenido= ['Cumplimiento Agenda', 'Resistencia Anaeróbica', 'Fuerza Muscular', 'Resistencia Muscular', 'Flexibilidad', 'Resistencia a la Monotonía', 'Resiliencia'];
-    let mensaje='Calificacion (sobre 20)';
-    
-    $('#langToggle').click(function() {
-        // Detectar el idioma actual basado en el texto del botón
-        const newLang = $(this).text() === 'EN' ? 'es' : 'en';
-        
-        // Cambiar las etiquetas de la gráfica en base al nuevo idioma
-        if (newLang === 'en') {
-            contenido = ['Agenda Fulfillment', 'Anaerobic Endurance', 'Muscle Strength', 'Muscle Endurance', 'Flexibility', 'Resistance to Monotony', 'Resilience'];
-            mensaje = 'Qualification';
-        } else {
-            contenido = ['Cumplimiento Agenda', 'Resistencia Anaeróbica', 'Fuerza Muscular', 'Resistencia Muscular', 'Flexibilidad', 'Resistencia a la Monotonía', 'Resiliencia'];
-            mensaje = 'Calificacion';
-        }
-    
-        // Actualizar etiquetas de la gráfica y redibujar
-        chart.data.labels = contenido;
-        chart.data.datasets[0].label = mensaje;
-        chart.update();
-    });
-    
+    let contenido = ['Cumplimiento Agenda', 'Resistencia Anaeróbica', 'Fuerza Muscular', 'Resistencia Muscular', 'Flexibilidad', 'Resistencia a la Monotonía', 'Resiliencia'];
+    let mensaje='Calificacion';    
 
     // Crear la gráfica con Chart.js
     const ctx = $('#graficaEntrenador')[0].getContext('2d');
@@ -129,6 +109,25 @@ $(document).ready(() => {
             }
         });
     };
+
+    $('#langToggle').click(function() {
+        // Detectar el idioma actual basado en el texto del botón
+        const newLang = $(this).text() === 'EN' ? 'EN' : 'ES';
+        
+        // Cambiar las etiquetas de la gráfica en base al nuevo idioma
+        if (newLang === 'EN') {
+            contenido = ['Agenda Fulfillment', 'Anaerobic Endurance', 'Muscle Strength', 'Muscle Endurance', 'Flexibility', 'Resistance to Monotony', 'Resilience'];
+            mensaje = 'Qualification';
+        } else {
+            contenido = ['Cumplimiento Agenda', 'Resistencia Anaeróbica', 'Fuerza Muscular', 'Resistencia Muscular', 'Flexibilidad', 'Resistencia a la Monotonía', 'Resiliencia'];
+            mensaje = 'Calificacion';
+        }
+    
+        // Actualizar etiquetas de la gráfica y redibujar
+        chart.data.labels = contenido;
+        chart.data.datasets[0].label = mensaje;
+        chart.update();
+    });
 
     // Llamar a la función para obtener los datos y actualizar la gráfica semanalmente
     let pagina = window.location.href;
