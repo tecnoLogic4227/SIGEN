@@ -16,6 +16,7 @@ $(document).ready(() => {
                 try {
                     let respuesta = JSON.parse(response);
                     if (respuesta) {
+                        console.log(respuesta);
                         recibirFechas(respuesta);
                     } else {
                         alert("Usted no tiene días agendados.");
