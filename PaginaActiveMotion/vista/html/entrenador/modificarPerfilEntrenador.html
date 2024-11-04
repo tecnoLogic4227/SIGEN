@@ -23,12 +23,12 @@
 
   
         <ul>
-            <li id="inicio" class="op-menu"><a href="indexUsuario.html">Inicio</a></li>
-            <li id="nosotros" class="op-menu"><a href="planUsuario.Html">Mi Plan</a></li> 
-            <li id="servicios" class="op-menu"><a href="agendaUsuario.html">Mi Agenda</a>
-            <li id="locales" class="op-menu"><a href="evolucionUsuario.html">Mi Evolucion</a></li>
-            <li id="planes" class="op-menu"><a href="rutinaUsuario.html">Mi Rutina</a></li>
-            <li id="login" class="op-menu"><a href="perfilUsuario.html">Perfil</a></li>
+            <li id="inicio" class="op-menu"><a href="indexUsuario.html" data-translate="inicio">Inicio</a></li>
+            <li id="nosotros" class="op-menu"><a href="planUsuario.Html" data-translate="mi_plan">Mi Plan</a></li> 
+            <li id="servicios" class="op-menu"><a href="agendaUsuario.html" data-translate="mi_agenda">Mi Agenda</a>
+            <li id="locales" class="op-menu"><a href="evolucionUsuario.html" data-translate="mi_evolucion">Mi Evolucion</a></li>
+            <li id="planes" class="op-menu"><a href="rutinaUsuario.html" data-translate="mi_rutina_evolucion">Mi Rutina</a></li>
+            <li id="login" class="op-menu"><a href="perfilUsuario.html" data-translate="perfil">Perfil</a></li>
             <li><a class="menu-barras" href="#barras">☰</a></li>
         </ul>
   
@@ -38,12 +38,12 @@
 
         <div class="menu-adaptable">
           <ul class="menu-oculto">
-              <li><a class="op-menu-oculto" href="indexUsuario.html">Inicio</a></li>
-              <li><a class="op-menu-oculto" href="planUsuario.Html">Mi Plan</a></li>
-              <li><a class="op-menu-oculto" href="agendaUsuario.html">Mi Agenda</a></li>
-              <li><a class="op-menu-oculto" href="evolucionUsuario.html">Mi Evolucion</a></li>
-              <li><a class="op-menu-oculto" href="rutinaUsuario.html">Mi Rutina</a></li>
-              <li><a class="op-menu-oculto" href="perfilUsuario.html">Perfil</a></li>
+              <li><a class="op-menu-oculto" href="indexUsuario.html" data-translate="inicio">Inicio</a></li>
+              <li><a class="op-menu-oculto" href="planUsuario.Html" data-translate="mi_plan">Mi Plan</a></li>
+              <li><a class="op-menu-oculto" href="agendaUsuario.html" data-translate="mi_agenda">Mi Agenda</a></li>
+              <li><a class="op-menu-oculto" href="evolucionUsuario.html" data-translate="mi_evolucion">Mi Evolucion</a></li>
+              <li><a class="op-menu-oculto" href="rutinaUsuario.html" data-translate="mi_rutina_evolucion">Mi Rutina</a></li>
+              <li><a class="op-menu-oculto" href="perfilUsuario.html" data-translate="perfil">Perfil</a></li>
           </ul>
       </div>
   
@@ -51,7 +51,7 @@
     
     <main class="perfil">
       <header>
-        <h1 class="tituloPerfil">Tu Perfil</h1>
+        <h1 class="tituloPerfil" data-translate="tuPerfil">Tu Perfil</h1>
       </header>
 
       <div class="container-fluid">
@@ -65,21 +65,21 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Cédula</td>
+                  <td data-translate="cedula">Cédula</td>
                   <td><label class="labelCedula"></label></td>
                 </tr>
                 <tr>
-                  <td>Nombre</td>
+                  <td data-translate="nombre">Nombre</td>
                   <td><input class="inputModificarUsuarioNombre" type="text" id="apellido-usuario"
                       name="apellido-usuario" class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Apellido</td>
+                  <td data-translate="apellido">Apellido</td>
                   <td><input class="inputModificarUsuarioApellido" type="text" id="gmail-usuario" name="gmail-usuario"
                       class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Dirección</td>
+                  <td data-translate="descripcion">Dirección</td>
                   <td><input class="inputModificarUsuarioDireccion" type="text" id="ci-usuario" name="ci-usuario"
                       class="form-control"></td>
                 </tr>
@@ -89,7 +89,7 @@
                       class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Fecha de nacimiento</td>
+                  <td data-translate="fechaNac">Fecha de nacimiento</td>
                   <td><input class="inputModificarUsuarioFechaNac" type="text" id="direccion-usuario"
                       name="direccion-usuario" class="form-control"></td>
                 </tr>
@@ -98,7 +98,7 @@
                   <td><label class="labelRol"></label></td>
                 </tr>
                 <tr>
-                  <td>Teléfono</td>
+                  <td data-translate="telefono">Teléfono</td>
                   <td><input class="inputModificarUsuarioTelefono" type="text" id="direccion-usuario"
                       name="direccion-usuario" class="form-control"></td>
                 </tr>
@@ -108,20 +108,20 @@
         </div>
       </div>
       <section class="sectionPerfilAdministrativo">
-        <button class="botonModificarPerfil" id="usuarioConfirmarModificar">Guardar</button>
-        <button class="botonModificarPerfil"><a class="linkModificarPerfilAdministrativo" href="perfilEntrenador.html">Regresar</a></button>
+        <button class="botonModificarPerfil" id="usuarioConfirmarModificar" data-translate="guardar">Guardar</button>
+        <button class="botonModificarPerfil"><a class="linkModificarPerfilAdministrativo" href="perfilEntrenador.html" data-translate="regresar">Regresar</a></button>
       </section>
     </main>
 
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="indexUsuario.html">Inicio</a></li>
-          <li><a href="planUsuario.Html">Mi Plan</a></li>
-          <li><a href="agendaUsuario.html">Mi Agenda</a></li>
-          <li><a href="evolucionUsuario.html">Mi Evolucion</a></li>
-          <li><a href="rutinaUsuario.html">Mi Rutina</a></li>
-          <li><a href="perfilUsuario.html">Perfil</a></li>
+          <li><a href="indexUsuario.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="planUsuario.Html" data-translate="mi_plan">Mi Plan</a></li>
+          <li><a href="agendaUsuario.html" data-translate="mi_agenda">Mi Agenda</a></li>
+          <li><a href="evolucionUsuario.html" data-translate="mi_evolucion">Mi Evolucion</a></li>
+          <li><a href="rutinaUsuario.html" data-translate="mi_rutina_evolucion">Mi Rutina</a></li>
+          <li><a href="perfilUsuario.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -138,7 +138,7 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>

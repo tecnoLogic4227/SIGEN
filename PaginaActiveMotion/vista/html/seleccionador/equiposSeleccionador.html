@@ -22,10 +22,10 @@
           </div>
         
             <ul>
-                <li id="inicio" class="op-menu"><a href="indexSeleccionador.html">Inicio</a></li>
-                <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html">Deportistas</a></li> 
-                <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html">Equipos</a>
-                <li id="login" class="op-menu"><a href="perfilSeleccionador.html">Perfil</a></li>
+                <li id="inicio" class="op-menu"><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li> 
+                <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a>
+                <li id="login" class="op-menu"><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
 
@@ -35,10 +35,10 @@
             
             <div class="menu-adaptable">
               <ul class="menu-oculto">
-                <li class="op-menu-oculto"><a href="indexSeleccionador.html">Inicio</a></li>
-                    <li class="op-menu-oculto"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                    <li class="op-menu-oculto"><a href="equiposSeleccionador.html">Equipos</a></li>
-                    <li class="op-menu-oculto"><a href="perfilSeleccionador.html">Perfil</a></li>
+                <li class="op-menu-oculto"><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                    <li class="op-menu-oculto"><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                    <li class="op-menu-oculto"><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                    <li class="op-menu-oculto"><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
               </ul>
           </div>
       
@@ -46,20 +46,20 @@
     
     <main class="tituloSeleccionador">
       <header>
-        <h1 class="tituloEquiposAvanzado">Equipos</h1>
+        <h1 class="tituloEquiposAvanzado" data-translate="equipos">Equipos</h1>
       </header>
 
       <form id="form-equiposSeleccionador" class="formEquiposSeleccionador">
-        <label for="clubEquipo" class="clubEquipo">ID del Equipo:</label>
+        <label for="clubEquipo" class="clubEquipo" data-translate="id_equipo">ID del Equipo:</label>
         <br>
         <input class="inputBuscarEquipoIdEquipo">
         <br>
-        <button id="btnBuscarEquipo" class="estado equipoBuscar">Buscar</button>
+        <button id="btnBuscarEquipo" class="estado equipoBuscar" data-translate="buscar">Buscar</button>
         <article id="art1">
-          <button class="estado armarEquipo btnArmarEquipo" type="button">Armar equipo</button>
+          <button class="estado armarEquipo btnArmarEquipo" type="button" data-translate="armar_equipos">Armar equipo</button>
           <div id="botonesDespleglables" style="display: none;">
-            <button class="boton-equipo-seleccionador estado"><a href="armarEquipoSeleccionador.html">Nuevo</a></button>
-            <button class="boton-equipo-seleccionador estado btnArmarExistente"><a href="armarEquipoExistenteSeleccionador.html">Existente</a></button>
+            <button class="boton-equipo-seleccionador estado"><a href="armarEquipoSeleccionador.html" data-translate="nuevo">Nuevo...</a></button>
+            <button class="boton-equipo-seleccionador estado btnArmarExistente"><a href="armarEquipoExistenteSeleccionador.html" data-translate="existente">Existente</a></button>
           </div>
         </article>
         <span id="mensaje_equiposSeleccionador" hidden></span>
@@ -72,8 +72,8 @@
             <table class="table table-bordered table-hover tablaEquipo">
               <thead>
                 <tr>
-                  <th>ID equipo</th>
-                  <th>Nombre equipo</th>
+                  <th data-translate="id_equipo">ID equipo</th>
+                  <th data-translate="nombre_equipo">Nombre equipo</th>
                 </tr>
               </thead>
               <tbody>
@@ -81,14 +81,14 @@
               </tbody>
             </table>
 
-            <h4 style="margin-top: 10vh;">Deportistas del equipo</h4>
+            <h4 style="margin-top: 10vh;" data-translate="deportistas_equipo">Deportistas del equipo</h4>
             <table class="table table-bordered table-hover tablaJugadores">
               <thead>
                 <tr>
-                  <th>Cédula</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Posición</th>
+                  <th data-translate="cedula">Cédula</th>
+                  <th data-translate="nombre">Nombre</th>
+                  <th data-translate="apellido">Apellido</th>
+                  <th data-translate="posicion">Posición</th>
                   <th>Club</th>
                 </tr>
               </thead>
@@ -108,10 +108,10 @@
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="indexSeleccionador.html">Inicio</a></li>
-          <li><a href="deportistasSeleccionador.html">Deportistas</a></li>
-          <li><a href="equiposSeleccionador.html">Equipos</a></li>
-          <li><a href="perfilSeleccionador.html">Perfil</a></li>
+          <li><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+          <li><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+          <li><a href="perfilSeleccionador.html" data-translate="perfiles">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -128,7 +128,7 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>

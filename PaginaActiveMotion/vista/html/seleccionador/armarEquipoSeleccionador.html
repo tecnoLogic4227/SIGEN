@@ -23,10 +23,10 @@
             </div>
 
             <ul>
-                <li id="inicio" class="op-menu"><a href="indexSeleccionador.html">Inicio</a></li>
-                <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html">Equipos</a></li>
-                <li id="login" class="op-menu"><a href="perfilSeleccionador.html">Perfil</a></li>
+                <li id="inicio" class="op-menu"><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                <li id="login" class="op-menu"><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
 
@@ -36,26 +36,26 @@
 
             <div class="menu-adaptable">
                 <ul class="menu-oculto">
-                    <li class="op-menu-oculto"><a href="indexSeleccionador.html">Inicio</a></li>
-                    <li class="op-menu-oculto"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                    <li class="op-menu-oculto"><a href="equiposSeleccionador.html">Equipos</a></li>
-                    <li class="op-menu-oculto"><a href="perfilSeleccionador.html">Perfil</a></li>
+                    <li class="op-menu-oculto"><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                    <li class="op-menu-oculto"><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                    <li class="op-menu-oculto"><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                    <li class="op-menu-oculto"><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 </ul>
             </div>
         </nav>
 
         <main class="tituloSeleccionador">
             <header>
-                <h1 class="titulo2Seleccionador">Ingresar equipo</h1>
+                <h1 class="titulo2Seleccionador" data-translate="ingresar_equipo">Ingresar equipo</h1>
             </header>
 
             <table style="width: 70vw; margin-top: 10vh; margin-bottom: 10vh; margin-left: 15vw;">
                 <thead>
                     <tr>
-                        <th>ID equipo</th>
-                        <th>Nombre equipo</th>
-                        <th>Deporte</th>
-                        <th>Deportistas</th>
+                        <th data-translate="id_equipo">ID equipo</th>
+                        <th data-translate="nombre_equipo">Nombre equipo</th>
+                        <th data-translate="deporte">Deporte</th>
+                        <th data-translate="deportistas">Deportistas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,19 +63,19 @@
                         <td><input class="inputCrearEquipoIdEquipo"></td>
                         <td><input class="inputCrearEquipoNombreEquipo"></td>
                         <td><input class="inputCrearEquipoDeporte"></td>
-                        <td><button class="btn-agregar mt-2">
+                        <td><button class="btn-agregar mt-2" data-translate="ingresar_deportista">
                             <i class="fas fa-plus me-2"></i>Ingresar Deportista
                         </button></td>
                     </tr>
                 </tbody>
             </table>
 
-            <h4>Deportistas ingresados</h4>
+            <h4 data-translate="deportistas_ingresados">Deportistas ingresados</h4>
             <table class="tablaOutputDeportistas" style="width: 40vw; margin-top: 5vh; margin-bottom: 7vh; margin-left: 30vw;">
                 <thead>
                     <tr>
-                        <th>Cédula</th>
-                        <th>Gestionar</th>
+                        <th data-translate="cedula">Cédula</th>
+                        <th data-translate="gestionar">Gestionar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,39 +84,39 @@
             </table>
 
             <form id="form-armarEquiposSeleccionador" style="display: none;">
-                <h5>Deportista</h5>
+                <h5 data-translate="deportista">Deportista</h5>
                 <label for="ciDeportista" class="cedula">Cédula</label>
                 <br>
                 <input class="inputArmarEquipoCi" type="text" id="ciDeportista" name="ciDeportista">
                 <br>
-                <label for="ciDeportista" class="cedula">Posición</label>
+                <label for="ciDeportista" class="cedula" data-translate="posicion">Posición</label>
                 <br>
                 <input class="inputArmarEquipoPosicion" type="text" id="ciDeportista" name="ciDeportista">
                 <br>
-                <button type="button" class="botonEquipoAgregarJugador">Ingresar</button>
-                <button type="button" class="ingresarDeportista" id="btnCancelar">Cerrar</button>
+                <button type="button" class="botonEquipoAgregarJugador" data-translate="ingresar">Ingresar</button>
+                <button type="button" class="ingresarDeportista" id="btnCancelar" data-translate="cerrar">Cerrar</button>
                 <input type="text" id="ciDeportista" name="ciDeportista" placeholder="12345678" required>
                 <br>
-                <button type="button" class="ingresarDeportista" id="btnIngresar">
+                <button type="button" class="ingresarDeportista" id="btnIngresar" data-translate="ingresar">
                     <i class="fas fa-check me-2"></i>Ingresar
                 </button>
                 <button type="button" class="cancelarDeportista" id="btnCancelar">
-                <button type="button" class="botonEquipoAgregarJugador">Ingresar</button>
-                <button type="button" class="ingresarDeportista" id="btnCancelar">
+                <button type="button" class="botonEquipoAgregarJugador" data-translate="ingresar">Ingresar</button>
+                <button type="button" class="ingresarDeportista" id="btnCancelar" data-translate="cancelar">
                     <i class="fas fa-times me-2"></i>Cancelar
                 </button>
             </form>
-            <button class="save-team equipoConfirmarCrear">Guardar</button>
-            <button class="save-team"><a href="equiposSeleccionador.html">Salir</a></button>
+            <button class="save-team equipoConfirmarCrear" data-translate="guardar">Guardar</button>
+            <button class="save-team"><a href="equiposSeleccionador.html" data-translate="salir">Salir</a></button>
         </main>
 
         <footer class="social-footer">
             <div class="footer-content">
                 <ul class="footer-menu">
-                    <li><a href="indexSeleccionador.html">Inicio</a></li>
-                    <li><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                    <li><a href="equiposSeleccionador.html">Equipos</a></li>
-                    <li><a href="perfilSeleccionador.html">Perfil</a></li>
+                    <li><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                    <li><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                    <li><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                    <li><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 </ul>
                 <div class="social-icons">
                     <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -133,7 +133,7 @@
                     </a>
                 </div>
             </div>
-            <div class="copyright-bar">
+            <div class="copyright-bar" data-translate="footer">
                 © 2024 ActiveMotion. Todos los derechos reservados.
             </div>
         </footer>

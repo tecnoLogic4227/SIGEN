@@ -248,10 +248,235 @@ $(document).ready(function() {
      "suPerfil": "Your Profile",
      "guardar": "Save",
      "regresar": "Return",
-    
-    
-    
-    
+
+     /*.....AVANZADO.....*/
+     //DEPORTES AVANZADO
+     "usuarios":"Users",
+     "ejercicios":"Exercises",
+     "deportes":"Sports",
+     "nombreDeporte":"Sport Name",
+     "descripcionDeporte":"Description",
+     "crear":"Create",
+     "crear_y_modificar":"Create and Modify Sport",
+     "eliminarDeporte":"Delete Sport",
+     "preguntaElmiarDeporte":"Are you sure you want to delete this sport?",
+     "confirmar":"Confirm",
+     "footer":"© 2024 ActiveMotion. All rights reserved. ",
+
+      //EJERCICIOS AVANZADO
+      "ejercicios":"Exercises",
+      "nombreEjercicio":"Exercise Name",
+      "N_repeticiones":"Number of reps",
+      "N_series":"Number of Series",
+      "grupo_muscular":"Muscular Group",
+      "descripcion":"Description",
+      "eliminar_ejercicio":"Delete Exercise",
+      "ejercicio_id":"Exercise ID",
+      "preguntaElmiarEjercicio":"Are you sure you want delete this exercise?",
+  
+      //INDEX AVANZADO
+      "ci_avanzado":"ID",
+      "deporte_actividad":"Sport/Activity",
+      "registrar_usuario":"Register a User",
+      "gestionar_ejercicios":"Manage Exercises",
+      "gestionar_deportes":"Manage Sports",
+      "agregar_usuario":"Add a user",
+
+      //MODIFICAR PERFIL AVANZADO
+      "tuPerfil":"Your profile",
+      "cedula":"ID",
+
+      //USUARIOS AVANZADO
+      "contraseña": "Password",
+      "mostrar":"Show",
+      "mensaje_rol":"Select a rol...",
+      "avanzado":"Advanced",
+      "entrenador":"Coach",
+      "cliente":"Client",
+      "seleccionador":"Selector",
+      "administrativo":"Adminstrative",
+      "deportista":"Sportsman",
+      "paciente":"Pacient",
+      "libre":"Free",
+      "estado":"Status",
+      "mensaje_estado":"Select a status...",
+      "principiante":"Beginner",
+      "bajo":"Low",
+      "medio":"Medium",
+      "alto":"High",
+      "para_seleccion":"To be selected",
+      "sin_evolucion":"Without evolucion",
+      "en_evolucion":"In evolucion",
+      "satisfactorio":"Satisfying",
+
+      "estado_actividad":"Activity Status",
+      "activo":"Active",
+      "inactivo":"Idle",
+      "tipo_plan":"Type of Plan",
+      "mensaje_plan":"Select a type of plan...",
+      "basico":"Basic",
+      "pack_verano":"Summer Pack",
+      "avanzado":"Advanced",
+      "verano":"Summer",
+      "actividad":"Activity",
+
+      /*..........CLIENTE........ */
+      //AGENDA USUARIO
+      "mi_plan":"My Plan",
+      "mi_agenda":"My Agenda",
+      "mi_evolucion":"My Evolution",
+      "mi_rutina":"Your Routine",
+      "tu_agenda":"Your Agenda",
+      "lunes":"Mon",
+      "martes":"Tue",
+      "miercoles":"Wen",
+      "jueves":"Thu",
+      "viernes":"Fri",
+      "sabado":"Sat",
+      "domingo":"Sun",
+
+      //EVOLUCION USUARIO
+      "tu_evolucion":"Your Evolution",
+      "estado_evolucion":"Status: ",
+      "mi_rutina_evolucion":"My Routine",
+      
+      //INDEX USUARIO
+      "notificaciones": "Notifications",
+      "recordar_cita":"● Remember your physical therapy appointment tomorrow at 10 AM. We hope to see you!",
+      "clase_especial":"● Don't miss our special pilates class this Saturday! Reserve your spot now.",
+      "actualizacion_horarios":"● We have updated our gym class schedules for next week. Review the changes here.",
+      "lunes_cierre":"● Please note that we will be closed next Monday due to a holiday. See you on Tuesday.",
+      "descuento":"● Just for today! Get a 20% discount on your annual gym membership. Take advantage of this exclusive offer.",
+      "ultimo_articulo_salud":"● Find out how to improve your posture in our latest article on spinal health. Read more here.",
+      "encuesta_satisfaccion":"● Help us improve. How was your last physical therapy session? Complete our short satisfaction survey.",
+      
+      //PLAN USUARIO
+      "plan_actual":"Current Plan",
+      "pago":"Payment",
+      "id_pago":"Last payment ID",
+      "hora":"Hour",
+      "fecha":"Date",
+      "valor":"Amount",
+      "fecha_proximo_pago":"Next payment date",
+
+      //RUTINA USUARIO
+      "id_rutina":"Routine ID",
+      "nombre_rutina":"Routine Name",
+      "id_ejercicio":"Exercise ID",
+      "nombre_ejercicio":"Exercise Name",  
+      
+      /*..........ENTRENADOR.............*/
+      //AGENDA ENTRENADOR
+      "clientes":"Clients",
+      "planes":"Our Plans",
+
+      //ASIGNAR ENTRENAMIENTO
+      "asignar_entrenamiento":"Assign training",
+      "buscar_rutina":"Search Routine",
+      "id_rutina_asignar":"Routine Id: ",
+      "tipo_rutina":"Type of routine",
+      "acciones":"Actions",
+      "crear_rutina":"Create Routine",
+      "buscar_ejercicio":"Search Exercise",
+      "id_ejercicio_asignar":"Exercise ID:",
+      "crear_ejercicio":"Create Exercise",
+      "asignar_ejercicio_rutina":"Assign exercise to routine",
+      "asignar_ejercicio":"Assign Exercise",
+      "asignar_rutina_cliente":"Assign routine to client",
+      "cedula_entrenamiento":"ID:",
+      "asignar_rutina":"Assign routine",
+      "repeticiones":"Reps",
+
+      //BUSCAR CLIENTES ENTRENADOR
+      "lista_clientes":"Clients List",
+      "nombre_entrenador":"Name:",
+      "cedula_entrenador":"ID:",
+
+      //DETALLES CLIENTE ENTRENADOR
+      "registrar_calificacion":"Register qualification",
+      "evolucion":"Evolution",
+      
+      //INGRESAR DEPORTE ENTREANDOR
+      "nuevo_deporte":"New Sport",
+      "nombre_deporte":"Name:",
+      "descripcion_deporte":"Description:",
+      "ingresar":"Enter",
+
+      //INGRESAR FISIOTERAPIA ENTRENADOR
+      "nombre-fisio":"Name:",
+      "tipo-fisio":"Type:",
+      "descripcion-fisio":"Description:",
+      "nueva-fisio":"New Physical Therapy",
+
+      //INICIO PLANES ENTRENADOR
+      "planes_y_fisio":"Training and Physiotherapy Plans",
+      "nuevo":"New...",
+
+      //REGISTRAR CALIFICACION
+
+      "evolucion_clientes":"Clients Evolution",
+      "agregar_modificar_nota":"Add/modify note",
+      "nota_actual":"Actual Note",
+      "cumplimientoAgenda": "Compliance with the agenda",
+      "resistenciaAnaerobica":"Anaerobic resistance",
+      "fuerzaMuscular":"Muscle strength",
+      "resistenciaMuscular":"Muscle endurance",
+      "flexibilidad":"Flexibility",
+      "resistenciaMonotonia":"Resistance to monotony",
+      "resiliencia":"Resilience",
+
+      /*.....................SELECCIONADOR....................*/
+      //ARMAR EQUIPO EXISTENTE SELECCIONADOR
+      "equipos":"Teams",
+      "cedula_usuario":"User's ID: ",
+      "id_equipo":"Team's ID: ",
+      "deportistas":"athletes",
+
+      //ARMAR EQUIPO SELECCIONADRO
+      "ingresar_equipo":"Enter Team",
+      "id_equipo":"Team's ID",
+      "nombre_equipo":"Team's Name",
+      "ingresar_deportista":"+Enter athlete",
+      "deportistas_ingresados":"Admitted athletes",
+      "gestionar":"Manage",
+      "posicion":"Position",
+      "cerrar":"Close",
+      "salir":"exit",
+
+      //DEPORTISTAS SELECCIONADOR
+      "evolucion_y_calificacion":"Evolution and qualification",
+
+      //EQUIPOS SELECCIONADOR
+      "armar_equipos":"Assemble teams",
+      "existente":"Existing",
+      "deportistas_equipo":"Team athletes",
+      
+      //INDEX SELECCIONADOR
+      "consultar_deportista":"Consult athlete",
+      
+      
+      /*.............SUPER USUARIO.............*/
+      //CLUBES SUPER USUARIO
+      "clubes":"Clubs",
+      "ingresar_institucion":"Enter Institution",
+      
+      //INDEX SUPER USUARIO
+      "ingresar_club":"Enter Club",
+      "ingresar_usuario":"Enter User",
+
+      //REGISTRO
+      "registro":"Register",
+      "nombre_usuario":"User Name: ",
+      "verificar_contra":"Verify Password",
+      "foto_perfil":"Profile Picture",
+      "recibir_notificaciones":"Get notified",
+      "en_mi_celular":"In my phone",
+      "en_mi_correo":"In my Mail",
+      "aceptar_terminos":"Accept Terms and Conditions",
+      "registrarse":"Register"
+
+
+
     },
       es: {
         //INDEX GENERAL
@@ -501,8 +726,237 @@ $(document).ready(function() {
      "guardar": "Guardar",
      "regresar": "Regresar",
 
-    
-    
+      /*.....AVANZADO.....*/
+     //DEPORTES AVANZADO
+     "usuarios":"Usuarios",
+     "ejercicios":"Ejercicios",
+     "deportes":"Deportes",
+     "nombreDeporte":"Nombre del Deporte",
+     "descripcionDeporte":"Descripcion",
+     "crear":"Crear",
+     "crear_y_modificar":"Crear y Modificar Deporte",
+     "eliminarDeporte":"Eliminar Deporte",
+     "preguntaElmiarDeporte":"¿Está seguro que desea eliminar el deporte?",
+     "confirmar":"Confirmar",
+     "footer":"© 2024 ActiveMotion. Todos los derechos reservados.",
+
+       //EJERCICIOS AVANZADO
+       "ejercicios":"Ejercicios",
+       "nombreEjercicio":"Nombre ejercicio",
+       "N_repeticiones":"Nro. de repeticiones",
+       "N_series":"Nro. de series",
+       "grupo_muscular":"Grupo muscular",
+       "descripcion":"Descripcion",
+       "eliminar_ejercicio":"Eliminar ejercicio",
+       "ejercicio_id":"ID Ejercicio",
+       "preguntaElmiarEjercicio":"¿Está seguro que desea eliminar el ejercicio?",
+
+      //INDEX AVANZADO
+      "ci_avanzado":"CI",
+      "deporte_actividad":"Deporte/Actividad",
+      "registrar_usuario":"Registrar usuarios",
+      "gestionar_ejercicios":"Gestionar ejercicios",
+      "gestionar_deportes":"Gestionar deportes",
+      "agregar_usuario":"Agregar usuario",
+      
+      //MODIFICAR PERFIL AVANZADO
+      "tuPerfil":"Tu perfil",
+      "cedula":"Cédula",
+
+      //USUARIOS AVANZADO
+      "contraseña": "Contraseña",
+      "mostrar":"Mostrar",
+      "mensaje_rol":"Seleccione un rol...",
+      "avanzado":"Avanzado",
+      "entrenador":"Entrenador",
+      "cliente":"Cliente",
+      "seleccionador":"Seleccionador",
+      "administrativo":"Adminstrativo",
+      "deportista":"Deportista",
+      "paciente":"Paciente",
+      "libre":"Libre",
+      "estado":"Estado",
+      "mensaje_estado":"Seleccione estado...",
+      "principiante":"Principiante",
+      "bajo":"Bajo",
+      "medio":"Medio",
+      "alto":"Alto",
+      "para_seleccion":"Para seleccionar",
+      "sin_evolucion":"Sin evolucion",
+      "en_evolucion":"En evolucion",
+      "satisfactorio":"Satisfactorio",
+
+      "estado_actividad":"Estado actividad",
+      "activo":"Activo",
+      "inactivo":"Inactivo",
+      "tipo_plan":"Tipo de Plan",
+      "mensaje_plan":"Seleccione tipo de plan...",
+      "basico":"Básico",
+      "pack_verano":"Pack Verano",
+      "avanzado":"Avanzado",
+      "verano":"Verano",
+      "actividad":"Actividad",
+
+      /*..........CLIENTE........ */
+      //AGENDA USUARIO
+      "mi_plan":"Mi Plan",
+      "mi_agenda":"Mi Agenda",
+      "mi_evolucion":"Mi Evolucion",
+      "mi_rutina":"Mi Rutina",
+      "tu_agenda":"Tu Agenda",
+      "lunes":"Lun",
+      "martes":"Mar",
+      "miercoles":"Mie",
+      "jueves":"Jue",
+      "viernes":"Vie",
+      "sabado":"Sab",
+      "domingo":"Dom",
+
+      //EVOLUCION USUARIO
+      "tu_evolucion":"Tu Evolucion",
+
+      //INDEX USUARIO
+      "notificaciones": "Notificaciones",
+      "recordar_cita":"● Recuerda tu cita de fisioterapia mañana a las 10 AM. ¡Esperamos verte!",
+      "clase_especial":"● ¡No te pierdas nuestra clase especial de pilates este sábado! Reserva tu lugar ahora.",
+      "actualizacion_horarios":"● Hemos actualizado nuestros horarios de clases de gym para la próxima semana. Revisa los cambios aquí.",
+      "lunes_cierre":"● Por favor, ten en cuenta que estaremos cerrados el próximo lunes por festivo. Nos vemos el martes.",
+      "descuento":"● ¡Solo por hoy! Obtén un descuento del 20% en tu membresía anual de gym. Aprovecha esta oferta exclusiva.",
+      "ultimo_articulo_salud":"● Descubre cómo mejorar tu postura en nuestro último artículo sobre salud vertebral. Lee más aquí.",
+      "encuesta_satisfaccion":"● Ayúdanos a mejorar. ¿Cómo fue tu última sesión de fisioterapia? Completa nuestra breve encuesta de satisfacción.",
+
+      //PLAN USUARIO
+      "plan_actual":"Plan Actual",
+      "pago":"Pago",
+      "id_pago":"ID del último pago",
+      "hora":"Hora",
+      "fecha":"Fecha",
+      "valor":"Valor",
+      "fecha_proximo_pago":"Fecha próximo pago",
+
+      //RUTINA USUARIO
+      "id_rutina":"ID Rutina",
+      "nombre_rutina":"Nombre Rutina",
+      "id_ejercicio":"ID Ejercicio",
+      "nombre_ejercicio":"Nombre Ejercicio",
+      "mi_rutina_evolucion":"Mi Rutina",      
+
+      /*..........ENTRENADOR.............*/
+      //AGENDA ENTRENADOR
+      "clientes":"Clientes",
+      "planes":"Nuestros Planes",
+
+      //ASIGNAR ENTRENAMIENTO
+      "asignar_entrenamiento":"Asignar entrenamiento",
+      "buscar_rutina":"Buscar rutina",
+      "id_rutina_asignar":"Id Rutina: ",
+      "tipo_rutina":"Tipo de rutina",
+      "acciones":"Acciones",
+      "crear_rutina":"Crear Rutina",
+      "buscar_ejercicio":"Buscar Ejercicio",
+      "id_ejercicio_asignar":"Id ejercicio:",
+      "crear_ejercicio":"Crear ejercicio",
+      "asignar_ejercicio_rutina":"Asignar ejercicio a rutina",
+      "asignar_ejercicio":"Asignar ejercicio",
+      "asignar_rutina_cliente":"Asignar rutina a cliente",
+      "cedula_entrenamiento":"Cédula:",
+      "asignar_rutina":"Asignar rutina",
+      "repeticiones":"Repeticiones",
+
+      //BUSCAR CLIENTES ENTRENADOR
+      "lista_clientes":"Lista de clientes",
+      "nombre_entrenador":"Nombre:",
+      "cedula_entrenador":"ID:",
+
+      //DETALLES CLIENTE ENTRENADOR
+      "registrar_calificacion":"Registrar calificacion",
+      "evolucion":"Evolución",
+
+      //INGRESAR DEPORTE ENTREANDOR
+      "nuevo_deporte":"Nuevo Deporte",
+      "nombre_deporte":"Nombre:",
+      "descripcion_deporte":"Descripcion:",
+      "ingresar":"Ingresar",
+
+      //INGRESAR FISIOTERAPIA ENTRENADOR
+      "nombre-fisio":"Nombre:",
+      "tipo-fisio":"Tipo:",
+      "descripcion-fisio":"Descripcion",
+
+      //INICIO PLANES ENTRENADOR
+      "planes_y_fisio":"Planes de Entrenamiento y Fisioterapia",
+      "nuevo":"Nuevo...",
+
+      //REGISTRAR CALIFICACION
+
+      "evolucion_clientes":"Evolución de clientes",
+      "agregar_modificar_nota":"Agregar/modificar nota",
+      "nota_actual":"Nota actual",
+      "cumplimientoAgenda": "Cumplimiento con la agenda",
+      "resistenciaAnaerobica":"Resistencia anaeróbica",
+      "fuerzaMuscular":"Fuerza muscular",
+      "resistenciaMuscular":"Resistencia muscular",
+      "flexibilidad":"Flexibilidad",
+      "resistenciaMonotonia":"Resistencia a la monotonía",
+      "resiliencia":"Resiliencia",
+
+      /*.....................SELECCIONADOR....................*/
+      //ARMAR EQUIPO EXISTENTE SELECCIONADOR
+      "equipos":"Equipos",
+      "cedula_usuario":"Cédula del usuario: ",
+      "id_equipo":"ID del equipo: ",
+      "deportistas":"Deportistas",
+
+      //ARMAR EQUIPO SELECCIONADRO
+      "ingresar_equipo":"Ingresar equipo",
+      "id_equipo":"ID equipo",
+      "nombre_equipo":"Nombre equipo",
+      "ingresar_deportista":"+Enter athlete",
+      "deportistas_ingresados":"Ingresar Deportista",
+      "gestionar":"Gestionar",
+      "posicion":"Posicion",
+      "cerrar":"Cerrar",
+      "salir":"exit",
+      
+
+      //DEPORTISTAS SELECCIONADOR
+      "evolucion_y_calificacion":"Evolution y calificacion",
+
+      //EQUIPOS SELECCIONADOR
+      "armar_equipos":"Armar equipos",
+      "existente":"Existente",
+      "deportistas_equipo":"Deportistas del equipo",
+
+      //INDEX SELECCIONADOR
+      "consultar_deportista":"Consultar deportista",
+
+      /*.............SUPER USUARIO.............*/
+
+      //CLUBES SUPER USUARIO
+      "clubes":"Clubes",
+      "ingresar_institucion":"Ingresar Institucion",
+
+      //INDEX SUPER USUARIO
+      "ingresar_club":"Enter Club",
+      "ingresar_usuario":"Enter User",
+
+      //REGISTRO
+      "registro":"Registro",
+      "nombre_usuario":"Nombre de usuario: ",
+      "verificar_contra":"Verificar Contraseña",
+      "foto_perfil":"Foto de perfil",
+      "recibir_notificaciones":"Recibir notificaciones",
+      "en_mi_celular":"En mi celular",
+      "en_mi_correo":"En mi correo",
+      "aceptar_terminos":"Aceptar Terminos y Condiciones",
+      "registrarse":"Registrarse"
+
+
+      
+      
+
+
+
     
     }
     };

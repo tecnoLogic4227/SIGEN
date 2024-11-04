@@ -32,11 +32,11 @@
       </div>
 
       <ul>
-        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a></li>
-        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a></li>
+        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+        <li id="login" class="op-menu"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
 
@@ -46,25 +46,25 @@
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a></li>
-          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+          <li class="op-menu-oculto"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+          <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a></li>
+          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+          <li class="op-menu-oculto"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
     </nav>
 
     <main>
-      <h2>Asignar entrenamiento
+      <h2 data-translate="asignar_entrenamiento">Asignar entrenamiento
       </h2>
 
       <section id="buscar">
-        <h5>Buscar rutina</h5>
+        <h5 data-translate="buscar_rutina">Buscar rutina</h5>
         <form>
-          <label>Id Rutina:</label>
+          <label data-translate="id_rutina_asignar">Id Rutina:</label>
           <input class="inputBuscarIdRutina" type="text" id="buscar-rutina-id">
-          <button class="botonBuscarRutina" type="button">Buscar</button>
+          <button class="botonBuscarRutina" type="button" data-translate="buscar">Buscar</button>
         </form>
       </section>
 
@@ -72,10 +72,10 @@
         <table id="tablaRutinas">
           <thead>
             <tr>
-              <th>ID Rutina</th>
-              <th>Nombre</th>
-              <th>Tipo de rutina</th>
-              <th>Acciones</th>
+              <th data-translate="id_rutina">ID Rutina</th>
+              <th data-translate="nombre_rutina">Nombre</th>
+              <th data-translate="tipo_rutina">Tipo de rutina</th>
+              <th data-translate="acciones">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -84,35 +84,35 @@
               <td><input class="inputCrearNombreRutina"></td>
               <td>
                 <select class="inputCrearTipoRutina">
-                  <option value="deporte">Deporte</option>
-                  <option value="fisioterapia">Fisioterapia</option>
+                  <option value="deporte" data-translate="deporte">Deporte</option>
+                  <option value="fisioterapia" data-translate="fisioterapia">Fisioterapia</option>
                 </select>
               </td>
-              <td><button type="button" class="botonCrearRutina">Crear Rutina</button></td>
+              <td><button type="button" class="botonCrearRutina" data-translate="crear_rutina">Crear Rutina</button></td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section id="buscar">
-        <h5>Buscar ejercicio</h5>
+        <h5 data-translate="buscar_ejercicio">Buscar ejercicio</h5>
         <form>
-          <label>Id ejercicio:</label>
+          <label data-translate="id_ejercicio_asignar">Id ejercicio:</label>
           <input class="inputBuscarIdEjercicio" type="text" id="buscar-rutina-id">
-          <button class="botonBuscarEjercicio" type="button">Buscar</button>
+          <button class="botonBuscarEjercicio" type="button" data-translate="buscar">Buscar</button>
       </section>
 
       <section id="rutinas">
         <table id="tablaEjercicio">
           <thead>
             <tr>
-              <th>ID Ejercicio</th>
-              <th>Nombre</th>
-              <th>Repeticiones</th>
-              <th>Series</th>
-              <th>Grupo Muscular</th>
-              <th>Descripción</th>
-              <th>Acciones</th>
+              <th data-translate="id_ejercicio">ID Ejercicio</th>
+              <th data-translate="nombre">Nombre</th>
+              <th data-translate="repeticiones">Repeticiones</th>
+              <th data-translate="series">Series</th>
+              <th data-translate="grupo_muscular">Grupo Muscular</th>
+              <th data-translate="descripcion">Descripción</th>
+              <th data-translate="acciones">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -123,65 +123,65 @@
               <td><input class="inputCrearSeries"></td>
               <td><input class="inputCrearGrupoMuscular"></td>
               <td><input class="inputCrearDescripcion"></td>
-              <td><button type="button" class="botonCrearEjercicio">Crear ejercicio</button></td>
+              <td><button type="button" class="botonCrearEjercicio" data-translate="crear_ejercico">Crear ejercicio</button></td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section id="buscar">
-        <h5>Asignar ejercicio a rutina</h5>
+        <h5 data-translate="asignar_ejercicio_rutina">Asignar ejercicio a rutina</h5>
         <form>
-          <label>Id rutina:</label>
+          <label data-translate="id_rutina_asignar">Id rutina:</label>
           <input class="inputBuscarAsisteRealizaIdRutina" type="text" id="buscar-ejercicio-id">
-          <label>Id ejercicio:</label>
+          <label data-translate="id_ejercicio_asignar">Id ejercicio:</label>
           <input class="inputBuscarAsisteRealizaIdEjercicio" type="text" id="buscar-ejercicio-id">
-          <button class="botonAsisteRealizaBuscar" type="button">Buscar</button>
+          <button class="botonAsisteRealizaBuscar" type="button" data-translate="buscar">Buscar</button>
       </section>
 
       <section id="rutinas">
         <table id="tablaAsisteRealiza">
           <thead>
             <tr>
-              <th>ID Rutina</th>
-              <th>ID Ejercicio</th>
-              <th>Acciones</th>
+              <th data-translate="id_rutina">ID Rutina</th>
+              <th data-translate="id_ejercicio">ID Ejercicio</th>
+              <th data-translate="acciones">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><input class="inputCrearAsisteRealizaIdRutina"></td>
               <td><input class="inputCrearAsisteRealizaIdRutina"></td>
-              <td><button type="button" class="botonAsisteRealizaCrear">Asignar ejercicio</button></td>
+              <td><button type="button" class="botonAsisteRealizaCrear" data-translate="asignar_ejercicio">Asignar ejercicio</button></td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section id="buscar">
-        <h5>Asignar rutina a cliente</h5>
+        <h5 data-translate="asignar_rutina_cliente">Asignar rutina a cliente</h5>
         <form>
-          <label>Cédula:</label>
+          <label data-translate="cedula_entrenamiento">Cédula:</label>
           <input class="inputBuscarClienteRutinaCi" type="text" id="buscar-rutina-id">
-          <label>Id Rutina:</label>
+          <label data-translate="id_rutina_asignar">Id Rutina:</label>
           <input class="inputBuscarClienteRutinaId" type="text" id="buscar-rutina-id">
-          <button class="botonClienteRutinaBuscar" type="button">Buscar</button>
+          <button class="botonClienteRutinaBuscar" type="button" data-translate="buscar">Buscar</button>
       </section>
 
       <section id="rutinas">
         <table id="tablaAsignarRutina">
           <thead>
             <tr>
-              <th>Cédula</th>
-              <th>ID rutina</th>
-              <th>Acciones</th>
+              <th data-translate="cedula">Cédula</th>
+              <th data-translate="id_rutina">ID rutina</th>
+              <th data-translate="acciones">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><input class="inputCrearClienteRutinaCi"></td>
               <td><input class="inputCrearClienteRutinaId"></td>
-              <td><button type="button" class="botonClienteRutinaCrear">Asignar rutina</button></td>
+              <td><button type="button" class="botonClienteRutinaCrear" data-translate="asignar_rutina">Asignar rutina</button></td>
             </tr>
           </tbody>
         </table>
@@ -192,11 +192,11 @@
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a></li>
-          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a></li>
+          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+          <li id="login" class="op-menu"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -213,7 +213,7 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>

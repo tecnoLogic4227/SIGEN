@@ -25,11 +25,11 @@
       </div>
 
       <ul>
-        <li id="inicio" class="op-menu"><a href="indexAvanzado.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html">Usuarios</a></li>
-        <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html">Ejercicios</a>
-        <li id="login" class="op-menu"><a href="deportesAvanzado.html">Deportes</a></li>
-        <li id="login" class="op-menu"><a href="perfilAvanzado.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="indexAvanzado.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html" data-translate="usuarios">Usuarios</a></li>
+        <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html" data-translate="ejercicios">Ejercicios</a>
+        <li id="login" class="op-menu"><a href="deportesAvanzado.html" data-translate="deportes">Deportes</a></li>
+        <li id="login" class="op-menu"><a href="perfilAvanzado.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
 
@@ -39,34 +39,34 @@
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="indexAvanzado.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="usuariosAvanzado.html">Usuarios</a></li>
-          <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html">Ejercicios</a>
-          <li class="op-menu-oculto"><a href="deportesAvanzado.html">Deportes</a></li>
-          <li class="op-menu-oculto"><a href="perfilAvanzado.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="indexAvanzado.html" data-translate="inicio">Inicio</a></li>
+          <li class="op-menu-oculto"><a href="usuariosAvanzado.html" data-translate="usuarios">Usuarios</a></li>
+          <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html" data-translate="ejercicios">Ejercicios</a>
+          <li class="op-menu-oculto"><a href="deportesAvanzado.html" data-translate="deportes">Deportes</a></li>
+          <li class="op-menu-oculto"><a href="perfilAvanzado.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
 
     </nav>
 
     <main class="main-entrenadores">
-      <h2 class="tit-entrenadores">Usuarios</h2>
+      <h2 class="tit-entrenadores" data-translate="usuarios">Usuarios</h2>
       <form class="form-entrenadores">
         <table class="table-entrenadores">
           <tr>
-            <th>Cédula</th>
+            <th data-translate="cedula">Cédula</th>
             <td><input type="number" class="inputRegistroCi"></td>
           </tr>
           <tr>
-            <th>Nombre</th>
+            <th data-translate="nombre">Nombre</th>
             <td><input type="text" class="inputRegistroNombre"></td>
           </tr>
           <tr>
-            <th>Apellido</th>
+            <th data-translate="apellido">Apellido</th>
             <td><input type="text" class="inputRegistroApellido"></td>
           </tr>
           <tr>
-            <th>Dirección</th>
+            <th data-translate="direccion">Dirección</th>
             <td><input type="text" class="inputRegistroDireccion"></td>
           </tr>
           <tr>
@@ -74,83 +74,83 @@
             <td><input type="email" class="inputRegistroEmail"></td>
           </tr>
           <tr>
-            <th>Fecha de nacimiento</th>
+            <th data-translate="fechaNac">Fecha de nacimiento</th>
             <td><input type="date" class="inputRegistroFecha"></td>
           </tr>
           <tr>
-            <th>Teléfono</th>
+            <th data-translate="telefono">Teléfono</th>
             <td><input type="number" class="inputRegistroTelefono"></td>
           </tr>
           <tr>
-            <th>Contraseña</th>
+            <th data-translate="contraseña">Contraseña</th>
             <td><input class="inputRegistroContrasenia" id="contrasena" type="password" required>
-              <span class="span">Mostrar</span>
+              <span class="span" data-translate="mostrar">Mostrar</span>
             </td>
           </tr>
           <tr>
             <th>Rol</th>
             <td>
               <select id="selectRol" class="inputRegistroRol">
-                <option value="" disabled selected>Seleccione un rol...</option>
-                <option value="avanzado">Avanzado</option>
-                <option value="administrativo">Administrativo</option>
-                <option value="entrenador">Entrenador</option>
-                <option value="seleccionador">Seleccionador</option>
-                <option value="cliente">Cliente</option>
+                <option value="" disabled selected data-translate="mensaje_rol">Seleccione un rol...</option>
+                <option value="avanzado" data-translate="avanzado">Avanzado</option>
+                <option value="administrativo" data-translate="administrativo">Administrativo</option>
+                <option value="entrenador" data-translate="entrenador">Entrenador</option>
+                <option value="seleccionador" data-translate="seleccionador">Seleccionador</option>
+                <option value="cliente" data-translate="cliente">Cliente</option>
               </select>
             </td>
           </tr>
           <tr class="fila-cliente" style="display: none;">
-            <th>Actividad</th>
+            <th data-translate="actividad">Actividad</th>
             <td><select id="selectRol" class="inputRegistroTipoCliente">
-                <option value="deportista">Deportista</option>
-                <option value="paciente">Paciente</option>
-                <option value="libre">Libre</option>
+                <option value="deportista" data-translate="deportista">Deportista</option>
+                <option value="paciente" data-translate="paciente">Paciente</option>
+                <option value="libre" data-translate="libre">Libre</option>
               </select></td>
           </tr>
           <tr class="fila-cliente" style="display: none;">
-            <th>Estado</th>
+            <th data-translate="estado">Estado</th>
             <td>
               <select class="inputRegistroEstado">
-                <option value="" disabled selected>Seleccione estado...</option>
-                <option value="principiante">Principiante</option>
-                <option value="bajo">Bajo</option>
-                <option value="medio">Medio</option>
-                <option value="alto">Alto</option>
-                <option value="para seleccionar">Para seleccionar</option>
-                <option value="inicio">Inicio</option>
-                <option value="sin evolucion">Sin evolucion</option>
-                <option value="en evolucion">En evolucion</option>
-                <option value="satisfactorio">Satisfactorio</option>
+                <option value="" disabled selected data-translate="mensaje_estado">Seleccione estado...</option>
+                <option value="principiante" data-translate="principiante">Principiante</option>
+                <option value="bajo" data-translate="bajo">Bajo</option>
+                <option value="medio" data-translate="medio">Medio</option>
+                <option value="alto" data-translate="alto">Alto</option>
+                <option value="para seleccionar" data-translate="para_seleccion">Para seleccionar</option>
+                <option value="inicio" data-translate="inicio">Inicio</option>
+                <option value="sin evolucion" data-translate="sin_evolucion">Sin evolucion</option>
+                <option value="en evolucion" data-translate="en_evolucion">En evolucion</option>
+                <option value="satisfactorio" data-translate="satisfactorio">Satisfactorio</option>
               </select>
             </td>
           </tr>
           <tr class="fila-cliente" style="display: none;">
-            <th>Estado Actividad</th>
+            <th data-translate="estado_actividad">Estado Actividad</th>
             <td>
               <select class="inputRegistroEstadoActividad">
-                <option value="1">Activo</option>
-                <option value="0">Inactivo</option>
+                <option value="1" data-translate="activo">Activo</option>
+                <option value="0" data-translate="inactivo">Inactivo</option>
               </select>
             </td>
           </tr>
           <tr class="fila-cliente" style="display: none;">
-            <th>Tipo de Plan</th>
+            <th data-translate="tipo_plan">Tipo de Plan</th>
             <td>
               <select class="inputRegistroPlan">
-                <option value="" disabled selected>Seleccione tipo de plan...</option>
-                <option value="Basico">Básico</option>
+                <option value="" disabled selected data-translate="mensaje_plan">Seleccione tipo de plan...</option>
+                <option value="Basico" data-translate="basico">Básico</option>
                 <option value="Premium">Premium</option>
-                <option value="Pack Verano">Pack Verano</option>
-                <option value="Avanzado">Avanzado</option>
+                <option value="Pack Verano" data-translate="pack_verano">Pack Verano</option>
+                <option value="Avanzado" data-translate="avanzado">Avanzado</option>
                 <option value="Elite">Elite</option>
-                <option value="Verano">Verano</option>
+                <option value="Verano" data-translate="verano">Verano</option>
               </select>
             </td>
           </tr>
 
         </table>
-        <button type="button" class="button-entrenadores botonRegistrarUsuario" id="usuarioConfirmarCrear">Agregar
+        <button type="button" class="button-entrenadores botonRegistrarUsuario" id="usuarioConfirmarCrear" data-translate="agregar_usuario">Agregar
           Usuario</button>
       </form>
     </main>
@@ -159,11 +159,11 @@
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="indexAvanzado.html">Inicio</a></li>
-          <li><a href="usuariosAvanzado.html">Usuarios</a></li>
-          <li><a href="ejerciciosAvanzado.html">Ejercicios</a></li>
-          <li><a href="deportesAvanzado.html">Deportes</a></li>
-          <li><a href="perfilAvanzado.html">Perfil</a></li>
+          <li><a href="indexAvanzado.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="usuariosAvanzado.html" data-translate="usuarios">Usuarios</a></li>
+          <li><a href="ejerciciosAvanzado.html" data-translate="ejercicios">Ejercicios</a></li>
+          <li><a href="deportesAvanzado.html" data-translate="deportes">Deportes</a></li>
+          <li><a href="perfilAvanzado.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -180,7 +180,7 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>
