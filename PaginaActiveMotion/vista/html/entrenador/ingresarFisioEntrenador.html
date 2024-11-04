@@ -24,11 +24,11 @@
     </div>
     
       <ul>
-        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
-        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a>
+        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+        <li id="login" class="op-menu"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
 
@@ -38,18 +38,18 @@
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
-        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li  class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+        <li class="op-menu-oculto"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+        <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a>
+        <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+        <li  class="op-menu-oculto"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
     </nav>
     
     <main>
         <article>
-            <h1 class="tit-fisio">Nueva fisioterapia</h1>
+            <h1 class="tit-fisio" data-translate="nueva-fisio">Nueva fisioterapia</h1>
         </article>
         <form id="form-ingresar-fisio" class="form-fisio" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_ingresar_fisioterapia.php" method="post">
           <article>
@@ -59,7 +59,7 @@
                           <table class="table table-bordered table-hover" style="width: 100%;">
                               <thead class="table-primary">
                                   <tr>
-                                      <th colspan="2" class="text-center">
+                                      <th colspan="2" class="text-center" data-translate="fisioterapia">
                                          Fisioterapia
                                       </th>
                                   </tr>
@@ -70,22 +70,22 @@
                                       <td><input type="text" id="nombre-fisio" name="nombre-ejercicio" class="form-control ingresar-fisio-input-nombre inputCrearFisioterapiaIdFisioterapia" placeholder="10" minlength="1" required></td>
                                   </tr>
                                   <tr>
-                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-id">Nombre:</th>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-id" data-translate="nombre-fisio">Nombre:</th>
                                       <td><input type="text" id="id-fisio" name="id-fisio" class="form-control ingresar-fisio-input-id inputCrearFisioterapiaNombreFisioterapia" placeholder="Kinesiología" minlength="1" required></td>
                                   </tr>
                                   <tr>
-                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-ejercicio">Tipo:</th>
+                                      <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-ejercicio" data-translate="tipo-fisio">Tipo:</th>
                                       <td><input type="text" id="ejercicio-fisio" name="ejercicio-fisio"  class="form-control ingresar-fisio-input-ejercicio inputCrearFisioterapiaTipoFisioterapia" placeholder="Recuperacion tendones" minlength="1" required></td>
                                   </tr>
                                 <tr>
-                                  <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-descripcion">Descripcion:</th>
+                                  <th scope="row" id="label-input-fisio" class="ingresar-fisio-label-descripcion" data-translate="descripcion-fisio">Descripcion:</th>
                                   <td><input type="text" id="descripcion-fisio" name="descripcion-fisio" class="form-control ingresar-fisio-input-descripcion inputCrearFisioterapiaDescripcion" placeholder="Para recuerar los tndones" minlength="1" required></td>
                               </tr>
                           </table>
                       </div>
                   </div>
               </div>
-              <button id="boton_ingresar_fisio" class="ingresar-fisio fisioterapiaConfirmarCrear"><a href="inicioPlanesEntrenador.html">Ingresar</a></button>
+              <button id="boton_ingresar_fisio" class="ingresar-fisio fisioterapiaConfirmarCrear"><a href="inicioPlanesEntrenador.html" data-translate="ingresar">Ingresar</a></button>
               <br>
               <span id="mensaje_ingresarFisioEntrenador" hidden></span>
           </article>
@@ -95,11 +95,11 @@
    <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
-          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a>
+          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+          <li id="login" class="op-menu"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -116,7 +116,7 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>

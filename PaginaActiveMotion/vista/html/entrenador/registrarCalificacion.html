@@ -33,11 +33,11 @@
       </div>
 
       <ul>
-        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
-        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-        <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+        <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a>
+        <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+        <li id="login" class="op-menu"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
 
@@ -47,52 +47,52 @@
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html">Clientes</a>
-          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li class="op-menu-oculto"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+          <li class="op-menu-oculto"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+          <li class="op-menu-oculto"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a>
+          <li class="op-menu-oculto"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+          <li class="op-menu-oculto"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
     </nav>
 
     <main>
       <article>
-        <h3 class="tit-registrar-calificacion">Evolución de clientes</h3>
+        <h3 class="tit-registrar-calificacion" data-translate="evolucion_clientes">Evolución de clientes</h3>
         <form id="form-buscar-cliente-registrar-calificacion" class="form-buscar-registrar-calificacion">
           <label>CI</label>
           <input class="inputCrearUsuarioClienteCi">
-          <button type="button" class="usuarioClienteBuscar">Buscar</button>
+          <button type="button" class="usuarioClienteBuscar" data-translate="buscar">Buscar</button>
         </form>
       </article>
       
       <form id="form-registrar-calificacion" class="form-registrar-calificacion">
         <table class="table-registrar-calificacion">
           <tr>
-            <th>Ítem</th>
-            <th>Agregar/modificar nota</th>
-            <th>Nota actual</th>
+            <th>Item</th>
+            <th data-translate="agregar_modificar_nota">Agregar/modificar nota</th>
+            <th data-translate="nota_actual">Nota actual</th>
           </tr>
           <tr>
-            <th>Cedula</th>
+            <th data-translate="cedula">Cedula</th>
             <td>
               <label class="outputUsuarioClienteCi"></label>
             </td>
           </tr>
           <tr>
-            <th>Estado</th>
+            <th data-translate="estado">Estado</th>
             <td>
               <select name="select" class="inputCrearUsuarioClienteEstado">
                 <option value="" disabled selected>...</option>
-                <option value="principiante">Principiante</option>
-                <option value="bajo">Bajo</option>
-                <option value="medio">Medio</option>
-                <option value="alto">Alto</option>
-                <option value="para seleccionar">Para seleccionar</option>
-                <option value="inicio">Inicio</option>
-                <option value="sin evolucion">Sin evolucion</option>
-                <option value="en evolucion">En evolucion</option>
-                <option value="satisfactorio">Satisfactorio</option>
+                <option value="principiante" data-translate="principiante">Principiante</option>
+                <option value="bajo" data-translate="bajo">Bajo</option>
+                <option value="medio" data-translate="medio">Medio</option>
+                <option value="alto" data-translate="alto">Alto</option>
+                <option value="para seleccionar" data-translate="para_seleccion">Para seleccionar</option>
+                <option value="inicio" data-translate="inicio">Inicio</option>
+                <option value="sin evolucion" data-translate="sin_evolucion">Sin evolucion</option>
+                <option value="en evolucion" data-translate="en_evolucion">En evolucion</option>
+                <option value="satisfactorio" data-translate="satisfactorio">Satisfactorio</option>
               </select>
             </td>
             <td>
@@ -100,7 +100,7 @@
             </td>
           </tr>
           <tr>
-            <th>Cumplimiento con la agenda</th>
+            <th data-translate="cumplimientoAgenda">Cumplimiento con la agenda</th>
             <td><input type="number" class="inputCrearUsuarioClienteCumplimientoAgenda" id="cumplimientoAgenda"
                 name="cumplimientoAgenda"
                 onclick="eliminar_letras('cumplimientoAgenda', 'mensaje_registroCalificacion')" inputmode="numeric">
@@ -110,7 +110,7 @@
             </td>
           </tr>
           <tr>
-            <th>Resistencia anaeróbica</th>
+            <th data-translate="resistenciaAnaerobica">Resistencia anaeróbica</th>
             <td><input type="number" class="inputCrearUsuarioClienteResistenciaAnaerobica" id="resistenciaAnaerobica"
                 name="resistenciaAnaerobica"
                 onclick="eliminar_letras('resistenciaAnaerobica', 'mensaje_registroCalificacion')" inputmode="numeric">
@@ -121,7 +121,7 @@
 
           </tr>
           <tr>
-            <th>Fuerza muscular</th>
+            <th data-translate="fuerzaMuscular">Fuerza muscular</th>
             <td><input type="number" class="inputCrearUsuarioClienteFuerzaMuscular" id="fuerzaMuscular"
                 name="fuerzaMuscular" onclick="eliminar_letras('fuerzaMuscular', 'mensaje_registroCalificacion')"
                 inputmode="numeric">
@@ -132,7 +132,7 @@
 
           </tr>
           <tr>
-            <th>Resistencia muscular</th>
+            <th data-translate="resistenciaMuscular">Resistencia muscular</th>
             <td><input class="inputCrearUsuarioClienteResistenciaMuscular" type="number" id="resistenciaMuscular"
                 name="resistenciaMuscular"
                 onclick="eliminar_letras('resistenciaMuscular', 'mensaje_registroCalificacion')" inputmode="numeric">
@@ -143,7 +143,7 @@
 
           </tr>
           <tr>
-            <th>Flexibilidad</th>
+            <th data-translate="flexibilidad">Flexibilidad</th>
             <td><input type="number" class="inputCrearUsuarioClienteFlexibilidad" id="flexibilidad" name="flexibilidad"
                 onclick="eliminar_letras('flexibilidad', '')" inputmode="numeric">
             </td>
@@ -153,7 +153,7 @@
 
           </tr>
           <tr>
-            <th>Resistencia a la monotonía</th>
+            <th data-translate="resistenciaMonotonia">Resistencia a la monotonía</th>
             <td><input type="number" class="inputCrearUsuarioClienteResistenciaMonotonia" id="resistenciaMonotonia"
                 name="resistenciaMonotonia"
                 onclick="eliminar_letras('resistenciaMonotonia', 'mensaje_registroCalificacion')" inputmode="numeric">
@@ -164,7 +164,7 @@
 
           </tr>
           <tr>
-            <th>Resiliencia</th>
+            <th data-translate="resiliencia">Resiliencia</th>
             <td><input type="number" class="inputCrearUsuarioClienteResiliencia" id="resiliencia" name="resiliencia"
                 onclick="eliminar_letras('resiliencia', 'mensaje_registroCalificacion')" inputmode="numeric">
             </td>
@@ -175,7 +175,7 @@
           </tr>
         </table>
 
-        <button type="button" class="btn btn-modificar" id="usuarioClienteModificar">Guardar</button>
+        <button type="button" class="btn btn-modificar" id="usuarioClienteModificar" data-translate="guardar">Guardar</button>
         <br>
         <span id="mensaje_registroCalificacion" hidden></span>
       </form>
@@ -184,11 +184,11 @@
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html">Inicio</a></li>
-          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html">Mi Agenda</a></li>
-          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html">Clientes</a>
-          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html">Planes</a></li>
-          <li id="login" class="op-menu"><a href="perfilEntrenador.html">Perfil</a></li>
+          <li id="inicio" class="op-menu"><a href="inicioEntrenador.html" data-translate="inicio">Inicio</a></li>
+          <li id="nosotros" class="op-menu"><a href="agendaEntrenador.html" data-translate="mi_agenda">Mi Agenda</a></li>
+          <li id="servicios" class="op-menu"><a href="detallesClienteEntrenador.html" data-translate="clientes">Clientes</a>
+          <li id="locales" class="op-menu"><a href="inicioPlanesEntrenador.html" data-translate="planes">Planes</a></li>
+          <li id="login" class="op-menu"><a href="perfilEntrenador.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -205,12 +205,13 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>
 
   </div>
 </body>
+
 
 </html>

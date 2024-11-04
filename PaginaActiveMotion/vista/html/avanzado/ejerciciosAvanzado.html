@@ -25,11 +25,11 @@
       </div>
 
       <ul>
-        <li id="inicio" class="op-menu"><a href="indexAvanzado.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html">Usuarios</a></li>
-        <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html">Ejercicios</a>
-        <li id="login" class="op-menu"><a href="deportesAvanzado.html">Deportes</a></li>
-        <li id="login" class="op-menu"><a href="perfilAvanzado.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="indexAvanzado.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="usuariosAvanzado.html" data-translate="usuarios">Usuarios</a></li>
+        <li id="servicios" class="op-menu"><a href="ejerciciosAvanzado.html" data-translate="ejercicios">Ejercicios</a>
+        <li id="login" class="op-menu"><a href="deportesAvanzado.html" data-translate="deportes">Deportes</a></li>
+        <li id="login" class="op-menu"><a href="perfilAvanzado.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
 
@@ -39,11 +39,11 @@
 
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="indexAvanzado.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="usuariosAvanzado.html">Usuarios</a></li>
-          <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html">Ejercicios</a>
-          <li class="op-menu-oculto"><a href="deportesAvanzado.html">Deportes</a></li>
-          <li class="op-menu-oculto"><a href="perfilAvanzado.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="indexAvanzado.html" data-translate="inicio">Inicio</a></li>
+          <li class="op-menu-oculto"><a href="usuariosAvanzado.html" data-translate="usuarios">Usuarios</a></li>
+          <li class="op-menu-oculto"><a href="ejerciciosAvanzado.html" data-translate="ejercicios">Ejercicios</a>
+          <li class="op-menu-oculto"><a href="deportesAvanzado.html" data-translate="deportes">Deportes</a></li>
+          <li class="op-menu-oculto"><a href="perfilAvanzado.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
       
@@ -51,14 +51,14 @@
 
     <main class="tituloAvanzado">
       <header>
-        <h1 class="titulo2Avanzado">Ejercicios</h1>
+        <h1 class="titulo2Avanzado" data-translate="ejercicios">Ejercicios</h1>
       </header>
       <br>
       <section class="deportesAvanzadoFormulario">
         <form class="deportesAvanzadoFormulario">
-          <label class="deportesAvanzadoLabel">Nombre ejercicio</label>
+          <label class="deportesAvanzadoLabel" data-translate="nombreEjercicio">Nombre ejercicio</label>
           <input class="inputBuscarEjercicioIdEjercicio">
-          <button type="button" class="ejercicioBuscar" id="deportesAvanzadoBoton">Buscar</button>
+          <button type="button" class="ejercicioBuscar" id="deportesAvanzadoBoton" data-translate="buscar">Buscar</button>
         </form>
       </section>
       <section class="deportesAvanzadoTabla">
@@ -66,11 +66,11 @@
           <thead>
             <tr>
               <th class="celda">ID</th>
-              <th class="celda">Nombre</th>
-              <th class="celda">Nro. de repeticiones</th>
-              <th class="celda">Nro. de series</th>
-              <th class="celda">Grupo muscular</th>
-              <th class="celda">Descripcion</th>
+              <th class="celda" data-translate="nombre">Nombre</th>
+              <th class="celda" data-translate="N_repeticiones">Nro. de repeticiones</th>
+              <th class="celda" data-translate="N_series">Nro. de series</th>
+              <th class="celda" data-translate="grupo_muscular">Grupo muscular</th>
+              <th class="celda" data-translate="descripcion">Descripcion</th>
             </tr>
           </thead>
           <tbody>
@@ -79,9 +79,9 @@
         </table>
       </section>
       <section class="deportesAvanzadoBotones">
-        <button class="deporteCrear" id="deportesAvanzadoBoton">Crear</button>
-        <button class="deporteModificar" id="deportesAvanzadoBoton">Modificar</button>
-        <button class="deporteEliminar" id="deportesAvanzadoBoton">Eliminar</button>
+        <button class="deporteCrear" id="deportesAvanzadoBoton" data-translate="crear">Crear</button>
+        <button class="deporteModificar" id="deportesAvanzadoBoton" data-translate="modificar">Modificar</button>
+        <button class="deporteEliminar" id="deportesAvanzadoBoton" data-translate="eliminar">Eliminar</button>
       </section>
 
       <section class="deportesAvanzadoAgregarModificar" style="display: none;">
@@ -89,44 +89,44 @@
         <label class="deportesAvanzadoLabel">ID </label>
         <input class="inputCrearEjercicioIdEjercicio" id="deportesAvanzadoInput">
         <br>
-        <label class="deportesAvanzadoLabel">Nombre </label>
+        <label class="deportesAvanzadoLabel" data-translate="nombre">Nombre </label>
         <input class="inputCrearEjercicioNombreEjercicio" id="deportesAvanzadoInput">
         <br>
-        <label class="deportesAvanzadoLabel">Nro. de repeticiones</label>
+        <label class="deportesAvanzadoLabel" data-translate="N_repeticiones">Nro. de repeticiones</label>
         <input class="inputCrearEjercicioNroRep" id="deportesAvanzadoInput">
         <br>
-        <label class="deportesAvanzadoLabel">nro. de series </label>
+        <label class="deportesAvanzadoLabel" data-translate="N_series">Nro. de series</label>
         <input class="inputCrearEjercicioNroSeries" id="deportesAvanzadoInput">
         <br>
-        <label class="deportesAvanzadoLabel">Grupo muscular</label>
+        <label class="deportesAvanzadoLabel" data-translate="grupo_muscular">Grupo muscular</label>
         <input class="inputCrearEjercicioGrupoMuscular" id="deportesAvanzadoInput">
         <br>
-        <label class="deportesAvanzadoLabel">Descripcion</label>
+        <label class="deportesAvanzadoLabel" data-translate="descripcion">Descripcion</label>
         <input class="inputCrearEjercicioDescripcion" id="deportesAvanzadoInput">
         <br>
         <div class="deportesAvanzadoAgregarModificarBotones">
-          <button type="button" class="deporteConfirmarCrear" id="deportesAvanzadoBoton">Crear</button>
-          <button type="button" class="deporteConfirmarModificar" id="deportesAvanzadoBoton">Modificar</button>
-          <button type="button" class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
+          <button type="button" class="deporteConfirmarCrear" id="deportesAvanzadoBoton" data-translate="crear">Crear</button>
+          <button type="button" class="deporteConfirmarModificar" id="deportesAvanzadoBoton" data-translate="modificar">Modificar</button>
+          <button type="button" class="deporteCancelar" id="deportesAvanzadoBoton" data-translate="cancelar">Cancelar</button>
         </div>
       </section>
 
       <section class="deportesAvanzadoEliminar">
-        <h4 class="titH4">Eliminar ejercicio</h4>
-        <label class="deportesAvanzadoLabel">ID ejercicio</label>
+        <h4 class="titH4" data-translate="eliminar_ejercicio">Eliminar ejercicio</h4>
+        <label class="deportesAvanzadoLabel" data-translate="ejercicio_id">ID ejercicio</label>
         <input class="inputEliminarEjercicioIdEjercicio" id="deportesAvanzadoInput">
         <div class="deportesAvanzadoAgregarModificarBotones">
-          <button class="deporteConfirmarEliminar" id="deportesAvanzadoBoton">Eliminar</button>
-          <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
+          <button class="deporteConfirmarEliminar" id="deportesAvanzadoBoton" data-translate="eliminar">Eliminar</button>
+          <button class="deporteCancelar" id="deportesAvanzadoBoton" data-translate="cancelar">Cancelar</button>
         </div>
       </section>
 
       <section class="deportesAvanzadoConfirmarEliminar">
-        <h4 class="titH4">¿Está seguro que desea eliminar el ejercicio?</h4>
+        <h4 class="titH4" data-translate="preguntaElmiarEjercicio">¿Está seguro que desea eliminar el ejercicio?</h4>
         <div>
           <div class="deportesAvanzadoAgregarModificarBotones">
-            <button class="deporteConfirmarConfirmarEliminar" id="deportesAvanzadoBoton">Confirmar</button>
-            <button class="deporteCancelar" id="deportesAvanzadoBoton">Cancelar</button>
+            <button class="deporteConfirmarConfirmarEliminar" id="deportesAvanzadoBoton" data-translate="confirmar">Confirmar</button>
+            <button class="deporteCancelar" id="deportesAvanzadoBoton" data-translate="cancelar">Cancelar</button>
           </div>
         </div>
       </section>
@@ -136,11 +136,11 @@
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="indexAvanzado.html">Inicio</a></li>
-          <li><a href="usuariosAvanzado.html">Usuarios</a></li>
-          <li><a href="ejerciciosAvanzado.html">Ejercicios</a></li>
-          <li><a href="deportesAvanzado.html">Deportes</a></li>
-          <li><a href="perfilAvanzado.html">Perfil</a></li>
+          <li><a href="indexAvanzado.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="usuariosAvanzado.html" data-translate="usuarios">Usuarios</a></li>
+          <li><a href="ejerciciosAvanzado.html" data-translate="ejercicios">Ejercicios</a></li>
+          <li><a href="deportesAvanzado.html" data-translate="deportes">Deportes</a></li>
+          <li><a href="perfilAvanzado.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -157,7 +157,7 @@
           </a>
         </div>
       </div>
-      <div class="copyright-bar">
+      <div class="copyright-bar" data-translate="footer">
         © 2024 ActiveMotion. Todos los derechos reservados.
       </div>
     </footer>

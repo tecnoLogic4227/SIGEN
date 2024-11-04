@@ -53,27 +53,27 @@
     </nav>
 
   <main class="tituloGeneral">
-    <h1 class="titulo2General">Registro</h1>
+    <h1 class="titulo2General" data-translate="registro">Registro</h1>
 
     <article id="formRegistro">
       <img class="foto" src="../../img/Perfil.png" >
       <br>
       <form id="form-registro" method="post" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_registro.php">
-          <label>Nombre de usuario:</label>
+          <label data-translate="nombre_usuario">Nombre de usuario:</label>
           <br>
           <input type="text" name="nombre" id="nombre" minlength="6" maxlength="20" placeholder="Escriba aquí" required onkeydown="quitarEspacios(event)">
           <br><br>
-          <label>Cedula:</label>
+          <label data-translate="cedula">Cedula:</label>
           <br>
           <input type="text" name="ci" id="ci" placeholder="12345678" required onkeydown="quitarEspacios(event)">
           <br><br>
-          <label>Contraseña:</label>
+          <label data-translate="contraseña">Contraseña:</label>
           <br>
           <input type="password" id="clave1" name="clave"
           required minlength="6"
           placeholder="Password">
           <br><br>
-          <label>Verificar contraseña:</label>
+          <label data-translate="verificar_contra">Verificar contraseña:</label>
           <br>
           <input type="password" id="clave2" name="clave"
           required minlength="6" 
@@ -88,36 +88,36 @@
           <input type="email" id="email" name="email"
           placeholder="juanperez@gmail.com" required> 
           <br><br>
-          <label>Celular:</label>
+          <label data-translate="telefono">Celular:</label>
           <br>
           <input type="tel" id="tel" name="tel" maxlength="9"
           pattern="[0-9]{9}" placeholder="099123456" required>
           <br><br>
-          <label>Fecha de nacimiento:</label>
+          <label data-translate="fechaNac">Fecha de nacimiento:</label>
           <br>
           <input type="text" id="fecha" name="fecha">
           <br> <br>
-          <label>Foto de Perfil</label>
+          <label data-translate="foto_perfil">Foto de Perfil</label>
           <br>
           <input type="file"
           name="archivo"
           id="archivo"
           accept=".jpg, .png">
           <br><br>
-          <label> Recibir notificaciones: </label>
+          <label data-translate="recibir_notificaciones"> Recibir notificaciones: </label>
           <input type="radio" 
           name="opcion"
           value="opcion1">
-          <label>En mi celular</label>
+          <label data-translate="en_mi_celular">En mi celular</label>
           <input type="radio" 
           name="opcion"
           value="opcion2">
-          <label>En mi correo</label>
+          <label data-translate="en_mi_correo">En mi correo</label>
           <br>
           <input type="checkbox" name="terminos">
-          <label>Aceptar Terminos y Condiciones</label>
+          <label data-translate="aceptar_terminos">Aceptar Terminos y Condiciones</label>
           <br>
-        <button class="estado registrarse" id="btnRegistrarse" type="button" onclick="tomar_claves()">Registrarse</button>
+        <button class="estado registrarse" id="btnRegistrarse" type="button" onclick="tomar_claves()" data-translate="registrarse">Registrarse</button>
         <br>
         <span id="mensaje_registro"></span>
       </form>
@@ -149,7 +149,7 @@
         </a>
       </div>
     </div>
-    <div class="copyright-bar">
+    <div class="copyright-bar" data-translate="footer">
       © 2024 ActiveMotion. Todos los derechos reservados.
     </div>
   </footer>

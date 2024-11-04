@@ -20,10 +20,10 @@
             </div>
 
             <ul>
-                <li id="inicio" class="op-menu"><a href="indexSeleccionador.html">Inicio</a></li>
-                <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html">Equipos</a></li>
-                <li id="login" class="op-menu"><a href="perfilSeleccionador.html">Perfil</a></li>
+                <li id="inicio" class="op-menu"><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                <li id="nosotros" class="op-menu"><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                <li id="servicios" class="op-menu"><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                <li id="login" class="op-menu"><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 <li><a class="menu-barras" href="#barras">☰</a></li>
             </ul>
 
@@ -33,30 +33,30 @@
 
             <div class="menu-adaptable">
                 <ul class="menu-oculto">
-                    <li class="op-menu-oculto"><a href="indexSeleccionador.html">Inicio</a></li>
-                    <li class="op-menu-oculto"><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                    <li class="op-menu-oculto"><a href="equiposSeleccionador.html">Equipos</a></li>
-                    <li class="op-menu-oculto"><a href="perfilSeleccionador.html">Perfil</a></li>
+                    <li class="op-menu-oculto"><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                    <li class="op-menu-oculto"><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                    <li class="op-menu-oculto"><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                    <li class="op-menu-oculto"><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 </ul>
             </div>
         </nav>
     
         <main class="tituloSeleccionador">
             <header> 
-                <h1 class="titulo2Seleccionador">Equipos</h1>
+                <h1 class="titulo2Seleccionador" data-translate="equipos">Equipos</h1>
             </header>
                  
             <form id="form-armarEquiposExistenteSeleccionador" action="../../../controlador/Verificacion_de_Datos _PHP/formulario_armarEquipo_seleccionador.php" method="post" class="formDeportistasSeleccionador">
-                <h5>Deportista</h5>
+                <h5 data-translate="deportista">Deportista</h5>
                 <br>
-                <label for="nombreDeportista" class="nombre">Cedula del usuario:</label>
+                <label for="nombreDeportista" class="nombre" data-translate="cedula_usuario">Cedula del usuario:</label>
                 <input class="inputCi" type="text" name="nombreDeportista" id="nombreDeportista" placeholder="Messi" required>
                 <br>
-                <label for="deporteDeportista" class="deporte">ID del equipo:</label>
+                <label for="deporteDeportista" class="deporte" data-translate="id_equipo">ID del equipo:</label>
                 <input class="inputId" type="text" id="deporteDeportista" name="deporteDeportista" placeholder="futbol" required>
                 <br>
-                <button class="estado ingresarDeportista botonIngresarDeportista" id="btnIngresarDeportista" type="button">Ingresar</button>
-                <button class="estado eliminarDeportista botonEliminarDeportista" id="btnEliminarDeportista" type="button">Eliminar</button>
+                <button class="estado ingresarDeportista botonIngresarDeportista" id="btnIngresarDeportista" type="button" data-translate="ingresar">Ingresar</button>
+                <button class="estado eliminarDeportista botonEliminarDeportista" id="btnEliminarDeportista" type="button" data-translate="eliminar">Eliminar</button>
                 <span id="mensaje_equipoSeleccionador" hidden></span>
             </form>
             
@@ -65,10 +65,10 @@
         <footer class="social-footer">
             <div class="footer-content">
                 <ul class="footer-menu">
-                    <li><a href="indexSeleccionador.html">Inicio</a></li>
-                    <li><a href="deportistasSeleccionador.html">Deportistas</a></li>
-                    <li><a href="equiposSeleccionador.html">Equipos</a></li>
-                    <li><a href="perfilSeleccionador.html">Perfil</a></li>
+                    <li><a href="indexSeleccionador.html" data-translate="inicio">Inicio</a></li>
+                    <li><a href="deportistasSeleccionador.html" data-translate="deportistas">Deportistas</a></li>
+                    <li><a href="equiposSeleccionador.html" data-translate="equipos">Equipos</a></li>
+                    <li><a href="perfilSeleccionador.html" data-translate="perfil">Perfil</a></li>
                 </ul>
                 <div class="social-icons">
                     <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -85,7 +85,7 @@
                     </a>
                 </div>
             </div>
-            <div class="copyright-bar">
+            <div class="copyright-bar" data-translate="footer">
                 © 2024 ActiveMotion. Todos los derechos reservados.
             </div>
         </footer>
