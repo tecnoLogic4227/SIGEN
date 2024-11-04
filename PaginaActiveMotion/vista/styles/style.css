@@ -27,8 +27,12 @@ nav {
 
 /*.....................................................BOTON IDIOMA................................................................*/
 .language-toggle {
-  margin-left: 13px;
+  position: absolute;
+  top: 50%; 
+  right: 20px;
+  transform: translateY(-50%);
 }
+
 
 #langToggle {
   background-color: #72c8f1;
@@ -104,7 +108,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1vw !important;
+  margin-left: 5vw !important;
 }
 
 /*.........................................................MENU............................................................*/
@@ -123,7 +127,7 @@ ul #servis,
 #dep,
 #pila {
   background-color: #ffffff;
-  opacity: 1;
+  width: 10vw;
 }
 
 .menu-oculto {
@@ -153,18 +157,19 @@ ul #servis,
 ul {
   display: flex;
   list-style-type: none;
-  justify-content: space-between;
+  justify-content: space-between; 
   flex-grow: 1;
-  width: 100%;
-  margin: 0 auto;
-  margin-right: 0px;
-
+  width: 100%; 
+  margin: 0;
+  padding-right: 100px; 
 }
+
 
 
 ul li {
   float: left;
   position: relative;
+  margin: 0 50px;
 }
 
 ul li#inicio ul {
@@ -256,7 +261,8 @@ ul li a {
   display: block;
   line-height: 2em;
   color: rgb(0, 0, 0);
-  padding: 10px 20px;
+  padding: 10px 15px; 
+  white-space: nowrap; 
 }
 
 ul ul li a {
@@ -470,12 +476,12 @@ ul li#login a:hover {
 .carousel-control-prev,
 .carousel-control-next {
   background-color: rgba(0, 0, 0, 0.5);
-  width: 10%;
+  width: 5% !important;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  width: 30px;
+  width: 10px ;
   height: 30px;
 }
 
@@ -612,7 +618,7 @@ footer {
   left: 38px;
 }
 
-.container {
+.telefonoHorario {
   padding: 20px;
   border-radius: 8px;
   margin-left: 50vw;

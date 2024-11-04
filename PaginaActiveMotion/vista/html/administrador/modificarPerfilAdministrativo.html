@@ -24,18 +24,23 @@
       </div>
 
       <ul>
-        <li id="inicio" class="op-menu"><a href="indexAdministrativo.html">Inicio</a></li>
-        <li id="nosotros" class="op-menu"><a href="agendaAdministrativo.html">Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="consultarPDAdministrativo.html">Consultar cliente</a>
-        <li id="login" class="op-menu"><a href="perfilAdministrativo.html">Perfil</a></li>
+        <li id="inicio" class="op-menu"><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
+        <li id="nosotros" class="op-menu"><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
+        <li id="servicios" class="op-menu"><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a>
+        <li id="login" class="op-menu"><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
+
+      <div class="language-toggle">
+        <button id="langToggle">EN</button>
+      </div>
+
       <div class="menu-adaptable">
         <ul class="menu-oculto">
-          <li class="op-menu-oculto"><a href="indexAdministrativo.html">Inicio</a></li>
-          <li class="op-menu-oculto"><a href="agendaAdministrativo.html">Agenda</a></li>
-          <li class="op-menu-oculto"><a href="consultarPDAdministrativo.html">Consultar cliente</a>
-          <li class="op-menu-oculto"><a href="perfilAdministrativo.html">Perfil</a></li>
+          <li class="op-menu-oculto"><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
+          <li class="op-menu-oculto"><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
+          <li class="op-menu-oculto"><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a>
+          <li class="op-menu-oculto"><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
 
@@ -43,7 +48,7 @@
 
     <main class="perfil">
       <header>
-        <h1 class="tituloPerfil">Tu Perfil</h1>
+        <h1 class="tituloPerfil" data-translate="suPerfil">Tu Perfil</h1>
       </header>
 
       <div class="container-fluid">
@@ -57,40 +62,40 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Cédula</td>
+                  <td data-translate="cedula">Cédula</td>
                   <td><label class="labelCedula"></label></td>
                 </tr>
                 <tr>
-                  <td>Nombre</td>
+                  <td data-translate="nombre">Nombre</td>
                   <td><input class="inputModificarUsuarioNombre" type="text" id="apellido-usuario"
                       name="apellido-usuario" class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Apellido</td>
+                  <td data-translate="apellido">Apellido</td>
                   <td><input class="inputModificarUsuarioApellido" type="text" id="gmail-usuario" name="gmail-usuario"
                       class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Dirección</td>
+                  <td data-translate="direccion">Dirección</td>
                   <td><input class="inputModificarUsuarioDireccion" type="text" id="ci-usuario" name="ci-usuario"
                       class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Email</td>
+                  <td data-translate="email">Email</td>
                   <td><input class="inputModificarUsuarioEmail" type="text" id="celular-usuario" name="celular-usuario"
                       class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Fecha de nacimiento</td>
+                  <td data-translate="fechaNac">Fecha de nacimiento</td>
                   <td><input class="inputModificarUsuarioFechaNac" type="date" id="direccion-usuario"
                       name="direccion-usuario" class="form-control"></td>
                 </tr>
                 <tr>
-                  <td>Rol</td>
+                  <td data-translate="rol">Rol</td>
                   <td><label class="labelRol"></label></td>
                 </tr>
                 <tr>
-                  <td>Teléfono</td>
+                  <td data-translate="telefono">Teléfono</td>
                   <td><input class="inputModificarUsuarioTelefono" type="text" id="direccion-usuario"
                       name="direccion-usuario" class="form-control"></td>
                 </tr>
@@ -100,18 +105,18 @@
         </div>
       </div>
       <section class="sectionPerfilAdministrativo">
-        <button class="botonModificarPerfil" id="usuarioConfirmarModificar">Guardar</button>
-        <button class="botonModificarPerfil"><a class="linkModificarPerfilAdministrativo" href="perfilAdministrativo.html">Regresar</a></button>
+        <button class="botonModificarPerfil" id="usuarioConfirmarModificar" data-translate="guardar">Guardar</button>
+        <button class="botonModificarPerfil"><a class="linkModificarPerfilAdministrativo" href="perfilAdministrativo.html" data-translate="regresar">Regresar</a></button>
       </section>
     </main>
 
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
-          <li><a href="indexAdministrativo.html">Inicio</a></li>
-          <li><a href="agendaAdministrativo.html">Agenda</a></li>
-          <li><a href="consultarPDAdministrativo.html">Consultar cliente</a></li>
-          <li><a href="perfilAdministrativo.html">Perfil</a></li>
+          <li><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
+          <li><a href="agendaAdministrativo.html"  data-translate="agenda">Agenda</a></li>
+          <li><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a></li>
+          <li><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         </ul>
         <div class="social-icons">
           <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="social-icon whatsapp">
@@ -133,10 +138,11 @@
       </div>
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../script/jquery-3.7.1.min.js"></script>
     <script src="../../script/script.js"></script>
+    <script src="../../script/idioma.js"></script>
+
   </div>
 </body>
 
