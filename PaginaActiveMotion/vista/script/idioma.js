@@ -339,6 +339,7 @@ $(document).ready(function() {
       "tu_evolucion":"Your Evolution",
       "estado_evolucion":"Status: ",
       "mi_rutina_evolucion":"My Routine",
+      "puntaje_total":"Total Score: ",
       
       //INDEX USUARIO
       "notificaciones": "Notifications",
@@ -430,7 +431,7 @@ $(document).ready(function() {
       "equipos":"Teams",
       "cedula_usuario":"User's ID: ",
       "id_equipo":"Team's ID: ",
-      "deportistas":"athletes",
+      "deportistas":"Athletes",
 
       //ARMAR EQUIPO SELECCIONADRO
       "ingresar_equipo":"Enter Team",
@@ -445,6 +446,7 @@ $(document).ready(function() {
 
       //DEPORTISTAS SELECCIONADOR
       "evolucion_y_calificacion":"Evolution and qualification",
+      "deportistas_titulo":"Athletes",
 
       //EQUIPOS SELECCIONADOR
       "armar_equipos":"Assemble teams",
@@ -814,6 +816,8 @@ $(document).ready(function() {
 
       //EVOLUCION USUARIO
       "tu_evolucion":"Tu Evolucion",
+      "estado_evolucion":"Estado: ",
+      "puntaje_total":"Puntaje Total: ",
 
       //INDEX USUARIO
       "notificaciones": "Notificaciones",
