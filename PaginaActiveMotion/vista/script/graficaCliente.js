@@ -112,4 +112,24 @@ $(document).ready(() => {
     if (pagina == "http://localhost/sigen/paginaactivemotion/vista/html/cliente/evolucionUsuario.html") {
         recibirCalificacion(ci, tabla, metodo);
     }
+
+    let contenido= ['Cumplimiento Agenda', 'Resistencia Anaeróbica', 'Fuerza Muscular', 'Resistencia Muscular', 'Flexibilidad', 'Resistencia a la Monotonía', 'Resiliencia'];
+    let mensaje='Calificacion';
+
+    $('#langToggle').click(function() {
+        const currentLang = $(this).text() === 'EN' ? 'en' : 'es';
+        
+        if (currentLang == 'en' || currentLang == 'EN') {
+            contenido = ['Agenda Fulfillment', 'Anaerobic Endurance', 'Muscle Strength', 'Muscle Endurance', 'Flexibility', 'Resistance to Monotony', 'Resilience'];
+            mensaje='Qualification';
+        } else {
+            contenido = ['Cumplimiento Agenda', 'Resistencia Anaeróbica', 'Fuerza Muscular', 'Resistencia Muscular', 'Flexibilidad', 'Resistencia a la Monotonía', 'Resiliencia'];
+            mensaje='Calificacion';
+        }
+
+        // Actualizar etiquetas de la gráfica y redibujar
+        chart.data.labels = contenido;
+        chart.data.datasets[0].label = mensaje;
+        chart.update(); // Forzar actualización de la gráfica
+    });
 });

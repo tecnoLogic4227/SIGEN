@@ -470,108 +470,108 @@ $(function() {
 });
 
 /*...........................................................AGENDA ADMINISTRATIVO.................................................*/
-$(document).ready(function() {
-  class AgendaAdministrativa {
-    constructor() {
-      this.currentDate = new Date();
-      this.selectedDate = null;
-      this.appointments = {}; // Almacenar las citas
-      this.initializeElements();
-      this.addEventListeners();
-      this.updateCalendar();
-    }
+// $(document).ready(function() {
+//   class AgendaAdministrativa {
+//     constructor() {
+//       this.currentDate = new Date();
+//       this.selectedDate = null;
+//       this.appointments = {}; // Almacenar las citas
+//       this.initializeElements();
+//       this.addEventListeners();
+//       this.updateCalendar();
+//     }
     
-    initializeElements() {
-      this.yearElement = $('#currentYear');
-      this.monthElement = $('#currentMonth');
-      this.calendarElement = $('#calendar');
-    }
+//     initializeElements() {
+//       this.yearElement = $('#currentYear');
+//       this.monthElement = $('#currentMonth');
+//       this.calendarElement = $('#calendar');
+//     }
     
-    addEventListeners() {
-      $('#prevYear').on('click', () => this.changeYear(-1));
-      $('#nextYear').on('click', () => this.changeYear(1));
-      $('#prevMonth').on('click', () => this.changeMonth(-1));
-      $('#nextMonth').on('click', () => this.changeMonth(1));
-    }
+//     addEventListeners() {
+//       $('#prevYear').on('click', () => this.changeYear(-1));
+//       $('#nextYear').on('click', () => this.changeYear(1));
+//       $('#prevMonth').on('click', () => this.changeMonth(-1));
+//       $('#nextMonth').on('click', () => this.changeMonth(1));
+//     }
     
-    changeYear(increment) {
-      this.currentDate.setFullYear(this.currentDate.getFullYear() + increment);
-      this.selectedDate = null;
-      this.updateCalendar();
-    }
+//     changeYear(increment) {
+//       this.currentDate.setFullYear(this.currentDate.getFullYear() + increment);
+//       this.selectedDate = null;
+//       this.updateCalendar();
+//     }
     
-    changeMonth(increment) {
-      this.currentDate.setMonth(this.currentDate.getMonth() + increment);
-      this.selectedDate = null;
-      this.updateCalendar();
-    }
+//     changeMonth(increment) {
+//       this.currentDate.setMonth(this.currentDate.getMonth() + increment);
+//       this.selectedDate = null;
+//       this.updateCalendar();
+//     }
     
-    updateCalendar() {
-      this.yearElement.text(this.currentDate.getFullYear());
-      this.monthElement.text(this.currentDate.toLocaleString('es-ES', { month: 'long' }));
+//     updateCalendar() {
+//       this.yearElement.text(this.currentDate.getFullYear());
+//       this.monthElement.text(this.currentDate.toLocaleString('es-ES', { month: 'long' }));
       
-      this.calendarElement.empty();
-      const firstDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-      const startingDay = firstDayOfMonth.getDay() || 7;
-      const daysInMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
+//       this.calendarElement.empty();
+//       const firstDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+//       const startingDay = firstDayOfMonth.getDay() || 7;
+//       const daysInMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
       
-      for (let i = 1; i < startingDay; i++) {
-        this.calendarElement.append($('<div>'));
-      }
+//       for (let i = 1; i < startingDay; i++) {
+//         this.calendarElement.append($('<div>'));
+//       }
       
-      for (let day = 1; day <= daysInMonth; day++) {
-        const dateString = this.formatDate(day);
-        const hasAppointment = this.appointments[dateString];
+//       for (let day = 1; day <= daysInMonth; day++) {
+//         const dateString = this.formatDate(day);
+//         const hasAppointment = this.appointments[dateString];
         
-        const dayContainer = $('<div>');
-        const dayElement = $('<button>')
-          .addClass(`calendar-day ${hasAppointment ? 'appointment' : ''}`)
-          .text(day)
-          .on('click', () => this.handleDateClick(dateString));
+//         const dayContainer = $('<div>');
+//         const dayElement = $('<button>')
+//           .addClass(`calendar-day ${hasAppointment ? 'appointment' : ''}`)
+//           .text(day)
+//           .on('click', () => this.handleDateClick(dateString));
         
-        dayContainer.append(dayElement);
+//         dayContainer.append(dayElement);
         
-        if (this.selectedDate === dateString && hasAppointment) {
-          const appointmentInfo = $('<div>')
-            .addClass('appointment-info')
-            .text(`Hora: ${hasAppointment}`);
-          dayContainer.append(appointmentInfo);
-        }
+//         if (this.selectedDate === dateString && hasAppointment) {
+//           const appointmentInfo = $('<div>')
+//             .addClass('appointment-info')
+//             .text(`Hora: ${hasAppointment}`);
+//           dayContainer.append(appointmentInfo);
+//         }
         
-        this.calendarElement.append(dayContainer);
-      }
-    }
+//         this.calendarElement.append(dayContainer);
+//       }
+//     }
     
-    handleDateClick(dateString) {
-      const time = prompt("Ingresa la hora para la cita (ejemplo: 14:30):");
-      if (time) {
-        this.bookAppointment(dateString, time);
-      }
-    }
+//     handleDateClick(dateString) {
+//       const time = prompt("Ingresa la hora para la cita (ejemplo: 14:30):");
+//       if (time) {
+//         this.bookAppointment(dateString, time);
+//       }
+//     }
     
-    bookAppointment(dateString, time) {
-      if (!this.appointments[dateString]) {
-        this.appointments[dateString] = time;
-        this.updateClientAndTrainerAgendas(dateString, time);
-      }
-      this.updateCalendar(); // Para actualizar la vista del calendario
-    }
+//     bookAppointment(dateString, time) {
+//       if (!this.appointments[dateString]) {
+//         this.appointments[dateString] = time;
+//         this.updateClientAndTrainerAgendas(dateString, time);
+//       }
+//       this.updateCalendar(); // Para actualizar la vista del calendario
+//     }
     
-    updateClientAndTrainerAgendas(dateString, time) {
-      // Aquí llamas a las funciones de las agendas del cliente y entrenador
-      clientAgenda.addAppointment(dateString, time);
-      trainerAgenda.addAppointment(dateString, time);
-    }
+//     updateClientAndTrainerAgendas(dateString, time) {
+//       // Aquí llamas a las funciones de las agendas del cliente y entrenador
+//       clientAgenda.addAppointment(dateString, time);
+//       trainerAgenda.addAppointment(dateString, time);
+//     }
     
-    formatDate(day) {
-      return `${this.currentDate.getFullYear()}-${String(this.currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    }
-  }
+//     formatDate(day) {
+//       return `${this.currentDate.getFullYear()}-${String(this.currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+//     }
+//   }
   
-  const clientAgenda = new AgendaCliente(); // Crear instancia de AgendaCliente
-  const trainerAgenda = new AgendaEntrenador(); // Crear instancia de AgendaEntrenador
-  const adminAgenda = new AgendaAdministrativa(); // Crear instancia de AgendaAdministrativa
-});
+//   const clientAgenda = new AgendaCliente(); // Crear instancia de AgendaCliente
+//   const trainerAgenda = new AgendaEntrenador(); // Crear instancia de AgendaEntrenador
+//   const adminAgenda = new AgendaAdministrativa(); // Crear instancia de AgendaAdministrativa
+// });
 
 
 /*......................................................BOTONES DEE FORM AGENDA.....................................................*/
