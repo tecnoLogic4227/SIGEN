@@ -2276,3 +2276,69 @@ td {
   margin-top: 5vh;
   margin-bottom: 5vh;
 }
+
+
+.sectionPerfilAdministrativo {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-registrar-calificacion {
+  width: 50vw;
+  margin: 0 !important;
+  margin-bottom: 5vh !important;
+}
+
+.centrarDetallesCliente {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.boton-registrar-calificacion, .boton-asignar-rutina2 {
+  margin: 0;
+}
+
+.centrarPlanesEntrenador {
+  width: 100vw;
+  height: 30vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0;
+  flex-direction: row;
+}
+
+.articuloInicioPlanesEntrenador {
+  margin: 0;
+  width: 20vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.botonIngresarFisioDeporte {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.divBotonesDetallesClienteEn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.botonDetallesClienteEntrenador {
+  width: 15vw;
+  margin-right: 5vw;
+  margin-left: 5vw;
+}
+
