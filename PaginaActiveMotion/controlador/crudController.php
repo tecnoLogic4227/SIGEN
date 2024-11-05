@@ -1623,7 +1623,7 @@ function listar($tabla)
                 if (!empty($actividadResult) && isset($actividadResult[0]['actividad'])) {
                     $actividad = $actividadResult[0]['actividad'];
 
-                    if ($actividad == "fisioterapia") {
+                    if ($actividad == "paciente") {
                         $sql = "SELECT id_rutina FROM asiste WHERE ci = ?";
                     } else {
                         $sql = "SELECT id_rutina FROM realiza WHERE ci = ?";
@@ -1631,7 +1631,8 @@ function listar($tabla)
 
                     $idRutinaResult = listarBD($sql, $params, $atributos);
 
-                    if (!empty($idRutinaResult) && isset($idRutinaResult[0]['id_rutina'])) {
+
+                    if (!empty($idRutinaResult) && isset($idRutinaResult)) {
                         $idRutina = $idRutinaResult[0]['id_rutina'];
                         $sql = "SELECT * FROM rutina WHERE id_rutina = ?";
                         $atributos = [$idRutina];
@@ -1657,7 +1658,7 @@ function listar($tabla)
 
                         $resultadoFinal = [$resultado1, $resultado2];
 
-                        if ($resultado1 && $resultado2) {
+                        if ($resultado1 || $resultado2) {
                             echo json_encode($resultadoFinal);
                         } else {
                             echo json_encode(false);

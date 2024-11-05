@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    let ci = 56472893;
+    let ci;
     let tabla = "rutinaUsuario";
     let metodo = "GET";
 
@@ -53,6 +53,8 @@ $(document).ready(() => {
             }
         });
     }
+
+    ci = sessionStorage.getItem("ci");
 
     buscarRutina(ci, tabla, metodo);
 });
