@@ -391,6 +391,7 @@ function crearModificar($atributos, $params, $valores, $tabla, $metodo, $placeho
         case "ejercicio":
             $ejercicio = datos($tabla);
 
+
             $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
             $paramsConsulta = "i";
             $atributosConsulta = [$ejercicio->idEjercicio];
@@ -2713,7 +2714,7 @@ function verificarDatos(&$atributos, &$params, &$valores, object $objeto, $tabla
                     if ($atributos == "") {
                         $atributos .= "nro_rep = ?";
                     } else {
-                        $atributos .= ", ci = ?";
+                        $atributos .= ", nro_rep = ?";
                     }
                     $params .= "i";
                     array_push($valores, $objeto->nroRep);
