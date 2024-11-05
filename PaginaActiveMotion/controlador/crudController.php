@@ -1962,12 +1962,29 @@ function eliminar($tabla)
             if (isset($_REQUEST["idEjercicio"])) {
                 $idEjercicio = isset($_REQUEST["idEjercicio"]) ? $_REQUEST["idEjercicio"] : null;
 
-                $sql = "DELETE FROM ejercicio WHERE id_ejercicio = ?";
+                $sqlConsulta = "SELECT * FROM posee WHERE id_ejercicio = ?";
                 $params = "i";
-                $atributos = [$idEjercicio];
+                $atributos = $idEjercicio;
 
-                $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
-                echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                if (listarBD($sqlConsulta, $params, $atributos)) {
+                    $sql = "DELETE FROM posee WHERE id_ejercicio = ?";
+
+                    if (eliminarBD($sql, $params, $atributos, $sqlConsulta)) {
+                        $sql = "DELETE FROM ejercicio WHERE id_ejercicio = ?";
+
+                        $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
+                        echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                    } else {
+                        echo json_encode(false);
+                    }
+                } else {
+                    $sql = "DELETE FROM ejercicio WHERE id_ejercicio = ?";
+
+                    $sqlConsulta = "SELECT * FROM ejercicio WHERE id_ejercicio = ?";
+                    echo json_encode(eliminarBD($sql, $params, $atributos, $sqlConsulta));
+                }
+
+
             } else {
                 echo json_encode("Error: ID no valido.");
             }
