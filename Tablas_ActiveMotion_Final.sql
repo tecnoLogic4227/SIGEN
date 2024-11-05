@@ -35,6 +35,7 @@ CREATE TABLE USUARIO_CLIENTE (
         "libre",
         "paciente"
     ),
+    estado_actividad BIT(1),
     estado ENUM(
         'principiante',
         'bajo',
@@ -47,13 +48,12 @@ CREATE TABLE USUARIO_CLIENTE (
         'satisfactorio'
     ),
     cumplimiento_agenda INT,
-    resistencia_anaeróbica INT,
+    resistencia_anaerobica INT,
     fuerza_muscular INT,
     resistencia_muscular INT,
     flexibilidad INT,
-    resistencia_monotonía INT,
+    resistencia_monotonia INT,
     resiliencia INT,
-    estado_actividad BIT(1),
     tipo_plan ENUM('Basico','Premium','Pack Verano','Avanzado','Elite','Verano'),
     PRIMARY KEY (ci),
     FOREIGN KEY (ci) REFERENCES USUARIO(ci) ON DELETE CASCADE
