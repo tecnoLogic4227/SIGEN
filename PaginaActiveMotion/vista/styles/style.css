@@ -2342,3 +2342,17 @@ td {
   margin-left: 5vw;
 }
 
+.sectionAgendaADmin {
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formAgendaAdmin {
+  display: flex;
+  flex-direction: column;
+}
+

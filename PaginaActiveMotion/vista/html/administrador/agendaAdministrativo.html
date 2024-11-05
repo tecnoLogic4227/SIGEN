@@ -30,7 +30,8 @@
       <ul>
         <li id="inicio" class="op-menu"><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
         <li id="nosotros" class="op-menu"><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
-        <li id="servicios" class="op-menu"><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a>
+        <li id="servicios" class="op-menu"><a href="consultarPDAdministrativo.html"
+            data-translate="consultarCliente">Consultar cliente</a>
         <li id="login" class="op-menu"><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         <li><a class="menu-barras" href="#barras">☰</a></li>
       </ul>
@@ -43,7 +44,8 @@
         <ul class="menu-oculto">
           <li class="op-menu-oculto"><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
           <li class="op-menu-oculto"><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
-          <li class="op-menu-oculto"><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a>
+          <li class="op-menu-oculto"><a href="consultarPDAdministrativo.html"
+              data-translate="consultarCliente">Consultar cliente</a>
           <li class="op-menu-oculto"><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         </ul>
       </div>
@@ -54,77 +56,34 @@
       <header>
         <h1 class="tituloAgendaAdministrativo" data-translate="agenda">Agenda</h1>
       </header>
-      <section class="left-side">
-        <form class="form-group">
+      <section class="sectionAgendaADmin">
+        <form class="formAgendaAdmin">
           <label data-translate="ingresarCi">Ingresar Cédula</label>
           <input class="inputAgendaAdministrativoCi">
           <br>
-          <label for="fecha-agenda" class="fechaAgendaAdmin"  data-translate="fecha">Fecha</label>
-
+          <label for="fecha-agenda" class="fechaAgendaAdmin" data-translate="fecha">Fecha</label>
           <input type="date" id="fecha-agenda" class="inputAgendaAdministrativoFecha" name="fecha-agenda"
             placeholder="dd/mm/aaaa">
           <br>
           <span id="mensaje_Fecha" hidden></span>
-          <label for="hora" class="horaAgendaAdmin"  data-translate="hora">Hora</label>
+          <label for="hora" class="horaAgendaAdmin" data-translate="hora">Hora</label>
 
           <input type="time" id="hora" class="inputAgendaAdministrativoHora" name="hora">
           <br>
           <br>
           <button class="agendaConfirmarCrear" id="ingresar" data-translate="ingresar">Ingresar</button>
-          <button class="agendaConfirmarEliminar" id="eliminar"  data-translate="eliminar">Eliminar</button>
+          <button class="agendaConfirmarEliminar" id="eliminar" data-translate="eliminar">Eliminar</button>
 
           <span id="mensaje_agendaAdmin" hidden></span>
         </form>
       </section>
-
-      <div class="calendar-container-adm">
-        <div class="year-navigation-adm">
-          <button class="nav-button-adm" id="prevYear-adm">
-            <svg class="chevron-adm" viewBox="0 0 24 24">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <span class="year-adm" id="currentYear-adm"></span>
-          <button class="nav-button-adm" id="nextYear-adm">
-            <svg class="chevron-adm" viewBox="0 0 24 24">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
-
-        <div class="month-navigation-adm">
-          <button class="nav-button-adm" id="prevMonth-adm">
-            <svg class="chevron-adm" viewBox="0 0 24 24">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <span class="month-adm" id="currentMonth-adm"></span>
-          <button class="nav-button-adm" id="nextMonth-adm">
-            <svg class="chevron-adm" viewBox="0 0 24 24">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
-
-        <div class="weekdays-adm" id="weekdays-adm">
-          <div class="weekday-adm" data-translate="dia1">Lun</div>
-          <div class="weekday-adm" data-translate="dia2">Mar</div>
-          <div class="weekday-adm" data-translate="dia3">Mié</div>
-          <div class="weekday-adm" data-translate="dia4">Jue</div>
-          <div class="weekday-adm" data-translate="dia5">Vie</div>
-          <div class="weekday-adm" data-translate="dia6">Sáb</div>
-          <div class="weekday-adm" data-translate="dia7">Dom</div>
-        </div>
-
-        <div class="calendar-adm" id="calendar-adm"></div>
-      </div>
     </main>
 
     <footer class="social-footer">
       <div class="footer-content">
         <ul class="footer-menu">
           <li><a href="indexAdministrativo.html" data-translate="inicio">Inicio</a></li>
-          <li><a href="agendaAdministrativo.html"  data-translate="agenda">Agenda</a></li>
+          <li><a href="agendaAdministrativo.html" data-translate="agenda">Agenda</a></li>
           <li><a href="consultarPDAdministrativo.html" data-translate="consultarCliente">Consultar cliente</a></li>
           <li><a href="perfilAdministrativo.html" data-translate="perfil">Perfil</a></li>
         </ul>
